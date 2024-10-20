@@ -30,7 +30,7 @@
 
 1. Clonar el repositorio en el directorio de tu servidor web:
     ```bash
-    git clone https://github.com/tu-repositorio/SGOC.git
+    git clone [https://github.com/JordanGarciaDev/OralCare.git](https://github.com/JordanGarciaDev/OralCare.git)
     ```
 
 2. Configurar el archivo `config.php` con las rutas y parámetros correspondientes.
@@ -39,14 +39,14 @@
     - El archivo de base de datos SQL se encuentra en `database/sgoc_db.sql`.
     - Importar el archivo SQL usando phpMyAdmin o la línea de comandos:
       ```bash
-      mysql -u [usuario] -p [base_datos] < database/sgoc_db.sql
+      mysql -u [usuario] -p [base_datos] < database/sgoc.sql
       ```
 
 4. Verificar los permisos de los directorios y archivos necesarios para la correcta ejecución del sistema.
 
 5. Acceder al sistema en la siguiente URL:
     ```bash
-    http://127.0.0.1/OralCare/
+    http://interno.oralcare.com/
     ```
 
 ## Uso
@@ -54,7 +54,7 @@
 Una vez instalado el sistema, puedes acceder al panel de gestión de la clínica:
 
 1. **Login:** Ingresar con el usuario y contraseña proporcionados por el administrador.
-2. **Panel de control:** Desde aquí puedes acceder a las distintas secciones del sistema para gestionar pacientes, citas, tratamientos, entre otros.
+2. **Panel de control:** Desde aquí puedes acceder a las distintas secciones del sistema para gestionar empleados, mantenimientos, gastos, entre otros.
 
 ## Soporte
 
@@ -65,5 +65,5 @@ Para cualquier duda o problema técnico, por favor contacta al desarrollador:
 
 ## Licencia
 
-Este software está licenciado para el Dr. Jaime Borja Altamar para su uso exclusivo en la Clínica Oral Care SAS.
+Este software está licenciado para el Dr. Jaime Borja Altamar para su uso exclusivo en la **Clínica Oral Care SAS**.
 

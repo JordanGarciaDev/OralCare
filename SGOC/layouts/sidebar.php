@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <nav id="sidebar" class="sidebar js-sidebar">
 			<div class="sidebar-content js-simplebar">
 				<a class="sidebar-brand" href="index.html">
@@ -38,6 +41,10 @@
 					</div>
 				</div>
 
+                <?php
+                //Aqui se validan los permisos para ver cada menu de acuerdo al perfil que tiene el usuario logueado
+                if($_SESSION['perfil']==0 || $_SESSION['perfil']==1){
+                ?>
 				<ul class="sidebar-nav">
 					<li class="sidebar-header">
 						Pages
@@ -61,7 +68,9 @@
 										class="sidebar-badge badge bg-primary">Pro</span></a></li>
 						</ul>
 					</li>
-
-
+                </ul>
+                <?php
+                }
+                ?>
 			</div>
 		</nav>

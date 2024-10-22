@@ -23,12 +23,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if ($result->num_rows > 0) {
         // Obtener los datos del usuario
-        $usuarioData = $result->fetch_assoc();
+        $infoUsuario = $result->fetch_assoc();
 
         // Verificar la contraseña
-        if (password_verify($password, $usuarioData['pass'])) {
-            // Las credenciales son correctas
+        if (password_verify($password, $infoUsuario['pass'])) {
+
+            // Aqui se agregan todas las variables globales que van a usarse en el sistema
             $_SESSION['usuario'] = $usuario; // Guardar el usuario en la sesión
+            $_SESSION['perfil']  = $infoUsuario['perfil']; // Guardar el perfil en la sesión
+
             header("Location: " . BASE_URL . '/vistas/dashboard.php'); // Redirigir a dashboard
             exit();
         } else {

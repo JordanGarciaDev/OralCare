@@ -30,7 +30,7 @@
 
 1. Clonar el repositorio en el directorio de tu servidor web:
     ```bash
-    git clone [https://github.com/JordanGarciaDev/OralCare.git](https://github.com/JordanGarciaDev/OralCare.git)
+    git clone https://github.com/JordanGarciaDev/OralCare.git
     ```
 
 2. Configurar el archivo `config.php` con las rutas y parámetros correspondientes.

@@ -12,7 +12,7 @@
 	<link rel="preconnect" href="https://fonts.gstatic.com">
 	<link rel="shortcut icon" href="<?= ASSET_URL; ?>/img/icons/icon-48x48.png" />
 
-	<title>Sign In | AdminKit Demo</title>
+	<title>Login | SGOC</title>
 
 	<link href="<?= ASSET_URL; ?>/css/app.css" rel="stylesheet">
 	<link href="<?= ASSET_URL; ?>/css/light.css" rel="stylesheet">

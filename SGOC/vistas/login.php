@@ -1,5 +1,6 @@
 <?php
-session_start(); 
+
+session_start();
 include('../app/config.php');
 include(LAYOUT . '/header.php');
 
@@ -8,6 +9,7 @@ $password = "123";
 $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 //echo $hashedPassword;
 
+$_SESSION['user_logged_in']  = false; // Guardar que está logueado
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Obtener datos del formulario
@@ -31,6 +33,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // Aqui se agregan todas las variables globales que van a usarse en el sistema
             $_SESSION['usuario'] = $usuario; // Guardar el usuario en la sesión
             $_SESSION['perfil']  = $infoUsuario['perfil']; // Guardar el perfil en la sesión
+            $_SESSION['user_logged_in']  = true; // Guardar que está logueado
 
             header("Location: " . BASE_URL . '/vistas/dashboard.php'); // Redirigir a dashboard
             exit();
@@ -107,5 +110,5 @@ $conn->close();
 </main>
 
 <?php
-include(LAYOUT . '/footer.php');
+//include(LAYOUT . '/footer.php');
 ?>

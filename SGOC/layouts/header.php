@@ -10,19 +10,19 @@
 	<meta name="keywords" content="adminkit, bootstrap, bootstrap 5, admin, dashboard, template, responsive, css, sass, html, theme, front-end, ui kit, web">
 
 	<link rel="preconnect" href="https://fonts.gstatic.com">
-	<link rel="shortcut icon" href="<?= ASSET_URL ?>/img/icons/icon-48x48.png" />
+	<link rel="shortcut icon" href="<?= ASSET_URL; ?>/img/icons/icon-48x48.png" />
 
 	<title>Sign In | AdminKit Demo</title>
 
-	<link href="<?= ASSET_URL ?>/css/app.css" rel="stylesheet">
-	<link href="<?= ASSET_URL ?>/css/light.css" rel="stylesheet"> 
+	<link href="<?= ASSET_URL; ?>/css/app.css" rel="stylesheet">
+	<link href="<?= ASSET_URL; ?>/css/light.css" rel="stylesheet">
 	
 	<style>
 		body {
 			opacity: 0;
 		}
 	</style>
-	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+	<link href="<?= ASSET_URL; ?>/css/css2.css?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 
 </head>
 

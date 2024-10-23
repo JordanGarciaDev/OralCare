@@ -41,10 +41,7 @@ session_start();
 					</div>
 				</div>
 
-                <?php
-                //Aqui se validan los permisos para ver cada estandar al perfil que tiene el usuario logueado
-                if($_SESSION['perfil']==0 || $_SESSION['perfil']==1){
-                ?>
+
 				<ul class="sidebar-nav">
 					<li class="sidebar-header">
 						Selecciona un estándar
@@ -52,57 +49,95 @@ session_start();
 
 					<li class="sidebar-item active">
 						<a class="sidebar-link" href="<?= BASE_URL .'/vistas/dashboard.php'; ?>">
-              <i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Dashboard</span>
+              <i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Inicio</span>
             </a>
 					</li>
 
-<!--                    inicio del primer menu-->
-					<li class="sidebar-item">
-						<a data-bs-target="#estandar1" data-bs-toggle="collapse" class="sidebar-link collapsed">
-							<i class="align-middle" data-feather="layout"></i> <span class="align-middle">Estándar 1</span>
-						</a>
-						<ul id="estandar1" class="sidebar-dropdown list-unstyled collapse " data-bs-parent="#sidebar">
-							<li class="sidebar-item"><a class="sidebar-link" href="#">Settings</a></li>
-							<li class="sidebar-item"><a class="sidebar-link" href="#">Clients <span
-										class="sidebar-badge badge bg-primary">Pro</span></a></li>
-							<li class="sidebar-item"><a class="sidebar-link" href="#">Orders <span
-										class="sidebar-badge badge bg-primary">Pro</span></a></li>
-						</ul>
-					</li>
- <!--                    fin del primer menu-->
+                    <?php
+                    //Aqui se validan los permisos para ver cada estandar al perfil que tiene el usuario logueado
+                    if($_SESSION['perfil']==15 || $_SESSION['perfil']==1){
+                    ?>
 
-                    <!-- estandar 2 = perfil de secretaria-->
+                  <!--estandar 1.-->
+                    <li class="sidebar-item">
+                        <a data-bs-target="#estandar1" data-bs-toggle="collapse" class="sidebar-link collapsed">
+                            <i class="align-middle" data-feather="layout"></i> <span class="align-middle">Estándar 1</span>
+                        </a>
+                        <ul id="estandar1" class="sidebar-dropdown list-unstyled collapse " data-bs-parent="#sidebar">
+                            <li class="sidebar-item"><a class="sidebar-link" href="pages-settings.html">Precontratación</a></li>
+                            <li class="sidebar-item"><a class="sidebar-link" href="pages-clients.html">Contratación</a></li>
+                            <li class="sidebar-item"><a class="sidebar-link" href="pages-orders.html">Empleados</a></li>
+                        </ul>
+                    </li>
 
+                     <?php
+                    }
+                    ?>
+
+                    <!--estandar 2-->
                     <li class="sidebar-item">
                         <a data-bs-target="#estandar2" data-bs-toggle="collapse" class="sidebar-link collapsed">
                             <i class="align-middle" data-feather="layout"></i> <span class="align-middle">Estándar 2</span>
                         </a>
                         <ul id="estandar2" class="sidebar-dropdown list-unstyled collapse " data-bs-parent="#sidebar">
-                            <li class="sidebar-item"><a class="sidebar-link" href="#">Settings</a></li>
-                            <li class="sidebar-item"><a class="sidebar-link" href="#">Clients <span
-                                            class="sidebar-badge badge bg-primary">Pro</span></a></li>
-                            <li class="sidebar-item"><a class="sidebar-link" href="#">Orders <span
-                                            class="sidebar-badge badge bg-primary">Pro</span></a></li>
+                            <li class="sidebar-item"><a class="sidebar-link" href="pages-settings.html">Precontratación</a></li>
+                            <li class="sidebar-item"><a class="sidebar-link" href="pages-clients.html">Contratación</a></li>
+                            <li class="sidebar-item"><a class="sidebar-link" href="pages-orders.html">Empleados</a></li>
                         </ul>
                     </li>
 
-                    <!-- estandar 3 = perfil de auxiliar-->
-
+                    <!--  estandar4-->
                     <li class="sidebar-item">
-                        <a data-bs-target="#estandar3" data-bs-toggle="collapse" class="sidebar-link collapsed">
-                            <i class="align-middle" data-feather="layout"></i> <span class="align-middle">Estándar 3</span>
+                        <a data-bs-target="#estandar4" data-bs-toggle="collapse" class="sidebar-link collapsed">
+                            <i class="align-middle" data-feather="layout"></i> <span class="align-middle">Estándar 4</span>
                         </a>
-                        <ul id="estandar3" class="sidebar-dropdown list-unstyled collapse " data-bs-parent="#sidebar">
-                            <li class="sidebar-item"><a class="sidebar-link" href="#">Settings</a></li>
-                            <li class="sidebar-item"><a class="sidebar-link" href="#">Clients <span
+                        <ul id="estandar4" class="sidebar-dropdown list-unstyled collapse " data-bs-parent="#sidebar">
+                            <li class="sidebar-item"><a class="sidebar-link" href="pages-settings.html">Settings</a></li>
+                            <li class="sidebar-item"><a class="sidebar-link" href="pages-clients.html">Clients <span
                                             class="sidebar-badge badge bg-primary">Pro</span></a></li>
-                            <li class="sidebar-item"><a class="sidebar-link" href="#">Orders <span
+                            <li class="sidebar-item"><a class="sidebar-link" href="pages-orders.html">Orders <span
                                             class="sidebar-badge badge bg-primary">Pro</span></a></li>
+                        </ul>
+                    </li>
+                    <!--  estandar5-->
+                    <li class="sidebar-item">
+                        <a data-bs-target="#estandar5" data-bs-toggle="collapse" class="sidebar-link collapsed">
+                            <i class="align-middle" data-feather="layout"></i> <span class="align-middle">Estándar 5</span>
+                        </a>
+                        <ul id="estandar5" class="sidebar-dropdown list-unstyled collapse " data-bs-parent="#sidebar">
+                            <li class="sidebar-item"><a class="sidebar-link" href="pages-settings.html">Settings</a></li>
+                            <li class="sidebar-item"><a class="sidebar-link" href="pages-clients.html">Clients <span
+                                            class="sidebar-badge badge bg-primary">Pro</span></a></li>
+                            <li class="sidebar-item"><a class="sidebar-link" href="pages-orders.html">Orders <span
+                                            class="sidebar-badge badge bg-primary">Pro</span></a></li>
+                        </ul>
+                    </li>
+                    <!--  estandar6-->
+                    <li class="sidebar-item">
+                        <a data-bs-target="#estandar6" data-bs-toggle="collapse" class="sidebar-link collapsed">
+                            <i class="align-middle" data-feather="layout"></i> <span class="align-middle">Estándar 6</span>
+                        </a>
+                        <ul id="estandar6" class="sidebar-dropdown list-unstyled collapse " data-bs-parent="#sidebar">
+                            <li class="sidebar-item"><a class="sidebar-link" href="pages-settings.html">Settings</a></li>
+                            <li class="sidebar-item"><a class="sidebar-link" href="pages-clients.html">Clients <span
+                                            class="sidebar-badge badge bg-primary">Pro</span></a></li>
+                            <li class="sidebar-item"><a class="sidebar-link" href="pages-orders.html">Orders <span
+                                            class="sidebar-badge badge bg-primary">Pro</span></a></li>
+                        </ul>
+                    </li>
+                    <!--  estandar7-->
+                    <li class="sidebar-item">
+                        <a data-bs-target="#estandar7" data-bs-toggle="collapse" class="sidebar-link collapsed">
+                            <i class="align-middle" data-feather="layout"></i> <span class="align-middle">Estándar 7</span>
+                        </a>
+                        <ul id="estandar7" class="sidebar-dropdown list-unstyled collapse " data-bs-parent="#sidebar">
+                            <li class="sidebar-item"><a class="sidebar-link" href="pages-settings.html">Settings</a></li>
+                            <li class="sidebar-item"><a class="sidebar-link" href="pages-clients.html">Clients <span
+                                            class="sidebar-badge badge bg-primary">Pro</span></a></li>
+                            <li class="sidebar-item"><a class="sidebar-link" href="pages-orders.html">Orders <span
                         </ul>
                     </li>
                 </ul>
-                <?php
-                }
-                ?>
+
 			</div>
 		</nav>

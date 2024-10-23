@@ -47,7 +47,7 @@ session_start();
                 ?>
 				<ul class="sidebar-nav">
 					<li class="sidebar-header">
-						Pages
+						Selecciona un estándar
 					</li>
 
 					<li class="sidebar-item active">
@@ -56,18 +56,50 @@ session_start();
             </a>
 					</li>
 
+<!--                    inicio del primer menu-->
 					<li class="sidebar-item">
-						<a data-bs-target="#pages" data-bs-toggle="collapse" class="sidebar-link collapsed">
-							<i class="align-middle" data-feather="layout"></i> <span class="align-middle">Pages</span>
+						<a data-bs-target="#estandar1" data-bs-toggle="collapse" class="sidebar-link collapsed">
+							<i class="align-middle" data-feather="layout"></i> <span class="align-middle">Estándar 1</span>
 						</a>
-						<ul id="pages" class="sidebar-dropdown list-unstyled collapse " data-bs-parent="#sidebar">
-							<li class="sidebar-item"><a class="sidebar-link" href="pages-settings.html">Settings</a></li>
-							<li class="sidebar-item"><a class="sidebar-link" href="pages-clients.html">Clients <span
+						<ul id="estandar1" class="sidebar-dropdown list-unstyled collapse " data-bs-parent="#sidebar">
+							<li class="sidebar-item"><a class="sidebar-link" href="#">Settings</a></li>
+							<li class="sidebar-item"><a class="sidebar-link" href="#">Clients <span
 										class="sidebar-badge badge bg-primary">Pro</span></a></li>
-							<li class="sidebar-item"><a class="sidebar-link" href="pages-orders.html">Orders <span
+							<li class="sidebar-item"><a class="sidebar-link" href="#">Orders <span
 										class="sidebar-badge badge bg-primary">Pro</span></a></li>
 						</ul>
 					</li>
+ <!--                    fin del primer menu-->
+
+                    <!-- estandar 2 = perfil de secretaria-->
+
+                    <li class="sidebar-item">
+                        <a data-bs-target="#estandar2" data-bs-toggle="collapse" class="sidebar-link collapsed">
+                            <i class="align-middle" data-feather="layout"></i> <span class="align-middle">Estándar 2</span>
+                        </a>
+                        <ul id="estandar2" class="sidebar-dropdown list-unstyled collapse " data-bs-parent="#sidebar">
+                            <li class="sidebar-item"><a class="sidebar-link" href="#">Settings</a></li>
+                            <li class="sidebar-item"><a class="sidebar-link" href="#">Clients <span
+                                            class="sidebar-badge badge bg-primary">Pro</span></a></li>
+                            <li class="sidebar-item"><a class="sidebar-link" href="#">Orders <span
+                                            class="sidebar-badge badge bg-primary">Pro</span></a></li>
+                        </ul>
+                    </li>
+
+                    <!-- estandar 3 = perfil de auxiliar-->
+
+                    <li class="sidebar-item">
+                        <a data-bs-target="#estandar3" data-bs-toggle="collapse" class="sidebar-link collapsed">
+                            <i class="align-middle" data-feather="layout"></i> <span class="align-middle">Estándar 3</span>
+                        </a>
+                        <ul id="estandar3" class="sidebar-dropdown list-unstyled collapse " data-bs-parent="#sidebar">
+                            <li class="sidebar-item"><a class="sidebar-link" href="#">Settings</a></li>
+                            <li class="sidebar-item"><a class="sidebar-link" href="#">Clients <span
+                                            class="sidebar-badge badge bg-primary">Pro</span></a></li>
+                            <li class="sidebar-item"><a class="sidebar-link" href="#">Orders <span
+                                            class="sidebar-badge badge bg-primary">Pro</span></a></li>
+                        </ul>
+                    </li>
                 </ul>
                 <?php
                 }

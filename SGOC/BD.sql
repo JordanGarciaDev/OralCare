@@ -120,15 +120,14 @@ CREATE TABLE `usuarios` (
   `pass` text DEFAULT NULL,
   `perfil` int(11) NOT NULL,
   `fecha` timestamp NOT NULL DEFAULT current_timestamp(),
-  PRIMARY KEY (`id`),
-  KEY `perfil` (`perfil`),
-  CONSTRAINT `usuarios_ibfk_1` FOREIGN KEY (`perfil`) REFERENCES `perfiles` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 /*Data for the table `usuarios` */
 
-insert  into `usuarios`(`id`,`nombres`,`apellidos`,`usuario`,`pass`,`perfil`,`fecha`) values 
-(1,'Jordan','Dev','jgarcia','$2y$10$jQIj/EufiIZG03i65kImDuAvZShhlIkAHLE22sq5bhVtVW1TudG32',15,'2024-10-22 11:28:18');
+insert  into `usuarios`(`id`,`nombres`,`apellidos`,`usuario`,`pass`,`perfil`,`fecha`) values (1,'Jordan','Dev','jgarcia','$2y$10$jQIj/EufiIZG03i65kImDuAvZShhlIkAHLE22sq5bhVtVW1TudG32',0,'2024-10-22 11:28:18');
+insert  into `usuarios`(`id`,`nombres`,`apellidos`,`usuario`,`pass`,`perfil`,`fecha`) values (2,'Daniel','Marquez','dmarquez',NULL,0,'2024-10-23 14:29:34');
+
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;

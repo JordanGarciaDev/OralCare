@@ -58,7 +58,7 @@ session_start();
                     if($_SESSION['perfil']==15 || $_SESSION['perfil']==1){
                     ?>
 
-                  <!--estandar 1-->
+                  <!--estandar 1.-->
                     <li class="sidebar-item">
                         <a data-bs-target="#estandar1" data-bs-toggle="collapse" class="sidebar-link collapsed">
                             <i class="align-middle" data-feather="layout"></i> <span class="align-middle">Estándar 1</span>

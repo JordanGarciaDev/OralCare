@@ -42,7 +42,7 @@ session_start();
 				</div>
 
                 <?php
-                //Aqui se validan los permisos para ver cada menu de acuerdo al perfil que tiene el usuario logueado
+                //Aqui se validan los permisos para ver cada estandar al perfil que tiene el usuario logueado
                 if($_SESSION['perfil']==0 || $_SESSION['perfil']==1){
                 ?>
 				<ul class="sidebar-nav">

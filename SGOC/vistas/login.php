@@ -17,7 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $password = $_POST['password'];
 
     // Consultar a la base de datos
-    $query = "SELECT *,p.nombre AS nomperfil, u.id AS idUser FROM usuarios u INNER JOIN perfiles p ON u.perfil = p.id WHERE usuario = ?";
+    $query = "SELECT *,c.nombre AS nomcargo, u.id AS idUser FROM usuarios u INNER JOIN cargos c ON u.cargo_id = c.id WHERE usuario = ?";
     $stmt = $conn->prepare($query);
     $stmt->bind_param('s', $usuario);
     $stmt->execute();
@@ -43,7 +43,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $_SESSION['fecharegusuario'] = $infoUsuario['fecha']; // Guardar el usuario en la sesión
             $_SESSION['nomusuario'] = $infoUsuario['nombres'].' '.$infoUsuario['apellidos']; // Guardar el nombre del usuario en la sesión
             $_SESSION['perfil']  = $infoUsuario['perfil']; // Guardar el perfil en la sesión
-            $_SESSION['nomperfil']  = $infoUsuario['nomperfil']; // Guardar el nombre del perfil en la sesión
+            $_SESSION['nomcargo']  = $infoUsuario['nomcargo']; // Guardar el nombre del perfil en la sesión
             $_SESSION['user_logged_in']  = true; // Guardar que está logueado
 
             header("Location: " . BASE_URL . '/vistas/dashboard.php'); // Redirigir a dashboard

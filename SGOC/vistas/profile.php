@@ -22,7 +22,7 @@
 								<div class="card-body text-center">
                                     <img id="perfilFoto" style="border-radius: 69% !important; height: 134px;" src="<?= UPLOAD.'/perfiles/' . $_SESSION['fotousuario'] ?>" alt="<?=$_SESSION['nomusuario'];?>" class="img-fluid rounded-circle mb-2" width="128" height="128" />
 									<h5 class="card-title mb-0"><?=$_SESSION['nomusuario'];?></h5>
-									<div class="text-muted mb-2"><?=$_SESSION['nomperfil'];?></div>
+									<div class="text-muted mb-2"><?=$_SESSION['nomcargo'];?></div>
 
 									<div>
                                         <a class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#editUserModal"><span data-feather="message-square"></span> Editar Perfil</a>

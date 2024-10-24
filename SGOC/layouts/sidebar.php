@@ -29,7 +29,7 @@ session_start();
                                 <a class="dropdown-item" href="<?= BASE_URL .'/vistas/cerrar_sesion.php'; ?>">Cerrar sesión</a>
 							</div>
 
-							<div class="sidebar-user-subtitle"><?=$_SESSION['nomperfil'];?></div>
+							<div class="sidebar-user-subtitle"><?=$_SESSION['nomcargo'];?></div>
 						</div>
 					</div>
 				</div>
@@ -48,14 +48,14 @@ session_start();
 
                     <?php
                     // Aquí se validan los permisos para ver cada estándar al perfil que tiene el usuario logueado
-                    $perfil_estandar1 = [15, 1];
-                    $perfil_estandar2 = [15, 1];
-                    $perfil_estandar3 = [15, 1];
-                    $perfil_estandar4 = [15, 1];
-                    $perfil_estandar5 = [15, 1];
-                    $perfil_estandar6 = [15, 1];
-                    $perfil_estandar7 = [15, 1];
-                    $perfil_admin = [15];
+                    $perfil_estandar1 = [15, 2];
+                    $perfil_estandar2 = [15, 2];
+                    $perfil_estandar3 = [15, 2];
+                    $perfil_estandar4 = [15, 2];
+                    $perfil_estandar5 = [15, 2];
+                    $perfil_estandar6 = [15, 2];
+                    $perfil_estandar7 = [15, 2];
+                    $perfil_admin = [15, 2];
 
                     if (in_array($_SESSION['perfil'], $perfil_estandar1)) {
                         ?>

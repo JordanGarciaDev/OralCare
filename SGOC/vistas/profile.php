@@ -20,7 +20,7 @@
 									<h5 class="card-title mb-0">Detalles de perfil</h5>
 								</div>
 								<div class="card-body text-center">
-                                    <img id="perfilFoto" style="border-radius: 69% !important; height: 134px;" src="<?= UPLOAD.'/perfiles/' . $_SESSION['fotousuario'] ?>" alt="<?=$_SESSION['nomusuario'];?>" class="img-fluid rounded-circle mb-2" width="128" height="128" />
+                                    <img id="perfilFoto" style="border-radius: 50% !important; height: 134px;" src="<?= UPLOAD.'/perfiles/' . $_SESSION['fotousuario'] ?>" alt="<?=$_SESSION['nomusuario'];?>" class="img-fluid rounded-circle mb-2" width="200" height="200" />
 									<h5 class="card-title mb-0"><?=$_SESSION['nomusuario'];?></h5>
 									<div class="text-muted mb-2"><?=$_SESSION['nomcargo'];?></div>
 

@@ -71,9 +71,9 @@ session_start();
                                     <i class="align-middle" data-feather="briefcase"></i> <span class="align-middle">Precontratación</span>
                                 </a>
                                 <ul id="precontratacion" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
-                                    <li class="sidebar-item"><a class="sidebar-link" href="example1.html">Ejemplo 1</a></li>
-                                    <li class="sidebar-item"><a class="sidebar-link" href="example2.html">Ejemplo 2</a></li>
-                                    <li class="sidebar-item"><a class="sidebar-link" href="example3.html">Ejemplo 3</a></li>
+                                    <li class="sidebar-item"><a class="sidebar-link" href="<?= BASE_URL .'/vistas/empleados.php'; ?>">Empleados</a></li>
+                                    <li class="sidebar-item"><a class="sidebar-link" href="<?= BASE_URL .'/vistas/dashboard.php'; ?>">Entrevista</a></li>
+                                    <li class="sidebar-item"><a class="sidebar-link" href="<?= BASE_URL .'/vistas/dashboard.php'; ?>">Pruebas Técnicas</a></li>
                                 </ul>
                             </li>
                             <li class="sidebar-item"><a class="sidebar-link" href="pages-clients.html">Contratación</a></li>

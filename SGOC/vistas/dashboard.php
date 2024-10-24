@@ -1,6 +1,13 @@
 <?php
 	include('../app/config.php');
 	include(LAYOUT.'/header.php');
+
+// Consultar empleados
+$queryEmp = "SELECT COUNT(id) AS TotalEmp FROM empleados WHERE estado = 1";
+$tEmp = $conn->query($queryEmp);
+$infoUsuario = $tEmp->fetch_assoc();
+$totalEmpleados = $infoUsuario['TotalEmp'];
+
 ?>
 			<div class="wrapper">
 			<?php include(LAYOUT .'/sidebar.php');?>
@@ -13,12 +20,12 @@
 
 					<div class="row mb-2 mb-xl-3">
 						<div class="col-auto d-none d-sm-block">
-							<h3><strong>E-Commerce</strong> Dashboard</h3>
+							<h3><strong>Dashboard</strong></h3>
 						</div>
 
 						<div class="col-auto ms-auto text-end mt-n1">
 							<a href="#" class="btn btn-light bg-white me-2">Invite a Friend</a>
-							<a href="#" class="btn btn-primary">New Project</a>
+							<a href="#" class="btn btn-primary">Nuevo Empleado</a>
 						</div>
 					</div>
 					<div class="row">
@@ -27,19 +34,19 @@
 								<div class="card-body">
 									<div class="row">
 										<div class="col mt-0">
-											<h5 class="card-title">Income</h5>
+											<h5 class="card-title">Empleados</h5>
 										</div>
 
 										<div class="col-auto">
 											<div class="stat text-primary">
-												<i class="align-middle" data-feather="dollar-sign"></i>
+												<i class="align-middle" data-feather="users"></i>
 											</div>
 										</div>
 									</div>
-									<h1 class="mt-1 mb-3">$47.482</h1>
+									<h1 class="mt-1 mb-3"><?=$totalEmpleados;?></h1>
 									<div class="mb-0">
 										<span class="badge badge-success-light"> <i class="mdi mdi-arrow-bottom-right"></i> 3.65% </span>
-										<span class="text-muted">Since last week</span>
+										<span class="text-muted">Contrataciones</span>
 									</div>
 								</div>
 							</div>
@@ -186,7 +193,7 @@
 											</div>
 										</div>
 									</div>
-									<h5 class="card-title mb-0">Sales/Revenue</h5>
+									<h5 class="card-title mb-0">Gráfica de actividades</h5>
 								</div>
 								<div class="card-body d-flex w-100">
 									<div class="align-self-center chart chart-lg">
@@ -211,7 +218,7 @@
 											</div>
 										</div>
 									</div>
-									<h5 class="card-title mb-0">Top Selling Products</h5>
+									<h5 class="card-title mb-0">Últimas actividades</h5>
 								</div>
 								<table class="table table-borderless my-0">
 									<thead>
@@ -247,7 +254,7 @@
 												</div>
 											</td>
 											<td class="d-none d-xl-table-cell">
-												<strong>Vanessa Tucker</strong>
+												<strong>Jaime Borja</strong>
 												<div class="text-muted">
 													HTML, JS, React
 												</div>
@@ -352,7 +359,7 @@
 												</div>
 											</td>
 											<td class="d-none d-xl-table-cell">
-												<strong>Vanessa Tucker</strong>
+												<strong>Jaime Borja</strong>
 												<div class="text-muted">
 													HTML, JS, React
 												</div>
@@ -407,38 +414,6 @@
 
 				</div>
 			</main>
-
-			<footer class="footer">
-				<div class="container-fluid">
-					<div class="row text-muted">
-						<div class="col-6 text-start">
-							<p class="mb-0">
-								<a href="https://adminkit.io/" target="_blank" class="text-muted"><strong>AdminKit</strong></a> &copy;
-							</p>
-						</div>
-						<div class="col-6 text-end">
-							<ul class="list-inline">
-								<li class="list-inline-item">
-									<a class="text-muted" href="#">Support</a>
-								</li>
-								<li class="list-inline-item">
-									<a class="text-muted" href="#">Help Center</a>
-								</li>
-								<li class="list-inline-item">
-									<a class="text-muted" href="#">Privacy</a>
-								</li>
-								<li class="list-inline-item">
-									<a class="text-muted" href="#">Terms</a>
-								</li>
-							</ul>
-						</div>
-					</div>
-				</div>
-			</footer>
-		</div>
-	</div>
-
-	<script src="js/app.js"></script>
 
 	<script>
 		document.addEventListener("DOMContentLoaded", function() {

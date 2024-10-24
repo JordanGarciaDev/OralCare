@@ -1,9 +1,11 @@
 <?php
-define('BASE_URL', 'http://interno.oralcare.com/OralCare/SGOC');
+define('BASE_URL', 'http://localhost/OralCare/SGOC');
 define('CONFIG_PATH', $_SERVER['DOCUMENT_ROOT'] . '/OralCare/SGOC/app');
 define('LAYOUT', $_SERVER['DOCUMENT_ROOT'] . '/OralCare/SGOC/layouts');
+define('API', BASE_URL . '/app/APIS/');
 define('VIEW', $_SERVER['DOCUMENT_ROOT'] . '/OralCare/SGOC/vistas'); //Para agregar las vistas usar esto <?= BASE_URL .'/vistas/+nombre_archivo.php;?
 define('ASSET_URL', BASE_URL . '/assets'); //Para agregar las imagenes usar esto <?= ASSET_URL? /img/
+define('UPLOAD', BASE_URL . '/uploads'); //Para agregar las imagenes usar esto <?= ASSET_URL? /img/
 
 $host = 'localhost';
 $user = 'root';

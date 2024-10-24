@@ -14,7 +14,7 @@
 							</a>
 							<div class="dropdown-menu dropdown-menu-lg dropdown-menu-end py-0" aria-labelledby="alertsDropdown">
 								<div class="dropdown-menu-header">
-									4 New Notifications
+									4 Notificaciones
 								</div>
 								<div class="list-group">
 									<a href="#" class="list-group-item">
@@ -79,17 +79,17 @@
 							<div class="dropdown-menu dropdown-menu-lg dropdown-menu-end py-0" aria-labelledby="messagesDropdown">
 								<div class="dropdown-menu-header">
 									<div class="position-relative">
-										4 New Messages
+										4 Nuevos Mensajes
 									</div>
 								</div>
 								<div class="list-group">
 									<a href="#" class="list-group-item">
 										<div class="row g-0 align-items-center">
 											<div class="col-2">
-												<img src="<?= ASSET_URL ?>/img/avatars/avatar-5.jpg" class="avatar img-fluid rounded-circle" alt="Vanessa Tucker">
+												<img src="<?= ASSET_URL ?>/img/avatars/avatar-5.jpg" class="avatar img-fluid rounded-circle" alt="Jaime Borja">
 											</div>
 											<div class="col-10 ps-2">
-												<div class="text-dark">Vanessa Tucker</div>
+												<div class="text-dark">Jaime Borja</div>
 												<div class="text-muted small mt-1">Nam pretium turpis et arcu. Duis arcu tortor.</div>
 												<div class="text-muted small mt-1">15m ago</div>
 											</div>
@@ -150,16 +150,14 @@
               </a>
 
 							<a class="nav-link dropdown-toggle d-none d-sm-inline-block" href="#" data-bs-toggle="dropdown">
-                <img src="<?= ASSET_URL ?>/img/avatars/avatar.jpg" class="avatar img-fluid rounded me-1" alt="Charles Hall" />
+                <img src="<?= UPLOAD.'/perfiles/' . $_SESSION['fotousuario'] ?>" alt="<?=$_SESSION['nomusuario'];?>" class="avatar img-fluid rounded me-1" alt="Charles Hall" />
               </a>
 							<div class="dropdown-menu dropdown-menu-end">
-								<a class="dropdown-item" href="<?= BASE_URL .'/vistas/profile.php'; ?>"><i class="align-middle me-1" data-feather="user"></i> Profile</a>
-								<a class="dropdown-item" href="#"><i class="align-middle me-1" data-feather="pie-chart"></i> Analytics</a>
+								<a class="dropdown-item" href="<?= BASE_URL .'/vistas/profile.php'; ?>"><i class="align-middle me-1" data-feather="user"></i> Perfil</a>
 								<div class="dropdown-divider"></div>
-								<a class="dropdown-item" href="index.html"><i class="align-middle me-1" data-feather="settings"></i> Settings & Privacy</a>
-								<a class="dropdown-item" href="#"><i class="align-middle me-1" data-feather="help-circle"></i> Help Center</a>
+								<a class="dropdown-item" href="#"><i class="align-middle me-1" data-feather="help-circle"></i> Centro de ayuda</a>
 								<div class="dropdown-divider"></div>
-								<a class="dropdown-item" href="<?= BASE_URL .'/vistas/cerrar_sesion.php'; ?>">Log out</a>
+								<a class="dropdown-item" href="<?= BASE_URL .'/vistas/cerrar_sesion.php'; ?>">Cerrar Sesión</a>
 							</div>
 						</li>
 					

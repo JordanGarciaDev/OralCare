@@ -11,58 +11,29 @@
 			<main class="content">
 				<div class="container-fluid p-0">
 
-					<h1 class="h3 mb-3">Profile</h1>
+					<h1 class="h3 mb-3">Perfil</h1>
 
 					<div class="row">
 						<div class="col-md-4 col-xl-3">
 							<div class="card mb-3">
 								<div class="card-header">
-									<h5 class="card-title mb-0">Profile Details</h5>
+									<h5 class="card-title mb-0">Detalles de perfil</h5>
 								</div>
 								<div class="card-body text-center">
-									<img src="<?= ASSET_URL.'/img' ?>/avatars/avatar-4.jpg" alt="Christina Mason" class="img-fluid rounded-circle mb-2" width="128" height="128" />
-									<h5 class="card-title mb-0">Christina Mason</h5>
-									<div class="text-muted mb-2">Lead Developer</div>
+                                    <img id="perfilFoto" src="<?= UPLOAD.'/perfiles/' . $_SESSION['fotousuario'] ?>" alt="<?=$_SESSION['nomusuario'];?>" class="img-fluid rounded-circle mb-2" width="128" height="128" />
+									<h5 class="card-title mb-0"><?=$_SESSION['nomusuario'];?></h5>
+									<div class="text-muted mb-2"><?=$_SESSION['nomperfil'];?></div>
 
 									<div>
-										<a class="btn btn-primary btn-sm" href="#">Follow</a>
-										<a class="btn btn-primary btn-sm" href="#"><span data-feather="message-square"></span> Message</a>
-									</div>
-								</div>
-								<hr class="my-0" />
-								<div class="card-body">
-									<h5 class="h6 card-title">Skills</h5>
-									<a href="#" class="badge bg-primary me-1 my-1">HTML</a>
-									<a href="#" class="badge bg-primary me-1 my-1">JavaScript</a>
-									<a href="#" class="badge bg-primary me-1 my-1">Sass</a>
-									<a href="#" class="badge bg-primary me-1 my-1">Angular</a>
-									<a href="#" class="badge bg-primary me-1 my-1">Vue</a>
-									<a href="#" class="badge bg-primary me-1 my-1">React</a>
-									<a href="#" class="badge bg-primary me-1 my-1">Redux</a>
-									<a href="#" class="badge bg-primary me-1 my-1">UI</a>
-									<a href="#" class="badge bg-primary me-1 my-1">UX</a>
-								</div>
-								<hr class="my-0" />
-								<div class="card-body">
-									<h5 class="h6 card-title">About</h5>
-									<ul class="list-unstyled mb-0">
-										<li class="mb-1"><span data-feather="home" class="feather-sm me-1"></span> Lives in <a href="#">San Francisco, SA</a></li>
+                                        <a class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#editUserModal"><span data-feather="message-square"></span> Editar Perfil</a>
 
-										<li class="mb-1"><span data-feather="briefcase" class="feather-sm me-1"></span> Works at <a href="#">GitHub</a></li>
-										<li class="mb-1"><span data-feather="map-pin" class="feather-sm me-1"></span> From <a href="#">Boston</a></li>
-									</ul>
+                                    </div>
 								</div>
 								<hr class="my-0" />
 								<div class="card-body">
-									<h5 class="h6 card-title">Elsewhere</h5>
-									<ul class="list-unstyled mb-0">
-										<li class="mb-1"><a href="#">staciehall.co</a></li>
-										<li class="mb-1"><a href="#">Twitter</a></li>
-										<li class="mb-1"><a href="#">Facebook</a></li>
-										<li class="mb-1"><a href="#">Instagram</a></li>
-										<li class="mb-1"><a href="#">LinkedIn</a></li>
-									</ul>
+									<h5 class="h6 card-title">Registrado desde <span class="badge bg-primary me-1 my-1"><?=$_SESSION['fecharegusuario'];?></span></h5>
 								</div>
+								<hr class="my-0" />
 							</div>
 						</div>
 
@@ -70,151 +41,144 @@
 							<div class="card">
 								<div class="card-header">
 
-									<h5 class="card-title mb-0">Activities</h5>
+									<h5 class="card-title mb-0">Actividad</h5>
 								</div>
 								<div class="card-body h-100">
 
 									<div class="d-flex align-items-start">
-										<img src="<?= ASSET_URL.'/img' ?>/avatars/avatar-5.jpg" width="36" height="36" class="rounded-circle me-2" alt="Vanessa Tucker">
+										<img src="<?= ASSET_URL.'/img' ?>/avatars/avatar-5.jpg" width="36" height="36" class="rounded-circle me-2" alt="Jaime Borja">
 										<div class="flex-grow-1">
 											<small class="float-end text-navy">5m ago</small>
-											<strong>Vanessa Tucker</strong> started following <strong>Christina Mason</strong><br />
-											<small class="text-muted">Today 7:51 pm</small><br />
+											<strong>Jaime Borja</strong> realizó la contratación de <strong><?=$_SESSION['nomusuario'];?></strong><br />
+											<small class="text-muted">Hoy 5:51 pm</small><br />
 
 										</div>
 									</div>
-
-									<hr />
-									<div class="d-flex align-items-start">
-										<img src="<?= ASSET_URL.'/img' ?>/avatars/avatar.jpg" width="36" height="36" class="rounded-circle me-2" alt="Charles Hall">
-										<div class="flex-grow-1">
-											<small class="float-end text-navy">30m ago</small>
-											<strong>Charles Hall</strong> posted something on <strong>Christina Mason</strong>'s timeline<br />
-											<small class="text-muted">Today 7:21 pm</small>
-
-											<div class="border text-sm text-muted p-2 mt-1">
-												Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus
-												pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante.
-											</div>
-
-											<a href="#" class="btn btn-sm btn-danger mt-1"><i class="feather-sm" data-feather="heart"></i> Like</a>
-										</div>
-									</div>
-
-									<hr />
-									<div class="d-flex align-items-start">
-										<img src="<?= ASSET_URL.'/img' ?>/avatars/avatar-4.jpg" width="36" height="36" class="rounded-circle me-2" alt="Christina Mason">
-										<div class="flex-grow-1">
-											<small class="float-end text-navy">1h ago</small>
-											<strong>Christina Mason</strong> posted a new blog<br />
-
-											<small class="text-muted">Today 6:35 pm</small>
-										</div>
-									</div>
-
-									<hr />
-									<div class="d-flex align-items-start">
-										<img src="<?= ASSET_URL.'/img' ?>/avatars/avatar-2.jpg" width="36" height="36" class="rounded-circle me-2" alt="William Harris">
-										<div class="flex-grow-1">
-											<small class="float-end text-navy">3h ago</small>
-											<strong>William Harris</strong> posted two photos on <strong>Christina Mason</strong>'s timeline<br />
-											<small class="text-muted">Today 5:12 pm</small>
-
-											<div class="row g-0 mt-1">
-												<div class="col-6 col-md-4 col-lg-4 col-xl-3">
-													<img src="<?= ASSET_URL.'/img' ?>/photos/unsplash-1.jpg" class="img-fluid pe-2" alt="Unsplash">
-												</div>
-												<div class="col-6 col-md-4 col-lg-4 col-xl-3">
-													<img src="<?= ASSET_URL.'/img' ?>/photos/unsplash-2.jpg" class="img-fluid pe-2" alt="Unsplash">
-												</div>
-											</div>
-
-											<a href="#" class="btn btn-sm btn-danger mt-1"><i class="feather-sm" data-feather="heart"></i> Like</a>
-										</div>
-									</div>
-
-									<hr />
-									<div class="d-flex align-items-start">
-										<img src="<?= ASSET_URL.'/img' ?>/avatars/avatar-2.jpg" width="36" height="36" class="rounded-circle me-2" alt="William Harris">
-										<div class="flex-grow-1">
-											<small class="float-end text-navy">1d ago</small>
-											<strong>William Harris</strong> started following <strong>Christina Mason</strong><br />
-											<small class="text-muted">Yesterday 3:12 pm</small>
-
-											<div class="d-flex align-items-start mt-1">
-												<a class="pe-3" href="#">
-                <img src="<?= ASSET_URL.'/img' ?>/avatars/avatar-4.jpg" width="36" height="36" class="rounded-circle me-2" alt="Christina Mason">
-              </a>
-												<div class="flex-grow-1">
-													<div class="border text-sm text-muted p-2 mt-1">
-														Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus.
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-
-									<hr />
-									<div class="d-flex align-items-start">
-										<img src="<?= ASSET_URL.'/img' ?>/avatars/avatar-4.jpg" width="36" height="36" class="rounded-circle me-2" alt="Christina Mason">
-										<div class="flex-grow-1">
-											<small class="float-end text-navy">1d ago</small>
-											<strong>Christina Mason</strong> posted a new blog<br />
-											<small class="text-muted">Yesterday 2:43 pm</small>
-										</div>
-									</div>
-
-									<hr />
-									<div class="d-flex align-items-start">
-										<img src="<?= ASSET_URL.'/img' ?>/avatars/avatar.jpg" width="36" height="36" class="rounded-circle me-2" alt="Charles Hall">
-										<div class="flex-grow-1">
-											<small class="float-end text-navy">1d ago</small>
-											<strong>Charles Hall</strong> started following <strong>Christina Mason</strong><br />
-											<small class="text-muted">Yesterdag 1:51 pm</small>
-										</div>
-									</div>
-
 									<hr />
 									<div class="d-grid">
-										<a href="#" class="btn btn-primary">Load more</a>
+										<a href="#" class="btn btn-primary">Cargar más</a>
 									</div>
 								</div>
 							</div>
 						</div>
 					</div>
-
 				</div>
 			</main>
-
-			<footer class="footer">
-				<div class="container-fluid">
-					<div class="row text-muted">
-						<div class="col-6 text-start">
-							<p class="mb-0">
-								<a href="index.html" class="text-muted"><strong>AdminKit Demo</strong></a> &copy;
-							</p>
-						</div>
-						<div class="col-6 text-end">
-							<ul class="list-inline">
-								<li class="list-inline-item">
-									<a class="text-muted" href="#">Support</a>
-								</li>
-								<li class="list-inline-item">
-									<a class="text-muted" href="#">Help Center</a>
-								</li>
-								<li class="list-inline-item">
-									<a class="text-muted" href="#">Privacy</a>
-								</li>
-								<li class="list-inline-item">
-									<a class="text-muted" href="#">Terms</a>
-								</li>
-							</ul>
-						</div>
-					</div>
-				</div>
-			</footer>
 		</div>
 	</div>
- <?php
+
+    <!-- Modal para editar usuario -->
+    <div class="modal fade" id="editUserModal" tabindex="-1" aria-labelledby="editUserModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="editUserModalLabel">Editar Perfil</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="editUserForm" enctype="multipart/form-data">
+                        <!-- Campos de texto existentes -->
+                        <div class="mb-3">
+                            <label for="nombres" class="form-label">Nombres</label>
+                            <input type="text" class="form-control" id="nombres" name="nombres">
+                        </div>
+                        <div class="mb-3">
+                            <label for="apellidos" class="form-label">Apellidos</label>
+                            <input type="text" class="form-control" id="apellidos" name="apellidos">
+                        </div>
+                        <div class="mb-3">
+                            <label for="usuario" class="form-label">Usuario</label>
+                            <input type="text" class="form-control" id="usuario" name="usuario" readonly>
+                        </div>
+                        <div class="mb-3">
+                            <label for="perfil" class="form-label">Perfil</label>
+                            <input type="text" class="form-control" id="perfil" name="perfil" readonly>
+                        </div>
+                        <div class="mb-3">
+                            <label for="pass" class="form-label">Contraseña</label>
+                            <input type="password" class="form-control" id="pass" name="pass" placeholder="Nueva contraseña (dejar vacío si no desea cambiarla)">
+                        </div>
+
+                        <!-- Campo para cargar la foto de perfil -->
+                        <div class="mb-3">
+                            <label for="foto" class="form-label">Foto de perfil</label>
+                            <input type="file" class="form-control" id="foto" name="foto" accept="image/*">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-primary" id="actualizarDatosBtn">Actualizar datos</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function(){
+            // Cargar datos del usuario cuando se abre el modal
+            $('#editUserModal').on('show.bs.modal', function (e) {
+                $.ajax({
+                    url: '<?= API ?>getUsuarios.php',  // Archivo PHP que obtiene los datos del usuario
+                    type: 'GET',
+                    dataType: 'json',
+                    success: function(response) {
+                        if (response.error) {
+                            alert(response.error);
+                        } else {
+                            // Llenar los campos del modal con los datos del usuario
+                            $('#nombres').val(response.nombres);
+                            $('#apellidos').val(response.apellidos);
+                            $('#usuario').val(response.usuario);
+                            $('#perfil').val(response.perfil);
+                            $('#pass').val('');
+                            // Establecer la foto de perfil actual en el modal
+                            $('#perfilFotoModal').attr('src', '<?= UPLOAD ?>/perfiles/' + (response.foto || 'default.jpg'));
+                        }
+                    },
+                    error: function(xhr) {
+                        alert("Error al cargar los datos del usuario.");
+                    }
+                });
+            });
+
+            // Actualizar los datos del usuario, incluyendo la foto de perfil
+            $('#actualizarDatosBtn').click(function(){
+                var formData = new FormData($('#editUserForm')[0]); // Crear un objeto FormData con los datos del formulario
+
+                $.ajax({
+                    url: '<?= API ?>actualizarPerfil.php', // Archivo PHP que actualiza los datos
+                    type: 'POST',
+                    data: formData,
+                    contentType: false, // Necesario para enviar archivos
+                    processData: false, // Necesario para no procesar los datos del formulario
+                    success: function(response) {
+                        try {
+                            var jsonResponse = JSON.parse(response);
+                            if (jsonResponse.message) {
+                                alert(jsonResponse.message); // Mostrar mensaje de éxito
+
+                                // Actualizar la imagen de perfil
+                                var nuevaFoto = jsonResponse.foto ? jsonResponse.foto : "default.jpg"; // Si no hay nueva foto, usar la default
+                                $('#perfilFoto').attr('src', '<?= UPLOAD ?>/perfiles/' + nuevaFoto + '?' + new Date().getTime()); // Añadir un parámetro para evitar caché
+                                // También actualizar la imagen en el modal
+                                $('#perfilFotoModal').attr('src', '<?= UPLOAD ?>/perfiles/' + nuevaFoto + '?' + new Date().getTime());
+                            } else if (jsonResponse.error) {
+                                alert(jsonResponse.error); // Mostrar mensaje de error
+                            }
+                        } catch (e) {
+                            alert("Error en la respuesta del servidor: " + response);
+                        }
+                        $('#editUserModal').modal('hide');
+                    },
+                    error: function(xhr) {
+                        alert("Error al actualizar los datos.");
+                    }
+                });
+            });
+
+        });
+    </script>
+<?php
  include(LAYOUT.'/footer.php');
  ?>

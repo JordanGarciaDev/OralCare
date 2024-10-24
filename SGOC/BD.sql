@@ -35,23 +35,23 @@ insert  into `cargos`(`id`,`nombre`,`depto_id`) values
 (1,'Asesor Comercial Ventas',1),
 (2,'Anfitrion',1),
 (3,'Auxiliar contable ',2),
-(4,'Coordinadora de Recursos Humanos ',NULL),
-(5,'Asesor Comercial Seguimiento',NULL),
-(6,'Mantenimiento',NULL),
-(7,'Auxiliar de Aseo y Desinfección ',NULL),
-(8,'Auxiliar de Odontología',NULL),
-(9,'Odontólogo General',NULL),
-(10,'Endodoncista',NULL),
-(11,'Implantólogo Oral',NULL),
-(12,'Rehabilitador Oral',NULL),
-(13,'Ortodoncista ',NULL),
-(14,'Tecnico Electricista',NULL),
-(15,'Desarrollador Web',NULL),
-(16,'Gerente Comercial',NULL),
-(17,'Gerente General',NULL),
-(18,'Coordinador Administrativo ',NULL),
-(19,'Coordinador de marketing',NULL),
-(20,'Recepciónista',NULL);
+(4,'Coordinadora de Recursos Humanos ',8),
+(5,'Asesor Comercial Seguimiento',1),
+(6,'Mantenimiento',6),
+(7,'Auxiliar de Aseo y Desinfección ',9),
+(8,'Auxiliar de Odontología',4),
+(9,'Odontólogo General',4),
+(10,'Endodoncista',4),
+(11,'Implantólogo Oral',4),
+(12,'Rehabilitador Oral',4),
+(13,'Ortodoncista ',4),
+(14,'Tecnico Electricista',6),
+(15,'Desarrollador Web',7),
+(16,'Gerente Comercial',1),
+(17,'Gerente General',5),
+(18,'Coordinador Administrativo ',3),
+(19,'Coordinador de marketing',1),
+(20,'Recepciónista',3);
 
 /*Table structure for table `dep_contratacion` */
 
@@ -61,7 +61,7 @@ CREATE TABLE `dep_contratacion` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
   `nombre` varchar(200) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 /*Data for the table `dep_contratacion` */
 
@@ -70,7 +70,11 @@ insert  into `dep_contratacion`(`id`,`nombre`) values
 (2,'Contabilidad'),
 (3,'Administrativo'),
 (4,'Asistencial'),
-(5,'Gerencia');
+(5,'Gerencia'),
+(6,'Mantenimiento'),
+(7,'Sistemas'),
+(8,'RRHH'),
+(9,'Operario');
 
 /*Table structure for table `departamentos` */
 
@@ -120,6 +124,24 @@ insert  into `departamentos`(`id_departamento`,`departamento`) values
 (97,'VAUPÉS'),
 (99,'VICHADA');
 
+/*Table structure for table `documentos` */
+
+DROP TABLE IF EXISTS `documentos`;
+
+CREATE TABLE `documentos` (
+  `id` int(10) NOT NULL AUTO_INCREMENT,
+  `nombre` text DEFAULT NULL,
+  `tdoc_id` int(10) DEFAULT NULL,
+  `empleado_id` int(10) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `tdoc_id` (`tdoc_id`),
+  KEY `empleado_id` (`empleado_id`),
+  CONSTRAINT `documentos_ibfk_1` FOREIGN KEY (`tdoc_id`) REFERENCES `tipo_docs` (`id`),
+  CONSTRAINT `documentos_ibfk_2` FOREIGN KEY (`empleado_id`) REFERENCES `empleados` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+/*Data for the table `documentos` */
+
 /*Table structure for table `empleados` */
 
 DROP TABLE IF EXISTS `empleados`;
@@ -144,6 +166,7 @@ CREATE TABLE `empleados` (
   `salario` bigint(20) DEFAULT NULL,
   `fingreso` date DEFAULT NULL,
   `fretiro` date DEFAULT NULL,
+  `tipo_de_sangre` varchar(50) NOT NULL,
   `estado` int(11) NOT NULL DEFAULT 1 COMMENT '0 retirado   1 activo   2 no contratado',
   PRIMARY KEY (`id`,`num_doc`),
   KEY `tipo_doc` (`tipo_doc`),
@@ -161,8 +184,8 @@ CREATE TABLE `empleados` (
 
 /*Data for the table `empleados` */
 
-insert  into `empleados`(`id`,`nombre_completo`,`tipo_doc`,`num_doc`,`lug_exp`,`fec_nacimiento`,`nacionalidad`,`sexo`,`estado_civil`,`dir_residencia`,`barrio_residencia`,`ciudad_residencia`,`tel_movil`,`email_personal`,`email_empresarial`,`cargo_id`,`salario`,`fingreso`,`fretiro`,`estado`) values 
-(5,'Jaime Borja Altamar',8,'12345',88,'0000-00-00','COLOMBIANA','M',1,'CL 123','LAS DELICIAS',88,3045937472,'ing.jordangarcia@gmail.com',NULL,15,NULL,NULL,NULL,1);
+insert  into `empleados`(`id`,`nombre_completo`,`tipo_doc`,`num_doc`,`lug_exp`,`fec_nacimiento`,`nacionalidad`,`sexo`,`estado_civil`,`dir_residencia`,`barrio_residencia`,`ciudad_residencia`,`tel_movil`,`email_personal`,`email_empresarial`,`cargo_id`,`salario`,`fingreso`,`fretiro`,`tipo_de_sangre`,`estado`) values 
+(5,'Jaime Borja Altamar',8,'12345',88,'0000-00-00','COLOMBIANA','M',1,'CL 123','LAS DELICIAS',88,3045937472,'ing.jordangarcia@gmail.com',NULL,15,NULL,NULL,NULL,'',1);
 
 /*Table structure for table `estados_civiles` */
 
@@ -1300,6 +1323,23 @@ insert  into `municipios`(`id_municipio`,`municipio`,`departamento_id`) values
 (1099,'Úmbita',15),
 (1100,'Útica',25);
 
+/*Table structure for table `tipo_contrato` */
+
+DROP TABLE IF EXISTS `tipo_contrato`;
+
+CREATE TABLE `tipo_contrato` (
+  `id` int(10) NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(200) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+/*Data for the table `tipo_contrato` */
+
+insert  into `tipo_contrato`(`id`,`nombre`) values 
+(1,'Contrato a termino fijo'),
+(2,'Contrato de prestacion de servicios'),
+(3,'Contrato a termino indefinido');
+
 /*Table structure for table `tipo_de_documento` */
 
 DROP TABLE IF EXISTS `tipo_de_documento`;
@@ -1329,6 +1369,36 @@ insert  into `tipo_de_documento`(`id`,`nombre`) values
 (14,'Menor sin identificar'),
 (15,'Adulto sin identificar'),
 (16,'NIT');
+
+/*Table structure for table `tipo_docs` */
+
+DROP TABLE IF EXISTS `tipo_docs`;
+
+CREATE TABLE `tipo_docs` (
+  `id` int(10) NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(200) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+/*Data for the table `tipo_docs` */
+
+insert  into `tipo_docs`(`id`,`nombre`) values 
+(1,'Fotocopia RUT con responsabilidad de IVA definida'),
+(2,'Fotocopia cédula de ciudadanía'),
+(3,'Hoja de vida Firmada Ingrese información'),
+(4,'Certificado bancario o formato Autorización de transferencia electrónica'),
+(5,'Nivel Técnico. Copia de Resolución'),
+(6,'Copia del Acta de Grado'),
+(7,'Copia del Diploma'),
+(8,'Copia del Carnet de Vacunación Covid'),
+(9,'Copia del Carnet de Vacunación esquema Hepatitis B'),
+(10,'Copia del Carnet de Vacunación esquema Tétano'),
+(11,'Copia del Carnet de Vacunación esquema Influenza'),
+(12,'Tarjeta Profesional que lo acredite'),
+(13,'Certificado de afiliación de Seguridad Social (salud, pensiones y riesgos laborales)'),
+(14,'Certificados de aptitud médica ocupacional de acuerdo al oficio o actividad a desarrollar,cuya vigencia debe ser inferior a 3 años'),
+(15,'Convalidación de título en caso de haber realizado la especialización en el exterior'),
+(16,'Examen de Salud Ocupacional');
 
 /*Table structure for table `usuarios` */
 

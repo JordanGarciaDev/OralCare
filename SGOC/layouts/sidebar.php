@@ -104,9 +104,9 @@ session_start();
                     <!--estandar 3-->
                     <li class="sidebar-item">
                         <a data-bs-target="#estandar3" data-bs-toggle="collapse" class="sidebar-link collapsed">
-                            <i class="align-middle" data-feather="package"></i> <span class="align-middle">Estándar 2</span>
+                            <i class="align-middle" data-feather="package"></i> <span class="align-middle">Estándar 3</span>
                         </a>
-                        <ul id="estandar2" class="sidebar-dropdown list-unstyled collapse " data-bs-parent="#sidebar">
+                        <ul id="estandar3" class="sidebar-dropdown list-unstyled collapse " data-bs-parent="#sidebar">
                             <li class="sidebar-item"><a class="sidebar-link" href="pages-settings.html">Precontratación</a></li>
                             <li class="sidebar-item"><a class="sidebar-link" href="pages-clients.html">Contratación</a></li>
                             <li class="sidebar-item"><a class="sidebar-link" href="pages-orders.html">Empleados</a></li>

@@ -70,7 +70,7 @@ session_start();
                                 <a data-bs-target="#precontratacion" data-bs-toggle="collapse" class="sidebar-link collapsed">
                                     <i class="align-middle" data-feather="briefcase"></i> <span class="align-middle">Precontratación</span>
                                 </a>
-                                <ul id="precontratacion" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                                <ul id="precontratacion" class="sidebar-dropdown list-unstyled collapse" >
                                     <li class="sidebar-item"><a class="sidebar-link" href="example1.html">Ejemplo 1</a></li>
                                     <li class="sidebar-item"><a class="sidebar-link" href="example2.html">Ejemplo 2</a></li>
                                     <li class="sidebar-item"><a class="sidebar-link" href="example3.html">Ejemplo 3</a></li>

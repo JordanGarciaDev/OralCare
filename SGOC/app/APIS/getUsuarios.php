@@ -5,7 +5,7 @@ include('../../app/config.php');
 
 $userId = $_SESSION['userId'];
 
-$query = "SELECT nombres, apellidos, usuario, perfil, pass,foto FROM usuarios WHERE id = ?";
+$query = "SELECT nombres, apellidos, usuario, c.nombre AS perfil, pass,foto FROM usuarios u INNER JOIN cargos c WHERE id = ?";
 $stmt = $conn->prepare($query);
 $stmt->bind_param('i', $userId);
 $stmt->execute();

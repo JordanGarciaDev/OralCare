@@ -42,7 +42,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             $_SESSION['fecharegusuario'] = $infoUsuario['fecha']; // Guardar el usuario en la sesión
             $_SESSION['nomusuario'] = $infoUsuario['nombres'].' '.$infoUsuario['apellidos']; // Guardar el nombre del usuario en la sesión
-            $_SESSION['perfil']  = $infoUsuario['cargo_id']; // Guardar el perfil en la sesión
+            $_SESSION['cargo']  = $infoUsuario['cargo_id']; // Guardar el perfil en la sesión
             $_SESSION['nomcargo']  = $infoUsuario['nomcargo']; // Guardar el nombre del perfil en la sesión
             $_SESSION['user_logged_in']  = true; // Guardar que está logueado
 

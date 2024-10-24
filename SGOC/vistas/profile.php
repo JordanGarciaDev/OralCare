@@ -91,8 +91,8 @@
                             <input type="text" class="form-control" id="usuario" name="usuario" readonly>
                         </div>
                         <div class="mb-3">
-                            <label for="perfil" class="form-label">Perfil</label>
-                            <input type="text" class="form-control" id="perfil" name="perfil" readonly>
+                            <label for="cargo" class="form-label">Cargo</label>
+                            <input type="text" class="form-control" id="cargo" name="cargo" readonly>
                         </div>
                         <div class="mb-3">
                             <label for="pass" class="form-label">Contraseña</label>
@@ -130,7 +130,7 @@
                             $('#nombres').val(response.nombres);
                             $('#apellidos').val(response.apellidos);
                             $('#usuario').val(response.usuario);
-                            $('#perfil').val(response.perfil);
+                            $('#cargo').val(response.cargo);
                             $('#pass').val('');
                             // Establecer la foto de perfil actual en el modal
                             $('#perfilFotoModal').attr('src', '<?= UPLOAD ?>/perfiles/' + (response.foto || 'default.jpg'));

@@ -57,7 +57,7 @@ session_start();
                     $perfil_estandar7 = [15, 2];
                     $perfil_admin = [15, 2];
 
-                    if (in_array($_SESSION['perfil'], $perfil_estandar1)) {
+                    if (in_array($_SESSION['cargo'], $perfil_estandar1)) {
                         ?>
 
                   <!--estandar 1-->
@@ -83,7 +83,7 @@ session_start();
                      <?php  } ?>
 
                     <?php
-                    if (in_array($_SESSION['perfil'], $perfil_estandar2)) {
+                    if (in_array($_SESSION['cargo'], $perfil_estandar2)) {
                     ?>
                     <!--estandar 2-->
                     <li class="sidebar-item">
@@ -99,7 +99,7 @@ session_start();
                     <?php  } ?>
 
                     <?php
-                    if (in_array($_SESSION['perfil'], $perfil_estandar3)) {
+                    if (in_array($_SESSION['cargo'], $perfil_estandar3)) {
                     ?>
                     <!--estandar 3-->
                     <li class="sidebar-item">
@@ -115,7 +115,7 @@ session_start();
                     <?php  } ?>
 
                     <?php
-                    if (in_array($_SESSION['perfil'], $perfil_estandar4)) {
+                    if (in_array($_SESSION['cargo'], $perfil_estandar4)) {
                     ?>
                     <!--  estandar4-->
                     <li class="sidebar-item">
@@ -133,7 +133,7 @@ session_start();
                     <?php  } ?>
 
                     <?php
-                    if (in_array($_SESSION['perfil'], $perfil_estandar5)) {
+                    if (in_array($_SESSION['cargo'], $perfil_estandar5)) {
                     ?>
                     <!--  estandar5-->
                     <li class="sidebar-item">
@@ -151,7 +151,7 @@ session_start();
                     <?php  } ?>
 
                     <?php
-                    if (in_array($_SESSION['perfil'], $perfil_estandar6)) {
+                    if (in_array($_SESSION['cargo'], $perfil_estandar6)) {
                     ?>
                     <!--  estandar6-->
                     <li class="sidebar-item">
@@ -169,7 +169,7 @@ session_start();
                     <?php  } ?>
 
                     <?php
-                    if (in_array($_SESSION['perfil'], $perfil_estandar7)) {
+                    if (in_array($_SESSION['cargo'], $perfil_estandar7)) {
                         ?>
                     <!--  estandar7-->
                     <li class="sidebar-item">
@@ -187,7 +187,7 @@ session_start();
                     <?php  } ?>
 
                     <?php
-                    if (in_array($_SESSION['perfil'], $perfil_admin)) {
+                    if (in_array($_SESSION['cargo'], $perfil_admin)) {
                         ?>
                         <!--admin-->
                     <li class="sidebar-item">

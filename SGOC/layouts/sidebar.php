@@ -66,7 +66,16 @@ session_start();
                             <i class="align-middle" data-feather="briefcase"></i> <span class="align-middle">Estándar 1</span>
                         </a>
                         <ul id="estandar1" class="sidebar-dropdown list-unstyled collapse " data-bs-parent="#sidebar">
-                            <li class="sidebar-item"><a class="sidebar-link" href="pages-settings.html">Precontratación</a></li>
+                            <li class="sidebar-item">
+                                <a data-bs-target="#precontratacion" data-bs-toggle="collapse" class="sidebar-link collapsed">
+                                    <i class="align-middle" data-feather="briefcase"></i> <span class="align-middle">Precontratación</span>
+                                </a>
+                                <ul id="precontratacion" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                                    <li class="sidebar-item"><a class="sidebar-link" href="example1.html">Ejemplo 1</a></li>
+                                    <li class="sidebar-item"><a class="sidebar-link" href="example2.html">Ejemplo 2</a></li>
+                                    <li class="sidebar-item"><a class="sidebar-link" href="example3.html">Ejemplo 3</a></li>
+                                </ul>
+                            </li>
                             <li class="sidebar-item"><a class="sidebar-link" href="pages-clients.html">Contratación</a></li>
                             <li class="sidebar-item"><a class="sidebar-link" href="pages-orders.html">Empleados</a></li>
                         </ul>

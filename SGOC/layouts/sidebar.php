@@ -208,6 +208,7 @@ session_start();
                         <li class="sidebar-item"><a class="sidebar-link" href="<?= BASE_URL .'/vistas/tipos_identificaciones.php'; ?>">Tipos Identificación</a></li>
                         <li class="sidebar-item"><a class="sidebar-link" href="<?= BASE_URL .'/vistas/tipos_documentos.php'; ?>">Tipos Documentos</a></li>
                         <li class="sidebar-item"><a class="sidebar-link" href="<?= BASE_URL .'/vistas/tiposContratos.php'; ?>">Tipos Contratos</a></li>
+                        <li class="sidebar-item"><a class="sidebar-link" href="<?= BASE_URL .'/vistas/preguntas_entrevistas.php'; ?>">Preguntas Entrevistas</a></li>
                         <li class="sidebar-item"><a class="sidebar-link" href="<?= BASE_URL .'/vistas/usuarios.php'; ?>">Usuarios</a></li>
                         <li class="sidebar-item"><a class="sidebar-link" href="<?= BASE_URL .'/vistas/departamentos.php'; ?>">Departamentos</a></li>
                         <li class="sidebar-item"><a class="sidebar-link" href="#" onclick="realizarRespaldo()">Respaldo BD</a></li>

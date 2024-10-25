@@ -1,6 +1,7 @@
 <?php
 	include('../app/config.php');
-	include(LAYOUT.'/header.php');
+    $titulo = "Perfil"; // Título específico para esta vista
+    include(LAYOUT.'/header.php');
 ?>
 			<div class="wrapper">
 			<?php include(LAYOUT .'/sidebar.php');?>
@@ -20,7 +21,7 @@
 									<h5 class="card-title mb-0">Detalles de perfil</h5>
 								</div>
 								<div class="card-body text-center">
-                                    <img id="perfilFoto" src="<?= UPLOAD.'/perfiles/' . $_SESSION['fotousuario'] ?>" alt="<?=$_SESSION['nomusuario'];?>" class="img-fluid rounded-circle mb-2" width="200" height="200" />
+                                    <img id="perfilFoto" src="<?= ASSET_URL.'/img/avatars/' . $_SESSION['fotousuario'] ?>" alt="<?=$_SESSION['nomusuario'];?>" class="img-fluid rounded-circle mb-2" width="200" height="200" />
 									<h5 class="card-title mb-0"><?=$_SESSION['nomusuario'];?></h5>
 									<div class="text-muted mb-2"><?=$_SESSION['nomcargo'];?></div>
 
@@ -133,7 +134,7 @@
                             $('#cargo').val(response.cargo);
                             $('#pass').val('');
                             // Establecer la foto de perfil actual en el modal
-                            $('#perfilFotoModal').attr('src', '<?= UPLOAD ?>/perfiles/' + (response.foto || 'default.jpg'));
+                            $('#perfilFotoModal').attr('src', '<?= UPLOAD ?>/perfiles/' + (response.foto || 'default.png'));
                         }
                     },
                     error: function(xhr) {
@@ -159,7 +160,7 @@
                                 alert(jsonResponse.message); // Mostrar mensaje de éxito
 
                                 // Actualizar la imagen de perfil
-                                var nuevaFoto = jsonResponse.foto ? jsonResponse.foto : "default.jpg"; // Si no hay nueva foto, usar la default
+                                var nuevaFoto = jsonResponse.foto ? jsonResponse.foto : "default.png"; // Si no hay nueva foto, usar la default
                                 $('#perfilFoto').attr('src', '<?= UPLOAD ?>/perfiles/' + nuevaFoto + '?' + new Date().getTime()); // Añadir un parámetro para evitar caché
                                 // También actualizar la imagen en el modal
                                 $('#perfilFotoModal').attr('src', '<?= UPLOAD ?>/perfiles/' + nuevaFoto + '?' + new Date().getTime());

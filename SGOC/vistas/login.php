@@ -2,6 +2,7 @@
 
 session_start();
 include('../app/config.php');
+$titulo = "Iniciar Sesión"; // Título específico para esta vista
 include(LAYOUT . '/header.php');
 
 // Hashear una contraseña para probar en SGOC
@@ -35,7 +36,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $_SESSION['userId'] = $infoUsuario['idUser'];
 
             if (empty($infoUsuario['foto'])) {
-                $_SESSION['fotousuario'] = "default.jpg"; // Si no hay foto, asigna la imagen predeterminada
+                $_SESSION['fotousuario'] = "default.png"; // Si no hay foto, asigna la imagen predeterminada
             } else {
                 $_SESSION['fotousuario'] = $infoUsuario['foto']; // Si hay foto, asigna la foto del usuario
             }

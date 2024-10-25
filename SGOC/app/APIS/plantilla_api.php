@@ -1,0 +1,67 @@
+<?php
+include('../../app/config.php');
+header('Content-Type: application/json');
+
+$action = isset($_GET['action']) ? $_GET['action'] : '';
+
+// Obtener todos los NOMBRE_TABLA
+if ($action == 'fetch') {
+    $query = "SELECT * FROM NOMBRE_TABLA";
+    $result = $conn->query($query);
+    $data = array();
+
+    while ($row = $result->fetch_assoc()) {
+        $data[] = $row;
+    }
+
+    echo json_encode(array('data' => $data));
+}
+
+// Guardar un nuevo TITULO AQUI o actualizar uno existente
+if ($action == 'save') {
+    $id = isset($_POST['id']) ? $_POST['id'] : '';
+    $nombre = $_POST['nombre'];
+
+    if ($id == '') {
+        // Crear nuevo
+        $query = "INSERT INTO NOMBRE_TABLA (nombre) VALUES (?)";
+        $stmt = $conn->prepare($query);
+        $stmt->bind_param('s', $nombre);
+        $stmt->execute();
+        $stmt->close();
+    } else {
+        // Actualizar existente
+        $query = "UPDATE NOMBRE_TABLA SET nombre = ? WHERE id = ?";
+        $stmt = $conn->prepare($query);
+        $stmt->bind_param('si', $nombre, $id);
+        $stmt->execute();
+        $stmt->close();
+    }
+
+    echo json_encode(array('status' => 'success'));
+}
+
+// Editar (obtener un TITULO AQUI por id)
+if ($action == 'edit') {
+    $id = $_GET['id'];
+    $query = "SELECT * FROM NOMBRE_TABLA WHERE id = ?";
+    $stmt = $conn->prepare($query);
+    $stmt->bind_param('i', $id);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $row = $result->fetch_assoc();
+
+    echo json_encode($row);
+}
+
+// Eliminar
+if ($action == 'delete') {
+    $id = $_GET['id'];
+    $query = "DELETE FROM NOMBRE_TABLA WHERE id = ?";
+    $stmt = $conn->prepare($query);
+    $stmt->bind_param('i', $id);
+    $stmt->execute();
+
+    echo json_encode(array('status' => 'success'));
+}
+?>

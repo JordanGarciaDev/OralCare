@@ -1,5 +1,6 @@
 <?php
 	include('../app/config.php');
+    $titulo = "Dashboard"; // Título específico para esta vista
 	include(LAYOUT.'/header.php');
 
 // Consultar empleados

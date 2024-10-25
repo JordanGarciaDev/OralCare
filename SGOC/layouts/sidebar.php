@@ -18,7 +18,7 @@ session_start();
 				<div class="sidebar-user">
 					<div class="d-flex justify-content-center">
 						<div class="flex-shrink-0">
-							<img src="<?= UPLOAD.'/perfiles/' . $_SESSION['fotousuario'] ?>" alt="<?=$_SESSION['nomusuario'];?>" class="avatar img-fluid rounded me-1" />
+							<img src="<?= ASSET_URL.'/img/avatars/' . $_SESSION['fotousuario'] ?>" alt="<?=$_SESSION['nomusuario'];?>" class="avatar img-fluid rounded me-1" />
 						</div>
 						<div class="flex-grow-1 ps-2">
 							<a class="sidebar-user-title dropdown-toggle" href="#" data-bs-toggle="dropdown">
@@ -196,10 +196,13 @@ session_start();
                         <i class="align-middle" data-feather="settings"></i> <span class="align-middle">Administración</span>
                     </a>
                     <ul id="administrativo" class="sidebar-dropdown list-unstyled collapse " data-bs-parent="#sidebar">
-                        <li class="sidebar-item"><a class="sidebar-link" href="pages-settings.html">Usuarios</a></li>
-                        <li class="sidebar-item"><a class="sidebar-link" href="pages-clients.html">Perfiles</a></li>
-                        <li class="sidebar-item"><a class="sidebar-link" href="pages-clients.html">Reportes</a></li>
-                        <li class="sidebar-item"><a class="sidebar-link" href="pages-clients.html">Respaldo BD</a></li>
+                        <li class="sidebar-item"><a class="sidebar-link" href="<?= BASE_URL .'/vistas/cargos.php'; ?>">Cargos</a></li>
+                        <li class="sidebar-item"><a class="sidebar-link" href="<?= BASE_URL .'/vistas/tipos_identificaciones.php'; ?>">Tipos Identificación</a></li>
+                        <li class="sidebar-item"><a class="sidebar-link" href="<?= BASE_URL .'/vistas/tipos_documentos.php'; ?>">Tipos Documentos</a></li>
+                        <li class="sidebar-item"><a class="sidebar-link" href="<?= BASE_URL .'/vistas/tiposContratos.php'; ?>">Tipos Contratos</a></li>
+                        <li class="sidebar-item"><a class="sidebar-link" href="<?= BASE_URL .'/vistas/usuarios.php'; ?>">Usuarios</a></li>
+                        <li class="sidebar-item"><a class="sidebar-link" href="<?= BASE_URL .'/vistas/departamentos.php'; ?>">Departamentos</a></li>
+                        <li class="sidebar-item"><a class="sidebar-link" href="#" onclick="realizarRespaldo()">Respaldo BD</a></li>
                     </ul>
                      </li>
                         <?php } ?>
@@ -207,3 +210,21 @@ session_start();
 
 			</div>
 		</nav>
+<script>
+    function realizarRespaldo() {
+        if (confirm('¿Estás seguro de que deseas realizar un respaldo de la base de datos?')) {
+            fetch('<?= API . 'respaldo_bd.php'; ?>')
+                .then(response => response.json())
+                .then(data => {
+                    if (data.status === 'success') {
+                        alert(data.message);  // Mensaje de éxito
+                    } else {
+                        alert('Error: ' + data.message);  // Mensaje de error
+                    }
+                })
+                .catch(error => {
+                    alert('Error al realizar el respaldo: ' + error);
+                });
+        }
+    }
+</script>

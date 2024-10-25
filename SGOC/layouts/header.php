@@ -12,7 +12,9 @@
 	<link rel="preconnect" href="https://fonts.gstatic.com">
 	<link rel="shortcut icon" href="<?= ASSET_URL; ?>/img/icons/icon-48x48.png" />
 
-	<title>Login | SGOC</title>
+    <?php $pageTitle = isset($titulo) ? "$titulo | S.G.O.C." : "S.G.O.C. Software"; ?>
+    <title><?= $pageTitle; ?></title>
+
     <!--    Hoja de estilos principal del programa aqui estan los colores, estilos de letra, etc-->
 	<link href="<?= ASSET_URL; ?>/css/app.css" rel="stylesheet">
 	<link href="<?= ASSET_URL; ?>/css/light.css" rel="stylesheet">

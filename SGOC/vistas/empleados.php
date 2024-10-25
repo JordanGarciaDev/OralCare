@@ -1,6 +1,7 @@
 <?php
 	include('../app/config.php');
-	include(LAYOUT.'/header.php');
+    $titulo = "Empleados"; // Título específico para esta vista
+    include(LAYOUT.'/header.php');
 ?>
 			<div class="wrapper">
 			<?php include(LAYOUT .'/sidebar.php');?>

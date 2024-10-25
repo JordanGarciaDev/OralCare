@@ -28,6 +28,7 @@
 </footer>
 
 <script src="<?= ASSET_URL; ?>/js/app.js"></script>
+<script src="<?= ASSET_URL; ?>/js/datatables.js"></script>
 
 </body>
 

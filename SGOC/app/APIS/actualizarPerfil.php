@@ -19,7 +19,7 @@ if (isset($_FILES['foto']) && $_FILES['foto']['error'] == 0) {
     // Validar el tipo de archivo (solo imágenes permitidas)
     $allowedTypes = ['image/jpeg', 'image/png', 'image/gif'];
     if (in_array($foto['type'], $allowedTypes)) {
-        $targetDir = "../../uploads/perfiles/";  // Carpeta donde se guardarán las fotos
+        $targetDir = $_SERVER['DOCUMENT_ROOT'] . '/assets/img/avatars/';  // Carpeta donde se guardarán las fotos
         $extension = pathinfo($foto['name'], PATHINFO_EXTENSION);
         $nuevoNombre = uniqid() . '.' . $extension; // Generar un nuevo nombre único
 

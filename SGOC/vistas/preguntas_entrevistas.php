@@ -28,6 +28,7 @@ include(LAYOUT.'/header.php');
                                     <tr>
                                         <th>ID</th>
                                         <th>Preguntas</th>
+                                        <th>Tipo de pregunta</th>
                                         <th>Acciones</th>
                                     </tr>
                                     </thead>
@@ -35,6 +36,7 @@ include(LAYOUT.'/header.php');
                                     <tr>
                                         <th>ID</th>
                                         <th>Preguntas</th>
+                                        <th>Tipo de pregunta</th>
                                         <th>Acciones</th>
                                     </tr>
                                     </tfoot>
@@ -55,7 +57,14 @@ include(LAYOUT.'/header.php');
                             <div class="modal-body">
                                 <form id="formDatosCrud">
                                     <input type="hidden" id="id" name="id">
-                                        <h3>Pregunta</h3>
+                                    <div class="mb-3 col-md-12">
+                                        <label class="form-label" for="tpregunta">Tipo de Pregunta</label>
+                                        <select id="tpregunta" name="tpregunta" class="form-control">
+                                            <option selected="" value="">Seleccione el tipo de pregunta</option>
+                                            <option value="1">Prueba</option>
+                                        </select>
+                                    </div>
+                                    <label class="form-label" for="pregunta">Pregunta</label>
                                         <div id="preguntasContainer">
                                             <div class="form-group">
                                                 <textarea class="form-control" id="pregunta" name="pregunta" rows="3" required=""></textarea>
@@ -83,12 +92,13 @@ include(LAYOUT.'/header.php');
             "columns": [
                 { "data": "id" },
                 { "data": "pregunta" },
+                { "data": "tipo" },
                 {
                     "data": null,
                     "render": function (data, type, row) {
                         return `
                         <button class="btn btn-sm btn-warning edit" data-id="` + data.id + `"><i class="align-middle me-2 fas fa-fw fa-edit"></i>Editar</button>
-                        <button class="btn btn-sm btn-danger delete" data-id="` + data.id + `"><i class="align-middle me-2 fas fa-fw fa-trash-alt"></i>Eliminar</button>
+                        <button class="btn btn-sm btn-danger delete" data-id="` + data.idPreg + `"><i class="align-middle me-2 fas fa-fw fa-trash-alt"></i>Eliminar</button>
                     `;
                     }
                 }
@@ -130,8 +140,9 @@ include(LAYOUT.'/header.php');
                 type: 'GET',
                 dataType: 'json',
                 success: function(preguntas_entrevistas) {
-                    $('#id').val(preguntas_entrevistas.id);
+                    $('#id').val(preguntas_entrevistas.idPreg);
                     $('#pregunta').val(preguntas_entrevistas.pregunta);
+                    $('#tpregunta').val(preguntas_entrevistas.tpregunta);
                     $('#modalCRUD').modal('show');
                 },
                 error: function(xhr, status, error) {

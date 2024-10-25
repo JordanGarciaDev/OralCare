@@ -4,9 +4,9 @@ header('Content-Type: application/json');
 
 $action = isset($_GET['action']) ? $_GET['action'] : '';
 
-// Obtener todos los preguntas_entrevistas
+// Obtener todos los entrevistas
 if ($action == 'fetch') {
-    $query = "SELECT *, p.id AS idPreg FROM preguntas_entrevistas p INNER JOIN tipos_preguntas tp ON p.tpregunta = tp.id";
+    $query = "SELECT * FROM entrevistas WHERE tipo 2";
     $result = $conn->query($query);
     $data = array();
 
@@ -21,20 +21,19 @@ if ($action == 'fetch') {
 if ($action == 'save') {
     $id = isset($_POST['id']) ? $_POST['id'] : '';
     $pregunta = $_POST['pregunta'];
-    $tpregunta = $_POST['tpregunta'];
 
     if ($id == '') {
         // Crear nuevo
-        $query = "INSERT INTO preguntas_entrevistas (pregunta,tpregunta) VALUES (?,?)";
+        $query = "INSERT INTO entrevistas (pregunta) VALUES (?)";
         $stmt = $conn->prepare($query);
-        $stmt->bind_param('si', $pregunta,$tpregunta);
+        $stmt->bind_param('s', $pregunta);
         $stmt->execute();
         $stmt->close();
     } else {
         // Actualizar existente
-        $query = "UPDATE preguntas_entrevistas SET pregunta = ? , tpregunta = ? WHERE id = ?";
+        $query = "UPDATE entrevistas SET pregunta = ? WHERE id = ?";
         $stmt = $conn->prepare($query);
-        $stmt->bind_param('sii', $pregunta, $tpregunta,$id);
+        $stmt->bind_param('si', $pregunta, $id);
         $stmt->execute();
         $stmt->close();
     }
@@ -45,7 +44,7 @@ if ($action == 'save') {
 // Editar (obtener un TITULO AQUI por id)
 if ($action == 'edit') {
     $id = $_GET['id'];
-    $query = "SELECT *, p.id AS idPreg FROM preguntas_entrevistas p INNER JOIN tipos_preguntas tp ON p.tpregunta = tp.id WHERE tp.id = ?";
+    $query = "SELECT * FROM entrevistas WHERE id = ?";
     $stmt = $conn->prepare($query);
     $stmt->bind_param('i', $id);
     $stmt->execute();
@@ -58,7 +57,7 @@ if ($action == 'edit') {
 // Eliminar
 if ($action == 'delete') {
     $id = $_GET['id'];
-    $query = "DELETE FROM preguntas_entrevistas WHERE id = ?";
+    $query = "DELETE FROM entrevistas WHERE id = ?";
     $stmt = $conn->prepare($query);
     $stmt->bind_param('i', $id);
     $stmt->execute();

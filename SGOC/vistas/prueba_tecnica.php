@@ -1,6 +1,6 @@
 <?php
 include('../app/config.php');
-$titulo = "Entrevistas"; // Título específico para esta vista
+$titulo = "Prueba Técnica"; // Título específico para esta vista
 include(LAYOUT.'/header.php');
 ?>
 <div class="wrapper">
@@ -12,7 +12,7 @@ include(LAYOUT.'/header.php');
         <main class="content">
             <div class="container-fluid p-0">
                 <div class="mb-3">
-                    <h1 class="h3 d-inline align-middle"><i class="align-middle me-2 fas fa-fw fa-cogs"></i>Entrevistas</h1>
+                    <h1 class="h3 d-inline align-middle"><i class="align-middle me-2 fas fa-fw fa-cogs"></i>Prueba Técnica</h1>
                     <button class="btn btn-primary float-end" id="addNuevo" data-bs-toggle="modal" data-bs-target="#modalCRUD"><i class="align-middle me-2 fas fa-fw fa-plus"></i>Agregar Nuevo</button>
                 </div>
 
@@ -20,7 +20,7 @@ include(LAYOUT.'/header.php');
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
-                                <h5 class="card-title">Crea/Edita/Elimina las Entrevistas</h5>
+                                <h5 class="card-title">Crea/Edita/Elimina las Prueba Técnica</h5>
                             </div>
                             <div class="card-body">
                                 <table id="datosTabla" class="table table-striped" style="width:100%">
@@ -51,7 +51,7 @@ include(LAYOUT.'/header.php');
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="modalLabel"><i class="align-middle me-2 far fa-fw fa-folder"></i>Nueva Entrevista</h5>
+                                <h5 class="modal-title" id="modalLabel"><i class="align-middle me-2 far fa-fw fa-folder"></i>Nueva Prueba</h5>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
@@ -61,7 +61,7 @@ include(LAYOUT.'/header.php');
                                         <label for="nombre" class="form-label">Nombre del Entrevistado(a)</label>
                                         <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Escriba el nombre del entrevistado(a)" required>
                                     </div>
-                                        <h3>Preguntas de Entrevista</h3>
+                                        <h3>Preguntas de Prueba</h3>
                                         <div id="preguntasContainer">
                                         </div>
                                     <div class="modal-footer">
@@ -82,7 +82,7 @@ include(LAYOUT.'/header.php');
 <script>
     $(document).ready(function() {
         var table = $('#datosTabla').DataTable({
-            "ajax": "<?= API ?>entrevista?action=fetch",
+            "ajax": "<?= API ?>prueba_tecnica.php?action=fetch",
             "columns": [
                 { "data": "id" },
                 { "data": "nombre" },
@@ -107,7 +107,7 @@ include(LAYOUT.'/header.php');
             var formData = $(this).serialize();
 
             $.ajax({
-                url: '<?= API ?>entrevista?action=save',
+                url: '<?= API ?>prueba_tecnica.php?action=save',
                 type: 'POST',
                 data: formData,
                 success: function(response) {
@@ -118,18 +118,18 @@ include(LAYOUT.'/header.php');
         });
 
         $('#addNuevo').on('click', function() {
-            $('#modalLabel').text('Nueva Entrevista');
+            $('#modalLabel').text('Nueva Prueba');
             $('#formDatosCrud')[0].reset();
             $('#id').val('');
         });
 
         // Editar
         $('#datosTabla tbody').on('click', '.edit', function() {
-            $('#modalLabel').text('Editar Entrevista');
+            $('#modalLabel').text('Editar Prueba');
             var id = $(this).data('id');
 
             $.ajax({
-                url: '<?= API ?>entrevista?action=edit&id=' + id,
+                url: '<?= API ?>prueba_tecnica.php?action=edit&id=' + id,
                 type: 'GET',
                 dataType: 'json',
                 success: function(entrevista) {
@@ -146,11 +146,11 @@ include(LAYOUT.'/header.php');
 
         // Eliminar
         $('#datosTabla tbody').on('click', '.delete', function() {
-            if (confirm('¿Estás seguro de eliminar este entrevista?')) {
+            if (confirm('¿Estás seguro de eliminar esta prueba tecnica?')) {
                 var id = $(this).data('id');
 
                 $.ajax({
-                    url: '<?= API ?>entrevista?action=delete&id=' + id,
+                    url: '<?= API ?>prueba_tecnica.php?action=delete&id=' + id,
                     type: 'GET',
                     success: function(response) {
                         table.ajax.reload();

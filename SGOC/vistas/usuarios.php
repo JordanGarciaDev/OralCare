@@ -77,7 +77,7 @@ include(LAYOUT . '/header.php');
                                     </div>
                                     <div class="mb-3">
                                         <label for="pass" class="form-label">Contraseña</label>
-                                        <input type="password" class="form-control" id="pass" name="pass" placeholder="Escriba la contraseña" required>
+                                        <input type="password" class="form-control" id="pass" name="pass" placeholder="Escriba la contraseña">
                                     </div>
                                     <div class="mb-3">
                                         <label for="cargo_id" class="form-label">Cargo</label>

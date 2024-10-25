@@ -48,14 +48,14 @@ session_start();
 
                     <?php
                     // Aquí se validan los permisos para ver cada estándar al perfil que tiene el usuario logueado
-                    $perfil_estandar1 = [15, 2];
-                    $perfil_estandar2 = [15, 2];
-                    $perfil_estandar3 = [15, 2];
-                    $perfil_estandar4 = [15, 2];
-                    $perfil_estandar5 = [15, 2];
-                    $perfil_estandar6 = [15, 2];
-                    $perfil_estandar7 = [15, 2];
-                    $perfil_admin = [15, 2];
+                    $perfil_estandar1 = [15,17,2];
+                    $perfil_estandar2 = [15,17,2];
+                    $perfil_estandar3 = [15,17,2];
+                    $perfil_estandar4 = [15,17,2];
+                    $perfil_estandar5 = [15,17,2];
+                    $perfil_estandar6 = [15,17,2];
+                    $perfil_estandar7 = [15,17,2];
+                    $perfil_admin = [15, 17, 2];
 
                     if (in_array($_SESSION['cargo'], $perfil_estandar1)) {
                         ?>

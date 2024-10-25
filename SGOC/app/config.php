@@ -1,5 +1,5 @@
 <?php
-define('BASE_URL', 'http://localhost/OralCare/SGOC');
+define('BASE_URL', 'http://192.168.1.11/OralCare/SGOC');
 define('CONFIG_PATH', $_SERVER['DOCUMENT_ROOT'] . '/OralCare/SGOC/app');
 define('LAYOUT', $_SERVER['DOCUMENT_ROOT'] . '/OralCare/SGOC/layouts');
 define('API', BASE_URL . '/app/APIS/');

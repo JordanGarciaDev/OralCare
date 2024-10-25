@@ -21,7 +21,7 @@
 									<h5 class="card-title mb-0">Detalles de perfil</h5>
 								</div>
 								<div class="card-body text-center">
-                                    <img id="perfilFoto" src="<?= ASSET_URL.'/img/avatars/' . $_SESSION['fotousuario'] ?>" alt="<?=$_SESSION['nomusuario'];?>" class="img-fluid rounded-circle mb-2" width="200" height="200" />
+                                    <img id="perfilFoto" style=" height: 145px; width: 145px; " src="<?= ASSET_URL.'/img/avatars/' . $_SESSION['fotousuario'] ?>" alt="<?=$_SESSION['nomusuario'];?>" class="img-fluid rounded-circle mb-2" width="200" height="200" />
 									<h5 class="card-title mb-0"><?=$_SESSION['nomusuario'];?></h5>
 									<div class="text-muted mb-2"><?=$_SESSION['nomcargo'];?></div>
 

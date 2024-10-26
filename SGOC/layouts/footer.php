@@ -1,3 +1,5 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+</body>
 <footer class="footer">
     <div class="container-fluid">
         <div class="row text-muted">
@@ -26,10 +28,3 @@
         </div>
     </div>
 </footer>
-
-<script src="<?= ASSET_URL; ?>/js/app.js"></script>
-<script src="<?= ASSET_URL; ?>/js/datatables.js"></script>
-
-</body>
-
-</html>

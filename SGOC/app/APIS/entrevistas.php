@@ -64,4 +64,17 @@ if ($action == 'delete') {
 
     echo json_encode(array('status' => 'success'));
 }
+
+// Preguntas
+if ($action == 'questions') {
+    $query = "SELECT p.id AS idPreg, p.pregunta, tp.nombre as tipo FROM preguntas_entrevistas p INNER JOIN tipos_preguntas tp ON p.tpregunta = tp.id";
+    $result = $conn->query($query);
+    $data = array();
+
+    while ($row = $result->fetch_assoc()) {
+        $data[] = $row;
+    }
+
+    echo json_encode(array('status' => 'success', 'data' => $data));
+}
 ?>

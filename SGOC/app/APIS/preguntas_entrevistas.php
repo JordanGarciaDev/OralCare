@@ -6,7 +6,7 @@ $action = isset($_GET['action']) ? $_GET['action'] : '';
 
 // Obtener todos los preguntas_entrevistas
 if ($action == 'fetch') {
-    $query = "SELECT *, p.id AS idPreg FROM preguntas_entrevistas p INNER JOIN tipos_preguntas tp ON p.tpregunta = tp.id";
+    $query = "SELECT *, p.id AS idPreg, tp.nombre as tipo FROM preguntas_entrevistas p INNER JOIN tipos_preguntas tp ON p.tpregunta = tp.id";
     $result = $conn->query($query);
     $data = array();
 
@@ -45,7 +45,7 @@ if ($action == 'save') {
 // Editar (obtener un TITULO AQUI por id)
 if ($action == 'edit') {
     $id = $_GET['id'];
-    $query = "SELECT *, p.id AS idPreg FROM preguntas_entrevistas p INNER JOIN tipos_preguntas tp ON p.tpregunta = tp.id WHERE tp.id = ?";
+    $query = "SELECT *, p.id AS idPreg, tp.nombre as tipo FROM preguntas_entrevistas p INNER JOIN tipos_preguntas tp ON p.tpregunta = tp.id WHERE tp.id = ?";
     $stmt = $conn->prepare($query);
     $stmt->bind_param('i', $id);
     $stmt->execute();
@@ -65,4 +65,5 @@ if ($action == 'delete') {
 
     echo json_encode(array('status' => 'success'));
 }
+
 ?>

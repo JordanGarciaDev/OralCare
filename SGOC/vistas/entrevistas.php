@@ -57,13 +57,12 @@ include(LAYOUT.'/header.php');
                             <div class="modal-body">
                                 <form id="formDatosCrud">
                                     <input type="hidden" id="id" name="id">
-                                    <div class="mb-3">
-                                        <label for="nombre" class="form-label">Nombre del Entrevistado(a)</label>
-                                        <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Escriba el nombre del entrevistado(a)" required>
-                                    </div>
-                                        <h3>Preguntas de Entrevista</h3>
+                                    <div class="mb-3 col-md-12">
                                         <div id="preguntasContainer">
+                                            <!-- Las preguntas se llenarán aquí -->
                                         </div>
+                                    </div>
+
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><i class="align-middle me-2 fas fa-fw fa-minus"></i>Cancelar</button>
                                         <button type="submit" class="btn btn-primary"><i class="align-middle me-2 fas fa-fw fa-save"></i>Guardar</button>
@@ -81,8 +80,38 @@ include(LAYOUT.'/header.php');
 
 <script>
     $(document).ready(function() {
+
+        function llenarSelects(tipoPreguntaID = '') {
+            // Llenar select de tipo de pregunta
+            $.ajax({
+                url: '<?= API ?>entrevistas.php?action=questions',
+                type: 'GET',
+                dataType: 'json',
+                success: function(data) {
+                    var selectTipoPregunta = $('#tpregunta');
+                    selectTipoPregunta.empty();
+                    selectTipoPregunta.append('<option value="">Seleccione el tipo de pregunta</option>');
+
+                    // Llenar opciones del select con los datos de la API
+                    $.each(data.data, function(index, item) {
+                        selectTipoPregunta.append('<option value="' + item.idPreg + '">' + item.tipo + '</option>');
+                    });
+
+                    // Seleccionar la opción si se pasa un ID
+                    if (tipoPreguntaID) {
+                        selectTipoPregunta.val(tipoPreguntaID);
+                    }
+                },
+                error: function() {
+                    console.error("Error al cargar los datos de tipo de pregunta.");
+                }
+            });
+        }
+
+        llenarSelects();
+
         var table = $('#datosTabla').DataTable({
-            "ajax": "<?= API ?>entrevista?action=fetch",
+            "ajax": "<?= API ?>entrevistas.php?action=fetch",
             "columns": [
                 { "data": "id" },
                 { "data": "nombre" },
@@ -107,7 +136,7 @@ include(LAYOUT.'/header.php');
             var formData = $(this).serialize();
 
             $.ajax({
-                url: '<?= API ?>entrevista?action=save',
+                url: '<?= API ?>entrevistas.php?action=save',
                 type: 'POST',
                 data: formData,
                 success: function(response) {
@@ -129,7 +158,7 @@ include(LAYOUT.'/header.php');
             var id = $(this).data('id');
 
             $.ajax({
-                url: '<?= API ?>entrevista?action=edit&id=' + id,
+                url: '<?= API ?>entrevistas.php?action=edit&id=' + id,
                 type: 'GET',
                 dataType: 'json',
                 success: function(entrevista) {
@@ -150,7 +179,7 @@ include(LAYOUT.'/header.php');
                 var id = $(this).data('id');
 
                 $.ajax({
-                    url: '<?= API ?>entrevista?action=delete&id=' + id,
+                    url: '<?= API ?>entrevistas.php?action=delete&id=' + id,
                     type: 'GET',
                     success: function(response) {
                         table.ajax.reload();

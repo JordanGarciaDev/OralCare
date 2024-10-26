@@ -1,5 +1,5 @@
 <?php
-define('BASE_URL', 'http://192.168.1.92/OralCare/SGOC'); //si es una persona ext debe colocar localhost
+define('BASE_URL', 'http://localhost/OralCare/SGOC'); //si es una persona ext debe colocar localhost
 define('CONFIG_PATH', $_SERVER['DOCUMENT_ROOT'] . '/OralCare/SGOC/app');
 define('LAYOUT', $_SERVER['DOCUMENT_ROOT'] . '/OralCare/SGOC/layouts');
 define('API', BASE_URL . '/app/APIS/');

@@ -12,8 +12,6 @@ MySQL - 10.4.32-MariaDB : Database - sgoc
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
-CREATE DATABASE /*!32312 IF NOT EXISTS*/`sgoc` /*!40100 DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci */;
-
 /*Table structure for table `cargos` */
 
 CREATE TABLE `cargos` (
@@ -1333,6 +1331,26 @@ CREATE TABLE `preguntas_entrevistas` (
 /*Data for the table `preguntas_entrevistas` */
 
 insert  into `preguntas_entrevistas`(`id`,`pregunta`,`tpregunta`) values (5,'Cuál es tu color favorio?',2);
+
+/*Table structure for table `programacion_entrevistas` */
+
+CREATE TABLE `programacion_entrevistas` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `empleado_id` int(11) NOT NULL,
+  `cargo_id` int(10) NOT NULL,
+  `fechapro` date NOT NULL,
+  `horapro` time NOT NULL,
+  `fechareg` timestamp NOT NULL DEFAULT current_timestamp(),
+  PRIMARY KEY (`id`),
+  KEY `empleado_id` (`empleado_id`),
+  KEY `cargo_id` (`cargo_id`),
+  CONSTRAINT `programacion_entrevistas_ibfk_1` FOREIGN KEY (`empleado_id`) REFERENCES `empleados` (`id`),
+  CONSTRAINT `programacion_entrevistas_ibfk_2` FOREIGN KEY (`cargo_id`) REFERENCES `cargos` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+/*Data for the table `programacion_entrevistas` */
+
+insert  into `programacion_entrevistas`(`id`,`empleado_id`,`cargo_id`,`fechapro`,`horapro`,`fechareg`) values (4,1,3,'2024-10-28','18:45:00','2024-10-28 13:46:42');
 
 /*Table structure for table `tipo_contrato` */
 

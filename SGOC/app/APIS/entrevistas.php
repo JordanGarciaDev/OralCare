@@ -22,7 +22,7 @@ if ($action == 'save') {
     $id = isset($_POST['id']) ? $_POST['id'] : '';
     $pregunta = $_POST['pregunta'];
     $respuesta = $_POST['respuesta'];
-    $empleado_id = $_POST['empleado_id'];
+    $empleado_id = $_POST['emp_id'];
 
     if ($id == '') {
         // Crear nuevo
@@ -33,9 +33,9 @@ if ($action == 'save') {
         $stmt->close();
     } else {
         // Actualizar existente
-        $query = "UPDATE entrevistas SET pregunta_id = ?, respuesta = ? WHERE id = ?";
+        $query = "UPDATE entrevistas SET empleado_id = ?, pregunta_id = ?, respuesta = ? WHERE id = ?";
         $stmt = $conn->prepare($query);
-        $stmt->bind_param('isi', $pregunta, $respuesta, $id);
+        $stmt->bind_param('iisi', $empleado_id, $pregunta, $respuesta, $id);
         $stmt->execute();
         $stmt->close();
     }

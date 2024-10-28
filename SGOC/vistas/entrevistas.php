@@ -28,7 +28,7 @@ include(LAYOUT.'/header.php');
                                     <tr>
                                         <th>ID</th>
                                         <th>Nombre del empleado</th>
-                                        <th>Resultado</th>
+                                        <th>Fecha</th>
                                         <th>Acciones</th>
                                     </tr>
                                     </thead>
@@ -36,7 +36,7 @@ include(LAYOUT.'/header.php');
                                     <tr>
                                         <th>ID</th>
                                         <th>Nombre del empleado</th>
-                                        <th>Resultado</th>
+                                        <th>Fecha</th>
                                         <th>Acciones</th>
                                     </tr>
                                     </tfoot>
@@ -128,10 +128,10 @@ include(LAYOUT.'/header.php');
 
                 // Mostrar la pregunta como texto y agregar un input oculto para enviarla al servidor
                 var preguntaTexto = '<div class="mb-2"><h4>' + item.pregunta + '</h4></div>';
-                var preguntaInputHidden = '<input type="hidden" id="pregunta' + item.idPreg + '" name="pregunta' + item.idPreg + '" value="' + item.pregunta + '">';
+                var preguntaInputHidden = '<input type="hidden" id="pregunta' + item.idPreg + '" name="pregunta" value="' + item.idPreg + '">';
 
                 // Crear el textarea para la respuesta a la pregunta
-                var preguntaTextarea = '<textarea class="form-control mb-3" id="respuesta' + item.idPreg + '" name="respuesta' + item.idPreg + '" rows="3" placeholder="Escribe la respuesta aquí"></textarea>';
+                var preguntaTextarea = '<textarea class="form-control mb-3" id="respuesta' + item.idPreg + '" name="respuesta" rows="3" placeholder="Escribe la respuesta aquí"></textarea>';
 
                 // Agregar los elementos al contenedor
                 preguntasContainer.append(tipoPreguntaInput + preguntaTexto + preguntaInputHidden + preguntaTextarea);
@@ -150,6 +150,7 @@ include(LAYOUT.'/header.php');
             "columns": [
                 { "data": "idEntrevista" },
                 { "data": "nombre_completo" },
+                { "data": "fechareg" },
                 {
                     "data": null,
                     "render": function (data, type, row) {

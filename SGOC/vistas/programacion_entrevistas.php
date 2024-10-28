@@ -28,6 +28,7 @@ include(LAYOUT.'/header.php');
                                     <tr>
                                         <th>ID</th>
                                         <th>Nombre del empleado</th>
+                                        <th>Cargo</th>
                                         <th>Fecha</th>
                                         <th>Acciones</th>
                                     </tr>
@@ -36,6 +37,7 @@ include(LAYOUT.'/header.php');
                                     <tr>
                                         <th>ID</th>
                                         <th>Nombre del empleado</th>
+                                        <th>Cargo</th>
                                         <th>Fecha</th>
                                         <th>Acciones</th>
                                     </tr>
@@ -61,6 +63,12 @@ include(LAYOUT.'/header.php');
                                         <label for="emp_id" class="form-label">Empleados</label>
                                         <select class="form-select" id="emp_id" name="emp_id" required="">
                                             <option value="">Seleccione un empleado</option>
+                                        </select>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="cargo_id" class="form-label">Cargo</label>
+                                        <select class="form-select" id="cargo_id" name="cargo_id" required="">
+                                            <option value="">Seleccione un cargo</option>
                                         </select>
                                     </div>
                                     <div class="form-group">
@@ -112,6 +120,27 @@ include(LAYOUT.'/header.php');
             console.error("Error al cargar los empleados.");
         }
     });
+    // Llenar el select de cargos
+    $.ajax({
+        url: '<?= API ?>programacion_entrevistas.php?action=cargos',
+        type: 'GET',
+        dataType: 'json',
+        success: function(data) {
+            var cargoSelect = $('#cargo_id');
+            cargoSelect.empty(); // Limpiar opciones previas
+
+            // Agregar la opción por defecto
+            cargoSelect.append('<option value="">Seleccione un cargo</option>');
+
+            // Llenar el select con los datos de empleados de la API
+            $.each(data.data, function(index, cargo) {
+                cargoSelect.append('<option value="' + cargo.id + '">' + cargo.nombre + '</option>');
+            });
+        },
+        error: function() {
+            console.error("Error al cargar los empleados.");
+        }
+    });
     }
 		llenarSelects();
 
@@ -120,6 +149,7 @@ include(LAYOUT.'/header.php');
             "columns": [
                 { "data": "idEntrevista" },
                 { "data": "nombre_completo" },
+                { "data": "nombre" },
                 { "data": "fechapro" },
                 {
                     "data": null,

@@ -6,7 +6,7 @@ $action = isset($_GET['action']) ? $_GET['action'] : '';
 
 // Obtener todos los programacion_entrevistas
 if ($action == 'fetch') {
-    $query = "SELECT *, e.id AS idEntrevista FROM programacion_entrevistas e INNER JOIN empleados em ON e.empleado_id = em.id";
+    $query = "SELECT *, e.id AS idEntrevista FROM programacion_entrevistas e INNER JOIN empleados em ON e.empleado_id = em.id INNER JOIN cargos c ON e.cargo_id = c.id";
     $result = $conn->query($query);
     $data = array();
 
@@ -23,19 +23,20 @@ if ($action == 'save') {
     $fechapro = $_POST['fechapro'];
     $horapro = $_POST['horapro'];
     $empleado_id = $_POST['emp_id'];
+    $cargo_id = $_POST['cargo_id'];
 
     if ($id == '') {
         // Crear nuevo
-        $query = "INSERT INTO programacion_entrevistas (empleado_id,fechapro,horapro) VALUES (?,?,?)";
+        $query = "INSERT INTO programacion_entrevistas (empleado_id,cargo_id,fechapro,horapro) VALUES (?,?,?,?)";
         $stmt = $conn->prepare($query);
-        $stmt->bind_param('iss', $empleado_id,$fechapro,$horapro);
+        $stmt->bind_param('iiss', $empleado_id,$cargo_id,$fechapro,$horapro);
         $stmt->execute();
         $stmt->close();
     } else {
         // Actualizar existente
-        $query = "UPDATE programacion_entrevistas SET empleado_id = ?, fechapro = ?, horapro = ? WHERE id = ?";
+        $query = "UPDATE programacion_entrevistas SET empleado_id = ?, cargo_id = ?, fechapro = ?, horapro = ? WHERE id = ?";
         $stmt = $conn->prepare($query);
-        $stmt->bind_param('issi', $empleado_id, $fechapro, $horapro, $id);
+        $stmt->bind_param('iissi', $empleado_id,$cargo_id, $fechapro, $horapro, $id);
         $stmt->execute();
         $stmt->close();
     }
@@ -70,6 +71,19 @@ if ($action == 'delete') {
 // Empleados
 if ($action == 'empleados') {
     $query = "SELECT * FROM empleados";
+    $result = $conn->query($query);
+    $data = array();
+
+    while ($row = $result->fetch_assoc()) {
+        $data[] = $row;
+    }
+
+    echo json_encode(array('status' => 'success', 'data' => $data));
+}
+
+// Empleados
+if ($action == 'cargos') {
+    $query = "SELECT * FROM cargos";
     $result = $conn->query($query);
     $data = array();
 

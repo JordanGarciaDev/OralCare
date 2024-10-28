@@ -72,21 +72,21 @@ session_start();
                                 </a>
                                 <ul id="precontratacion" class="sidebar-dropdown list-unstyled collapse">
                                     <li class="sidebar-item"><a class="sidebar-link" href="<?= BASE_URL .'/vistas/empleados.php'; ?>">Datos Del Aspirante</a></li>
-                                    <li class="sidebar-item"><a class="sidebar-link" href="<?= BASE_URL .'/vistas/dashboard.php'; ?>">Entrevista</a></li>
-                                    <li class="sidebar-item"><a class="sidebar-link" href="<?= BASE_URL .'/vistas/dashboard.php'; ?>">Pruebas Técnicas</a></li>
-                                    <li class="sidebar-item"><a class="sidebar-link" href="<?= BASE_URL .'/vistas/dashboard.php'; ?>">Pruebas Psicométrica</a></li>
-                                    <li class="sidebar-item"><a class="sidebar-link" href="<?= BASE_URL .'/vistas/dashboard.php'; ?>">Evaluaciones</a></li>
-                                    <li class="sidebar-item"><a class="sidebar-link" href="<?= BASE_URL .'/vistas/dashboard.php'; ?>">Documentación</a></li>
-                                    <li class="sidebar-item"><a class="sidebar-link" href="<?= BASE_URL .'/vistas/dashboard.php'; ?>">Ofertas de Trabajo</a></li>
-                                    <li class="sidebar-item"><a class="sidebar-link" href="<?= BASE_URL .'/vistas/dashboard.php'; ?>">Contratación</a></li>
-                                    <li class="sidebar-item"><a class="sidebar-link" href="<?= BASE_URL .'/vistas/dashboard.php'; ?>">Contratos Laborales</a></li>
-                                    <li class="sidebar-item"><a class="sidebar-link" href="<?= BASE_URL .'/vistas/dashboard.php'; ?>">Proceso de Inducción</a></li>
-                                    <li class="sidebar-item"><a class="sidebar-link" href="<?= BASE_URL .'/vistas/dashboard.php'; ?>">Aprobaciones</a></li>
-                                    <li class="sidebar-item"><a class="sidebar-link" href="<?= BASE_URL .'/vistas/dashboard.php'; ?>">Firma Electrónica</a></li>
+                                    <li class="sidebar-item"><a class="sidebar-link" href="<?= BASE_URL .'/vistas/entrevistas.php'; ?>">Entrevista</a></li>
+                                    <li class="sidebar-item"><a class="sidebar-link" href="<?= BASE_URL .'/vistas/pruebas_tecnicas.php'; ?>">Pruebas Técnicas</a></li>
+                                    <li class="sidebar-item"><a class="sidebar-link" href="<?= BASE_URL .'/vistas/pruebas_tecnicas.php'; ?>">Pruebas Psicométrica</a></li>
+                                    <li class="sidebar-item"><a class="sidebar-link" href="<?= BASE_URL .'/vistas/evaluaciones.php'; ?>">Evaluaciones</a></li>
+                                    <li class="sidebar-item"><a class="sidebar-link" href="<?= BASE_URL .'/vistas/documentacion.php'; ?>">Documentación</a></li>
+                                    <li class="sidebar-item"><a class="sidebar-link" href="<?= BASE_URL .'/vistas/ofertas_laborales.php'; ?>">Ofertas de Trabajo</a></li>
+                                    <li class="sidebar-item"><a class="sidebar-link" href="<?= BASE_URL .'/vistas/contrataciones.php'; ?>">Contratación</a></li>
+                                    <li class="sidebar-item"><a class="sidebar-link" href="<?= BASE_URL .'/vistas/contratos_laborales.php'; ?>">Contratos Laborales</a></li>
+                                    <li class="sidebar-item"><a class="sidebar-link" href="<?= BASE_URL .'/vistas/procesos_inducciones.php'; ?>">Proceso de Inducción</a></li>
+                                    <li class="sidebar-item"><a class="sidebar-link" href="<?= BASE_URL .'/vistas/aprobaciones.php'; ?>">Aprobaciones</a></li>
+                                    <li class="sidebar-item"><a class="sidebar-link" href="<?= BASE_URL .'/vistas/firmas_electronicas.php'; ?>">Firma Electrónica</a></li>
                                 </ul>
                             </li>
-                            <li class="sidebar-item"><a class="sidebar-link" href="pages-clients.html">Contratación</a></li>
-                            <li class="sidebar-item"><a class="sidebar-link" href="pages-orders.html">Empleados</a></li>
+                            <li class="sidebar-item"><a class="sidebar-link" href="<?= BASE_URL .'/vistas/contrataciones.php'; ?>">Contratación</a></li>
+                            <li class="sidebar-item"><a class="sidebar-link" href="<?= BASE_URL .'/vistas/empleados.php'; ?>">Empleados</a></li>
                         </ul>
                     </li>
                      <?php  } ?>

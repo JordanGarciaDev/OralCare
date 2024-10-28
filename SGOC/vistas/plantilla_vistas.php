@@ -1,6 +1,6 @@
 <?php
 include('../app/config.php');
-$titulo = "PEL TITULO AQUI"; // Título específico para esta vista
+$titulo = "PEL TITULO AQUI"; // Título específico para crear las vistas
 include(LAYOUT.'/header.php');
 ?>
 <div class="wrapper">

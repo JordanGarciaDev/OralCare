@@ -6,7 +6,7 @@ $action = isset($_GET['action']) ? $_GET['action'] : '';
 
 // Obtener todos los entrevistas
 if ($action == 'fetch') {
-    $query = "SELECT * FROM entrevistas";
+    $query = "SELECT *, e.id AS idEntrevista FROM entrevistas e INNER JOIN empleados em ON e.empleado_id = em.id";
     $result = $conn->query($query);
     $data = array();
 

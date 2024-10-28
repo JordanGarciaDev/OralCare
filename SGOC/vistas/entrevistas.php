@@ -148,14 +148,14 @@ include(LAYOUT.'/header.php');
         var table = $('#datosTabla').DataTable({
             "ajax": "<?= API ?>entrevistas.php?action=fetch",
             "columns": [
-                { "data": "id" },
-                { "data": "nombre" },
+                { "data": "idEntrevista" },
+                { "data": "nombre_completo" },
                 {
                     "data": null,
                     "render": function (data, type, row) {
                         return `
-                        <button class="btn btn-sm btn-warning edit" data-id="` + data.id + `"><i class="align-middle me-2 fas fa-fw fa-edit"></i>Editar</button>
-                        <button class="btn btn-sm btn-danger delete" data-id="` + data.id + `"><i class="align-middle me-2 fas fa-fw fa-trash-alt"></i>Eliminar</button>
+                        <button class="btn btn-sm btn-warning edit" data-id="` + data.idEntrevista + `"><i class="align-middle me-2 fas fa-fw fa-edit"></i>Editar</button>
+                        <button class="btn btn-sm btn-danger delete" data-id="` + data.idEntrevista + `"><i class="align-middle me-2 fas fa-fw fa-trash-alt"></i>Eliminar</button>
                     `;
                     }
                 }

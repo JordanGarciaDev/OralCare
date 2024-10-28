@@ -10,202 +10,224 @@ include(LAYOUT . '/header.php');
         <?php include(LAYOUT . '/navbar.php');?>
 
         <main class="content">
-            <div class="container-fluid p-0">
-                <div class="mb-3">
-                    <h1 class="h3 d-inline align-middle"><i class="align-middle me-2 fas fa-fw fa-users"></i>Gestión de Empleados</h1>
-                    <button class="btn btn-primary float-end" id="addNuevo" data-bs-toggle="modal" data-bs-target="#modalEmpleado"><i class="align-middle me-2 fas fa-fw fa-plus"></i>Agregar Nuevo</button>
-                </div>
-
-                <div class="row">
-                    <div class="col-12">
-                        <div class="card">
-                            <div class="card-header">
-                                <h5 class="card-title">Crea/Edita/Elimina Empleados</h5>
+            <div class="tab">
+                <ul class="nav nav-tabs" role="tablist">
+                    <li class="nav-item" role="presentation"><a class="nav-link active" href="#tab-1" data-bs-toggle="tab" role="tab" aria-selected="true">Datos personales</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="#tab-2" data-bs-toggle="tab" role="tab" aria-selected="false" tabindex="-1">Entrevista de trabajo</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="#tab-3" data-bs-toggle="tab" role="tab" aria-selected="false" tabindex="-1">Pruebas Técnicas</a></li>
+                </ul>
+                <div class="tab-content">
+                    <div class="tab-pane active show" id="tab-1" role="tabpanel">
+                        <!--     se agrega div primero de datos personales -->
+                        <div class="container-fluid p-0">
+                            <div class="mb-3">
+                                <h1 class="h3 d-inline align-middle"><i class="align-middle me-2 fas fa-fw fa-users"></i>Gestión de Empleados</h1>
+                                <button class="btn btn-primary float-end" id="addNuevo" data-bs-toggle="modal" data-bs-target="#modalEmpleado"><i class="align-middle me-2 fas fa-fw fa-plus"></i>Agregar Nuevo</button>
                             </div>
-                            <div class="card-body">
-                                <table id="empleadosTable" class="table table-striped" style="width:100%">
-                                    <thead>
-                                    <tr>
-                                        <th>ID</th>
-                                        <th>Nombre Completo</th>
-                                        <th>Tipo Doc</th>
-                                        <th>Número Doc</th>
-                                        <th>Ciudad Residencia</th>
-                                        <th>Cargo</th>
-                                        <th>Acciones</th>
-                                    </tr>
-                                    </thead>
-                                    <tfoot>
-                                    <tr>
-                                        <th>ID</th>
-                                        <th>Nombre Completo</th>
-                                        <th>Tipo Doc</th>
-                                        <th>Número Doc</th>
-                                        <th>Ciudad Residencia</th>
-                                        <th>Cargo</th>
-                                        <th>Acciones</th>
-                                    </tr>
-                                    </tfoot>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </div>
 
-                <!-- Modal para agregar/editar -->
-                <div class="modal fade" id="modalEmpleado" tabindex="-1" aria-labelledby="modalEmpleadoLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-lg">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="modalEmpleadoLabel">Datos del Empleado</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                <div class="card">
-                                    <div class="card-header">
-                                        <h5 class="card-title">Datos Básicos</h5>
-                                        <h6 class="card-subtitle text-muted">Escriba aquí los datos personales del empleado</h6>
-                                    </div>
-                                    <div class="card-body">
-                                        <form id="empleadoForm">
-                                            <input type="hidden" id="empleadoId" name="id" value="">
-                                            <div class="row">
-                                                <div class="mb-3 col-md-4">
-                                                    <label class="form-label" for="nombre_completo">Nombre Completo</label>
-                                                    <input type="text" class="form-control" id="nombre_completo" name="nombre_completo" required placeholder="Escriba el nombre completo del empleado">
-                                                </div>
-                                                <div class="mb-3 col-md-4">
-                                                    <label class="form-label" for="tipo_doc">Tipo de Documento</label>
-                                                    <select class="form-select" id="tipo_doc" name="tipo_doc" required>
-                                                        <option value="">Seleccione</option>
-                                                    </select>
-                                                </div>
-                                                <div class="mb-3 col-md-4">
-                                                    <label class="form-label" for="num_doc">Número de Documento</label>
-                                                    <input type="text" class="form-control" id="num_doc" name="num_doc" required placeholder="Escriba el número de documento">
-                                                </div>
-
-                                                <div class="mb-3 col-md-4">
-                                                    <label class="form-label" for="lug_exp">Lugar de Expedición</label>
-                                                    <select class="form-select" id="lug_exp" name="lug_exp" required>
-                                                        <option value="">Seleccione</option>
-                                                        <!-- Opciones se llenan desde la base de datos -->
-                                                    </select>
-                                                </div>
-                                                <div class="mb-3 col-md-4">
-                                                    <label class="form-label" for="fec_nacimiento">Fecha de Nacimiento</label>
-                                                    <input type="date" class="form-control" id="fec_nacimiento" name="fec_nacimiento" required>
-                                                </div>
-                                                <div class="mb-3 col-md-4">
-                                                    <label class="form-label" for="nacionalidad">Nacionalidad</label>
-                                                    <select class="form-select" id="nacionalidad" name="nacionalidad" required>
-                                                        <option value="">Seleccione</option>
-                                                        <option value="CO">Colombiano</option>
-                                                        <option value="EX">Extranjero</option>
-                                                    </select>
-                                                </div>
-
-                                                <div class="mb-3 col-md-4">
-                                                    <label class="form-label" for="sexo">Sexo</label>
-                                                    <select class="form-select" id="sexo" name="sexo" required>
-                                                        <option value="">Seleccione</option>
-                                                        <option value="M">Masculino</option>
-                                                        <option value="F">Femenino</option>
-                                                    </select>
-                                                </div>
-                                                <div class="mb-3 col-md-4">
-                                                    <label class="form-label" for="estado_civil">Estado Civil</label>
-                                                    <select class="form-select" id="estado_civil" name="estado_civil" required>
-                                                        <option value="">Seleccione</option>
-                                                    </select>
-                                                </div>
-                                                <div class="mb-3 col-md-4">
-                                                    <label class="form-label" for="dir_residencia">Dirección de Residencia</label>
-                                                    <input type="text" class="form-control" id="dir_residencia" name="dir_residencia" required placeholder="Escriba la dirección">
-                                                </div>
-
-                                                <div class="mb-3 col-md-4">
-                                                    <label class="form-label" for="barrio_residencia">Barrio de Residencia</label>
-                                                    <input type="text" class="form-control" id="barrio_residencia" name="barrio_residencia" required placeholder="Escriba el barrio">
-                                                </div>
-                                                <div class="mb-3 col-md-4">
-                                                    <label class="form-label" for="ciudad_residencia">Ciudad de Residencia</label>
-                                                    <select class="form-select" id="ciudad_residencia" name="ciudad_residencia" required>
-                                                        <option value="">Seleccione</option>
-                                                        <!-- Opciones se llenan desde la base de datos -->
-                                                    </select>
-                                                </div>
-
-                                                <div class="mb-3 col-md-4">
-                                                    <label class="form-label" for="tel_movil">Teléfono Móvil</label>
-                                                    <input type="text" class="form-control" id="tel_movil" name="tel_movil" required placeholder="Escriba el teléfono móvil">
-                                                </div>
-                                                <div class="mb-3 col-md-4">
-                                                    <label class="form-label" for="email_personal">Email Personal</label>
-                                                    <input type="email" class="form-control" id="email_personal" name="email_personal" required placeholder="Escriba el email personal">
-                                                </div>
-                                                <div class="mb-3 col-md-4">
-                                                    <label class="form-label" for="email_empresarial">Email Empresarial</label>
-                                                    <input type="email" class="form-control" id="email_empresarial" name="email_empresarial" placeholder="Escriba el email empresarial">
-                                                </div>
-
-                                                <div class="mb-3 col-md-4">
-                                                    <label class="form-label" for="cargo_id">Cargo</label>
-                                                    <select class="form-select" id="cargo_id" name="cargo_id" required>
-                                                        <option value="">Seleccione</option>
-                                                        <!-- Opciones se llenan desde la base de datos -->
-                                                    </select>
-                                                </div>
-                                                <div class="mb-3 col-md-4">
-                                                    <label class="form-label" for="salario">Salario</label>
-                                                    <input type="number" class="form-control" id="salario" name="salario" required placeholder="Escriba el salario">
-                                                </div>
-                                                <div class="mb-3 col-md-4">
-                                                    <label class="form-label" for="fingreso">Fecha de Ingreso</label>
-                                                    <input type="date" class="form-control" id="fingreso" name="fingreso" required>
-                                                </div>
-                                                <div class="mb-3 col-md-4">
-                                                    <label class="form-label" for="fretiro">Fecha de Retiro</label>
-                                                    <input type="date" class="form-control" id="fretiro" name="fretiro">
-                                                </div>
-                                                <div class="mb-3 col-md-4">
-                                                    <label class="form-label" for="tipo_de_sangre">Tipo de Sangre</label>
-                                                    <select class="form-select" id="tipo_de_sangre" name="tipo_de_sangre" required="">
-                                                        <option value="">Seleccione</option>
-                                                        <option value="A+">A+</option>
-                                                        <option value="A-">A-</option>
-                                                        <option value="B+">B+</option>
-                                                        <option value="B-">B-</option>
-                                                        <option value="AB+">AB+</option>
-                                                        <option value="AB-">AB-</option>
-                                                        <option value="O+">O+</option>
-                                                        <option value="O-">O-</option>
-                                                    </select>
-
-                                                </div>
-                                                <div class="mb-3 col-md-4">
-                                                    <label class="form-label" for="estado">Estado</label>
-                                                    <select class="form-select" id="estado" name="estado" required>
-                                                        <option value="">Seleccione</option>
-                                                        <option value="postulado">Postulado</option>
-                                                        <option value="activo">Activo</option>
-                                                        <option value="retirado">Retirado</option>
-                                                        <option value="en_proceso">En Proceso</option>
-                                                    </select>
-                                                </div>
-                                                <div class="mb-3 col-md-12">
-                                                    <button type="submit" class="btn btn-primary">Guardar</button>
-                                                </div>
-                                            </div>
-                                        </form>
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <h5 class="card-title">Crea/Edita/Elimina Empleados</h5>
+                                        </div>
+                                        <div class="card-body">
+                                            <table id="empleadosTable" class="table table-striped" style="width:100%">
+                                                <thead>
+                                                <tr>
+                                                    <th>ID</th>
+                                                    <th>Nombre Completo</th>
+                                                    <th>Tipo Doc</th>
+                                                    <th>Número Doc</th>
+                                                    <th>Ciudad Residencia</th>
+                                                    <th>Cargo</th>
+                                                    <th>Acciones</th>
+                                                </tr>
+                                                </thead>
+                                                <tfoot>
+                                                <tr>
+                                                    <th>ID</th>
+                                                    <th>Nombre Completo</th>
+                                                    <th>Tipo Doc</th>
+                                                    <th>Número Doc</th>
+                                                    <th>Ciudad Residencia</th>
+                                                    <th>Cargo</th>
+                                                    <th>Acciones</th>
+                                                </tr>
+                                                </tfoot>
+                                            </table>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
+
+                            <!-- Modal para agregar/editar -->
+                            <div class="modal fade" id="modalEmpleado" tabindex="-1" aria-labelledby="modalEmpleadoLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-lg">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="modalEmpleadoLabel">Datos del Empleado</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="card">
+                                                <div class="card-header">
+                                                    <h5 class="card-title">Datos Básicos</h5>
+                                                    <h6 class="card-subtitle text-muted">Escriba aquí los datos personales del empleado</h6>
+                                                </div>
+                                                <div class="card-body">
+                                                    <form id="empleadoForm">
+                                                        <input type="hidden" id="empleadoId" name="id" value="">
+                                                        <div class="row">
+                                                            <div class="mb-3 col-md-4">
+                                                                <label class="form-label" for="nombre_completo">Nombre Completo</label>
+                                                                <input type="text" class="form-control" id="nombre_completo" name="nombre_completo" required placeholder="Escriba el nombre completo del empleado">
+                                                            </div>
+                                                            <div class="mb-3 col-md-4">
+                                                                <label class="form-label" for="tipo_doc">Tipo de Documento</label>
+                                                                <select class="form-select" id="tipo_doc" name="tipo_doc" required>
+                                                                    <option value="">Seleccione</option>
+                                                                </select>
+                                                            </div>
+                                                            <div class="mb-3 col-md-4">
+                                                                <label class="form-label" for="num_doc">Número de Documento</label>
+                                                                <input type="text" class="form-control" id="num_doc" name="num_doc" required placeholder="Escriba el número de documento">
+                                                            </div>
+
+                                                            <div class="mb-3 col-md-4">
+                                                                <label class="form-label" for="lug_exp">Lugar de Expedición</label>
+                                                                <select class="form-select" id="lug_exp" name="lug_exp" required>
+                                                                    <option value="">Seleccione</option>
+                                                                    <!-- Opciones se llenan desde la base de datos -->
+                                                                </select>
+                                                            </div>
+                                                            <div class="mb-3 col-md-4">
+                                                                <label class="form-label" for="fec_nacimiento">Fecha de Nacimiento</label>
+                                                                <input type="date" class="form-control" id="fec_nacimiento" name="fec_nacimiento" required>
+                                                            </div>
+                                                            <div class="mb-3 col-md-4">
+                                                                <label class="form-label" for="nacionalidad">Nacionalidad</label>
+                                                                <select class="form-select" id="nacionalidad" name="nacionalidad" required>
+                                                                    <option value="">Seleccione</option>
+                                                                    <option value="CO">Colombiano</option>
+                                                                    <option value="EX">Extranjero</option>
+                                                                </select>
+                                                            </div>
+
+                                                            <div class="mb-3 col-md-4">
+                                                                <label class="form-label" for="sexo">Sexo</label>
+                                                                <select class="form-select" id="sexo" name="sexo" required>
+                                                                    <option value="">Seleccione</option>
+                                                                    <option value="M">Masculino</option>
+                                                                    <option value="F">Femenino</option>
+                                                                </select>
+                                                            </div>
+                                                            <div class="mb-3 col-md-4">
+                                                                <label class="form-label" for="estado_civil">Estado Civil</label>
+                                                                <select class="form-select" id="estado_civil" name="estado_civil" required>
+                                                                    <option value="">Seleccione</option>
+                                                                </select>
+                                                            </div>
+                                                            <div class="mb-3 col-md-4">
+                                                                <label class="form-label" for="dir_residencia">Dirección de Residencia</label>
+                                                                <input type="text" class="form-control" id="dir_residencia" name="dir_residencia" required placeholder="Escriba la dirección">
+                                                            </div>
+
+                                                            <div class="mb-3 col-md-4">
+                                                                <label class="form-label" for="barrio_residencia">Barrio de Residencia</label>
+                                                                <input type="text" class="form-control" id="barrio_residencia" name="barrio_residencia" required placeholder="Escriba el barrio">
+                                                            </div>
+                                                            <div class="mb-3 col-md-4">
+                                                                <label class="form-label" for="ciudad_residencia">Ciudad de Residencia</label>
+                                                                <select class="form-select" id="ciudad_residencia" name="ciudad_residencia" required>
+                                                                    <option value="">Seleccione</option>
+                                                                    <!-- Opciones se llenan desde la base de datos -->
+                                                                </select>
+                                                            </div>
+
+                                                            <div class="mb-3 col-md-4">
+                                                                <label class="form-label" for="tel_movil">Teléfono Móvil</label>
+                                                                <input type="text" class="form-control" id="tel_movil" name="tel_movil" required placeholder="Escriba el teléfono móvil">
+                                                            </div>
+                                                            <div class="mb-3 col-md-4">
+                                                                <label class="form-label" for="email_personal">Email Personal</label>
+                                                                <input type="email" class="form-control" id="email_personal" name="email_personal" required placeholder="Escriba el email personal">
+                                                            </div>
+                                                            <div class="mb-3 col-md-4">
+                                                                <label class="form-label" for="email_empresarial">Email Empresarial</label>
+                                                                <input type="email" class="form-control" id="email_empresarial" name="email_empresarial" placeholder="Escriba el email empresarial">
+                                                            </div>
+
+                                                            <div class="mb-3 col-md-4">
+                                                                <label class="form-label" for="cargo_id">Cargo</label>
+                                                                <select class="form-select" id="cargo_id" name="cargo_id" required>
+                                                                    <option value="">Seleccione</option>
+                                                                    <!-- Opciones se llenan desde la base de datos -->
+                                                                </select>
+                                                            </div>
+                                                            <div class="mb-3 col-md-4">
+                                                                <label class="form-label" for="salario">Salario</label>
+                                                                <input type="number" class="form-control" id="salario" name="salario" required placeholder="Escriba el salario">
+                                                            </div>
+                                                            <div class="mb-3 col-md-4">
+                                                                <label class="form-label" for="fingreso">Fecha de Ingreso</label>
+                                                                <input type="date" class="form-control" id="fingreso" name="fingreso" required>
+                                                            </div>
+                                                            <div class="mb-3 col-md-4">
+                                                                <label class="form-label" for="fretiro">Fecha de Retiro</label>
+                                                                <input type="date" class="form-control" id="fretiro" name="fretiro">
+                                                            </div>
+                                                            <div class="mb-3 col-md-4">
+                                                                <label class="form-label" for="tipo_de_sangre">Tipo de Sangre</label>
+                                                                <select class="form-select" id="tipo_de_sangre" name="tipo_de_sangre" required="">
+                                                                    <option value="">Seleccione</option>
+                                                                    <option value="A+">A+</option>
+                                                                    <option value="A-">A-</option>
+                                                                    <option value="B+">B+</option>
+                                                                    <option value="B-">B-</option>
+                                                                    <option value="AB+">AB+</option>
+                                                                    <option value="AB-">AB-</option>
+                                                                    <option value="O+">O+</option>
+                                                                    <option value="O-">O-</option>
+                                                                </select>
+
+                                                            </div>
+                                                            <div class="mb-3 col-md-4">
+                                                                <label class="form-label" for="estado">Estado</label>
+                                                                <select class="form-select" id="estado" name="estado" required>
+                                                                    <option value="">Seleccione</option>
+                                                                    <option value="postulado">Postulado</option>
+                                                                    <option value="activo">Activo</option>
+                                                                    <option value="retirado">Retirado</option>
+                                                                    <option value="en_proceso">En Proceso</option>
+                                                                </select>
+                                                            </div>
+                                                            <div class="mb-3 col-md-12">
+                                                                <button type="submit" class="btn btn-primary">Guardar</button>
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
                         </div>
+                        <!--     fin div primero de datos personales -->
+                    </div>
+                    <div class="tab-pane" id="tab-2" role="tabpanel">
+                        <p>SEGUNDO DIV</p>
+
+                    </div>
+                    <div class="tab-pane" id="tab-3" role="tabpanel">
+                        <p>SEGUNDO DIV</p>
+
                     </div>
                 </div>
-
             </div>
+
         </main>
     </div>
 </div>

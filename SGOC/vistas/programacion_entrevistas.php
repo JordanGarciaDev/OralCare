@@ -20,7 +20,7 @@ include(LAYOUT.'/header.php');
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
-                                <h5 class="card-title">Crea/Edita/Elimina las Entrevistas</h5>
+                                <h5 class="card-title">Crea/Edita/Elimina las Programaciones de Entrevistas</h5>
                             </div>
                             <div class="card-body">
                                 <table id="datosTabla" class="table table-striped" style="width:100%">

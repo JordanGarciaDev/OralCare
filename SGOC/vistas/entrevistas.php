@@ -57,7 +57,16 @@ include(LAYOUT.'/header.php');
                             <div class="modal-body">
                                 <form id="formDatosCrud">
                                     <input type="hidden" id="id" name="id">
-                                    <div class="mb-3 col-md-12">
+                                    <div class="mb-3">
+                                        <label for="emp_id" class="form-label">Empleados</label>
+                                        <select class="form-select" id="emp_id" name="emp_id" required="">
+                                            <option value="">Seleccione un empleado</option>
+                                        </select>
+                                    </div>
+									<span id="tpregunta"></span>
+                                    <span id="pregunta"></span>
+                                   
+								   <div class="mb-3 col-md-12">
                                         <div id="preguntasContainer">
                                             <!-- Las preguntas se llenarán aquí -->
                                         </div>
@@ -81,34 +90,60 @@ include(LAYOUT.'/header.php');
 <script>
     $(document).ready(function() {
 
-        function llenarSelects(tipoPreguntaID = '') {
-            // Llenar select de tipo de pregunta
-            $.ajax({
-                url: '<?= API ?>entrevistas.php?action=questions',
-                type: 'GET',
-                dataType: 'json',
-                success: function(data) {
-                    var selectTipoPregunta = $('#tpregunta');
-                    selectTipoPregunta.empty();
-                    selectTipoPregunta.append('<option value="">Seleccione el tipo de pregunta</option>');
+	function llenarSelects(tipoPreguntaID = '') {
+		// Llenar el select de empleados
+    $.ajax({
+        url: '<?= API ?>entrevistas.php?action=empleados',
+        type: 'GET',
+        dataType: 'json',
+        success: function(data) {
+            var empleadoSelect = $('#emp_id');
+            empleadoSelect.empty(); // Limpiar opciones previas
 
-                    // Llenar opciones del select con los datos de la API
-                    $.each(data.data, function(index, item) {
-                        selectTipoPregunta.append('<option value="' + item.idPreg + '">' + item.tipo + '</option>');
-                    });
+            // Agregar la opción por defecto
+            empleadoSelect.append('<option value="">Seleccione un empleado</option>');
 
-                    // Seleccionar la opción si se pasa un ID
-                    if (tipoPreguntaID) {
-                        selectTipoPregunta.val(tipoPreguntaID);
-                    }
-                },
-                error: function() {
-                    console.error("Error al cargar los datos de tipo de pregunta.");
-                }
+            // Llenar el select con los datos de empleados de la API
+            $.each(data.data, function(index, empleado) {
+                empleadoSelect.append('<option value="' + empleado.id + '">' + empleado.nombre_completo + '</option>');
             });
+        },
+        error: function() {
+            console.error("Error al cargar los empleados.");
         }
+    });
+    // Llenar las preguntas y respuestas
+    $.ajax({
+        url: '<?= API ?>entrevistas.php?action=questions',
+        type: 'GET',
+        dataType: 'json',
+        success: function(data) {
+            var preguntasContainer = $('#preguntasContainer');
+            preguntasContainer.empty();
 
-        llenarSelects();
+            // Llenar con los datos de la API
+            $.each(data.data, function(index, item) {
+                // Crear el encabezado para el tipo de pregunta
+                var tipoPreguntaInput = '<h5>' + item.tipo + '</h5>';
+
+                // Mostrar la pregunta como texto y agregar un input oculto para enviarla al servidor
+                var preguntaTexto = '<div class="mb-2"><h4>' + item.pregunta + '</h4></div>';
+                var preguntaInputHidden = '<input type="hidden" id="pregunta' + item.idPreg + '" name="pregunta' + item.idPreg + '" value="' + item.pregunta + '">';
+
+                // Crear el textarea para la respuesta a la pregunta
+                var preguntaTextarea = '<textarea class="form-control mb-3" id="respuesta' + item.idPreg + '" name="respuesta' + item.idPreg + '" rows="3" placeholder="Escribe la respuesta aquí"></textarea>';
+
+                // Agregar los elementos al contenedor
+                preguntasContainer.append(tipoPreguntaInput + preguntaTexto + preguntaInputHidden + preguntaTextarea);
+            });
+        },
+        error: function() {
+            console.error("Error al cargar los datos de tipo de pregunta.");
+        }
+    });
+}
+        
+		llenarSelects();
 
         var table = $('#datosTabla').DataTable({
             "ajax": "<?= API ?>entrevistas.php?action=fetch",

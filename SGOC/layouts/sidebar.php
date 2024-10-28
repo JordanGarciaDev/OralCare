@@ -72,7 +72,7 @@ session_start();
                                 </a>
                                 <ul id="precontratacion" class="sidebar-dropdown list-unstyled collapse">
                                     <li class="sidebar-item"><a class="sidebar-link" href="<?= BASE_URL .'/vistas/empleados.php'; ?>">Datos Del Aspirante</a></li>
-                                    <li class="sidebar-item"><a class="sidebar-link" href="<?= BASE_URL .'/vistas/entrevistas.php'; ?>">Entrevista</a></li>
+                                    <li class="sidebar-item"><a class="sidebar-link" href="<?= BASE_URL .'/vistas/entrevistas.php'; ?>">Entrevistas</a></li>
                                     <li class="sidebar-item"><a class="sidebar-link" href="<?= BASE_URL .'/vistas/pruebas_tecnicas.php'; ?>">Pruebas Técnicas</a></li>
                                     <li class="sidebar-item"><a class="sidebar-link" href="<?= BASE_URL .'/vistas/pruebas_tecnicas.php'; ?>">Pruebas Psicométrica</a></li>
                                     <li class="sidebar-item"><a class="sidebar-link" href="<?= BASE_URL .'/vistas/evaluaciones.php'; ?>">Evaluaciones</a></li>

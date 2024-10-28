@@ -171,6 +171,21 @@ CREATE TABLE `empleados` (
 
 insert  into `empleados`(`id`,`nombre_completo`,`tipo_doc`,`num_doc`,`lug_exp`,`fec_nacimiento`,`nacionalidad`,`sexo`,`estado_civil`,`dir_residencia`,`barrio_residencia`,`ciudad_residencia`,`tel_movil`,`email_personal`,`email_empresarial`,`cargo_id`,`salario`,`fingreso`,`fretiro`,`tipo_de_sangre`,`estado`) values (5,'Jaime Borja Altamar',8,'12345',88,'0000-00-00','CO','M',1,'CL 123','LAS DELICIAS',88,3045937472,'ing.jordangarcia@gmail.com',NULL,15,NULL,NULL,NULL,'O+','activo');
 
+/*Table structure for table `entrevistas` */
+
+CREATE TABLE `entrevistas` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `empleado_id` int(11) NOT NULL,
+  `pregunta_id` int(11) NOT NULL,
+  `respuesta` text NOT NULL,
+  `fechareg` timestamp NOT NULL DEFAULT current_timestamp(),
+  PRIMARY KEY (`id`),
+  KEY `pregunta_id` (`pregunta_id`),
+  CONSTRAINT `entrevistas_ibfk_1` FOREIGN KEY (`pregunta_id`) REFERENCES `preguntas_entrevistas` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+/*Data for the table `entrevistas` */
+
 /*Table structure for table `estados_civiles` */
 
 CREATE TABLE `estados_civiles` (

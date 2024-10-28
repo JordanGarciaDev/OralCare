@@ -21,19 +21,21 @@ if ($action == 'fetch') {
 if ($action == 'save') {
     $id = isset($_POST['id']) ? $_POST['id'] : '';
     $pregunta = $_POST['pregunta'];
+    $respuesta = $_POST['respuesta'];
+    $empleado_id = $_POST['empleado_id'];
 
     if ($id == '') {
         // Crear nuevo
-        $query = "INSERT INTO entrevistas (pregunta) VALUES (?)";
+        $query = "INSERT INTO entrevistas (empleado_id,pregunta_id,respuesta) VALUES (?,?,?)";
         $stmt = $conn->prepare($query);
-        $stmt->bind_param('s', $pregunta);
+        $stmt->bind_param('iis', $empleado_id,$pregunta,$respuesta);
         $stmt->execute();
         $stmt->close();
     } else {
         // Actualizar existente
-        $query = "UPDATE entrevistas SET pregunta = ? WHERE id = ?";
+        $query = "UPDATE entrevistas SET pregunta_id = ?, respuesta = ? WHERE id = ?";
         $stmt = $conn->prepare($query);
-        $stmt->bind_param('si', $pregunta, $id);
+        $stmt->bind_param('isi', $pregunta, $respuesta, $id);
         $stmt->execute();
         $stmt->close();
     }
@@ -68,6 +70,18 @@ if ($action == 'delete') {
 // Preguntas
 if ($action == 'questions') {
     $query = "SELECT p.id AS idPreg, p.pregunta, tp.nombre as tipo FROM preguntas_entrevistas p INNER JOIN tipos_preguntas tp ON p.tpregunta = tp.id";
+    $result = $conn->query($query);
+    $data = array();
+
+    while ($row = $result->fetch_assoc()) {
+        $data[] = $row;
+    }
+
+    echo json_encode(array('status' => 'success', 'data' => $data));
+}
+// Empleados
+if ($action == 'empleados') {
+    $query = "SELECT * FROM empleados";
     $result = $conn->query($query);
     $data = array();
 

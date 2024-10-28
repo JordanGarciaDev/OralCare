@@ -1,6 +1,6 @@
 <?php
 include('../app/config.php');
-$titulo = "Pruebas Técnicas"; // Título específico para esta vista
+$titulo = "Programación de Entrevistas"; // Título específico para esta vista
 include(LAYOUT.'/header.php');
 ?>
 <div class="wrapper">
@@ -20,7 +20,7 @@ include(LAYOUT.'/header.php');
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
-                                <h5 class="card-title">Crea/Edita/Elimina las Prueba Técnica</h5>
+                                <h5 class="card-title">Crea/Edita/Elimina las Entrevistas</h5>
                             </div>
                             <div class="card-body">
                                 <table id="datosTabla" class="table table-striped" style="width:100%">
@@ -28,7 +28,7 @@ include(LAYOUT.'/header.php');
                                     <tr>
                                         <th>ID</th>
                                         <th>Nombre del empleado</th>
-                                        <th>Resultado</th>
+                                        <th>Fecha</th>
                                         <th>Acciones</th>
                                     </tr>
                                     </thead>
@@ -36,7 +36,7 @@ include(LAYOUT.'/header.php');
                                     <tr>
                                         <th>ID</th>
                                         <th>Nombre del empleado</th>
-                                        <th>Resultado</th>
+                                        <th>Fecha</th>
                                         <th>Acciones</th>
                                     </tr>
                                     </tfoot>
@@ -51,19 +51,27 @@ include(LAYOUT.'/header.php');
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="modalLabel"><i class="align-middle me-2 far fa-fw fa-folder"></i>Nueva Prueba</h5>
+                                <h5 class="modal-title" id="modalLabel"><i class="align-middle me-2 far fa-fw fa-folder"></i>Nueva Entrevista</h5>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
                                 <form id="formDatosCrud">
                                     <input type="hidden" id="id" name="id">
                                     <div class="mb-3">
-                                        <label for="nombre" class="form-label">Nombre del Entrevistado(a)</label>
-                                        <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Escriba el nombre del entrevistado(a)" required>
+                                        <label for="emp_id" class="form-label">Empleados</label>
+                                        <select class="form-select" id="emp_id" name="emp_id" required="">
+                                            <option value="">Seleccione un empleado</option>
+                                        </select>
                                     </div>
-                                        <h3>Preguntas de Prueba</h3>
-                                        <div id="preguntasContainer">
-                                        </div>
+                                    <div class="form-group">
+                                        <label for="fechaEntrevista">Fecha</label>
+                                        <input type="date" class="form-control" id="fechaEntrevista" name="fecha" required="">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="horaEntrevista">Hora</label>
+                                        <input type="time" class="form-control" id="horaEntrevista" name="hora" required="">
+                                    </div>
+
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><i class="align-middle me-2 fas fa-fw fa-minus"></i>Cancelar</button>
                                         <button type="submit" class="btn btn-primary"><i class="align-middle me-2 fas fa-fw fa-save"></i>Guardar</button>
@@ -81,17 +89,44 @@ include(LAYOUT.'/header.php');
 
 <script>
     $(document).ready(function() {
+
+	function llenarSelects(tipoPreguntaID = '') {
+		// Llenar el select de empleados
+    $.ajax({
+        url: '<?= API ?>programacion_entrevistas.php?action=empleados',
+        type: 'GET',
+        dataType: 'json',
+        success: function(data) {
+            var empleadoSelect = $('#emp_id');
+            empleadoSelect.empty(); // Limpiar opciones previas
+
+            // Agregar la opción por defecto
+            empleadoSelect.append('<option value="">Seleccione un empleado</option>');
+
+            // Llenar el select con los datos de empleados de la API
+            $.each(data.data, function(index, empleado) {
+                empleadoSelect.append('<option value="' + empleado.id + '">' + empleado.nombre_completo + '</option>');
+            });
+        },
+        error: function() {
+            console.error("Error al cargar los empleados.");
+        }
+    });
+
+		llenarSelects();
+
         var table = $('#datosTabla').DataTable({
-            "ajax": "<?= API ?>prueba_tecnica.php?action=fetch",
+            "ajax": "<?= API ?>programacion_entrevistas.php?action=fetch",
             "columns": [
-                { "data": "id" },
-                { "data": "nombre" },
+                { "data": "idEntrevista" },
+                { "data": "nombre_completo" },
+                { "data": "fechapro" },
                 {
                     "data": null,
                     "render": function (data, type, row) {
                         return `
-                        <button class="btn btn-sm btn-warning edit" data-id="` + data.id + `"><i class="align-middle me-2 fas fa-fw fa-edit"></i>Editar</button>
-                        <button class="btn btn-sm btn-danger delete" data-id="` + data.id + `"><i class="align-middle me-2 fas fa-fw fa-trash-alt"></i>Eliminar</button>
+                        <button class="btn btn-sm btn-warning edit" data-id="` + data.idEntrevista + `"><i class="align-middle me-2 fas fa-fw fa-edit"></i>Editar</button>
+                        <button class="btn btn-sm btn-danger delete" data-id="` + data.idEntrevista + `"><i class="align-middle me-2 fas fa-fw fa-trash-alt"></i>Eliminar</button>
                     `;
                     }
                 }
@@ -107,7 +142,7 @@ include(LAYOUT.'/header.php');
             var formData = $(this).serialize();
 
             $.ajax({
-                url: '<?= API ?>prueba_tecnica.php?action=save',
+                url: '<?= API ?>programacion_entrevistas.php?action=save',
                 type: 'POST',
                 data: formData,
                 success: function(response) {
@@ -118,18 +153,18 @@ include(LAYOUT.'/header.php');
         });
 
         $('#addNuevo').on('click', function() {
-            $('#modalLabel').text('Nueva Prueba');
+            $('#modalLabel').text('Nueva Entrevista');
             $('#formDatosCrud')[0].reset();
             $('#id').val('');
         });
 
         // Editar
         $('#datosTabla tbody').on('click', '.edit', function() {
-            $('#modalLabel').text('Editar Prueba');
+            $('#modalLabel').text('Editar Entrevista');
             var id = $(this).data('id');
 
             $.ajax({
-                url: '<?= API ?>prueba_tecnica.php?action=edit&id=' + id,
+                url: '<?= API ?>programacion_entrevistas.php?action=edit&id=' + id,
                 type: 'GET',
                 dataType: 'json',
                 success: function(entrevista) {
@@ -146,11 +181,11 @@ include(LAYOUT.'/header.php');
 
         // Eliminar
         $('#datosTabla tbody').on('click', '.delete', function() {
-            if (confirm('¿Estás seguro de eliminar esta prueba tecnica?')) {
+            if (confirm('¿Estás seguro de eliminar este entrevista?')) {
                 var id = $(this).data('id');
 
                 $.ajax({
-                    url: '<?= API ?>prueba_tecnica.php?action=delete&id=' + id,
+                    url: '<?= API ?>programacion_entrevistas.php?action=delete&id=' + id,
                     type: 'GET',
                     success: function(response) {
                         table.ajax.reload();

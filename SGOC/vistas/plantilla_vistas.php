@@ -12,7 +12,7 @@ include(LAYOUT.'/header.php');
         <main class="content">
             <div class="container-fluid p-0">
                 <div class="mb-3">
-                    <h1 class="h3 d-inline align-middle"><i class="align-middle me-2 fas fa-fw fa-cogs"></i>EL TITULO AQUI</h1>
+                    <h1 class="h3 d-inline align-middle"><i class="align-middle me-2 fas fa-fw fa-cogs"></i><?=$titulo;?></h1>
                     <button class="btn btn-primary float-end" id="addNuevo" data-bs-toggle="modal" data-bs-target="#modalCRUD"><i class="align-middle me-2 fas fa-fw fa-plus"></i>Agregar Nuevo</button>
                 </div>
 

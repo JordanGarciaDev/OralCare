@@ -1,6 +1,8 @@
 <?php
-	include('../app/config.php');
-	include(LAYOUT.'/header.php');
+include('../app/config.php');
+include(LAYOUT.'/header.php');
+$titulo = "Crear Empleado"; // Título específico para esta vista
+
 ?>
 			<div class="wrapper">
 			<?php include(LAYOUT .'/sidebar.php');?>
@@ -10,7 +12,7 @@
                 <main class="content">
                 <div class="container-fluid p-0">
 
-                    <h1 class="h3 mb-3">Crear Empleado</h1>
+                    <h1 class="h3 mb-3"><?=$titulo;?></h1>
 
                     <div class="row">
                         <div class="col-md-4 col-xl-2">

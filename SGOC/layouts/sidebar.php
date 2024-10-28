@@ -85,6 +85,7 @@ session_start();
                                     <li class="sidebar-item"><a class="sidebar-link" href="<?= BASE_URL .'/vistas/firmas_electronicas.php'; ?>">Firma Electrónica</a></li>
                                 </ul>
                             </li>
+                            <li class="sidebar-item"><a class="sidebar-link" href="<?= BASE_URL .'/vistas/programacion_entrevistas.php'; ?>">Programar Entrevisra</a></li>
                             <li class="sidebar-item"><a class="sidebar-link" href="<?= BASE_URL .'/vistas/contrataciones.php'; ?>">Contratación</a></li>
                             <li class="sidebar-item"><a class="sidebar-link" href="<?= BASE_URL .'/vistas/empleados.php'; ?>">Empleados</a></li>
                         </ul>

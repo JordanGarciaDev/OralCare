@@ -169,7 +169,7 @@ CREATE TABLE `empleados` (
 
 /*Data for the table `empleados` */
 
-insert  into `empleados`(`id`,`nombre_completo`,`tipo_doc`,`num_doc`,`lug_exp`,`fec_nacimiento`,`nacionalidad`,`sexo`,`estado_civil`,`dir_residencia`,`barrio_residencia`,`ciudad_residencia`,`tel_movil`,`email_personal`,`email_empresarial`,`cargo_id`,`salario`,`fingreso`,`fretiro`,`tipo_de_sangre`,`estado`) values (5,'Jaime Borja Altamar',8,'12345',88,'0000-00-00','CO','M',1,'CL 123','LAS DELICIAS',88,3045937472,'ing.jordangarcia@gmail.com',NULL,15,NULL,NULL,NULL,'O+','activo');
+insert  into `empleados`(`id`,`nombre_completo`,`tipo_doc`,`num_doc`,`lug_exp`,`fec_nacimiento`,`nacionalidad`,`sexo`,`estado_civil`,`dir_residencia`,`barrio_residencia`,`ciudad_residencia`,`tel_movil`,`email_personal`,`email_empresarial`,`cargo_id`,`salario`,`fingreso`,`fretiro`,`tipo_de_sangre`,`estado`) values (1,'Jaime Borja Altamar',8,'12345',88,'0000-00-00','CO','M',1,'CL 123','LAS DELICIAS',88,3045937472,'ing.jordangarcia@gmail.com',NULL,15,NULL,NULL,NULL,'O+','activo');
 
 /*Table structure for table `entrevistas` */
 
@@ -182,9 +182,11 @@ CREATE TABLE `entrevistas` (
   PRIMARY KEY (`id`),
   KEY `pregunta_id` (`pregunta_id`),
   CONSTRAINT `entrevistas_ibfk_1` FOREIGN KEY (`pregunta_id`) REFERENCES `preguntas_entrevistas` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 /*Data for the table `entrevistas` */
+
+insert  into `entrevistas`(`id`,`empleado_id`,`pregunta_id`,`respuesta`,`fechareg`) values (2,1,5,'negro','2024-10-28 09:49:09');
 
 /*Table structure for table `estados_civiles` */
 
@@ -1329,7 +1331,7 @@ CREATE TABLE `preguntas_entrevistas` (
 
 /*Data for the table `preguntas_entrevistas` */
 
-insert  into `preguntas_entrevistas`(`id`,`pregunta`,`tpregunta`) values (5,'aaaaaa',1);
+insert  into `preguntas_entrevistas`(`id`,`pregunta`,`tpregunta`) values (5,'Cuál es tu color favorio?',2);
 
 /*Table structure for table `tipo_contrato` */
 

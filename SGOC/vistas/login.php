@@ -1,16 +1,14 @@
 <?php
-
 session_start();
 include('../app/config.php');
 $titulo = "Iniciar Sesión"; // Título específico para esta vista
 include(LAYOUT . '/header.php');
 
-// Hashear una contraseña para probar en SGOC
+// contraseña probar en SGOC
 $password = "123";
 $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 //echo $hashedPassword;
 
-$_SESSION['user_logged_in']  = false; // Guardar que está logueado
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Obtener datos del formulario
@@ -47,13 +45,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $_SESSION['nomcargo']  = $infoUsuario['nomcargo']; // Guardar el nombre del perfil en la sesión
             $_SESSION['user_logged_in']  = true; // Guardar que está logueado
 
-            header("Location: " . BASE_URL . '/vistas/dashboard.php'); // Redirigir a dashboard
+            header("Location: " . VIEW . '/dashboard.php'); // Redirigir a dashboard
             exit();
         } else {
             $alert = "El usuario o la clave son incorrectos.";
         }
     } else {
         $alert = "No existe ningun usuario con estas credenciales";
+		$_SESSION['user_logged_in']  = false; // Guardar que no está logueado
     }
 
     $stmt->close();

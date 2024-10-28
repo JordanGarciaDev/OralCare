@@ -8,11 +8,11 @@ include('app/config.php');
 // Verifica si el usuario está logueado
 if (!isset($_SESSION['user_logged_in']) || $_SESSION['user_logged_in'] !== true) {
     // Redirige al login si no está logueado
-    header("Location: " . BASE_URL . "/vistas/login.php");
+    header("Location: " . VIEW . "/vistas/login.php");
     exit();
 } else {
     // Si está logueado, redirige al dashboard
-    header("Location: " . BASE_URL . "/dashboard.php");
+    header("Location: " . VIEW . "/dashboard.php");
     exit();
 }
 ?>

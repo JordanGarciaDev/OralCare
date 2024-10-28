@@ -65,11 +65,11 @@ include(LAYOUT.'/header.php');
                                     </div>
                                     <div class="form-group">
                                         <label for="fechaEntrevista">Fecha</label>
-                                        <input type="date" class="form-control" id="fechaEntrevista" name="fecha" required="">
+                                        <input type="date" class="form-control" id="fechaEntrevista" name="fechapro" required="">
                                     </div>
                                     <div class="form-group">
                                         <label for="horaEntrevista">Hora</label>
-                                        <input type="time" class="form-control" id="horaEntrevista" name="hora" required="">
+                                        <input type="time" class="form-control" id="horaEntrevista" name="horapro" required="">
                                     </div>
 
                                     <div class="modal-footer">
@@ -153,14 +153,14 @@ include(LAYOUT.'/header.php');
         });
 
         $('#addNuevo').on('click', function() {
-            $('#modalLabel').text('Nueva Entrevista');
+            $('#modalLabel').text('Nueva Programación de Entrevista');
             $('#formDatosCrud')[0].reset();
             $('#id').val('');
         });
 
         // Editar
         $('#datosTabla tbody').on('click', '.edit', function() {
-            $('#modalLabel').text('Editar Entrevista');
+            $('#modalLabel').text('Editar Programación de Entrevista');
             var id = $(this).data('id');
 
             $.ajax({

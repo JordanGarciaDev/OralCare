@@ -28,14 +28,14 @@ if ($action == 'save') {
         // Crear nuevo
         $query = "INSERT INTO programacion_entrevistas (empleado_id,fechapro,horapro) VALUES (?,?,?)";
         $stmt = $conn->prepare($query);
-        $stmt->bind_param('iis', $empleado_id,$fechapro,$horapro);
+        $stmt->bind_param('iss', $empleado_id,$fechapro,$horapro);
         $stmt->execute();
         $stmt->close();
     } else {
         // Actualizar existente
         $query = "UPDATE programacion_entrevistas SET empleado_id = ?, fechapro = ?, horapro = ? WHERE id = ?";
         $stmt = $conn->prepare($query);
-        $stmt->bind_param('iisi', $empleado_id, $fechapro, $horapro, $id);
+        $stmt->bind_param('issi', $empleado_id, $fechapro, $horapro, $id);
         $stmt->execute();
         $stmt->close();
     }

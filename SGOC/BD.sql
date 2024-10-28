@@ -9,6 +9,7 @@ MySQL - 10.4.32-MariaDB : Database - sgoc
 /*!40101 SET SQL_MODE=''*/;
 
 /*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 CREATE DATABASE /*!32312 IF NOT EXISTS*/`sgoc` /*!40100 DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci */;
@@ -1437,5 +1438,6 @@ insert  into `usuarios`(`id`,`nombres`,`apellidos`,`usuario`,`pass`,`cargo_id`,`
 insert  into `usuarios`(`id`,`nombres`,`apellidos`,`usuario`,`pass`,`cargo_id`,`foto`,`fecha`) values (3,'Orlando','Marquez','omarquez','$2y$10$6GjLTQ5kq/JtaXgtw5I6n.PhQ/Nuo0FX7Gf24Wvu8IPVJVK1Dj7Qa',15,'671a51fa4e0e3.png','2024-10-23 14:29:34');
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
 /*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;

@@ -90,7 +90,7 @@ include(LAYOUT.'/header.php');
 <script>
     $(document).ready(function() {
 
-	function llenarSelects(tipoPreguntaID = '') {
+	function llenarSelects() {
 		// Llenar el select de empleados
     $.ajax({
         url: '<?= API ?>programacion_entrevistas.php?action=empleados',
@@ -112,7 +112,7 @@ include(LAYOUT.'/header.php');
             console.error("Error al cargar los empleados.");
         }
     });
-
+    }
 		llenarSelects();
 
         var table = $('#datosTabla').DataTable({

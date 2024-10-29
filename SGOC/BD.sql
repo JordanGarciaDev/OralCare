@@ -1773,9 +1773,11 @@ CREATE TABLE `pruebas_tecnicas` (
   KEY `empleado_id` (`empleado_id`),
   CONSTRAINT `pruebas_tecnicas_ibfk_1` FOREIGN KEY (`empleado_id`) REFERENCES `empleados` (`id`),
   CONSTRAINT `pruebas_tecnicas_ibfk_2` FOREIGN KEY (`pregunta_id`) REFERENCES `preguntas_pruebas_tecnicas` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 /*Data for the table `pruebas_tecnicas` */
+
+insert  into `pruebas_tecnicas`(`id`,`empleado_id`,`pregunta_id`,`respuesta`,`fechareg`) values (1,1,1,'Tigre','2024-10-29 08:26:44');
 
 /*Table structure for table `recibos` */
 

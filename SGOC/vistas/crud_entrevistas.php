@@ -16,7 +16,7 @@ $titulo = "Entrevistas"; // Título específico para esta vista
                     <h5 class="card-title">Crea/Edita/Elimina las <?=$titulo;?></h5>
                 </div>
                 <div class="card-body">
-                    <table id="datosTabla" class="table table-striped" style="width:100%">
+                    <table id="datosTablaEntrevistas" class="table table-striped" style="width:100%">
                         <thead>
                         <tr>
                             <th>ID</th>

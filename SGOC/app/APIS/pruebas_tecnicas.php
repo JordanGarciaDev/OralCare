@@ -6,7 +6,7 @@ $action = isset($_GET['action']) ? $_GET['action'] : '';
 
 // Obtener todos los pruebas_tecnicas
 if ($action == 'fetch') {
-    $query = "SELECT *, p.id AS idEntrevista FROM pruebas_tecnicas p INNER JOIN empleados em ON p.id = em.id INNER JOIN preguntas_pruebas_tecnicas pt ON p.pregunta_id = pt.id";
+    $query = "SELECT *, p.id AS idPrueba FROM pruebas_tecnicas p INNER JOIN empleados em ON p.id = em.id INNER JOIN preguntas_pruebas_tecnicas pt ON p.pregunta_id = pt.id";
     $result = $conn->query($query);
     $data = array();
 
@@ -46,7 +46,7 @@ if ($action == 'save') {
 // Editar (obtener un TITULO AQUI por id)
 if ($action == 'edit') {
     $id = $_GET['id'];
-    $query = "SELECT *, p.id AS idEntrevista FROM pruebas_tecnicas p INNER JOIN empleados em ON p.id = em.id INNER JOIN preguntas_pruebas_tecnicas pt ON p.pregunta_id =pt.id WHERE p.id = ?";
+    $query = "SELECT *, p.id AS idPrueba FROM pruebas_tecnicas p INNER JOIN empleados em ON p.id = em.id INNER JOIN preguntas_pruebas_tecnicas pt ON p.pregunta_id =pt.id WHERE p.id = ?";
     $stmt = $conn->prepare($query);
     $stmt->bind_param('i', $id);
     $stmt->execute();

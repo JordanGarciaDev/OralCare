@@ -1,5 +1,9 @@
-<main class="content">
-    <div class="container-fluid p-0">
+<?php
+include('../app/config.php');
+$titulo = "Gestión de Empleados"; // Título específico para esta vista
+?>
+
+<div class="container-fluid p-0">
     <div class="mb-3">
         <h1 class="h3 d-inline align-middle"><i class="align-middle me-2 fas fa-fw fa-users"></i>Gestión de Empleados</h1>
         <button class="btn btn-primary float-end" id="addNuevo" data-bs-toggle="modal" data-bs-target="#modalEmpleado"><i class="align-middle me-2 fas fa-fw fa-plus"></i>Agregar Nuevo</button>
@@ -9,7 +13,7 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <h5 class="card-title">Crea/Edita/Elimina Empleados</h5>
+                    <h5 class="card-title">Crea/Edita/Elimina <?=$titulo;?></h5>
                 </div>
                 <div class="card-body">
                     <table id="empleadosTable" class="table table-striped" style="width:100%">
@@ -57,36 +61,36 @@
                         </div>
                         <div class="card-body">
                             <form id="empleadoForm">
-                                <input type="hidden" id="empleadoId" name="id" value="">
+                                <input type="hidden" id="empleadoId" name="empleadoId">
                                 <div class="row">
                                     <div class="mb-3 col-md-4">
-                                        <label class="form-label" for="nombre_completo">Nombre Completo</label>
-                                        <input type="text" class="form-control" id="nombre_completo" name="nombre_completo" required placeholder="Escriba el nombre completo del empleado">
+                                        <label class="form-label" for="nombre_completo"><span style="color:red">*</span>Nombre Completo</label>
+                                        <input type="text" class="form-control" id="nombre_completo" name="nombre_completo" placeholder="Escriba el nombre completo del empleado" required>
                                     </div>
                                     <div class="mb-3 col-md-4">
-                                        <label class="form-label" for="tipo_doc">Tipo de Documento</label>
+                                        <label class="form-label" for="tipo_doc"><span style="color:red">*</span>Tipo de Documento</label>
                                         <select class="form-select" id="tipo_doc" name="tipo_doc" required>
                                             <option value="">Seleccione</option>
                                         </select>
                                     </div>
                                     <div class="mb-3 col-md-4">
-                                        <label class="form-label" for="num_doc">Número de Documento</label>
-                                        <input type="text" class="form-control" id="num_doc" name="num_doc" required placeholder="Escriba el número de documento">
+                                        <label class="form-label" for="num_doc"><span style="color:red">*</span>Número de Documento</label>
+                                        <input type="text" class="form-control" id="num_doc" name="num_doc" placeholder="Escriba el número de documento" required>
                                     </div>
 
                                     <div class="mb-3 col-md-4">
-                                        <label class="form-label" for="lug_exp">Lugar de Expedición</label>
+                                        <label class="form-label" for="lug_exp"><span style="color:red">*</span>Lugar de Expedición</label>
                                         <select class="form-select" id="lug_exp" name="lug_exp" required>
                                             <option value="">Seleccione</option>
                                             <!-- Opciones se llenan desde la base de datos -->
                                         </select>
                                     </div>
                                     <div class="mb-3 col-md-4">
-                                        <label class="form-label" for="fec_nacimiento">Fecha de Nacimiento</label>
+                                        <label class="form-label" for="fec_nacimiento"><span style="color:red">*</span>Fecha de Nacimiento</label>
                                         <input type="date" class="form-control" id="fec_nacimiento" name="fec_nacimiento" required>
                                     </div>
                                     <div class="mb-3 col-md-4">
-                                        <label class="form-label" for="nacionalidad">Nacionalidad</label>
+                                        <label class="form-label" for="nacionalidad"><span style="color:red">*</span>Nacionalidad</label>
                                         <select class="form-select" id="nacionalidad" name="nacionalidad" required>
                                             <option value="">Seleccione</option>
                                             <option value="CO">Colombiano</option>
@@ -95,7 +99,7 @@
                                     </div>
 
                                     <div class="mb-3 col-md-4">
-                                        <label class="form-label" for="sexo">Sexo</label>
+                                        <label class="form-label" for="sexo"><span style="color:red">*</span>Sexo</label>
                                         <select class="form-select" id="sexo" name="sexo" required>
                                             <option value="">Seleccione</option>
                                             <option value="M">Masculino</option>
@@ -103,22 +107,22 @@
                                         </select>
                                     </div>
                                     <div class="mb-3 col-md-4">
-                                        <label class="form-label" for="estado_civil">Estado Civil</label>
+                                        <label class="form-label" for="estado_civil"><span style="color:red">*</span>Estado Civil</label>
                                         <select class="form-select" id="estado_civil" name="estado_civil" required>
                                             <option value="">Seleccione</option>
                                         </select>
                                     </div>
                                     <div class="mb-3 col-md-4">
-                                        <label class="form-label" for="dir_residencia">Dirección de Residencia</label>
-                                        <input type="text" class="form-control" id="dir_residencia" name="dir_residencia" required placeholder="Escriba la dirección">
+                                        <label class="form-label" for="dir_residencia"><span style="color:red">*</span>Dirección de Residencia</label>
+                                        <input type="text" class="form-control" id="dir_residencia" name="dir_residencia" placeholder="Escriba la dirección" required>
                                     </div>
 
                                     <div class="mb-3 col-md-4">
-                                        <label class="form-label" for="barrio_residencia">Barrio de Residencia</label>
-                                        <input type="text" class="form-control" id="barrio_residencia" name="barrio_residencia" required placeholder="Escriba el barrio">
+                                        <label class="form-label" for="barrio_residencia"><span style="color:red">*</span>Barrio de Residencia</label>
+                                        <input type="text" class="form-control" id="barrio_residencia" name="barrio_residencia" placeholder="Escriba el barrio" required>
                                     </div>
                                     <div class="mb-3 col-md-4">
-                                        <label class="form-label" for="ciudad_residencia">Ciudad de Residencia</label>
+                                        <label class="form-label" for="ciudad_residencia"><span style="color:red">*</span>Ciudad de Residencia</label>
                                         <select class="form-select" id="ciudad_residencia" name="ciudad_residencia" required>
                                             <option value="">Seleccione</option>
                                             <!-- Opciones se llenan desde la base de datos -->
@@ -126,12 +130,12 @@
                                     </div>
 
                                     <div class="mb-3 col-md-4">
-                                        <label class="form-label" for="tel_movil">Teléfono Móvil</label>
-                                        <input type="text" class="form-control" id="tel_movil" name="tel_movil" required placeholder="Escriba el teléfono móvil">
+                                        <label class="form-label" for="tel_movil"><span style="color:red">*</span>Teléfono Móvil</label>
+                                        <input type="text" class="form-control" id="tel_movil" name="tel_movil" placeholder="Escriba el teléfono móvil" required>
                                     </div>
                                     <div class="mb-3 col-md-4">
-                                        <label class="form-label" for="email_personal">Email Personal</label>
-                                        <input type="email" class="form-control" id="email_personal" name="email_personal" required placeholder="Escriba el email personal">
+                                        <label class="form-label" for="email_personal"><span style="color:red">*</span>Email Personal</label>
+                                        <input type="email" class="form-control" id="email_personal" name="email_personal" placeholder="Escriba el email personal" required>
                                     </div>
                                     <div class="mb-3 col-md-4">
                                         <label class="form-label" for="email_empresarial">Email Empresarial</label>
@@ -139,27 +143,23 @@
                                     </div>
 
                                     <div class="mb-3 col-md-4">
-                                        <label class="form-label" for="cargo_id">Cargo</label>
+                                        <label class="form-label" for="cargo_id"><span style="color:red">*</span>Cargo</label>
                                         <select class="form-select" id="cargo_id" name="cargo_id" required>
                                             <option value="">Seleccione</option>
                                             <!-- Opciones se llenan desde la base de datos -->
                                         </select>
                                     </div>
                                     <div class="mb-3 col-md-4">
-                                        <label class="form-label" for="salario">Salario</label>
-                                        <input type="number" class="form-control" id="salario" name="salario" required placeholder="Escriba el salario">
+                                        <label class="form-label" for="salario"><span style="color:red">*</span>Salario</label>
+                                        <input type="number" class="form-control" id="salario" name="salario" placeholder="Escriba el salario">
                                     </div>
                                     <div class="mb-3 col-md-4">
-                                        <label class="form-label" for="fingreso">Fecha de Ingreso</label>
+                                        <label class="form-label" for="fingreso"><span style="color:red">*</span>Fecha de Ingreso</label>
                                         <input type="date" class="form-control" id="fingreso" name="fingreso" required>
                                     </div>
                                     <div class="mb-3 col-md-4">
-                                        <label class="form-label" for="fretiro">Fecha de Retiro</label>
-                                        <input type="date" class="form-control" id="fretiro" name="fretiro">
-                                    </div>
-                                    <div class="mb-3 col-md-4">
-                                        <label class="form-label" for="tipo_de_sangre">Tipo de Sangre</label>
-                                        <select class="form-select" id="tipo_de_sangre" name="tipo_de_sangre" required="">
+                                        <label class="form-label" for="tipo_sangre"><span style="color:red">*</span>Tipo de Sangre</label>
+                                        <select class="form-select" id="tipo_sangre" name="tipo_sangre" required>
                                             <option value="">Seleccione</option>
                                             <option value="A+">A+</option>
                                             <option value="A-">A-</option>
@@ -170,17 +170,18 @@
                                             <option value="O+">O+</option>
                                             <option value="O-">O-</option>
                                         </select>
-
                                     </div>
                                     <div class="mb-3 col-md-4">
-                                        <label class="form-label" for="estado">Estado</label>
+                                        <label class="form-label" for="estado"><span style="color:red">*</span>Estado</label>
                                         <select class="form-select" id="estado" name="estado" required>
-                                            <option value="">Seleccione</option>
-                                            <option value="postulado">Postulado</option>
+                                            <option value="candidato" selected>Candidato</option>
                                             <option value="activo">Activo</option>
                                             <option value="retirado">Retirado</option>
-                                            <option value="en_proceso">En Proceso</option>
                                         </select>
+                                    </div>
+                                    <div class="mb-3 col-md-4" id="fretiroDiv" style="display: none;">
+                                        <label class="form-label" for="fretiro"><span style="color:red">*</span>Fecha de Retiro</label>
+                                        <input type="date" class="form-control" id="fretiro" name="fretiro">
                                     </div>
                                     <div class="mb-3 col-md-12">
                                         <button type="submit" class="btn btn-primary">Guardar</button>
@@ -193,11 +194,24 @@
             </div>
         </div>
     </div>
+
 </div>
-</main>
+
 <script>
     $(document).ready(function () {
-        function llenarSelects(tipoIdentificacionID = '', tipoDocID = '', lugarExpID = '', ciudadResidenciaID = '', estadoCivilID = '', cargoID = '') {
+// Muestra el input de fecha de retiro si el select cambia a retirado
+        document.getElementById("estado").addEventListener("change", function() {
+            var estado = this.value;
+            var fretiroDiv = document.getElementById("fretiroDiv");
+
+            if (estado === "retirado") {
+                fretiroDiv.style.display = "block";
+            } else {
+                fretiroDiv.style.display = "none";
+            }
+        });
+
+        function llenarSelectsEmp(tipoIdentificacionID = '', tipoDocID = '', lugarExpID = '', ciudadResidenciaID = '', estadoCivilID = '', cargoID = '') {
             // Llenar tipo de identificación
             $.ajax({
                 url: '<?= API ?>empleados.php?action=tipo_identificacion',
@@ -301,7 +315,8 @@
                 }
             });
         }
-        llenarSelects();
+        llenarSelectsEmp();
+
         var table = $('#empleadosTable').DataTable({
             "ajax": "<?= API ?>empleados.php?action=fetch",
             "columns": [
@@ -328,29 +343,22 @@
 
         $('#addNuevo').on('click', function () {
             $('#modalLabel').text('Nuevo Empleado');
-            $('#formEmpleado')[0].reset();
+            $('#empleadoForm')[0].reset();
             $('#id').val('');
-            $('#modalEmpleado').modal('show');
-
         });
 
-        $('#formEmpleado').submit(function (e) {
+        // Agregar o editar tipo de empleados
+        $('#empleadoForm').submit(function(e) {
             e.preventDefault();
-            var formData = new FormData(this);
+            var formData = $(this).serialize();
 
             $.ajax({
                 url: '<?= API ?>empleados.php?action=save',
                 type: 'POST',
                 data: formData,
-                contentType: false,
-                processData: false,
-                success: function (response) {
-                    $('#modalEmpleado').modal('hide'); // Oculta el modal
-                    table.ajax.reload(); // Recarga la tabla con los datos actualizados
-                },
-                error: function (xhr, status, error) {
-                    console.error('Error al guardar el empleado:', error);
-                    alert('Ocurrió un error al intentar guardar los datos del empleado.');
+                success: function(response) {
+                    $('#modalEmpleado').modal('hide');
+                    table.ajax.reload();
                 }
             });
         });
@@ -364,7 +372,7 @@
                 type: 'GET',
                 dataType: 'json',
                 success: function (empleado) {
-                    $('#id').val(empleado.id);
+                    $('#empleadoId').val(empleado.id);
                     $('#nombre_completo').val(empleado.nombre_completo);
                     $('#num_doc').val(empleado.num_doc);
                     $('#fec_nacimiento').val(empleado.fec_nacimiento);
@@ -378,18 +386,19 @@
                     $('#salario').val(empleado.salario);
                     $('#fingreso').val(empleado.fingreso);
                     $('#fretiro').val(empleado.fretiro);
-                    $('#tipo_de_sangre').val(empleado.tipo_de_sangre);
+                    $('#tipo_sangre').val(empleado.tipo_sangre);
                     $('#estado').val(empleado.estado);
 
                     // Llama a la función para llenar los selects con valores preseleccionados
-                    llenarSelects(
+                    llenarSelectsEmp(
                         empleado.tipo_doc,            // ID de tipo de identificación
                         empleado.tipo_doc,            // ID de tipo de documento
                         empleado.lug_exp,             // ID de lugar de expedición
                         empleado.ciudad_residencia,   // ID de ciudad de residencia
                         empleado.estado_civil,        // ID de estado civil
                         empleado.cargo_id,            // ID de cargo
-                        empleado.nacionalidad         // ID de nacionalidad
+                        empleado.nacionalidad,         // ID de nacionalidad
+                        empleado.estado         // ID de estado
                     );
 
                     $('#modalEmpleado').modal('show');

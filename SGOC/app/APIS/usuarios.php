@@ -31,8 +31,8 @@ if ($action == 'save') {
     $usuario = $_POST['usuario'];
     $pass = password_hash($_POST['pass'], PASSWORD_DEFAULT); // Encriptar contraseña
     $cargo_id = $_POST['cargo_id'];
-
     $nuevoNombre = null;
+
     if (isset($_FILES['foto']) && $_FILES['foto']['error'] == 0) {
         $foto = $_FILES['foto'];
 

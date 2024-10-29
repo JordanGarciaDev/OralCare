@@ -31,36 +31,82 @@ if ($action == 'fetch') {
 
 // Guardar un nuevo empleado o actualizar uno existente
 if ($action == 'save') {
-    $id = isset($_POST['id']) ? $_POST['id'] : '';
+    $id = isset($_POST['empleadoId']) ? $_POST['empleadoId'] : '';
+    // Variables de $_POST
     $nombre_completo = $_POST['nombre_completo'];
     $tipo_doc = $_POST['tipo_doc'];
     $num_doc = $_POST['num_doc'];
+    $lug_exp = $_POST['lug_exp'];
+    $fec_nacimiento = $_POST['fec_nacimiento'];
+    $nacionalidad = $_POST['nacionalidad'];
+    $sexo = $_POST['sexo'];
+    $estado_civil = $_POST['estado_civil'];
+    $dir_residencia = $_POST['dir_residencia'];
+    $barrio_residencia = $_POST['barrio_residencia'];
     $ciudad_residencia = $_POST['ciudad_residencia'];
+    $tel_movil = $_POST['tel_movil'];
+    $email_personal = $_POST['email_personal'];
+    $email_empresarial = $_POST['email_empresarial'];
     $cargo_id = $_POST['cargo_id'];
+    $salario = $_POST['salario'];
+    $fingreso = $_POST['fingreso'];
+    $fretiro = $_POST['fretiro'];
+    $tipo_sangre = $_POST['tipo_sangre'];
 
+    // Insertar o actualizar en la base de datos
     if ($id == '') {
-        // Crear nuevo
-        $query = "INSERT INTO empleados (nombre_completo, tipo_doc, num_doc, ciudad_residencia, cargo_id) VALUES (?, ?, ?, ?, ?)";
+        $estado = 2; // Candidato
+
+        // Crear nuevo registro
+        $query = "INSERT INTO empleados (nombre_completo, tipo_doc, num_doc, lug_exp, fec_nacimiento, nacionalidad, sexo, estado_civil, dir_residencia, barrio_residencia, ciudad_residencia, tel_movil, email_personal, email_empresarial, cargo_id, salario, fingreso, fretiro, tipo_sangre, estado) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         $stmt = $conn->prepare($query);
-        $stmt->bind_param('ssssi', $nombre_completo, $tipo_doc, $num_doc, $ciudad_residencia, $cargo_id);
-        $stmt->execute();
-        $stmt->close();
-    } else {
-        // Actualizar existente
-        $query = "UPDATE empleados SET nombre_completo = ?, tipo_doc = ?, num_doc = ?, ciudad_residencia = ?, cargo_id = ? WHERE id = ?";
-        $stmt = $conn->prepare($query);
-        $stmt->bind_param('sssiii', $nombre_completo, $tipo_doc, $num_doc, $ciudad_residencia, $cargo_id, $id);
+        $stmt->bind_param(
+            'siiisssissiissiisssi',
+            $nombre_completo,$tipo_doc,$num_doc,$lug_exp,$fec_nacimiento,$nacionalidad,$sexo,$estado_civil,$dir_residencia,$barrio_residencia,$ciudad_residencia,$tel_movil,$email_personal,$email_empresarial,$cargo_id,$salario,$fingreso,$fretiro,$tipo_sangre,$estado);
         $stmt->execute();
         $stmt->close();
     }
+    else {
+        $estado = $_POST['estado']; // Se cambia a 0 Activo ó sino 1 que es activo
 
+        // Actualizar registro existente
+        $query = "UPDATE empleados SET nombre_completo = ?, tipo_doc = ?, num_doc = ?, lug_exp = ?, fec_nacimiento = ?, nacionalidad = ?, sexo = ?, estado_civil = ?, dir_residencia = ?, barrio_residencia = ?, ciudad_residencia = ?, tel_movil = ?, email_personal = ?, email_empresarial = ?, cargo_id = ?, salario = ?, fingreso = ?, fretiro = ?, tipo_sangre = ?, estado = ? WHERE id = ?";
+        $stmt = $conn->prepare($query);
+        $stmt->bind_param(
+            'sssisssisssissisissii',
+            $nombre_completo,
+            $tipo_doc,
+            $num_doc,
+            $lug_exp,
+            $fec_nacimiento,
+            $nacionalidad,
+            $sexo,
+            $estado_civil,
+            $dir_residencia,
+            $barrio_residencia,
+            $ciudad_residencia,
+            $tel_movil,
+            $email_personal,
+            $email_empresarial,
+            $cargo_id,
+            $salario,
+            $fingreso,
+            $fretiro,
+            $tipo_sangre,
+            $estado,
+            $id
+        );
+        $stmt->execute();
+        $stmt->close();
+    }
     echo json_encode(array('status' => 'success'));
 }
+
 
 // Editar (obtener un empleado por id)
 if ($action == 'edit') {
     $id = $_GET['id'];
-    $query = "SELECT e.*,ti.nombre AS tipo_doc_nombre,c.municipio AS ciudad_residencia_nombre,ca.nombre AS cargo_nombre
+    $query = "SELECT e.*,e.id AS empleadoId,ti.nombre AS tipo_doc_nombre,c.municipio AS ciudad_residencia_nombre,ca.nombre AS cargo_nombre
         FROM empleados AS e
         INNER JOIN municipios AS c ON e.ciudad_residencia = c.id_municipio
         INNER JOIN cargos AS ca ON e.cargo_id = ca.id

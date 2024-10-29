@@ -1,7 +1,11 @@
-<main class="content">
+<?php
+include('../app/config.php');
+$titulo = "Entrevistas"; // Título específico para esta vista
+?>
+
 <div class="container-fluid p-0">
     <div class="mb-3">
-        <h1 class="h3 d-inline align-middle"><i class="align-middle me-2 fas fa-fw fa-cogs"></i>Entrevistas</h1>
+        <h1 class="h3 d-inline align-middle"><i class="align-middle me-2 fas fa-fw fa-cogs"></i><?=$titulo;?></h1>
         <button class="btn btn-primary float-end" id="addNuevo" data-bs-toggle="modal" data-bs-target="#modalCRUD"><i class="align-middle me-2 fas fa-fw fa-plus"></i>Agregar Nuevo</button>
     </div>
 
@@ -9,7 +13,7 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <h5 class="card-title">Crea/Edita/Elimina las Entrevistas</h5>
+                    <h5 class="card-title">Crea/Edita/Elimina las <?=$titulo;?></h5>
                 </div>
                 <div class="card-body">
                     <table id="datosTabla" class="table table-striped" style="width:100%">
@@ -47,7 +51,7 @@
                     <form id="formDatosCrud">
                         <input type="hidden" id="id" name="id">
                         <div class="mb-3">
-                            <label for="emp_id" class="form-label">Empleados</label>
+                            <label for="emp_id" class="form-label">Empleado</label>
                             <select class="form-select" id="emp_id" name="emp_id" required="">
                                 <option value="">Seleccione un empleado</option>
                             </select>
@@ -72,7 +76,7 @@
     </div>
     <!-- Fin del modal -->
 </div>
-</main>
+
 <script>
     $(document).ready(function() {
 
@@ -131,7 +135,7 @@
 
         llenarSelects();
 
-        var table = $('#datosTabla').DataTable({
+        var table = $('#datosTablaEntrevistas').DataTable({
             "ajax": "<?= API ?>entrevistas.php?action=fetch",
             "columns": [
                 { "data": "idEntrevista" },
@@ -175,7 +179,7 @@
         });
 
         // Editar
-        $('#datosTabla tbody').on('click', '.edit', function() {
+        $('#datosTablaEntrevistas tbody').on('click', '.edit', function() {
             $('#modalLabel').text('Editar Entrevista');
             var id = $(this).data('id');
 
@@ -196,7 +200,7 @@
         });
 
         // Eliminar
-        $('#datosTabla tbody').on('click', '.delete', function() {
+        $('#datosTablaEntrevistas tbody').on('click', '.delete', function() {
             if (confirm('¿Estás seguro de eliminar este entrevista?')) {
                 var id = $(this).data('id');
 

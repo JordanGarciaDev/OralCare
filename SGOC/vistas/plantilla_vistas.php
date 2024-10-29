@@ -1,92 +1,157 @@
 <?php
 include('../app/config.php');
-$titulo = "PEL TITULO AQUI"; // Título específico para crear las vistas
-include(LAYOUT.'/header.php');
+$titulo = "EL TITULO AQUI"; // Título específico para esta vista
+$titulo2 = "TituloAqui"; // Escribir el Título asi tal cual primera letra en mayusculas
+$urlAPI = "nombrePHP.php"; // Escribir el Título asi tal cual primera letra en mayusculas
 ?>
-<div class="wrapper">
-    <?php include(LAYOUT .'/sidebar.php');?>
 
-    <div class="main">
-        <?php include(LAYOUT .'/navbar.php');?>
-
-        <main class="content">
-            <div class="container-fluid p-0">
-                <div class="mb-3">
-                    <h1 class="h3 d-inline align-middle"><i class="align-middle me-2 fas fa-fw fa-cogs"></i><?=$titulo;?></h1>
-                    <button class="btn btn-primary float-end" id="addNuevo" data-bs-toggle="modal" data-bs-target="#modalCRUD"><i class="align-middle me-2 fas fa-fw fa-plus"></i>Agregar Nuevo</button>
-                </div>
-
-                <div class="row">
-                    <div class="col-12">
-                        <div class="card">
-                            <div class="card-header">
-                                <h5 class="card-title">Crea/Edita/Elimina los EL TITULO AQUI</h5>
-                            </div>
-                            <div class="card-body">
-                                <table id="datosTabla" class="table table-striped" style="width:100%">
-                                    <thead>
-                                    <tr>
-                                        <th>ID</th>
-                                        <th>Nombre</th>
-                                        <th>Acciones</th>
-                                    </tr>
-                                    </thead>
-                                    <tfoot>
-                                    <tr>
-                                        <th>ID</th>
-                                        <th>Nombre</th>
-                                        <th>Acciones</th>
-                                    </tr>
-                                    </tfoot>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Modal para agregar/editar -->
-                <div class="modal fade" id="modalCRUD" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="modalLabel"><i class="align-middle me-2 far fa-fw fa-folder"></i>Nuevo EL TITULO AQUI</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                <form id="formDatosCrud">
-                                    <input type="hidden" id="id" name="id">
-                                    <div class="mb-3">
-                                        <label for="nombre" class="form-label">Nombre del EL TITULO AQUI</label>
-                                        <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Escriba el nombre del departamento" required>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><i class="align-middle me-2 fas fa-fw fa-minus"></i>Cancelar</button>
-                                        <button type="submit" class="btn btn-primary"><i class="align-middle me-2 fas fa-fw fa-save"></i>Guardar</button>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Fin del modal -->
-            </div>
-        </main>
+<div class="container-fluid p-0">
+    <div class="mb-3">
+        <h1 class="h3 d-inline align-middle"><i class="align-middle me-2 fas fa-fw fa-cogs"></i><?=$titulo;?></h1>
+        <button class="btn btn-primary float-end" id="addNuevo" data-bs-toggle="modal" data-bs-target="#modal<?=$titulo2;?>"><i class="align-middle me-2 fas fa-fw fa-plus"></i>Agregar Nuevo</button>
     </div>
+
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="card-title">Crea/Edita/Elimina las <?=$titulo;?></h5>
+                </div>
+                <div class="card-body">
+                    <table id="datosTabla<?=$titulo2;?>" class="table table-striped" style="width:100%">
+                        <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nombre del empleado</th>
+                            <th>Pregunta</th>
+                            <th>Fecha</th>
+                            <th>Acciones</th>
+                        </tr>
+                        </thead>
+                        <tfoot>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nombre del empleado</th>
+                            <th>Pregunta</th>
+                            <th>Fecha</th>
+                            <th>Acciones</th>
+                        </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal para agregar/editar -->
+    <div class="modal fade" id="modal<?=$titulo2;?>" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalLabel"><i class="align-middle me-2 far fa-fw fa-folder"></i>Nueva Entrevista</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="form<?=$titulo2;?>">
+                        <input type="hidden" id="id" name="id">
+                        <div class="mb-3">
+                            <label for="emp_id" class="form-label">Empleado</label>
+                            <select class="form-select" id="emp_id" name="emp_id" required="">
+                                <option value="">Seleccione un empleado</option>
+                            </select>
+                        </div>
+                        <span id="tpregunta"></span>
+                        <span id="pregunta"></span>
+
+                        <div class="mb-3 col-md-12">
+                            <div id="preguntasContainer">
+                                <!-- Las preguntas se llenarán aquí -->
+                            </div>
+                        </div>
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><i class="align-middle me-2 fas fa-fw fa-minus"></i>Cancelar</button>
+                            <button type="submit" class="btn btn-primary"><i class="align-middle me-2 fas fa-fw fa-save"></i>Guardar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Fin del modal -->
 </div>
 
 <script>
     $(document).ready(function() {
-        var table = $('#datosTabla').DataTable({
-            "ajax": "<?= API ?>plantilla_api?action=fetch",
+
+        function llenarSelects<?=$titulo2;?>(tipoPreguntaID = '') {
+            // Llenar el select de empleados
+            $.ajax({
+                url: '<?= API ?><?=$urlAPI;?>?action=empleados',
+                type: 'GET',
+                dataType: 'json',
+                success: function(data) {
+                    var empleadoSelect = $('#emp_id');
+                    empleadoSelect.empty(); // Limpiar opciones previas
+
+                    // Agregar la opción por defecto
+                    empleadoSelect.append('<option value="">Seleccione un empleado</option>');
+
+                    // Llenar el select con los datos de empleados de la API
+                    $.each(data.data, function(index, empleado) {
+                        empleadoSelect.append('<option value="' + empleado.id + '">' + empleado.nombre_completo + '</option>');
+                    });
+                },
+                error: function() {
+                    console.error("Error al cargar los empleados.");
+                }
+            });
+            // Llenar las preguntas y respuestas
+            $.ajax({
+                url: '<?= API ?><?=$urlAPI;?>?action=questions',
+                type: 'GET',
+                dataType: 'json',
+                success: function(data) {
+                    var preguntasContainer = $('#preguntasContainer');
+                    preguntasContainer.empty();
+
+                    // Llenar con los datos de la API
+                    $.each(data.data, function(index, item) {
+                        // Crear el encabezado para el tipo de pregunta
+                        var tipoPreguntaInput = '<h5>' + item.tipo + '</h5>';
+
+                        // Mostrar la pregunta como texto y agregar un input oculto para enviarla al servidor
+                        var preguntaTexto = '<div class="mb-2"><h4>' + item.pregunta + '</h4></div>';
+                        var preguntaInputHidden = '<input type="hidden" id="pregunta' + item.idPreg + '" name="pregunta" value="' + item.idPreg + '">';
+
+                        // Crear el textarea para la respuesta a la pregunta
+                        var preguntaTextarea = '<textarea class="form-control mb-3" id="respuesta' + item.idPreg + '" name="respuesta" rows="3" placeholder="Escribe la respuesta aquí"></textarea>';
+
+                        // Agregar los elementos al contenedor
+                        preguntasContainer.append(tipoPreguntaInput + preguntaTexto + preguntaInputHidden + preguntaTextarea);
+                    });
+                },
+                error: function() {
+                    console.error("Error al cargar los datos de tipo de pregunta.");
+                }
+            });
+        }
+
+        llenarSelects<?=$titulo2;?>();
+
+        var table = $('#datosTabla<?=$titulo2;?>').DataTable({
+            "ajax": "<?= API ?><?=$urlAPI;?>?action=fetch",
             "columns": [
-                { "data": "id" },
-                { "data": "nombre" },
+                { "data": "idPrueba" },
+                { "data": "nombre_completo" },
+                { "data": "pregunta" },
+                { "data": "fechareg" },
                 {
                     "data": null,
                     "render": function (data, type, row) {
                         return `
-                        <button class="btn btn-sm btn-warning edit" data-id="` + data.id + `"><i class="align-middle me-2 fas fa-fw fa-edit"></i>Editar</button>
-                        <button class="btn btn-sm btn-danger delete" data-id="` + data.id + `"><i class="align-middle me-2 fas fa-fw fa-trash-alt"></i>Eliminar</button>
+                        <button class="btn btn-sm btn-warning edit" data-id="` + data.idPrueba + `"><i class="align-middle me-2 fas fa-fw fa-edit"></i>Editar</button>
+                        <button class="btn btn-sm btn-danger delete" data-id="` + data.idPrueba + `"><i class="align-middle me-2 fas fa-fw fa-trash-alt"></i>Eliminar</button>
                     `;
                     }
                 }
@@ -96,56 +161,56 @@ include(LAYOUT.'/header.php');
             }
         });
 
-        // Agregar o editar departamento
-        $('#formDatosCrud').submit(function(e) {
+        // Agregar o editar entrevista
+        $('#form<?=$titulo2;?>').submit(function(e) {
             e.preventDefault();
             var formData = $(this).serialize();
 
             $.ajax({
-                url: '<?= API ?>plantilla_api?action=save',
+                url: '<?= API ?><?=$urlAPI;?>?action=save',
                 type: 'POST',
                 data: formData,
                 success: function(response) {
-                    $('#modalCRUD').modal('hide');
+                    $('#modal<?=$titulo2;?>').modal('hide');
                     table.ajax.reload();
                 }
             });
         });
 
         $('#addNuevo').on('click', function() {
-            $('#modalLabel').text('Nuevo EL TITULO AQUI');
-            $('#formDatosCrud')[0].reset();
+            $('#modalLabel').text('Nueva <?=$titulo;?>');
+            $('#form<?=$titulo2;?>')[0].reset();
             $('#id').val('');
         });
 
         // Editar
-        $('#datosTabla tbody').on('click', '.edit', function() {
-            $('#modalLabel').text('Editar EL TITULO AQUI');
+        $('#datosTabla<?=$titulo2;?> tbody').on('click', '.edit', function() {
+            $('#modalLabel').text('Editar <?=$titulo;?>');
             var id = $(this).data('id');
 
             $.ajax({
-                url: '<?= API ?>plantilla_api?action=edit&id=' + id,
+                url: '<?= API ?><?=$urlAPI;?>?action=edit&id=' + id,
                 type: 'GET',
                 dataType: 'json',
-                success: function(departamento) {
-                    $('#id').val(departamento.id);
-                    $('#nombre').val(departamento.nombre);
-                    $('#modalCRUD').modal('show');
+                success: function(entrevista) {
+                    $('#id').val(entrevista.id);
+                    $('#nombre').val(entrevista.nombre);
+                    $('#modal<?=$titulo2;?>').modal('show');
                 },
                 error: function(xhr, status, error) {
                     console.error('Error en la solicitud de edición:', error);
-                    alert('Ocurrió un error al intentar cargar los datos del departamento.');
+                    alert('Ocurrió un error al intentar cargar los datos del entrevista.');
                 }
             });
         });
 
         // Eliminar
-        $('#datosTabla tbody').on('click', '.delete', function() {
-            if (confirm('¿Estás seguro de eliminar este departamento?')) {
+        $('#datosTabla<?=$titulo2;?> tbody').on('click', '.delete', function() {
+            if (confirm('¿Estás seguro de eliminar este <?=$titulo;?>?')) {
                 var id = $(this).data('id');
 
                 $.ajax({
-                    url: '<?= API ?>plantilla_api?action=delete&id=' + id,
+                    url: '<?= API ?><?=$urlAPI;?>?action=delete&id=' + id,
                     type: 'GET',
                     success: function(response) {
                         table.ajax.reload();
@@ -155,7 +220,3 @@ include(LAYOUT.'/header.php');
         });
     });
 </script>
-
-<?php
-include(LAYOUT.'/footer.php');
-?>

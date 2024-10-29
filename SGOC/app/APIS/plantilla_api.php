@@ -4,9 +4,9 @@ header('Content-Type: application/json');
 
 $action = isset($_GET['action']) ? $_GET['action'] : '';
 
-// Obtener todos los NOMBRE_TABLA
+// Obtener todos los nombre_tabla
 if ($action == 'fetch') {
-    $query = "SELECT * FROM NOMBRE_TABLA";
+    $query = "SELECT *, p.id AS idPrueba FROM nombre_tabla p INNER JOIN empleados em ON p.id = em.id INNER JOIN preguntas_pruebas_tecnicas pt ON p.pregunta_id = pt.id";
     $result = $conn->query($query);
     $data = array();
 
@@ -20,20 +20,22 @@ if ($action == 'fetch') {
 // Guardar un nuevo TITULO AQUI o actualizar uno existente
 if ($action == 'save') {
     $id = isset($_POST['id']) ? $_POST['id'] : '';
-    $nombre = $_POST['nombre'];
+    $pregunta = $_POST['pregunta'];
+    $respuesta = $_POST['respuesta'];
+    $empleado_id = $_POST['emp_id'];
 
     if ($id == '') {
         // Crear nuevo
-        $query = "INSERT INTO NOMBRE_TABLA (nombre) VALUES (?)";
+        $query = "INSERT INTO nombre_tabla (empleado_id,pregunta_id,respuesta) VALUES (?,?,?)";
         $stmt = $conn->prepare($query);
-        $stmt->bind_param('s', $nombre);
+        $stmt->bind_param('iis', $empleado_id,$pregunta,$respuesta);
         $stmt->execute();
         $stmt->close();
     } else {
         // Actualizar existente
-        $query = "UPDATE NOMBRE_TABLA SET nombre = ? WHERE id = ?";
+        $query = "UPDATE nombre_tabla SET empleado_id = ?, pregunta_id = ?, respuesta = ? WHERE id = ?";
         $stmt = $conn->prepare($query);
-        $stmt->bind_param('si', $nombre, $id);
+        $stmt->bind_param('iisi', $empleado_id, $pregunta, $respuesta, $id);
         $stmt->execute();
         $stmt->close();
     }
@@ -44,7 +46,7 @@ if ($action == 'save') {
 // Editar (obtener un TITULO AQUI por id)
 if ($action == 'edit') {
     $id = $_GET['id'];
-    $query = "SELECT * FROM NOMBRE_TABLA WHERE id = ?";
+    $query = "SELECT *, p.id AS idPrueba FROM nombre_tabla p INNER JOIN empleados em ON p.id = em.id INNER JOIN preguntas_pruebas_tecnicas pt ON p.pregunta_id =pt.id WHERE p.id = ?";
     $stmt = $conn->prepare($query);
     $stmt->bind_param('i', $id);
     $stmt->execute();
@@ -57,11 +59,36 @@ if ($action == 'edit') {
 // Eliminar
 if ($action == 'delete') {
     $id = $_GET['id'];
-    $query = "DELETE FROM NOMBRE_TABLA WHERE id = ?";
+    $query = "DELETE FROM nombre_tabla WHERE id = ?";
     $stmt = $conn->prepare($query);
     $stmt->bind_param('i', $id);
     $stmt->execute();
 
     echo json_encode(array('status' => 'success'));
+}
+
+// Preguntas
+if ($action == 'questions') {
+    $query = "SELECT p.id AS idPreg, p.pregunta, tp.nombre as tipo FROM preguntas_pruebas_tecnicas p INNER JOIN cargos tp ON p.cargo_id = tp.id";
+    $result = $conn->query($query);
+    $data = array();
+
+    while ($row = $result->fetch_assoc()) {
+        $data[] = $row;
+    }
+
+    echo json_encode(array('status' => 'success', 'data' => $data));
+}
+// Empleados
+if ($action == 'empleados') {
+    $query = "SELECT * FROM empleados";
+    $result = $conn->query($query);
+    $data = array();
+
+    while ($row = $result->fetch_assoc()) {
+        $data[] = $row;
+    }
+
+    echo json_encode(array('status' => 'success', 'data' => $data));
 }
 ?>

@@ -16,8 +16,8 @@ MySQL - 10.4.32-MariaDB : Database - sgoc
 
 CREATE TABLE `ajustes` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `FECHA_INI` date NOT NULL,
-  `FECHA_FIN` date DEFAULT NULL,
+  `fecha_ini` date NOT NULL,
+  `fecha_fin` date DEFAULT NULL,
   `empleado_id` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_ajustes_empleados1` (`empleado_id`),
@@ -56,28 +56,28 @@ CREATE TABLE `ajustes_deducciones` (
 
 CREATE TABLE `asignaciones` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `DESCRIPCION` varchar(60) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
+  `descripcion` varchar(60) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 /*Data for the table `asignaciones` */
 
-insert  into `asignaciones`(`id`,`DESCRIPCION`) values (1,'Prima por Reconocimiento');
-insert  into `asignaciones`(`id`,`DESCRIPCION`) values (2,'Prima por Hogar');
-insert  into `asignaciones`(`id`,`DESCRIPCION`) values (3,'Prima por Antig?edad');
-insert  into `asignaciones`(`id`,`DESCRIPCION`) values (4,'Prima por Transporte');
-insert  into `asignaciones`(`id`,`DESCRIPCION`) values (5,'Prima por Hijos');
-insert  into `asignaciones`(`id`,`DESCRIPCION`) values (6,'Prima de Nivelaci?n y Eficiencia Profesional');
-insert  into `asignaciones`(`id`,`DESCRIPCION`) values (7,'Bono Nocturno');
-insert  into `asignaciones`(`id`,`DESCRIPCION`) values (8,'Recargo Domingos y Dias Feriados');
+insert  into `asignaciones`(`id`,`descripcion`) values (1,'Prima por Reconocimiento');
+insert  into `asignaciones`(`id`,`descripcion`) values (2,'Prima por Hogar');
+insert  into `asignaciones`(`id`,`descripcion`) values (3,'Prima por Antig?edad');
+insert  into `asignaciones`(`id`,`descripcion`) values (4,'Prima por Transporte');
+insert  into `asignaciones`(`id`,`descripcion`) values (5,'Prima por Hijos');
+insert  into `asignaciones`(`id`,`descripcion`) values (6,'Prima de Nivelaci?n y Eficiencia Profesional');
+insert  into `asignaciones`(`id`,`descripcion`) values (7,'Bono Nocturno');
+insert  into `asignaciones`(`id`,`descripcion`) values (8,'Recargo Domingos y Dias Feriados');
 
 /*Table structure for table `ausencias` */
 
 CREATE TABLE `ausencias` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `TIPO` varchar(45) NOT NULL COMMENT 'Remunerada , No Remunerada',
-  `FECHA` date NOT NULL,
-  `JUSTIFICACION` text DEFAULT NULL,
+  `tipo` varchar(45) NOT NULL COMMENT 'Remunerada , No Remunerada',
+  `fecha` date NOT NULL,
+  `justificacion` text DEFAULT NULL,
   `empleado_id` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_ausencias_empleados1` (`empleado_id`),
@@ -126,12 +126,12 @@ insert  into `cargos`(`id`,`nombre`,`depto_id`) values (24,'prueba test',1);
 
 CREATE TABLE `cestatickets` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `FECHA_INI` date NOT NULL,
-  `FECHA_FIN` date NOT NULL,
-  `FECHA_ELA` datetime NOT NULL,
-  `VALOR_DIARIO` decimal(19,5) NOT NULL COMMENT '50% - UNIDAD TRIBUTARIA',
-  `SUELDO_MINIMO` decimal(19,5) NOT NULL,
-  `BLOQUEAR` int(11) NOT NULL DEFAULT 0,
+  `fecha_ini` date NOT NULL,
+  `fecha_fin` date NOT NULL,
+  `fecha_ela` datetime NOT NULL,
+  `valor_diario` decimal(19,5) NOT NULL COMMENT '50% - UNIDAD TRIBUTARIA',
+  `sueldo_minimo` decimal(19,5) NOT NULL,
+  `bloquear` int(11) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -141,8 +141,8 @@ CREATE TABLE `cestatickets` (
 
 CREATE TABLE `comerciales` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `CANTIDAD` decimal(19,5) NOT NULL,
-  `FECHA` date NOT NULL,
+  `cantidad` decimal(19,5) NOT NULL,
+  `fecha` date NOT NULL,
   `empleado_id` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_comerciales_empleados1` (`empleado_id`),
@@ -155,9 +155,9 @@ CREATE TABLE `comerciales` (
 
 CREATE TABLE `contratos` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `FECHA_INI` date NOT NULL,
-  `FECHA_FIN` date DEFAULT NULL,
-  `MODALIDAD` int(11) NOT NULL COMMENT 'Fijo , Contratado , Eventuales',
+  `fecha_ini` date NOT NULL,
+  `fecha_fin` date DEFAULT NULL,
+  `modalidad` int(11) NOT NULL COMMENT 'Fijo , Contratado , Eventuales',
   `departamento_id` int(11) NOT NULL,
   `cargo_id` int(11) NOT NULL,
   `empleado_id` int(11) NOT NULL,
@@ -165,7 +165,7 @@ CREATE TABLE `contratos` (
   KEY `fk_asignaciones_departamentos1` (`departamento_id`),
   KEY `fk_asignaciones_cargos1` (`cargo_id`),
   KEY `fk_asignaciones_empleados1` (`empleado_id`),
-  KEY `MODALIDAD` (`MODALIDAD`),
+  KEY `MODALIDAD` (`modalidad`),
   CONSTRAINT `contratos_ibfk_1` FOREIGN KEY (`empleado_id`) REFERENCES `empleados` (`id`),
   CONSTRAINT `contratos_ibfk_2` FOREIGN KEY (`cargo_id`) REFERENCES `cargos` (`id`),
   CONSTRAINT `contratos_ibfk_3` FOREIGN KEY (`MODALIDAD`) REFERENCES `modalidades` (`id`)
@@ -177,22 +177,22 @@ CREATE TABLE `contratos` (
 
 CREATE TABLE `deducciones` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `DESCRIPCION` varchar(60) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
+  `descripcion` varchar(60) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 /*Data for the table `deducciones` */
 
-insert  into `deducciones`(`id`,`DESCRIPCION`) values (1,'S.S.O (4%)');
-insert  into `deducciones`(`id`,`DESCRIPCION`) values (2,'R?gimen Prestacional de Empleo (0.50%)');
-insert  into `deducciones`(`id`,`DESCRIPCION`) values (3,'Fondo de Ahorro Obligatorio de Vivienda (FAOV) (1%)');
-insert  into `deducciones`(`id`,`DESCRIPCION`) values (4,'Fondo de Pensiones (3%)');
-insert  into `deducciones`(`id`,`DESCRIPCION`) values (5,'Caja de Ahorros');
-insert  into `deducciones`(`id`,`DESCRIPCION`) values (6,'Pr?stamo Caja de Ahorros');
-insert  into `deducciones`(`id`,`DESCRIPCION`) values (7,'Deducciones por Cr?ditos Comerciales');
-insert  into `deducciones`(`id`,`DESCRIPCION`) values (8,'Deducciones por Tribunales');
-insert  into `deducciones`(`id`,`DESCRIPCION`) values (9,'Retenci?n del Impuesto Sobre la Renta');
-insert  into `deducciones`(`id`,`DESCRIPCION`) values (10,'Ley de Vivienda y Habitat (1%)');
+insert  into `deducciones`(`id`,`descripcion`) values (1,'S.S.O (4%)');
+insert  into `deducciones`(`id`,`descripcion`) values (2,'R?gimen Prestacional de Empleo (0.50%)');
+insert  into `deducciones`(`id`,`descripcion`) values (3,'Fondo de Ahorro Obligatorio de Vivienda (FAOV) (1%)');
+insert  into `deducciones`(`id`,`descripcion`) values (4,'Fondo de Pensiones (3%)');
+insert  into `deducciones`(`id`,`descripcion`) values (5,'Caja de Ahorros');
+insert  into `deducciones`(`id`,`descripcion`) values (6,'Pr?stamo Caja de Ahorros');
+insert  into `deducciones`(`id`,`descripcion`) values (7,'Deducciones por Cr?ditos Comerciales');
+insert  into `deducciones`(`id`,`descripcion`) values (8,'Deducciones por Tribunales');
+insert  into `deducciones`(`id`,`descripcion`) values (9,'Retenci?n del Impuesto Sobre la Renta');
+insert  into `deducciones`(`id`,`descripcion`) values (10,'Ley de Vivienda y Habitat (1%)');
 
 /*Table structure for table `dep_contratacion` */
 
@@ -263,13 +263,13 @@ insert  into `departamentos`(`id_departamento`,`departamento`) values (99,'VICHA
 
 CREATE TABLE `detalle_cestatickets` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `TOTAL` decimal(19,5) NOT NULL,
-  `DIAS_ADICIONALES` int(11) NOT NULL,
-  `DIAS_DESCONTAR` int(11) NOT NULL,
-  `DIAS_LABORADOS` int(11) NOT NULL,
-  `CARGO` varchar(45) NOT NULL,
-  `DEPARTAMENTO` varchar(45) NOT NULL,
-  `MODALIDAD` varchar(45) NOT NULL,
+  `total` decimal(19,5) NOT NULL,
+  `dias_adicionales` int(11) NOT NULL,
+  `dias_descontar` int(11) NOT NULL,
+  `dias_laborados` int(11) NOT NULL,
+  `cargo` varchar(45) NOT NULL,
+  `departamento` varchar(45) NOT NULL,
+  `modalidad` varchar(45) NOT NULL,
   `empleado_id` int(11) NOT NULL,
   `cestaticket_id` int(11) NOT NULL,
   PRIMARY KEY (`id`),
@@ -285,8 +285,8 @@ CREATE TABLE `detalle_cestatickets` (
 
 CREATE TABLE `detalle_eventualidades` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `FECHA` date NOT NULL,
-  `VALOR` decimal(19,5) NOT NULL,
+  `fecha` date NOT NULL,
+  `valor` decimal(19,5) NOT NULL,
   `empleado_id` int(11) NOT NULL,
   `eventualidad_id` int(11) NOT NULL,
   PRIMARY KEY (`id`),
@@ -302,9 +302,9 @@ CREATE TABLE `detalle_eventualidades` (
 
 CREATE TABLE `detalle_recibos` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `CONCEPTO` varchar(13) NOT NULL,
-  `NOMBRE` varchar(60) NOT NULL,
-  `MONTO` decimal(19,5) NOT NULL,
+  `concepto` varchar(13) NOT NULL,
+  `nombre` varchar(60) NOT NULL,
+  `monto` decimal(19,5) NOT NULL,
   `recibo_id` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_detalle_recibos_recibos1` (`recibo_id`),
@@ -390,11 +390,12 @@ CREATE TABLE `entrevistas` (
   PRIMARY KEY (`id`),
   KEY `pregunta_id` (`pregunta_id`),
   CONSTRAINT `entrevistas_ibfk_1` FOREIGN KEY (`pregunta_id`) REFERENCES `preguntas_entrevistas` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 /*Data for the table `entrevistas` */
 
 insert  into `entrevistas`(`id`,`empleado_id`,`pregunta_id`,`respuesta`,`fechareg`) values (2,1,5,'negro','2024-10-28 09:49:09');
+insert  into `entrevistas`(`id`,`empleado_id`,`pregunta_id`,`respuesta`,`fechareg`) values (3,18,5,'blanco','2024-10-29 15:57:16');
 
 /*Table structure for table `estados_civiles` */
 
@@ -417,8 +418,8 @@ insert  into `estados_civiles`(`id`,`nombre`) values (6,'Separado(a)');
 
 CREATE TABLE `eventualidades` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `NOMBRE` varchar(60) NOT NULL,
-  `TIPO` varchar(45) NOT NULL COMMENT 'Asignacion o Deduccion',
+  `nombre` varchar(60) NOT NULL,
+  `tipo` varchar(45) NOT NULL COMMENT 'Asignacion o Deduccion',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
@@ -428,11 +429,11 @@ CREATE TABLE `eventualidades` (
 
 CREATE TABLE `experiencias` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `ORGANISMO` varchar(45) NOT NULL,
-  `CARGO` varchar(45) NOT NULL,
-  `FECHA_INI` date NOT NULL,
-  `FECHA_FIN` date NOT NULL,
-  `OBSERVACIONES` varchar(60) DEFAULT NULL,
+  `organismo` varchar(45) NOT NULL,
+  `cargo` varchar(45) NOT NULL,
+  `fecha_ini` date NOT NULL,
+  `fecha_fin` date NOT NULL,
+  `observaciones` varchar(60) DEFAULT NULL,
   `empleado_id` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_experiencias_empleados1` (`empleado_id`),
@@ -445,12 +446,12 @@ CREATE TABLE `experiencias` (
 
 CREATE TABLE `familiares` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `NOMBRE` varchar(60) NOT NULL,
-  `PARENTESCO` varchar(45) NOT NULL COMMENT 'Hijo, Hija, Padre, Madre, Hermano, Hermana',
-  `DISCAPACIDAD` varchar(2) NOT NULL DEFAULT 'No' COMMENT 'Si o No',
-  `INSTRUCCION` varchar(45) NOT NULL DEFAULT 'Ninguna',
-  `FECHA` date NOT NULL,
-  `FECHA_EFEC` date NOT NULL COMMENT 'Fecha en la que se hace efectivo para el sistema',
+  `nombre` varchar(60) NOT NULL,
+  `parentesco` varchar(45) NOT NULL COMMENT 'Hijo, Hija, Padre, Madre, Hermano, Hermana',
+  `discapacidad` varchar(2) NOT NULL DEFAULT 'No' COMMENT 'Si o No',
+  `instruccion` varchar(45) NOT NULL DEFAULT 'Ninguna',
+  `fecha` date NOT NULL,
+  `fecha_efec` date NOT NULL COMMENT 'Fecha en la que se hace efectivo para el sistema',
   `empleado_id` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_familiares_empleados1` (`empleado_id`),
@@ -463,8 +464,8 @@ CREATE TABLE `familiares` (
 
 CREATE TABLE `feriados` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `FECHA` date NOT NULL,
-  `DESCRIPCION` varchar(45) NOT NULL,
+  `fecha` date NOT NULL,
+  `descripcion` varchar(45) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -474,23 +475,23 @@ CREATE TABLE `feriados` (
 
 CREATE TABLE `grupos` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `NOMBRE` varchar(10) NOT NULL,
+  `nombre` varchar(10) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 /*Data for the table `grupos` */
 
-insert  into `grupos`(`id`,`NOMBRE`) values (1,'Empleado');
-insert  into `grupos`(`id`,`NOMBRE`) values (2,'Obrero');
+insert  into `grupos`(`id`,`nombre`) values (1,'Empleado');
+insert  into `grupos`(`id`,`nombre`) values (2,'Obrero');
 
 /*Table structure for table `historiales` */
 
 CREATE TABLE `historiales` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `SUELDO_BASE` decimal(19,5) NOT NULL,
-  `FECHA_INI` date NOT NULL COMMENT 'Inicio ',
-  `FECHA_FIN` date DEFAULT NULL COMMENT 'Fin',
-  `FECHA_RET` date DEFAULT NULL COMMENT 'Fecha desde donde se va a pagar el sueldo retroactivo',
+  `sueldo_base` decimal(19,5) NOT NULL,
+  `fecha_ini` date NOT NULL COMMENT 'Inicio ',
+  `fecha_fin` date DEFAULT NULL COMMENT 'Fin',
+  `fecha_ret` date DEFAULT NULL COMMENT 'Fecha desde donde se va a pagar el sueldo retroactivo',
   `cargo_id` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_historiales_cargos1` (`cargo_id`),
@@ -503,9 +504,9 @@ CREATE TABLE `historiales` (
 
 CREATE TABLE `horas_extras` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `TIPO` varchar(45) NOT NULL COMMENT 'Nocturno, Domingos y Feriados',
-  `FECHA` date NOT NULL,
-  `COMENTARIO` varchar(45) DEFAULT NULL,
+  `tipo` varchar(45) NOT NULL COMMENT 'Nocturno, Domingos y Feriados',
+  `fecha` date NOT NULL,
+  `comentario` varchar(45) DEFAULT NULL,
   `empleado_id` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_horasextras_empleados1` (`empleado_id`),
@@ -518,8 +519,8 @@ CREATE TABLE `horas_extras` (
 
 CREATE TABLE `islr` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `PORCENTAJE` decimal(19,5) NOT NULL,
-  `FECHA` date NOT NULL,
+  `porcentaje` decimal(19,5) NOT NULL,
+  `fecha` date NOT NULL,
   `empleado_id` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_islr_empleados1` (`empleado_id`),
@@ -1669,12 +1670,12 @@ insert  into `municipios`(`id_municipio`,`municipio`,`departamento_id`) values (
 
 CREATE TABLE `nominas` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `FECHA_INI` date NOT NULL,
-  `FECHA_FIN` date NOT NULL,
-  `QUINCENA` varchar(45) NOT NULL COMMENT 'Primera Quincena , Segunda',
-  `FECHA_ELA` datetime NOT NULL COMMENT 'Fecha de Elaboracion de la nomina',
-  `SUELDO_MINIMO` decimal(19,5) NOT NULL,
-  `BLOQUEAR` int(11) NOT NULL DEFAULT 0,
+  `fecha_ini` date NOT NULL,
+  `fecha_fin` date NOT NULL,
+  `quincena` varchar(45) NOT NULL COMMENT 'Primera Quincena , Segunda',
+  `fecha_ela` datetime NOT NULL COMMENT 'Fecha de Elaboracion de la nomina',
+  `sueldo_minimo` decimal(19,5) NOT NULL,
+  `bloquear` int(11) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -1716,8 +1717,8 @@ insert  into `preguntas_pruebas_tecnicas`(`id`,`pregunta`,`cargo_id`) values (5,
 
 CREATE TABLE `prestamos` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `CANTIDAD` decimal(19,5) NOT NULL,
-  `FECHA` date NOT NULL,
+  `cantidad` decimal(19,5) NOT NULL,
+  `fecha` date NOT NULL,
   `empleado_id` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_prestamos_empleados1` (`empleado_id`),
@@ -1751,10 +1752,10 @@ insert  into `programacion_entrevistas`(`id`,`empleado_id`,`cargo_id`,`fechapro`
 
 CREATE TABLE `programas` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `CODIGO` int(11) NOT NULL,
-  `NOMBRE` varchar(45) NOT NULL,
-  `TIPO` varchar(45) NOT NULL COMMENT 'Actividad  /  Proyecto',
-  `NUMERO` int(11) NOT NULL COMMENT 'Numero de la Actividad o Proyecto',
+  `codigo` int(11) NOT NULL,
+  `nombre` varchar(45) NOT NULL,
+  `tipo` varchar(45) NOT NULL COMMENT 'Actividad  /  Proyecto',
+  `numero` int(11) NOT NULL COMMENT 'Numero de la Actividad o Proyecto',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
@@ -1783,11 +1784,11 @@ insert  into `pruebas_tecnicas`(`id`,`empleado_id`,`pregunta_id`,`respuesta`,`fe
 
 CREATE TABLE `recibos` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `CARGO` varchar(45) DEFAULT NULL,
-  `DEPARTAMENTO` varchar(45) DEFAULT NULL,
-  `MODALIDAD` varchar(45) DEFAULT NULL,
-  `SUELDO_BASE` decimal(19,5) DEFAULT NULL,
-  `DIAS_LABORADOS` int(11) DEFAULT NULL,
+  `cargo` varchar(45) DEFAULT NULL,
+  `departamento` varchar(45) DEFAULT NULL,
+  `modalidad` varchar(45) DEFAULT NULL,
+  `sueldo_base` decimal(19,5) DEFAULT NULL,
+  `dias_laborados` int(11) DEFAULT NULL,
   `nomina_id` int(11) NOT NULL,
   `empleado_id` int(11) NOT NULL,
   PRIMARY KEY (`id`),
@@ -1884,10 +1885,10 @@ insert  into `tipos_preguntas`(`id`,`nombre`) values (2,'Personales');
 
 CREATE TABLE `titulos` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `TITULO` varchar(45) NOT NULL COMMENT 'T.S.U , Profesional Universitario , Post-Grado , Maestria , Doctorado',
-  `ESPECIALIDAD` varchar(45) NOT NULL,
-  `INSTITUCION` varchar(60) NOT NULL,
-  `FECHA` date NOT NULL,
+  `titulo` varchar(45) NOT NULL COMMENT 'T.S.U , Profesional Universitario , Post-Grado , Maestria , Doctorado',
+  `especialidad` varchar(45) NOT NULL,
+  `institucion` varchar(60) NOT NULL,
+  `fecha` date NOT NULL,
   `empleado_id` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_titulos_empleados1` (`empleado_id`),
@@ -1900,8 +1901,8 @@ CREATE TABLE `titulos` (
 
 CREATE TABLE `tribunales` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `CANTIDAD` decimal(19,5) NOT NULL,
-  `FECHA` date NOT NULL,
+  `cantidad` decimal(19,5) NOT NULL,
+  `fecha` date NOT NULL,
   `empleado_id` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_tribunales_empleados1` (`empleado_id`),
@@ -1914,17 +1915,17 @@ CREATE TABLE `tribunales` (
 
 CREATE TABLE `users` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `USERNAME` varchar(50) NOT NULL,
-  `PASSWORD` varchar(40) NOT NULL,
-  `NOMBRE` varchar(45) NOT NULL,
-  `APELLIDO` varchar(45) NOT NULL,
-  `GRUPO` varchar(25) NOT NULL,
+  `username` varchar(50) NOT NULL,
+  `password` varchar(40) NOT NULL,
+  `nombre` varchar(45) NOT NULL,
+  `apellido` varchar(45) NOT NULL,
+  `grupo` varchar(25) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 /*Data for the table `users` */
 
-insert  into `users`(`id`,`USERNAME`,`PASSWORD`,`NOMBRE`,`APELLIDO`,`GRUPO`) values (1,'admin','21232f297a57a5a743894a0e4a801fc3','Administrador','','Administrador');
+insert  into `users`(`id`,`username`,`password`,`nombre`,`apellido`,`grupo`) values (1,'admin','21232f297a57a5a743894a0e4a801fc3','Administrador','','Administrador');
 
 /*Table structure for table `usuarios` */
 
@@ -1940,13 +1941,15 @@ CREATE TABLE `usuarios` (
   PRIMARY KEY (`id`),
   KEY `usuarios_ibfk_2` (`cargo_id`),
   CONSTRAINT `usuarios_ibfk_2` FOREIGN KEY (`cargo_id`) REFERENCES `cargos` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 /*Data for the table `usuarios` */
 
 insert  into `usuarios`(`id`,`nombres`,`apellidos`,`usuario`,`pass`,`cargo_id`,`foto`,`fecha`) values (1,'Jordan','Garcia Dev','jgarcia','$2y$10$u6A9QIDdEEd0phFs2S1hyOmONJhTJRzJDLLmCiAfDV.s2YTGEocCu',15,'','2024-10-22 11:28:18');
 insert  into `usuarios`(`id`,`nombres`,`apellidos`,`usuario`,`pass`,`cargo_id`,`foto`,`fecha`) values (2,'Daniel','Marquez','dmarquez','$2y$10$6GjLTQ5kq/JtaXgtw5I6n.PhQ/Nuo0FX7Gf24Wvu8IPVJVK1Dj7Qa',15,'6719aa93f2dc6.jpeg','2024-10-23 14:29:34');
 insert  into `usuarios`(`id`,`nombres`,`apellidos`,`usuario`,`pass`,`cargo_id`,`foto`,`fecha`) values (3,'Orlando','Marquez','omarquez','$2y$10$6GjLTQ5kq/JtaXgtw5I6n.PhQ/Nuo0FX7Gf24Wvu8IPVJVK1Dj7Qa',15,'671a51fa4e0e3.png','2024-10-23 14:29:34');
+insert  into `usuarios`(`id`,`nombres`,`apellidos`,`usuario`,`pass`,`cargo_id`,`foto`,`fecha`) values (4,'Diego','Salas','dsalas','$2y$10$6GjLTQ5kq/JtaXgtw5I6n.PhQ/Nuo0FX7Gf24Wvu8IPVJVK1Dj7Qa',15,'671a51fa4e0e3.png','2024-10-23 14:29:34');
+insert  into `usuarios`(`id`,`nombres`,`apellidos`,`usuario`,`pass`,`cargo_id`,`foto`,`fecha`) values (5,'Jaime','Borja','jborja','$2y$10$6GjLTQ5kq/JtaXgtw5I6n.PhQ/Nuo0FX7Gf24Wvu8IPVJVK1Dj7Qa',15,'671a51fa4e0e3.png','2024-10-23 14:29:34');
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;

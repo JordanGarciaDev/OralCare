@@ -1,0 +1,239 @@
+<?php
+include('../app/config.php');
+$titulo = "Pruebas Técnicas"; // Título específico para esta vista
+include(LAYOUT . '/header.php');
+?>
+<div class="wrapper">
+    <?php include(LAYOUT . '/sidebar.php');?>
+
+    <div class="main">
+        <?php include(LAYOUT . '/navbar.php');?>
+        <main class="content">
+            <div class="container-fluid p-0">
+                <div class="mb-3">
+                    <h1 class="h3 d-inline align-middle"><i class="align-middle me-2 fas fa-fw fa-cogs"></i><?=$titulo;?></h1>
+                    <button class="btn btn-primary float-end" id="addEntrevista" data-bs-toggle="modal" data-bs-target="#modalPruebaTecnica"><i class="align-middle me-2 fas fa-fw fa-plus"></i>Agregar Nuevo</button>
+                </div>
+
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5 class="card-title">Crea/Edita/Elimina las <?=$titulo;?></h5>
+                            </div>
+                            <div class="card-body">
+                                <table id="datosTablaPruebaTecnica" class="table table-striped" style="width:100%">
+                                    <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Nombre del empleado</th>
+                                        <th>Pregunta</th>
+                                        <th>Fecha</th>
+                                        <th>Acciones</th>
+                                    </tr>
+                                    </thead>
+                                    <tfoot>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Nombre del empleado</th>
+                                        <th>Pregunta</th>
+                                        <th>Fecha</th>
+                                        <th>Acciones</th>
+                                    </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Modal para agregar/editar -->
+                <div class="modal fade" id="modalPruebaTecnica" tabindex="-1" aria-labelledby="modalLabelPruebas" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="modalLabelPruebas"><i class="align-middle me-2 far fa-fw fa-folder"></i>Nueva Prueba Técnica</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <form id="formPruebaTecnica">
+                                    <input type="hidden" id="id" name="id">
+                                    <div class="mb-3">
+                                        <label for="emp_id" class="form-label">Empleado</label>
+                                        <select class="form-select" id="emp_id" name="emp_id" required="">
+                                            <option value="">Seleccione un empleado</option>
+                                        </select>
+                                    </div>
+                                    <span id="tpregunta"></span>
+                                    <span id="pregunta"></span>
+
+                                    <div class="mb-3 col-md-12">
+                                        <div id="preguntasTContainer">
+                                            <!-- Las preguntas se llenarán aquí -->
+                                        </div>
+                                    </div>
+
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><i class="align-middle me-2 fas fa-fw fa-minus"></i>Cancelar</button>
+                                        <button type="submit" class="btn btn-primary"><i class="align-middle me-2 fas fa-fw fa-save"></i>Guardar</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Fin del modal -->
+            </div>
+        </main>
+    </div>
+</div>
+    <script>
+        $(document).ready(function() {
+
+            function llenarSelectsPruebaTecnica(tipoPreguntaID = '') {
+                // Llenar el select de empleados
+                $.ajax({
+                    url: '<?= API ?>pruebas_tecnicas.php?action=empleados',
+                    type: 'GET',
+                    dataType: 'json',
+                    success: function(data) {
+                        var empleadoSelect = $('#emp_id');
+                        empleadoSelect.empty(); // Limpiar opciones previas
+
+                        // Agregar la opción por defecto
+                        empleadoSelect.append('<option value="">Seleccione un empleado</option>');
+
+                        // Llenar el select con los datos de empleados de la API
+                        $.each(data.data, function(index, empleado) {
+                            empleadoSelect.append('<option value="' + empleado.id + '">' + empleado.nombre_completo + '</option>');
+                        });
+                    },
+                    error: function() {
+                        console.error("Error al cargar los empleados.");
+                    }
+                });
+                // Llenar las preguntas y respuestas
+                $.ajax({
+                    url: '<?= API ?>pruebas_tecnicas.php?action=questions',
+                    type: 'GET',
+                    dataType: 'json',
+                    success: function(data) {
+                        var preguntasTContainer = $('#preguntasTContainer');
+                        preguntasTContainer.empty();
+
+                        // Llenar con los datos de la API
+                        $.each(data.data, function(index, item) {
+                            // Crear el encabezado para el tipo de pregunta
+                            var tipoPreguntaInput = '<h5>' + item.tipo + '</h5>';
+
+                            // Mostrar la pregunta como texto y agregar un input oculto para enviarla al servidor
+                            var preguntaTexto = '<div class="mb-2"><h4>' + item.pregunta + '</h4></div>';
+                            var preguntaInputHidden = '<input type="hidden" id="pregunta' + item.idPrueba + '" name="pregunta" value="' + item.idPrueba + '">';
+
+                            // Crear el textarea para la respuesta a la pregunta
+                            var preguntaTextarea = '<textarea class="form-control mb-3" id="respuesta' + item.idPrueba + '" name="respuesta" rows="3" placeholder="Escribe la respuesta aquí">' + item.respuesta + '</textarea>';
+
+                            // Agregar los elementos al contenedor
+                            preguntasTContainer.append(tipoPreguntaInput + preguntaTexto + preguntaInputHidden + preguntaTextarea);
+                        });
+                    },
+                    error: function() {
+                        console.error("Error al cargar los datos de tipo de pregunta.");
+                    }
+                });
+            }
+
+            llenarSelectsPruebaTecnica();
+
+            var table = $('#datosTablaPruebaTecnica').DataTable({
+                "ajax": "<?= API ?>pruebas_tecnicas.php?action=fetch",
+                "columns": [
+                    { "data": "idPrueba" },
+                    { "data": "nombre_completo" },
+                    { "data": "pregunta" },
+                    { "data": "fechareg" },
+                    {
+                        "data": null,
+                        "render": function (data, type, row) {
+                            return `
+                        <button class="btn btn-sm btn-warning edit" data-id="` + data.idPrueba + `"><i class="align-middle me-2 fas fa-fw fa-edit"></i>Editar</button>
+                        <button class="btn btn-sm btn-danger delete" data-id="` + data.idPrueba + `"><i class="align-middle me-2 fas fa-fw fa-trash-alt"></i>Eliminar</button>
+                    `;
+                        }
+                    }
+                ],
+                "language": {
+                    "url": "<?= API ?>languages/Spanish.json"
+                }
+            });
+
+            // Agregar o editar entrevista
+            $('#formPruebaTecnica').submit(function(e) {
+                e.preventDefault();
+                var formData = $(this).serialize();
+
+                $.ajax({
+                    url: '<?= API ?>pruebas_tecnicas.php?action=save',
+                    type: 'POST',
+                    data: formData,
+                    success: function(response) {
+                        $('#modalPruebaTecnica').modal('hide');
+                        table.ajax.reload();
+                    }
+                });
+            });
+
+            $('#addEntrevista').on('click', function() {
+                $('#modalLabelPruebas').text('Nueva Prueba Técnica');
+                $('#formPruebaTecnica')[0].reset();
+                $('#id').val('');
+            });
+
+            // Editar
+            $('#datosTablaPruebaTecnica tbody').on('click', '.edit', function() {
+                $('#modalLabelPruebas').text('Editar Prueba Técnica');
+                var id = $(this).data('id');
+
+                $.ajax({
+                    url: '<?= API ?>pruebas_tecnicas.php?action=edit&id=' + id,
+                    type: 'GET',
+                    dataType: 'json',
+                    success: function(entrevista) {
+                        // Iterar sobre cada pregunta y respuesta en la entrevista para rellenar los textareas
+                        $.each(entrevista.preguntas, function(index, pregunta) {
+                            var tipoPreguntaInput = '<h5>' + pregunta.tipo + '</h5>';
+                            var preguntaTexto = '<div class="mb-2"><h4>' + pregunta.pregunta + '</h4></div>';
+                            var preguntaInputHidden = '<input type="hidden" id="pregunta' + pregunta.idPrueba + '" name="pregunta" value="' + pregunta.idPrueba + '">';
+                            var preguntaTextarea = '<textarea class="form-control mb-3" id="respuesta' + pregunta.idPrueba + '" name="respuesta[' + pregunta.idPrueba + ']" rows="3">' + (pregunta.respuesta || '') + '</textarea>';
+
+                            // Agregar los elementos al contenedor
+                            $('#preguntasTContainer').append(tipoPreguntaInput + preguntaTexto + preguntaInputHidden + preguntaTextarea);
+                        });
+                        $('#modalPruebaTecnica').modal('show');
+                    },
+                    error: function(xhr, status, error) {
+                        console.error('Error en la solicitud de edición:', error);
+                        alert('Ocurrió un error al intentar cargar los datos del entrevista.');
+                    }
+                });
+            });
+
+            // Eliminar
+            $('#datosTablaPruebaTecnica tbody').on('click', '.delete', function() {
+                if (confirm('¿Estás seguro de eliminar este entrevista?')) {
+                    var id = $(this).data('id');
+
+                    $.ajax({
+                        url: '<?= API ?>pruebas_tecnicas.php?action=delete&id=' + id,
+                        type: 'GET',
+                        success: function(response) {
+                            table.ajax.reload();
+                        }
+                    });
+                }
+            });
+        });
+    </script>
+<?php
+include(LAYOUT . '/footer.php');
+?>

@@ -1,11 +1,11 @@
 <?php
 include('../app/config.php');
-$titulo = "EL TITULO AQUI"; // Título específico para esta vista
-$titulo2 = "TituloAqui"; // Escribir el Título asi tal cual primera letra en mayusculas
-$urlAPI = "nombrePHP.php"; // Escribir el Título asi tal cual primera letra en mayusculas
-$btnModal = "addNombre"; // Escribir el Título de la vista Ejemplo: addEmpleado
-$LabelModal = "modalLabel"; // Escribir el Título de la vista Ejemplo: modalLabelVista
-$preguntasContainer = "preguntasVIContainer"; // Escribir las primeras 2 iniciales de la vista en medio de preguntas_Container
+$titulo = "Documentos"; // Título específico para esta vista
+$titulo2 = "Documentos"; // Escribir el Título asi tal cual primera letra en mayusculas
+$urlAPI = "documentos.php"; // Escribir el Título asi tal cual primera letra en mayusculas
+$btnModal = "addDocumento"; // Escribir el Título de la vista Ejemplo: addEmpleado
+$LabelModal = "modalLabelDocumento"; // Escribir el Título de la vista Ejemplo: modalLabelDocumentoVista
+$preguntasContainer = "preguntasDContainer"; // Escribir las primeras 2 iniciales de la vista en medio de preguntas_Container
 ?>
 
 <div class="container-fluid p-0">
@@ -18,7 +18,7 @@ $preguntasContainer = "preguntasVIContainer"; // Escribir las primeras 2 inicial
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <h5 class="card-title">Crea/Edita/Elimina las <?=$titulo;?></h5>
+                    <h5 class="card-title">Crea/Edita/Elimina los <?=$titulo;?></h5>
                 </div>
                 <div class="card-body">
                     <table id="datosTabla<?=$titulo2;?>" class="table table-striped" style="width:100%">
@@ -26,7 +26,7 @@ $preguntasContainer = "preguntasVIContainer"; // Escribir las primeras 2 inicial
                         <tr>
                             <th>ID</th>
                             <th>Nombre del empleado</th>
-                            <th>Pregunta</th>
+                            <th>Documento</th>
                             <th>Fecha</th>
                             <th>Acciones</th>
                         </tr>
@@ -35,7 +35,7 @@ $preguntasContainer = "preguntasVIContainer"; // Escribir las primeras 2 inicial
                         <tr>
                             <th>ID</th>
                             <th>Nombre del empleado</th>
-                            <th>Pregunta</th>
+                            <th>Documento</th>
                             <th>Fecha</th>
                             <th>Acciones</th>
                         </tr>
@@ -51,14 +51,13 @@ $preguntasContainer = "preguntasVIContainer"; // Escribir las primeras 2 inicial
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="<?=$LabelModal;?>"><i class="align-middle me-2 far fa-fw fa-folder"></i>Nueva <?=$titulo;?></h5>
+                    <h5 class="modal-title" id="<?=$LabelModal;?>"><i class="align-middle me-2 far fa-fw fa-folder"></i>Nuevos Documentos</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <form id="form<?=$titulo2;?>">
                         <input type="hidden" id="id" name="id">
-
-<!--                    AQUI SE AGREGAN TODOS LOS INPUTS, SELECTS, TABLAS, ETC QUE QUEREMOS MOSTRAR AL USUARIO FINAL-->
+                        <!--                    AQUI SE AGREGAN TODOS LOS INPUTS, SELECTS, TABLAS, ETC QUE QUEREMOS MOSTRAR AL USUARIO FINAL-->
 
                         <div class="mb-3">
                             <label for="emp_id" class="form-label">Empleado</label>
@@ -67,11 +66,11 @@ $preguntasContainer = "preguntasVIContainer"; // Escribir las primeras 2 inicial
                             </select>
                         </div>
                         <div class="mb-3">
-                            <label class="form-label">File input</label>
-                            <input class="form-control" type="file">
+                            <label class="form-label">Cargar archivo</label>
+                            <input class="form-control" type="file" name="archivo">
                         </div>
- <!--                    AQUI FINALIZA TODOS LOS INPUTS, SELECTS, TABLAS, ETC QUE QUEREMOS MOSTRAR AL USUARIO FINAL-->
-
+                        
+                        <!--                    AQUI FINALIZA TODOS LOS INPUTS, SELECTS, TABLAS, ETC QUE QUEREMOS MOSTRAR AL USUARIO FINAL-->
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><i class="align-middle me-2 fas fa-fw fa-minus"></i>Cancelar</button>
                             <button type="submit" class="btn btn-primary"><i class="align-middle me-2 fas fa-fw fa-save"></i>Guardar</button>
@@ -107,35 +106,6 @@ $preguntasContainer = "preguntasVIContainer"; // Escribir las primeras 2 inicial
                 },
                 error: function() {
                     console.error("Error al cargar los empleados.");
-                }
-            });
-            // Llenar las preguntas y respuestas
-            $.ajax({
-                url: '<?= API ?><?=$urlAPI;?>?action=questions',
-                type: 'GET',
-                dataType: 'json',
-                success: function(data) {
-                    var <?=$preguntasContainer;?> = $('#<?=$preguntasContainer;?>');
-                    <?=$preguntasContainer;?>.empty();
-
-                    // Llenar con los datos de la API
-                    $.each(data.data, function(index, item) {
-                        // Crear el encabezado para el tipo de pregunta
-                        var tipoPreguntaInput = '<h5>' + item.tipo + '</h5>';
-
-                        // Mostrar la pregunta como texto y agregar un input oculto para enviarla al servidor
-                        var preguntaTexto = '<div class="mb-2"><h4>' + item.pregunta + '</h4></div>';
-                        var preguntaInputHidden = '<input type="hidden" id="pregunta' + item.idPreg + '" name="pregunta" value="' + item.idPreg + '">';
-
-                        // Crear el textarea para la respuesta a la pregunta
-                        var preguntaTextarea = '<textarea class="form-control mb-3" id="respuesta' + item.idPreg + '" name="respuesta" rows="3" placeholder="Escribe la respuesta aquí"></textarea>';
-
-                        // Agregar los elementos al contenedor
-                        <?=$preguntasContainer;?>.append(tipoPreguntaInput + preguntaTexto + preguntaInputHidden + preguntaTextarea);
-                    });
-                },
-                error: function() {
-                    console.error("Error al cargar los datos de tipo de pregunta.");
                 }
             });
         }
@@ -181,7 +151,7 @@ $preguntasContainer = "preguntasVIContainer"; // Escribir las primeras 2 inicial
         });
 
         $('#<?=$btnModal;?>').on('click', function() {
-            $('#<?=$LabelModal;?>').text('Nueva <?=$titulo;?>');
+            $('#<?=$LabelModal;?>').text('Nuevos <?=$titulo;?>');
             $('#form<?=$titulo2;?>')[0].reset();
             $('#id').val('');
         });

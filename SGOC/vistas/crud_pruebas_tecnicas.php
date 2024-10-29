@@ -6,7 +6,7 @@ $titulo = "Pruebas Técnicas"; // Título específico para esta vista
 <div class="container-fluid p-0">
     <div class="mb-3">
         <h1 class="h3 d-inline align-middle"><i class="align-middle me-2 fas fa-fw fa-cogs"></i><?=$titulo;?></h1>
-        <button class="btn btn-primary float-end" id="addNuevo" data-bs-toggle="modal" data-bs-target="#modalPruebaTecnica"><i class="align-middle me-2 fas fa-fw fa-plus"></i>Agregar Nuevo</button>
+        <button class="btn btn-primary float-end" id="addEntrevista" data-bs-toggle="modal" data-bs-target="#modalPruebaTecnica"><i class="align-middle me-2 fas fa-fw fa-plus"></i>Agregar Nuevo</button>
     </div>
 
     <div class="row">
@@ -42,11 +42,11 @@ $titulo = "Pruebas Técnicas"; // Título específico para esta vista
     </div>
 
     <!-- Modal para agregar/editar -->
-    <div class="modal fade" id="modalPruebaTecnica" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
+    <div class="modal fade" id="modalPruebaTecnica" tabindex="-1" aria-labelledby="modalLabelPruebas" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="modalLabel"><i class="align-middle me-2 far fa-fw fa-folder"></i>Nueva Entrevista</h5>
+                    <h5 class="modal-title" id="modalLabelPruebas"><i class="align-middle me-2 far fa-fw fa-folder"></i>Nueva Prueba Técnica</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -62,7 +62,7 @@ $titulo = "Pruebas Técnicas"; // Título específico para esta vista
                         <span id="pregunta"></span>
 
                         <div class="mb-3 col-md-12">
-                            <div id="preguntasContainer">
+                            <div id="preguntasTContainer">
                                 <!-- Las preguntas se llenarán aquí -->
                             </div>
                         </div>
@@ -110,8 +110,8 @@ $titulo = "Pruebas Técnicas"; // Título específico para esta vista
                 type: 'GET',
                 dataType: 'json',
                 success: function(data) {
-                    var preguntasContainer = $('#preguntasContainer');
-                    preguntasContainer.empty();
+                    var preguntasTContainer = $('#preguntasTContainer');
+                    preguntasTContainer.empty();
 
                     // Llenar con los datos de la API
                     $.each(data.data, function(index, item) {
@@ -126,7 +126,7 @@ $titulo = "Pruebas Técnicas"; // Título específico para esta vista
                         var preguntaTextarea = '<textarea class="form-control mb-3" id="respuesta' + item.idPreg + '" name="respuesta" rows="3" placeholder="Escribe la respuesta aquí"></textarea>';
 
                         // Agregar los elementos al contenedor
-                        preguntasContainer.append(tipoPreguntaInput + preguntaTexto + preguntaInputHidden + preguntaTextarea);
+                        preguntasTContainer.append(tipoPreguntaInput + preguntaTexto + preguntaInputHidden + preguntaTextarea);
                     });
                 },
                 error: function() {
@@ -175,15 +175,15 @@ $titulo = "Pruebas Técnicas"; // Título específico para esta vista
             });
         });
 
-        $('#addNuevo').on('click', function() {
-            $('#modalLabel').text('Nueva Prueba Técnica');
+        $('#addEntrevista').on('click', function() {
+            $('#modalLabelPruebas').text('Nueva Prueba Técnica');
             $('#formPruebaTecnica')[0].reset();
             $('#id').val('');
         });
 
         // Editar
         $('#datosTablaPruebaTecnica tbody').on('click', '.edit', function() {
-            $('#modalLabel').text('Editar Prueba Técnica');
+            $('#modalLabelPruebas').text('Editar Prueba Técnica');
             var id = $(this).data('id');
 
             $.ajax({

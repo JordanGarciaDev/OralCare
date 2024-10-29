@@ -60,7 +60,7 @@ $titulo = "Entrevistas"; // Título específico para esta vista
                         <span id="pregunta"></span>
 
                         <div class="mb-3 col-md-12">
-                            <div id="preguntasContainer">
+                            <div id="preguntasEContainer">
                                 <!-- Las preguntas se llenarán aquí -->
                             </div>
                         </div>
@@ -108,8 +108,8 @@ $titulo = "Entrevistas"; // Título específico para esta vista
                 type: 'GET',
                 dataType: 'json',
                 success: function(data) {
-                    var preguntasContainer = $('#preguntasContainer');
-                    preguntasContainer.empty();
+                    var preguntasEContainer = $('#preguntasEContainer');
+                    preguntasEContainer.empty();
 
                     // Llenar con los datos de la API
                     $.each(data.data, function(index, item) {
@@ -124,7 +124,7 @@ $titulo = "Entrevistas"; // Título específico para esta vista
                         var preguntaTextarea = '<textarea class="form-control mb-3" id="respuesta' + item.idPreg + '" name="respuesta" rows="3" placeholder="Escribe la respuesta aquí"></textarea>';
 
                         // Agregar los elementos al contenedor
-                        preguntasContainer.append(tipoPreguntaInput + preguntaTexto + preguntaInputHidden + preguntaTextarea);
+                        preguntasEContainer.append(tipoPreguntaInput + preguntaTexto + preguntaInputHidden + preguntaTextarea);
                     });
                 },
                 error: function() {

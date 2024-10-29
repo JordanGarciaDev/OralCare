@@ -3,12 +3,15 @@ include('../app/config.php');
 $titulo = "EL TITULO AQUI"; // Título específico para esta vista
 $titulo2 = "TituloAqui"; // Escribir el Título asi tal cual primera letra en mayusculas
 $urlAPI = "nombrePHP.php"; // Escribir el Título asi tal cual primera letra en mayusculas
+$btnModal = "addNombre"; // Escribir el Título de la vista Ejemplo: addEmpleado
+$LabelModal = "modalLabel"; // Escribir el Título de la vista Ejemplo: modalLabelVista
+$preguntasContainer = "preguntasVIContainer"; // Escribir las primeras 2 iniciales de la vista en medio de preguntas_Container
 ?>
 
 <div class="container-fluid p-0">
     <div class="mb-3">
         <h1 class="h3 d-inline align-middle"><i class="align-middle me-2 fas fa-fw fa-cogs"></i><?=$titulo;?></h1>
-        <button class="btn btn-primary float-end" id="addNuevo" data-bs-toggle="modal" data-bs-target="#modal<?=$titulo2;?>"><i class="align-middle me-2 fas fa-fw fa-plus"></i>Agregar Nuevo</button>
+        <button class="btn btn-primary float-end" id="<?=$btnModal;?>" data-bs-toggle="modal" data-bs-target="#modal<?=$titulo2;?>"><i class="align-middle me-2 fas fa-fw fa-plus"></i>Agregar Nuevo</button>
     </div>
 
     <div class="row">
@@ -44,11 +47,11 @@ $urlAPI = "nombrePHP.php"; // Escribir el Título asi tal cual primera letra en 
     </div>
 
     <!-- Modal para agregar/editar -->
-    <div class="modal fade" id="modal<?=$titulo2;?>" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
+    <div class="modal fade" id="modal<?=$titulo2;?>" tabindex="-1" aria-labelledby="<?=$LabelModal;?>" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="modalLabel"><i class="align-middle me-2 far fa-fw fa-folder"></i>Nueva Entrevista</h5>
+                    <h5 class="modal-title" id="<?=$LabelModal;?>"><i class="align-middle me-2 far fa-fw fa-folder"></i>Nueva Entrevista</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -64,7 +67,7 @@ $urlAPI = "nombrePHP.php"; // Escribir el Título asi tal cual primera letra en 
                         <span id="pregunta"></span>
 
                         <div class="mb-3 col-md-12">
-                            <div id="preguntasContainer">
+                            <div id="<?=$preguntasContainer;?>">
                                 <!-- Las preguntas se llenarán aquí -->
                             </div>
                         </div>
@@ -112,8 +115,8 @@ $urlAPI = "nombrePHP.php"; // Escribir el Título asi tal cual primera letra en 
                 type: 'GET',
                 dataType: 'json',
                 success: function(data) {
-                    var preguntasContainer = $('#preguntasContainer');
-                    preguntasContainer.empty();
+                    var <?=$preguntasContainer;?> = $('#<?=$preguntasContainer;?>');
+                    <?=$preguntasContainer;?>.empty();
 
                     // Llenar con los datos de la API
                     $.each(data.data, function(index, item) {
@@ -128,7 +131,7 @@ $urlAPI = "nombrePHP.php"; // Escribir el Título asi tal cual primera letra en 
                         var preguntaTextarea = '<textarea class="form-control mb-3" id="respuesta' + item.idPreg + '" name="respuesta" rows="3" placeholder="Escribe la respuesta aquí"></textarea>';
 
                         // Agregar los elementos al contenedor
-                        preguntasContainer.append(tipoPreguntaInput + preguntaTexto + preguntaInputHidden + preguntaTextarea);
+                        <?=$preguntasContainer;?>.append(tipoPreguntaInput + preguntaTexto + preguntaInputHidden + preguntaTextarea);
                     });
                 },
                 error: function() {
@@ -177,15 +180,15 @@ $urlAPI = "nombrePHP.php"; // Escribir el Título asi tal cual primera letra en 
             });
         });
 
-        $('#addNuevo').on('click', function() {
-            $('#modalLabel').text('Nueva <?=$titulo;?>');
+        $('#<?=$btnModal;?>').on('click', function() {
+            $('#<?=$LabelModal;?>').text('Nueva <?=$titulo;?>');
             $('#form<?=$titulo2;?>')[0].reset();
             $('#id').val('');
         });
 
         // Editar
         $('#datosTabla<?=$titulo2;?> tbody').on('click', '.edit', function() {
-            $('#modalLabel').text('Editar <?=$titulo;?>');
+            $('#<?=$LabelModal;?>').text('Editar <?=$titulo;?>');
             var id = $(this).data('id');
 
             $.ajax({

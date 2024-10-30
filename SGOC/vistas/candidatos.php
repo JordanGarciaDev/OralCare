@@ -25,7 +25,7 @@ $titulo = "Gestión de Candidatos"; // Título específico para esta vista
                                 <h5 class="card-title">Crea/Edita/Elimina <?=$titulo;?></h5>
                             </div>
                             <div class="card-body">
-                                <table id="empleadosTable" class="table table-striped" style="width:100%">
+                                <table id="candidatosTable" class="table table-striped" style="width:100%">
                                     <thead>
                                     <tr>
                                         <th>ID</th>
@@ -65,7 +65,7 @@ $titulo = "Gestión de Candidatos"; // Título específico para esta vista
                                         <h6 class="card-subtitle text-muted">Escriba aquí los datos personales del empleado</h6>
                                     </div>
                                     <div class="card-body">
-                                        <form id="empleadoForm">
+                                        <form id="empleadoForm" enctype="multipart/form-data">
                                             <input type="hidden" id="empleadoId" name="empleadoId">
                                             <div class="row">
                                                 <div class="mb-3 col-md-4">
@@ -183,6 +183,13 @@ $titulo = "Gestión de Candidatos"; // Título específico para esta vista
                                                         <option value="activo">Activo</option>
                                                         <option value="retirado">Retirado</option>
                                                     </select>
+                                                </div>
+                                                <!-- Sección final con archivo -->
+                                                <div class="mb-3 col-md-4">
+                                                    <div class="mb-3">
+                                                        <label class="form-label">Cargar Hoja de Vida</label>
+                                                        <input type="file" class="form-control" id="hoja_vida" name="hoja_vida">
+                                                    </div>
                                                 </div>
                                                 <div class="mb-3 col-md-4" id="fretiroDiv" style="display: none;">
                                                     <label class="form-label" for="fretiro"><span style="color:red">*</span>Fecha de Retiro</label>
@@ -328,7 +335,7 @@ $titulo = "Gestión de Candidatos"; // Título específico para esta vista
             }
             llenarSelectsEmp();
 
-            var table = $('#empleadosTable').DataTable({
+            var table = $('#candidatosTable').DataTable({
                 "ajax": "<?= API ?>candidatos.php?action=fetch",
                 "columns": [
                     { "data": "id" },
@@ -356,7 +363,7 @@ $titulo = "Gestión de Candidatos"; // Título específico para esta vista
                 $('#id').val('');
             });
 
-            // Agregar o editar tipo de empleados
+            // Agregar o editar tipo de candidatos
             $('#empleadoForm').submit(function(e) {
                 e.preventDefault();
                 var formData = $(this).serialize();
@@ -372,7 +379,7 @@ $titulo = "Gestión de Candidatos"; // Título específico para esta vista
                 });
             });
 
-            $('#empleadosTable tbody').on('click', '.edit', function () {
+            $('#candidatosTable tbody').on('click', '.edit', function () {
                 $('#modalLabel').text('Editar Empleado');
                 var id = $(this).data('id');
 
@@ -419,7 +426,7 @@ $titulo = "Gestión de Candidatos"; // Título específico para esta vista
                 });
             });
 
-            $('#empleadosTable tbody').on('click', '.delete', function () {
+            $('#candidatosTable tbody').on('click', '.delete', function () {
                 if (confirm('¿Estás seguro de eliminar este empleado?')) {
                     var id = $(this).data('id'); // Obtiene el ID del empleado a eliminar
 

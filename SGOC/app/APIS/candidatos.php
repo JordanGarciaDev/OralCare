@@ -4,12 +4,12 @@ header('Content-Type: application/json');
 
 $action = isset($_GET['action']) ? $_GET['action'] : '';
 
-// Obtener todos los empleados
+// Obtener todos los candidatos
 if ($action == 'fetch') {
     $query = "SELECT e.id, e.nombre_completo,ti.nombre AS tipo_doc_nombre, e.tipo_doc, e.num_doc, 
                c.municipio AS ciudad_residencia_nombre, 
                ca.nombre AS cargo_nombre
-        FROM empleados AS e
+        FROM candidatos AS e
         INNER JOIN municipios AS c ON e.ciudad_residencia = c.id_municipio
         INNER JOIN cargos AS ca ON e.cargo_id = ca.id
         INNER JOIN tipo_identificacion AS ti ON e.tipo_doc = ti.id";
@@ -58,7 +58,7 @@ if ($action == 'save') {
         $estado = 2; // Candidato
 
         // Crear nuevo registro
-        $query = "INSERT INTO empleados (nombre_completo, tipo_doc, num_doc, lug_exp, fec_nacimiento, nacionalidad, sexo, estado_civil, dir_residencia, barrio_residencia, ciudad_residencia, tel_movil, email_personal, email_empresarial, cargo_id, salario, fingreso, fretiro, tipo_sangre, estado) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        $query = "INSERT INTO candidatos (nombre_completo, tipo_doc, num_doc, lug_exp, fec_nacimiento, nacionalidad, sexo, estado_civil, dir_residencia, barrio_residencia, ciudad_residencia, tel_movil, email_personal, email_empresarial, cargo_id, salario, fingreso, fretiro, tipo_sangre, estado) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         $stmt = $conn->prepare($query);
         $stmt->bind_param(
             'siiisssissiissiisssi',
@@ -70,7 +70,7 @@ if ($action == 'save') {
         $estado = $_POST['estado']; // Se cambia a 0 Activo ó sino 1 que es activo
 
         // Actualizar registro existente
-        $query = "UPDATE empleados SET nombre_completo = ?, tipo_doc = ?, num_doc = ?, lug_exp = ?, fec_nacimiento = ?, nacionalidad = ?, sexo = ?, estado_civil = ?, dir_residencia = ?, barrio_residencia = ?, ciudad_residencia = ?, tel_movil = ?, email_personal = ?, email_empresarial = ?, cargo_id = ?, salario = ?, fingreso = ?, fretiro = ?, tipo_sangre = ?, estado = ? WHERE id = ?";
+        $query = "UPDATE candidatos SET nombre_completo = ?, tipo_doc = ?, num_doc = ?, lug_exp = ?, fec_nacimiento = ?, nacionalidad = ?, sexo = ?, estado_civil = ?, dir_residencia = ?, barrio_residencia = ?, ciudad_residencia = ?, tel_movil = ?, email_personal = ?, email_empresarial = ?, cargo_id = ?, salario = ?, fingreso = ?, fretiro = ?, tipo_sangre = ?, estado = ? WHERE id = ?";
         $stmt = $conn->prepare($query);
         $stmt->bind_param(
             'sssisssisssissisissii',
@@ -107,7 +107,7 @@ if ($action == 'save') {
 if ($action == 'edit') {
     $id = $_GET['id'];
     $query = "SELECT e.*,e.id AS empleadoId,ti.nombre AS tipo_doc_nombre,c.municipio AS ciudad_residencia_nombre,ca.nombre AS cargo_nombre
-        FROM empleados AS e
+        FROM candidatos AS e
         INNER JOIN municipios AS c ON e.ciudad_residencia = c.id_municipio
         INNER JOIN cargos AS ca ON e.cargo_id = ca.id
         INNER JOIN tipo_identificacion AS ti ON e.tipo_doc = ti.id
@@ -129,7 +129,7 @@ if ($action == 'edit') {
 // Eliminar
 if ($action == 'delete') {
     $id = $_GET['id'];
-    $query = "DELETE FROM empleados WHERE id = ?";
+    $query = "DELETE FROM candidatos WHERE id = ?";
     $stmt = $conn->prepare($query);
     $stmt->bind_param('i', $id);
     $stmt->execute();

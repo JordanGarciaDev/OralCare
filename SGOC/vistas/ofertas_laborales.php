@@ -151,7 +151,7 @@ include(LAYOUT . '/header.php');
                                 let color = (oferta.estado === "Activo") ? 'bg-success' : 'bg-danger';
                                 let adjunto = (oferta.documento === "") ? '' :
                                 '<div class="card-body px-4 pt-2">' +
-                                '<a href="<?= $_SERVER['DOCUMENT_ROOT'].'/OralCare/SGOC/uploads/OfertasLaborales/'?>'+ oferta.documento + '" target="_blank"><i class="fa fa-file-pdf"></i> Archivo Adjunto</a>' +
+                                '<a href="<?= BASE_URL.'/uploads/OfertasLaborales/'?>'+ oferta.documento + '" target="_blank"><i class="fa fa-file-pdf"></i> Archivo Adjunto</a>' +
                                 '</div>';
 console.log('URL del archivo: ', '<?= $_SERVER['DOCUMENT_ROOT'].'/OralCare/SGOC/uploads/OfertasLaborales/'?>' + oferta.documento);
 

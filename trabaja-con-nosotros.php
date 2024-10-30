@@ -1322,6 +1322,7 @@ h3 {
 
     <form novalidate class="ng-untouched ng-pristine ng-invalid" id="mainForm">
       <br id="formContainer">
+
         <div id="step1">
           <h1>Estar informado hace parte del aseguramiento de tu salud y la de tu familia.</h1>
           <div class="row">
@@ -1346,7 +1347,7 @@ h3 {
               <div class="form-group">
                 <label for="txtNumeroIdentificacion">Número de Documento</label>
                 <span style="color: #7F7F7F;">*</span>
-                <input class="k-textbox" id="txtNumeroIdentificacion" maxlength="20" minlength="4" type="text" required>
+                <input class="k-textbox" id="txtNumeroIdentificacion" maxlength="20" minlength="4" type="number" required>
                 <label class="validacion" id="validar2"></label>
               </div>
             </div>
@@ -1365,7 +1366,7 @@ h3 {
             <div class="col-md-3">
               <div class="form-group">
                 <label for="lug_exp">Lugar de Expedición:</label>
-                <select class="form-control" id="lug_exp" name="lug_exp" required>
+                <select class="form-control" id="lug_exp" name="lug_exp" >
                   <option value="">Seleccione</option>
                   <!-- Agregar opciones aquí -->
                 </select>
@@ -1430,7 +1431,70 @@ h3 {
               </div>
             </div>
           </div>
+          </div>
         </div>
+
+        <!-- Step 3 - Nuevos Inputs -->
+        <div id="step3" style="display:none;">
+              <h2>Complete los siguientes datos adicionales:</h2>
+
+              <div class="row">
+                  <div class="col-md-3 offset-md-3">
+                      <div class="form-group">
+                          <label for="ciudad_residencia">Ciudad de Residencia:</label>
+                          <select class="form-control" id="ciudad_residencia" name="ciudad_residencia" required>
+                              <option value="">Seleccione</option>
+                              <option value="CO">Cali</option>
+                              <option value="EX">Medellín</option>
+                          </select>
+                      </div>
+                  </div>
+
+                  <div class="col-md-3">
+                      <div class="form-group">
+                          <label for="tel_movil">Teléfono Móvil:</label>
+                          <input type="number" class="form-control" id="tel_movil" name="tel_movil" placeholder="Escriba el teléfono móvil" required>
+                      </div>
+                  </div>
+              </div>
+
+              <div class="row">
+                  <div class="col-md-3 offset-md-3">
+                      <div class="form-group">
+                          <label for="email_personal">Email Personal:</label>
+                          <input type="email" class="form-control" id="email_personal" name="email_personal" placeholder="Escriba el email personal" required>
+                      </div>
+                  </div>
+
+                  <div class="col-md-3">
+                      <div class="form-group">
+                          <label for="email_empresarial">Email Empresarial:</label>
+                          <input type="email" class="form-control" id="email_empresarial" name="email_empresarial" placeholder="Escriba el email empresarial">
+                      </div>
+                  </div>
+              </div>
+
+
+              <div class="row">
+
+                  <div class="col-md-3 offset-md-3">
+                      <div class="form-group">
+                          <label for="tipo_sangre">Tipo de Sangre:</label>
+                          <select class="form-control" id="tipo_sangre" name="tipo_sangre" required>
+                              <option value="">Seleccione</option>
+                              <!-- Opciones adicionales aquí -->
+                          </select>
+                      </div>
+                  </div>
+
+                  <div class="col-md-3">
+                      <div class="form-group">
+                          <label for="hoja_vida">Hoja de Vida:</label>
+                          <input type="file" class="form-control" id="hoja_vida" name="hoja_vida">
+                      </div>
+                  </div>
+              </div>
+          </div>
       </br>
               <div class="row">
         <div class="col-md-4 offset-md-5">
@@ -1439,7 +1503,7 @@ h3 {
       </div>
     </form>
 
-    <script>
+      <script>
       let currentStep = 1;
 
       function nextStep() {
@@ -1447,7 +1511,9 @@ h3 {
         const currentInputs = steps[currentStep - 1].querySelectorAll('input[required], select[required]');
         let allValid = true;
 
-        currentInputs.forEach(input => {
+          if (currentStep > steps.length) document.getElementById('mainForm').submit();
+
+          currentInputs.forEach(input => {
           if (!input.checkValidity()) {
             allValid = false;
             input.classList.add('is-invalid'); // Agrega clase de error si es necesario

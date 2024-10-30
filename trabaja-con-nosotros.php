@@ -1318,31 +1318,153 @@ h3 {
   "ng-reflect-ng-if": "false"
 }--><!--bindings={
   "ng-reflect-ng-if": "false"
-}--><div _ngcontent-hnu-c4="" style="text-align:center"></div><alerta _ngcontent-hnu-c4=""><!--bindings={}--></alerta><p _ngcontent-hnu-c4=""><br _ngcontent-hnu-c4=""></p><div _ngcontent-hnu-c4="" class=""><form _ngcontent-hnu-c4="" novalidate="" ng-reflect-form="[object Object]" class="ng-untouched ng-pristine ng-invalid"><!--bindings={
-  "ng-reflect-ng-if": "true"
-}--><div _ngcontent-hnu-c4="" class="row ng-star-inserted"><div _ngcontent-hnu-c4="" class="col-md-8 offset-md-2"><div _ngcontent-hnu-c4=""><h1>Estar informado hace parte del aseguramiento de tu salud y la de tu familia. Recuerda mantener actualizados tus datos de contacto.</h1></div></div></div><!--bindings={
-  "ng-reflect-ng-if": "0"
-}--><!--bindings={
-  "ng-reflect-ng-if": "true"
-}--><div _ngcontent-hnu-c4="" class="row ng-star-inserted"><!--bindings={
-  "ng-reflect-ng-if": "[object Object],[object Object"
-}--><div _ngcontent-hnu-c4="" class="col-md-3 offset-md-3 ng-star-inserted"><div _ngcontent-hnu-c4="" class="form-group"><label _ngcontent-hnu-c4="" for="undefined">Tipo de documento</label><span _ngcontent-hnu-c4="" style="color: #7F7F7F ;">* </span><select _ngcontent-hnu-c4="" class="k-combobox ng-untouched ng-pristine ng-invalid" formcontrolname="ddlTipoIdentificacion" id="ddlTipoIdentificacion" ng-reflect-name="ddlTipoIdentificacion"><option _ngcontent-hnu-c4="" disabled="" value="" ng-reflect-value="">Selecciona</option><!--bindings={
-  "ng-reflect-ng-for-of": "[object Object],[object Object"
-}--><option _ngcontent-hnu-c4="" value="C" ng-reflect-value="C" class="ng-star-inserted">Cédula de Ciudadania </option><option _ngcontent-hnu-c4="" value="CD" ng-reflect-value="CD" class="ng-star-inserted">Carnet Diplomático </option><option _ngcontent-hnu-c4="" value="E" ng-reflect-value="E" class="ng-star-inserted">Cédula de Extranjería </option><option _ngcontent-hnu-c4="" value="P" ng-reflect-value="P" class="ng-star-inserted">Pasaporte </option><option _ngcontent-hnu-c4="" value="PE" ng-reflect-value="PE" class="ng-star-inserted">Permiso Especial de Permanencia </option><option _ngcontent-hnu-c4="" value="PT" ng-reflect-value="PT" class="ng-star-inserted">Permiso por protección temporal </option><option _ngcontent-hnu-c4="" value="SC" ng-reflect-value="SC" class="ng-star-inserted">Salvoconducto </option></select><label _ngcontent-hnu-c4="" class="validacion" id="validar1"></label></div></div><div _ngcontent-hnu-c4="" class="col-md-3"><div _ngcontent-hnu-c4="" class="form-group"><label _ngcontent-hnu-c4="" for="undefined">Número de Documento</label><span _ngcontent-hnu-c4="" style="color: #7F7F7F ;">* </span><input _ngcontent-hnu-c4="" class="k-textbox ng-untouched ng-pristine ng-invalid" formcontrolname="txtNumeroIdentificacion" maxlength="20" minlength="4" type="text" ng-reflect-minlength="4" ng-reflect-maxlength="20" ng-reflect-name="txtNumeroIdentificacion"><label _ngcontent-hnu-c4="" class="validacion" id="validar2"></label></div></div></div><!--bindings={
-  "ng-reflect-ng-if": "false"
-}--><!--bindings={
-  "ng-reflect-ng-if": "true"
-}--><div _ngcontent-hnu-c4="" class="row ng-star-inserted"><div _ngcontent-hnu-c4="" class="col-md-6 offset-md-3"><h1 _ngcontent-hnu-c4=""><br _ngcontent-hnu-c4=""><br _ngcontent-hnu-c4=""><input _ngcontent-hnu-c4="" id="check_Uno" type="checkbox"><a _ngcontent-hnu-c4="" href="https://transaccional.saludtotal.com.co/Terminos/PoliticasTratamientodatos.aspx" style="color: #1b8ff5; font-weight:900; font-family: Futura-Std-Book;font-size: 0.7em;" target="_blank"> He leído y acepto la politica de tratamiento de datos.</a><br _ngcontent-hnu-c4=""><label _ngcontent-hnu-c4="" class="validacion" id="ValidarPoliticaP"></label></h1></div></div><div _ngcontent-hnu-c4="" id="campos"><br _ngcontent-hnu-c4=""><!--bindings={
-  "ng-reflect-ng-if": "true"
-}--><div _ngcontent-hnu-c4="" class="row ng-star-inserted"><div _ngcontent-hnu-c4="" class="col-md-4 offset-md-5"><div _ngcontent-hnu-c4="" class="form-group"><button _ngcontent-hnu-c4="" class="k-button" kendobutton="" style="width: 40%;" type="submit">Siguiente</button></div></div></div></div><!--bindings={
-  "ng-reflect-ng-if": "true"
-}--><div _ngcontent-hnu-c4="" class="row ng-star-inserted"><div _ngcontent-hnu-c4="" class="col-md-2 col-sm-2"></div><div _ngcontent-hnu-c4="" class="col-md-8 col-sm-8 row justificarContenido row align-items-center"><h1 _ngcontent-hnu-c4=""><br _ngcontent-hnu-c4=""><br _ngcontent-hnu-c4=""><span _ngcontent-hnu-c4="" class="auto-style6"> Como parte de nuestro compromiso con la transparencia y la privacidad de tu información, al continuar en la página autorizas</span><span _ngcontent-hnu-c4="" class="auto-style6">que los datos personales que nos suministres o actualices, sean tratados conforme a nuestra</span><a _ngcontent-hnu-c4="" href="https://saludtotal.com.co/proteccion-de-datos-personales/" style="color: #1b8ff5;  font-family: Futura-Std-Book;font-size: 0.7em;" target="_blank"> politica de tratamiento de datos personales.</a></h1></div></div><!--bindings={
-  "ng-reflect-ng-if": "false"
-}--><!--bindings={
-  "ng-reflect-ng-if": "false"
-}--></form></div><app-footer _ngcontent-hnu-c4="" _nghost-hnu-c3=""><footer _ngcontent-hnu-c3="" class="footer"><div _ngcontent-hnu-c3="" class="row"><div _ngcontent-hnu-c3="" class="col-md-1" id="divfoot"><img _ngcontent-hnu-c3="" class="footer2" src="./trabaja-con-nosotros_files/Logo_Vigilado.png"></div><div _ngcontent-hnu-c3="" class="col-md-10"><img _ngcontent-hnu-c3="" class="logoSaludTotalp" src="./trabaja-con-nosotros_files/Pie_pagina-web.png"></div></div></footer></app-footer></app-home><ngx-spinner _ngcontent-hnu-c0="" bdcolor="rgba(51, 51, 51, 0.8)" size="default" type="ball-spin-clockwise" _nghost-hnu-c2="" class="ng-tns-c2-0" ng-reflect-bd-color="rgba(51, 51, 51, 0.8)" ng-reflect-size="default" ng-reflect-type="ball-spin-clockwise"><!--bindings={
-  "ng-reflect-ng-if": "false"
-}--></ngx-spinner><app-footer _ngcontent-hnu-c0="" _nghost-hnu-c3=""><footer _ngcontent-hnu-c3="" class="footer"><div _ngcontent-hnu-c3="" class="row"><div _ngcontent-hnu-c3="" class="col-md-1" id="divfoot"><img _ngcontent-hnu-c3="" class="footer2" src="./trabaja-con-nosotros_files/Logo_Vigilado.png"></div><div _ngcontent-hnu-c3="" class="col-md-10"><img _ngcontent-hnu-c3="" class="logoSaludTotalp" src="./trabaja-con-nosotros_files/Pie_pagina-web.png"></div></div></footer></app-footer></app-root>
-<script src="./trabaja-con-nosotros_files/runtime-es2015.js.descarga" type="module"></script><script src="./trabaja-con-nosotros_files/polyfills-es2015.js.descarga" type="module"></script><script src="./trabaja-con-nosotros_files/runtime-es5.js.descarga" nomodule=""></script><script src="./trabaja-con-nosotros_files/polyfills-es5.js.descarga" nomodule=""></script><script src="./trabaja-con-nosotros_files/styles-es2015.js.descarga" type="module"></script><script src="./trabaja-con-nosotros_files/styles-es5.js.descarga" nomodule=""></script><script src="./trabaja-con-nosotros_files/vendor-es2015.js.descarga" type="module"></script><script src="./trabaja-con-nosotros_files/main-es2015.js.descarga" type="module"></script><script src="./trabaja-con-nosotros_files/vendor-es5.js.descarga" nomodule=""></script><script src="./trabaja-con-nosotros_files/main-es5.js.descarga" nomodule=""></script>
+}--><div _ngcontent-hnu-c4="" style="text-align:center"></div><alerta _ngcontent-hnu-c4=""><!--bindings={}--></alerta><p _ngcontent-hnu-c4=""><br _ngcontent-hnu-c4=""></p><div _ngcontent-hnu-c4="" class="">
 
-</body></html>
+    <form novalidate class="ng-untouched ng-pristine ng-invalid" id="mainForm">
+      <br id="formContainer">
+        <div id="step1">
+          <h1>Estar informado hace parte del aseguramiento de tu salud y la de tu familia.</h1>
+          <div class="row">
+            <div class="col-md-3 offset-md-3">
+              <div class="form-group">
+                <label for="ddlTipoIdentificacion">Tipo de documento</label>
+                <span style="color: #7F7F7F;">*</span>
+                <select class="k-combobox" id="ddlTipoIdentificacion" required>
+                  <option disabled selected value="">Selecciona</option>
+                  <option value="C">Cédula de Ciudadania</option>
+                  <option value="CD">Carnet Diplomático</option>
+                  <option value="E">Cédula de Extranjería</option>
+                  <option value="P">Pasaporte</option>
+                  <option value="PE">Permiso Especial de Permanencia</option>
+                  <option value="PT">Permiso por protección temporal</option>
+                  <option value="SC">Salvoconducto</option>
+                </select>
+                <label class="validacion" id="validar1"></label>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="form-group">
+                <label for="txtNumeroIdentificacion">Número de Documento</label>
+                <span style="color: #7F7F7F;">*</span>
+                <input class="k-textbox" id="txtNumeroIdentificacion" maxlength="20" minlength="4" type="text" required>
+                <label class="validacion" id="validar2"></label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div id="step2" style="display:none;">
+          <h2>Ingrese los siguientes datos:</h2>
+          <div class="row">
+            <div class="col-md-3 offset-md-3">
+              <div class="form-group">
+                <label for="nombre_completo">Nombre Completo:</label>
+               <input type="text" class="form-control" id="nombre_completo" name="nombre_completo" placeholder="Escriba el nombre completo del empleado" required>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="form-group">
+                <label for="lug_exp">Lugar de Expedición:</label>
+                <select class="form-control" id="lug_exp" name="lug_exp" required>
+                  <option value="">Seleccione</option>
+                  <!-- Agregar opciones aquí -->
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-3 offset-md-3">
+              <div class="form-group">
+                <label for="fec_nacimiento">Fecha de Nacimiento:</label>
+                <input type="date" class="form-control" id="fec_nacimiento" name="fec_nacimiento" required>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="form-group">
+                <label for="nacionalidad">Nacionalidad:</label>
+                <select class="form-control" id="nacionalidad" name="nacionalidad" required>
+                  <option value="">Seleccione</option>
+                  <option value="CO">Colombiano</option>
+                  <option value="EX">Extranjero</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-3 offset-md-3">
+              <div class="form-group">
+                <label for="sexo">Sexo:</label>
+                <select class="form-control" id="sexo" name="sexo" required>
+                  <option value="">Seleccione</option>
+                  <option value="M">Masculino</option>
+                  <option value="F">Femenino</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="form-group">
+                <label for="estado_civil">Estado Civil:</label>
+                <select class="form-control" id="estado_civil" name="estado_civil" required>
+                  <option value="">Seleccione</option>
+                  <option value="1">Soltero(a)</option>
+                  <option value="2">Casado(a)</option>
+                  <option value="3">Viudo(a)</option>
+                  <option value="4">Divorciado(a)</option>
+                  <option value="5">Unión Libre</option>
+                  <option value="6">Separado(a)</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-3 offset-md-3">
+              <div class="form-group">
+                <label for="dir_residencia">Dirección de Residencia:</label>
+                <input type="text" class="form-control" id="dir_residencia" name="dir_residencia" placeholder="Escriba la dirección" required>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="form-group">
+                <label for="barrio_residencia">Barrio de Residencia:</label>
+                <input type="text" class="form-control" id="barrio_residencia" name="barrio_residencia" placeholder="Escriba el barrio" required>
+              </div>
+            </div>
+          </div>
+        </div>
+      </br>
+              <div class="row">
+        <div class="col-md-4 offset-md-5">
+          <button class="k-button" style="width: 40%;" type="button" onclick="nextStep()">Siguiente</button>
+        </div>
+      </div>
+    </form>
+
+    <script>
+      let currentStep = 1;
+
+      function nextStep() {
+        const steps = document.querySelectorAll('[id^="step"]');
+        const currentInputs = steps[currentStep - 1].querySelectorAll('input[required], select[required]');
+        let allValid = true;
+
+        currentInputs.forEach(input => {
+          if (!input.checkValidity()) {
+            allValid = false;
+            input.classList.add('is-invalid'); // Agrega clase de error si es necesario
+          } else {
+            input.classList.remove('is-invalid'); // Remueve clase de error si es válido
+          }
+        });
+
+        if (allValid) {
+          steps[currentStep - 1].style.display = 'none'; // Oculta el paso actual
+          currentStep++;
+          if (currentStep <= steps.length) {
+            steps[currentStep - 1].style.display = 'block'; // Muestra el siguiente paso
+          }
+        } else {
+          alert("Por favor, complete todos los campos obligatorios."); // Mensaje de error
+        }
+      }
+    </script>
+

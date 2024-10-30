@@ -71,22 +71,29 @@ session_start();
                                     <i class="align-middle" data-feather="briefcase"></i> <span class="align-middle">Precontratación</span>
                                 </a>
                                 <ul id="precontratacion" class="sidebar-dropdown list-unstyled collapse">
-                                    <li class="sidebar-item"><a class="sidebar-link" href="<?= BASE_URL .'/vistas/empleados.php'; ?>">Datos Del Aspirante</a></li>
+                                    <li class="sidebar-item"><a class="sidebar-link" href="<?= BASE_URL .'/vistas/ofertas_laborales.php'; ?>">Ofertas Laborales</a></li>
+                                    <li class="sidebar-item"><a class="sidebar-link" href="<?= BASE_URL .'/vistas/candidatos.php'; ?>">Candidatos</a></li>
                                     <li class="sidebar-item"><a class="sidebar-link" href="<?= BASE_URL .'/vistas/entrevistas.php'; ?>">Entrevistas</a></li>
                                     <li class="sidebar-item"><a class="sidebar-link" href="<?= BASE_URL .'/vistas/pruebas_tecnicas.php'; ?>">Pruebas Técnicas</a></li>
                                     <li class="sidebar-item"><a class="sidebar-link" href="<?= BASE_URL .'/vistas/pruebas_tecnicas.php'; ?>">Pruebas Psicométrica</a></li>
                                     <li class="sidebar-item"><a class="sidebar-link" href="<?= BASE_URL .'/vistas/evaluaciones.php'; ?>">Evaluaciones</a></li>
-                                    <li class="sidebar-item"><a class="sidebar-link" href="<?= BASE_URL .'/vistas/documentacion.php'; ?>">Documentación</a></li>
-                                    <li class="sidebar-item"><a class="sidebar-link" href="<?= BASE_URL .'/vistas/ofertas_laborales.php'; ?>">Ofertas de Trabajo</a></li>
-                                    <li class="sidebar-item"><a class="sidebar-link" href="<?= BASE_URL .'/vistas/contrataciones.php'; ?>">Contratación</a></li>
+                                    <li class="sidebar-item"><a class="sidebar-link" href="<?= BASE_URL .'/vistas/documentos.php'; ?>">Documentos</a></li>
+                                </ul>
+                            </li>
+                            </ul>
+                        <ul id="estandar1" class="sidebar-dropdown list-unstyled collapse " data-bs-parent="#contratacion">
+                            <li class="sidebar-item">
+                                <a data-bs-target="#contratacion" data-bs-toggle="collapse" class="sidebar-link collapsed">
+                                    <i class="align-middle" data-feather="briefcase"></i> <span class="align-middle">Contratación</span>
+                                </a>
+                                <ul id="contratacion" class="sidebar-dropdown list-unstyled collapse">
                                     <li class="sidebar-item"><a class="sidebar-link" href="<?= BASE_URL .'/vistas/contratos_laborales.php'; ?>">Contratos Laborales</a></li>
                                     <li class="sidebar-item"><a class="sidebar-link" href="<?= BASE_URL .'/vistas/procesos_inducciones.php'; ?>">Proceso de Inducción</a></li>
-                                    <li class="sidebar-item"><a class="sidebar-link" href="<?= BASE_URL .'/vistas/aprobaciones.php'; ?>">Aprobaciones</a></li>
                                     <li class="sidebar-item"><a class="sidebar-link" href="<?= BASE_URL .'/vistas/firmas_electronicas.php'; ?>">Firma Electrónica</a></li>
                                 </ul>
                             </li>
+
                             <li class="sidebar-item"><a class="sidebar-link" href="<?= BASE_URL .'/vistas/programacion_entrevistas.php'; ?>">Programar Entrevista</a></li>
-                            <li class="sidebar-item"><a class="sidebar-link" href="<?= BASE_URL .'/vistas/contrataciones.php'; ?>">Contratación</a></li>
                             <li class="sidebar-item"><a class="sidebar-link" href="<?= BASE_URL .'/vistas/empleados.php'; ?>">Empleados</a></li>
                         </ul>
                     </li>

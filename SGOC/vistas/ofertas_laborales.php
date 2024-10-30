@@ -144,6 +144,7 @@ include(LAYOUT . '/header.php');
                             $('#ofertasContainer').empty(); // Limpiar contenedor antes de agregar nuevas ofertas
 
                             response.data.forEach(function(oferta) {
+                                $('#id').val(oferta.idOferta);
                                 // Ajustar el estado a "Activo" o "Terminado"
                                 oferta.estado = oferta.estado === "1" ? "Activo" : "Terminado";
 

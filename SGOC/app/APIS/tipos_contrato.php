@@ -6,7 +6,7 @@ $action = isset($_GET['action']) ? $_GET['action'] : '';
 
 // Obtener todos los tipos de contrato
 if ($action == 'fetch') {
-    $query = "SELECT * FROM tipo_contrato";
+    $query = "SELECT * FROM tipos_contratos";
     $result = $conn->query($query);
     $data = array();
 
@@ -24,14 +24,14 @@ if ($action == 'save') {
 
     if ($id == '') {
         // Crear nuevo
-        $query = "INSERT INTO tipo_contrato (nombre) VALUES (?)";
+        $query = "INSERT INTO tipos_contratos (nombre) VALUES (?)";
         $stmt = $conn->prepare($query);
         $stmt->bind_param('s', $nombre);
         $stmt->execute();
         $stmt->close();
     } else {
         // Actualizar existente
-        $query = "UPDATE tipo_contrato SET nombre = ? WHERE id = ?";
+        $query = "UPDATE tipos_contratos SET nombre = ? WHERE id = ?";
         $stmt = $conn->prepare($query);
         $stmt->bind_param('si', $nombre, $id);
         $stmt->execute();
@@ -44,7 +44,7 @@ if ($action == 'save') {
 // Editar (obtener un tipo de contrato por id)
 if ($action == 'edit') {
     $id = $_GET['id'];
-    $query = "SELECT * FROM tipo_contrato WHERE id = ?";
+    $query = "SELECT * FROM tipos_contratos WHERE id = ?";
     $stmt = $conn->prepare($query);
     $stmt->bind_param('i', $id);
     $stmt->execute();
@@ -57,7 +57,7 @@ if ($action == 'edit') {
 // Eliminar
 if ($action == 'delete') {
     $id = $_GET['id'];
-    $query = "DELETE FROM tipo_contrato WHERE id = ?";
+    $query = "DELETE FROM tipos_contratos WHERE id = ?";
     $stmt = $conn->prepare($query);
     $stmt->bind_param('i', $id);
     $stmt->execute();

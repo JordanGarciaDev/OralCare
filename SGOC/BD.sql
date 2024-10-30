@@ -168,7 +168,7 @@ CREATE TABLE `contratos` (
   KEY `MODALIDAD` (`modalidad`),
   CONSTRAINT `contratos_ibfk_1` FOREIGN KEY (`empleado_id`) REFERENCES `empleados` (`id`),
   CONSTRAINT `contratos_ibfk_2` FOREIGN KEY (`cargo_id`) REFERENCES `cargos` (`id`),
-  CONSTRAINT `contratos_ibfk_3` FOREIGN KEY (`MODALIDAD`) REFERENCES `modalidades` (`id`)
+  CONSTRAINT `contratos_ibfk_3` FOREIGN KEY (`modalidad`) REFERENCES `modalidades` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=117 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 /*Data for the table `contratos` */
@@ -1681,6 +1681,34 @@ CREATE TABLE `nominas` (
 
 /*Data for the table `nominas` */
 
+/*Table structure for table `ofertas_laborales` */
+
+CREATE TABLE `ofertas_laborales` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `titulo_oferta` varchar(200) DEFAULT NULL,
+  `beneficios_oferta` text DEFAULT NULL,
+  `condiciones_oferta` text DEFAULT NULL,
+  `depto_id` int(10) DEFAULT NULL,
+  `tipo_contrato` int(10) DEFAULT NULL,
+  `salario` bigint(20) DEFAULT NULL,
+  `documento` text DEFAULT NULL,
+  `estado` int(11) DEFAULT NULL,
+  `usu_reg` int(10) DEFAULT NULL,
+  `fechareg` timestamp NOT NULL DEFAULT current_timestamp(),
+  PRIMARY KEY (`id`),
+  KEY `depto_id` (`depto_id`),
+  KEY `tipo_contrato` (`tipo_contrato`),
+  KEY `usu_reg` (`usu_reg`),
+  CONSTRAINT `ofertas_laborales_ibfk_1` FOREIGN KEY (`depto_id`) REFERENCES `dep_contratacion` (`id`),
+  CONSTRAINT `ofertas_laborales_ibfk_2` FOREIGN KEY (`tipo_contrato`) REFERENCES `tipos_contratos` (`id`),
+  CONSTRAINT `ofertas_laborales_ibfk_3` FOREIGN KEY (`usu_reg`) REFERENCES `usuarios` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+/*Data for the table `ofertas_laborales` */
+
+insert  into `ofertas_laborales`(`id`,`titulo_oferta`,`beneficios_oferta`,`condiciones_oferta`,`depto_id`,`tipo_contrato`,`salario`,`documento`,`estado`,`usu_reg`,`fechareg`) values (3,'Se solicita mesero con 20 años de experiencia','Tendrá un uniforme de trabajo limpio cada semana','Se requiere urgente un mesero con buena presentación personal, con especialización en cocina buffe y con el curso de manipulación de alimentos al día emitido desde ayer. \r\nDebe trabajar las 24 horas al dia de 4am - 4am',2,1,1200000,'',1,1,'2024-10-29 21:28:37');
+insert  into `ofertas_laborales`(`id`,`titulo_oferta`,`beneficios_oferta`,`condiciones_oferta`,`depto_id`,`tipo_contrato`,`salario`,`documento`,`estado`,`usu_reg`,`fechareg`) values (4,'Se solicita doctor con 20 años de experiencia','Un año de netflix gratis','Se requiere urgente',3,2,600000,'672199d5a287d.pdf',0,1,'2024-10-29 21:28:37');
+
 /*Table structure for table `preguntas_entrevistas` */
 
 CREATE TABLE `preguntas_entrevistas` (
@@ -1800,20 +1828,6 @@ CREATE TABLE `recibos` (
 
 /*Data for the table `recibos` */
 
-/*Table structure for table `tipo_contrato` */
-
-CREATE TABLE `tipo_contrato` (
-  `id` int(10) NOT NULL AUTO_INCREMENT,
-  `nombre` varchar(200) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
-/*Data for the table `tipo_contrato` */
-
-insert  into `tipo_contrato`(`id`,`nombre`) values (1,'Contrato a termino fijo');
-insert  into `tipo_contrato`(`id`,`nombre`) values (2,'Contrato de prestacion de servicios');
-insert  into `tipo_contrato`(`id`,`nombre`) values (3,'Contrato a termino indefinido');
-
 /*Table structure for table `tipo_docs` */
 
 CREATE TABLE `tipo_docs` (
@@ -1868,6 +1882,20 @@ insert  into `tipo_identificacion`(`id`,`nombre`) values (14,'Menor sin identifi
 insert  into `tipo_identificacion`(`id`,`nombre`) values (15,'Adulto sin identificar');
 insert  into `tipo_identificacion`(`id`,`nombre`) values (16,'NIT');
 
+/*Table structure for table `tipos_contratos` */
+
+CREATE TABLE `tipos_contratos` (
+  `id` int(10) NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(200) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+/*Data for the table `tipos_contratos` */
+
+insert  into `tipos_contratos`(`id`,`nombre`) values (1,'Contrato a termino fijo');
+insert  into `tipos_contratos`(`id`,`nombre`) values (2,'Contrato de prestacion de servicios');
+insert  into `tipos_contratos`(`id`,`nombre`) values (3,'Contrato a termino indefinido');
+
 /*Table structure for table `tipos_preguntas` */
 
 CREATE TABLE `tipos_preguntas` (
@@ -1910,22 +1938,6 @@ CREATE TABLE `tribunales` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 /*Data for the table `tribunales` */
-
-/*Table structure for table `users` */
-
-CREATE TABLE `users` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `username` varchar(50) NOT NULL,
-  `password` varchar(40) NOT NULL,
-  `nombre` varchar(45) NOT NULL,
-  `apellido` varchar(45) NOT NULL,
-  `grupo` varchar(25) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
-/*Data for the table `users` */
-
-insert  into `users`(`id`,`username`,`password`,`nombre`,`apellido`,`grupo`) values (1,'admin','21232f297a57a5a743894a0e4a801fc3','Administrador','','Administrador');
 
 /*Table structure for table `usuarios` */
 

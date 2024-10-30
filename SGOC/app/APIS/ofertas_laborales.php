@@ -56,6 +56,12 @@ if ($action == 'save') {
     $tipo_contrato = $_POST['tipo_contrato_id'];
     $salario = $_POST['salario'];
     $estado = $_POST['estado'];
+    if ($estado == "Activo" ) {
+        $estado == 1;
+    }
+    else {
+        $estado == 0;
+    }
     $usu_reg = $_SESSION['userId'];
 
 
@@ -68,17 +74,21 @@ if ($action == 'save') {
         $stmt->close();
     } else {
         // Actualizar existente
-        $query = "UPDATE ofertas_laborales SET titulo_oferta = ?, beneficios_oferta = ?, condiciones_oferta = ?, depto_id = ?, tipo_contrato = ?, salario = ?, " .($documentoUrl ? ", documento = ?" : "").", estado = ?, usu_reg = ? WHERE id = ?";
-        $stmt = $conn->prepare($query);
-
-        //Si no se carga ningun documento no volver actualizarlo
+        // Construcción de la consulta
         if ($documentoUrl) {
-            $stmt->bind_param('sssiiisiii', $titulo_oferta,$beneficios_oferta,$condiciones_oferta,$depto_id,$tipo_contrato,$salario,$documentoUrl,$estado,$usu_reg, $id);
+            $query = "UPDATE ofertas_laborales SET titulo_oferta = ?, beneficios_oferta = ?, condiciones_oferta = ?, depto_id = ?, tipo_contrato = ?, salario = ?, documento = ?, estado = ?, usu_reg = ? WHERE id = ?";
+            $stmt = $conn->prepare($query);
+            $stmt->bind_param('sssiiisiii', $titulo_oferta, $beneficios_oferta, $condiciones_oferta, $depto_id, $tipo_contrato, $salario, $documentoUrl, $estado, $usu_reg, $id);
         } else {
-        //Si se carga un documento volver actualizarlo
-            $stmt->bind_param('sssiiiiii', $titulo_oferta,$beneficios_oferta,$condiciones_oferta,$depto_id,$tipo_contrato,$salario,$estado,$usu_reg, $id);
+            $query = "UPDATE ofertas_laborales SET titulo_oferta = ?, beneficios_oferta = ?, condiciones_oferta = ?, depto_id = ?, tipo_contrato = ?, salario = ?, estado = ?, usu_reg = ? WHERE id = ?";
+            $stmt = $conn->prepare($query);
+            $stmt->bind_param('sssiiisii', $titulo_oferta, $beneficios_oferta, $condiciones_oferta, $depto_id, $tipo_contrato, $salario, $estado, $usu_reg, $id);
         }
+
+// Ejecutar la consulta
         $stmt->execute();
+
+// Cerrar la declaración
         $stmt->close();
     }
 

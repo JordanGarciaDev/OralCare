@@ -1,0 +1,2413 @@
+(window["webpackJsonp"] = window["webpackJsonp"] || []).push([["main"],{
+
+/***/ "./$$_lazy_route_resource lazy recursive":
+/*!******************************************************!*\
+  !*** ./$$_lazy_route_resource lazy namespace object ***!
+  \******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+function webpackEmptyAsyncContext(req) {
+	// Here Promise.resolve().then() is used instead of new Promise() to prevent
+	// uncaught exception popping up in devtools
+	return Promise.resolve().then(function() {
+		var e = new Error("Cannot find module '" + req + "'");
+		e.code = 'MODULE_NOT_FOUND';
+		throw e;
+	});
+}
+webpackEmptyAsyncContext.keys = function() { return []; };
+webpackEmptyAsyncContext.resolve = webpackEmptyAsyncContext;
+module.exports = webpackEmptyAsyncContext;
+webpackEmptyAsyncContext.id = "./$$_lazy_route_resource lazy recursive";
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/index.js!./src/app/app.component.html":
+/*!**************************************************************!*\
+  !*** ./node_modules/raw-loader!./src/app/app.component.html ***!
+  \**************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<!-- \n<app-top-bar  > \n</app-top-bar>\n<router-outlet ></router-outlet> \n<app-footer></app-footer> -->\n\n<!--The content below is only a placeholder and can be replaced.-->\n<div style=\"text-align:center\">\n</div>\n<!-- <div class=\"layout\"> -->\n  <app-top-bar > \n </app-top-bar>\n <!-- <div class=\"containerST\"> -->\n  <alerta></alerta>\n     <router-outlet></router-outlet>\n     <ngx-spinner bdColor=\"rgba(51, 51, 51, 0.8)\" size=\"default\" type=\"ball-spin-clockwise\">  \n       <p style=\"color: white\">Espera por favor.. </p>  \n     </ngx-spinner>   \n <!-- </div> -->\n <app-footer></app-footer>\n<!-- </div> -->\n"
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/index.js!./src/app/modulos/home/home/home.component.html":
+/*!*********************************************************************************!*\
+  !*** ./node_modules/raw-loader!./src/app/modulos/home/home/home.component.html ***!
+  \*********************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<app-ventana *ngIf=\"abrirVentana\" [Mensaje]=\"mensaje\" (respuestaMensaje)=\"recibirRespuestaMensaje($event)\">\n</app-ventana>\n<app-enlace *ngIf=\"abrirEnlace\" (respuestaMensajeEnlace)=\"recibirRespuestaMensajeEnlace($event)\">\n</app-enlace>\n\n<app-enlaceuno *ngIf=\"abrirEnlaceUNO\" (respuestaMensajeEnlaceUNO)=\"recibirRespuestaMensajeEnlaceUNO($event)\">\n</app-enlaceuno>\n\n<!--The content below is only a placeholder and can be replaced.-->\n<div style=\"text-align:center\"></div>\n<!-- <div class=\"layout\"> -->\n<!-- <app-top-bar></app-top-bar> -->\n<!-- <div class=\"containerST\"> -->\n<alerta></alerta>\n<!-- <home></home> -->\n<!-- <router-outlet></router-outlet> -->\n<p><br></p>\n<div class=\"\">\n\n    <form [formGroup]=\"formUpdate\">\n        <div class=\"row\" *ngIf=\"!Preguntas\">\n\n            <div class=\"col-md-8 offset-md-2\">\n                <div [innerHTML] = \"mensajehome\">\n                </div>\n            </div>\n        </div>\n\n        <div class=\"row\" *ngIf=\"Preguntas\">\n\n            <div class=\"col-md-6 offset-md-3\">\n                <h1>\n                    <span class=\"auto-style3\" id=\"subtitulo\">Responde las siguientes</span><span class=\"auto-style3\"\n                        id=\"subtitulo\" id=\"negrita1\">&nbsp;preguntas de Seguridad</span>\n                    <br />\n                </h1>\n            </div>\n\n            <!-- <div class=\"col-md-7 offset-md-3\"> -->\n            <div class=\"col-md-12 col-sm-12 row justificarContenido row align-items-center\">\n                <h1>\n                    <span class=\"auto-style3\">Sabemos que eres tú, pero esto nos ayudará a confirmar tu identidad</span>\n\n                </h1>\n            </div>\n            <!-- <div class=\"col-md-6 offset-md-3\">\n                <h1>\n                    <span class=\"auto-style3\"  id=\"subtitulo\">Responde las siguientes</span><span class=\"auto-style3\"\n                        id=\"subtitulo\" id=\"negrita1\">&nbsp;preguntas de Seguridad</span>\n                    <br />\n                    \n                    <span class=\"auto-style3\">Sabemos que eres tú, pero esto nos ayudará a confirmar tu identidad</span>\n\n                </h1>\n            </div> -->\n        </div>\n\n\n\n\n        <div class=\"row\" *ngIf=\"Preguntas != 1\">\n            <div class=\"col-md-3 offset-md-3\" *ngIf=\"lstTipoDoc\">\n                <div class=\"form-group\">\n                    <!-- <img src=\"assets/icons/png/5.png\"> -->\n                    <label [for]=\"ddlTipoIdentificacion\">Tipo de\n                        documento</label><span style=\"color: #7F7F7F ;\">* </span>\n                    <select id=\"ddlTipoIdentificacion\" class=\"k-combobox\" formControlName=\"ddlTipoIdentificacion\"\n                        (change)=\"vaciar()\">\n                        <!-- <option selected disabled >Selecciona</option> -->\n                        <option value=\"\" disabled>Selecciona</option>\n                        <option *ngFor=\"let a of lstTipoDoc\" (change)=\"vaciar()\" [value]=\"a.TipoDocId\">{{a.Descripcion}}\n                        </option>\n                    </select>\n                    <label id=\"validar1\" class=\"validacion\">{{validacionT}}</label>\n                </div>\n\n            </div>\n\n            <div class=\"col-md-3\">\n                <div class=\"form-group\">\n                    <!-- <img src=\"assets/icons/png/5.png\"> -->\n                    <label [for]=\"txtNumeroIdentificacion\">Número\n                        de Documento</label>\n                    <span style=\"color: #7F7F7F ;\">* </span>\n                    <input formControlName=\"txtNumeroIdentificacion\" class=\"k-textbox\" type=\"text\" minlength=\"4\"\n                        maxlength=\"20\" (change)=\"vaciar()\">\n                    <label id=\"validar2\" class=\"validacion\">{{validacion}}</label>\n                </div>\n            </div>\n\n        </div>\n\n\n        <div class=\"row\" *ngIf=\"Preguntas == 1\">\n            <div class=\"col-md-3 offset-md-3\" *ngIf=\"lstTipoDoc\">\n                <div class=\"form-group\">\n                    <!-- <img src=\"assets/icons/png/5.png\"> -->\n                    <label [for]=\"ddlTipoIdentificacion\">Tipo de\n                        documento</label><span style=\"color: #7F7F7F ;\">* </span>\n                    <select id=\"ddlTipoIdentificacion\" readonly=\"true\" class=\"k-combobox\"\n                        formControlName=\"ddlTipoIdentificacion\" (change)=\"vaciar()\">\n\n                        <option value=\"\" disabled>Selecciona</option>\n                        <option *ngFor=\"let a of lstTipoDoc\" (change)=\"vaciar()\" [value]=\"a.TipoDocId\">{{a.Descripcion}}\n                        </option>\n                    </select>\n                    <label id=\"validar1\" class=\"validacion\">{{validacionT}}</label>\n                </div>\n\n            </div>\n\n            <div class=\"col-md-3\">\n                <div class=\"form-group\">\n                    <!-- <img src=\"assets/icons/png/5.png\"> -->\n                    <label [for]=\"txtNumeroIdentificacion\">Número\n                        de Documento</label>\n                    <span style=\"color: #7F7F7F ;\">* </span>\n                    <input formControlName=\"txtNumeroIdentificacion\" readonly=\"true\" class=\"k-textbox\" type=\"text\"\n                        minlength=\"4\" maxlength=\"20\" (change)=\"vaciar()\">\n                    <label id=\"validar2\" class=\"validacion\">{{validacion}}</label>\n                </div>\n            </div>\n\n        </div>\n\n        <div class=\"row\" *ngIf=\"!Preguntas\">\n\n            <div class=\"col-md-6 offset-md-3\">\n                <h1>\n                    <br />\n                    <br />\n                    <input Id=\"check_Uno\" [checked]=\"false\" type=\"checkbox\" (change)=\"ActivarCheckPoliticas()\" />\n                    <!-- <span class=\"auto-style6\"> &emsp; &emsp; &emsp; &emsp; He leído y acepto la politica de\n                        datos personales</span> -->\n                        <a href=\"https://Transaccional.saludtotal.com.co/Terminos/PoliticasTratamientodatos.aspx\" target='_blank' style=\"color: #1b8ff5; font-weight:900; font-family: Futura-Std-Book;font-size: 0.7em;\">\n                            He leído y acepto la politica de tratamiento de datos.</a>\n                        \n                        <br />\n                    <label id=\"ValidarPoliticaP\" class=\"validacion\">{{ValidarPolitica}}</label>\n\n                </h1>\n            </div>\n            <!-- <div class=\"col-md-6 offset-md-3\"  *ngIf=\"!ReiniciarCheck\">\n                <h1>\n                    <br />\n                    <br />\n                    <input Id=\"check_Uno\" [checked]=\"false\" type=\"checkbox\" (change)=\"ActivarCheckPoliticas()\" />\n                    <span class=\"auto-style6\" id=\"negrita\"> &emsp; &emsp; &emsp; &emsp; He leído y acepto la politica de\n                        datos personales</span><br />\n                    <label id=\"ValidarPoliticaP\" class=\"validacion\">{{ValidarPolitica}}</label>\n\n                </h1>\n            </div> -->\n        </div>\n\n        <div id=\"campos\">\n            <br />\n            <div class=\"row\" *ngIf=\"!Preguntas\">\n\n                <!-- <div class=\"col-md-12 col-sm-12 row justificarContenido row align-items-center\"> -->\n                <!-- <div class=\"col-md-1 offset-md-5\" > -->\n                <div class=\"col-md-4 offset-md-5\">\n\n                    <div class=\"form-group\">\n                        <button kendoButton type=\"submit\" #btnSiguiente class=\"k-button\" style=\"width: 40%;\"\n                            (click)=\"ConsultarUsuario()\">Siguiente</button>\n\n                    </div>\n                </div>\n            </div>\n        </div>\n\n        <div class=\"row\" *ngIf=\"!Preguntas\">\n\n\n\n            <div class=\"col-md-2 col-sm-2\"> </div>\n            <div class=\"col-md-8 col-sm-8 row justificarContenido row align-items-center\">\n                <!-- <h1>\n                    <br />\n                    <br />\n\n                    <span class=\"auto-style6\" id=\"negrita\"> Como parte de nuestro compromiso con la transparencia y\n                        la privacidad de tu información, al continuar en la página autorizas</span>\n                    <span class=\"auto-style6\" id=\"negrita\">que los datos personales que nos suministres o actualices,\n                        sean tratados conforme a nuestra</span>\n                    <a href=\"https://saludtotal.com.co/proteccion-de-datos-personales/\" target='_blank'\n                        style=\"color: #1b8ff5; font-weight:900; font-family: Futura-Std-Book;font-size: 0.7em;\">\n                        politica de tratamiento de datos personales.</a>\n\n\n                </h1> -->\n\n\n                <h1>\n                    <br />\n                    <br />\n\n                    <span class=\"auto-style6\"> Como parte de nuestro compromiso con la transparencia y\n                        la privacidad de tu información, al continuar en la página autorizas</span>\n                    <span class=\"auto-style6\">que los datos personales que nos suministres o actualices,\n                        sean tratados conforme a nuestra</span>\n                    <a href=\"https://saludtotal.com.co/proteccion-de-datos-personales/\" target='_blank'\n                        style=\"color: #1b8ff5;  font-family: Futura-Std-Book;font-size: 0.7em;\">\n                        politica de tratamiento de datos personales.</a>\n\n\n                </h1>\n            </div>\n\n        </div>\n\n\n        <!-- PREGUNTAS DE COTIZANTES -->\n        <div id=\"campos\" *ngIf=\"Preguntas == 1\">\n            <div class=\"col-md-4  offset-md-3\">\n                <div class=\"form-group\">\n                    <img class=\"linea\" src=\"assets/images/linea.png\" alt=\"\" style=\"width: 150%;\">\n                </div>\n            </div>\n            <div class=\"row\" *ngIf=\"lstPreguntasCot\">\n\n                <div class=\"col-md-6 offset-md-3\">\n                    <div class=\"form-group\">\n                        <label style=\"font-weight:900;\">Selecciona:</label>\n\n                    </div>\n                </div>\n\n\n                <div class=\"col-md-6 offset-md-3\" *ngIf=\"lstPreguntasCot\">\n                    <div class=\"form-group\">\n                        <label [for]=\"txtPreguntaUnoC\">1. ¿Cuál es tu fecha de nacimiento?</label>\n                        <select id=\"txtPreguntaUnoC\" class=\"k-combobox\" formControlName=\"txtPreguntaUnoC\"\n                            style=\"padding-left: 1em;\" (change)=\"vaciar();\" placeholder=\"Selecciona\">\n                            <!-- <option value=\"\">Selecciona</option> -->\n                            <option *ngFor=\"let a of lstPreguntasCot\" [value]=\"a.FechaNacimiento\">{{a.FechaNacimiento}}\n                            </option>\n                        </select>\n                        <label id=\"txtPreguntaUnoC\" class=\"validacion\">{{ValPreguntaUnoCot}}</label>\n                    </div>\n                </div>\n\n                <div class=\"col-md-6 offset-md-3\" *ngIf=\"listMayor60\">\n                    <div class=\"form-group\">\n                        <label [for]=\"txtPreguntaDosC\">2. ¿Tienes beneficiarios afiliados mayores de 60 años (diferentes\n                            a tí)?</label>\n                        <select id=\"txtPreguntaDosC\" class=\"k-combobox\" formControlName=\"txtPreguntaDosC\"\n                            style=\"padding-left: 1em;\" (change)=\"vaciar();\" placeholder=\"Selecciona\">\n                            <!-- <option value=\"\">Selecciona</option> -->\n                            <option *ngFor=\"let a of listMayor60\" [value]=\"a.Nombre\">{{a.Nombre}}</option>\n                        </select>\n                        <label id=\"txtPreguntaDosC\" class=\"validacion\">{{ValPreguntaDosCot}}</label>\n                    </div>\n                </div>\n\n                <div class=\"col-md-6 offset-md-3\" *ngIf=\"lstPreguntasCot\">\n                    <div class=\"form-group\">\n                        <label [for]=\"txtPreguntaTresC\">3. ¿Con cuál de las siguientes empresas tienes o has tenido\n                            relación laboral?</label>\n                        <select id=\"txtPreguntaTresC\" class=\"k-combobox\" formControlName=\"txtPreguntaTresC\"\n                            style=\"padding-left: 1em;\" (change)=\"vaciar();\" placeholder=\"Selecciona\">\n                            <!-- <option value=\"\">Selecciona</option> -->\n                            <option *ngFor=\"let a of lstPreguntasCot\" [value]=\"a.Empresa\">{{a.Empresa}}</option>\n                        </select>\n                        <label id=\"txtPreguntaTresC\" class=\"validacion\">{{ValPreguntaTresCot}}</label>\n                    </div>\n\n                </div>\n\n                <div class=\"col-md-4 offset-md-5\">\n\n                    <div class=\"form-group\">\n                        <br />\n                        <br />\n                        <button kendoButton type=\"submit\" #btnSiguiente class=\"k-button\" style=\"width: 40%;\"\n                            (click)=\"ConsultarPreguntasCot()\">Siguiente</button>\n                        <br />\n                        <br />\n                    </div>\n                </div>\n\n                <!-- <div class=\"col-md-12 col-sm-12 row justificarContenido row align-items-center\">\n                    <div class=\"form-group\">\n                        <br />\n                        <br />\n\n                        <button kendoButton type=\"submit\" #btnSiguiente class=\"k-button\" style=\"width: 160%;\"\n                            (click)=\"ConsultarPreguntasCot()\">Siguiente</button>\n\n                        <br />\n                        <br />\n\n                    </div>\n                </div> -->\n\n            </div>\n\n        </div>\n        <!-- PREGUNTAS DE BENFICIARIOS -->\n        <div id=\"campos\" *ngIf=\"Preguntas == 2\">\n            <div class=\"col-md-4  offset-md-3\" *ngIf=\"lstPreguntasBenef\">\n                <div class=\"form-group\">\n                    <img class=\"linea\" src=\"assets/images/linea.png\" alt=\"\" style=\"width: 150%;\">\n                </div>\n            </div>\n            <div class=\"row\" *ngIf=\"lstPreguntasBenef\">\n\n                <div class=\"col-md-6 offset-md-3\">\n                    <div class=\"form-group\">\n                        <label style=\"font-weight:900;\">Selecciona:</label>\n\n                    </div>\n                </div>\n\n\n                <div class=\"col-md-6 offset-md-3\" *ngIf=\"lstPreguntasBenef\">\n                    <div class=\"form-group\">\n                        <label [for]=\"txtPreguntaUnoB\">1. ¿Cuál es tu fecha de nacimiento?</label>\n                        <select id=\"txtPreguntaUnoB\" class=\"k-combobox\" formControlName=\"txtPreguntaUnoB\"\n                            (change)=\"vaciar();\" aria-placeholder=\"Selecciona\">\n                            <option value=\"\">Selecciona</option>\n                            <option *ngFor=\"let a of lstPreguntasBenef\" [value]=\"a.FechaNacimiento\">\n                                {{a.FechaNacimiento}}</option>\n                        </select>\n                        <label id=\"txtPreguntaUnoB\" class=\"validacion\">{{ValPreguntaUnoBenef}}</label>\n                    </div>\n                </div>\n                <div class=\"col-md-6 offset-md-3\" *ngIf=\"lstPreguntasBenef\">\n                    <div class=\"form-group\">\n                        <label [for]=\"txtPreguntaDosB\">2. ¿Cuál es tu dirección de residencia registrada\n                            actualmente?</label>\n                        <select id=\"txtPreguntaDosB\" class=\"k-combobox\" formControlName=\"txtPreguntaDosB\"\n                            (change)=\"vaciar();\" aria-placeholder=\"Selecciona\">\n                            <option value=\"\">Selecciona</option>\n                            <option *ngFor=\"let a of lstPreguntasBenef\" [value]=\"a.Direccion\">{{a.Direccion}}</option>\n                        </select>\n                        <label id=\"txtPreguntaDosB\" class=\"validacion\">{{ValPreguntaDosBenef}}</label>\n                    </div>\n                </div>\n                <div class=\"col-md-6 offset-md-3\" *ngIf=\"lstPreguntasBenef\">\n                    <div class=\"form-group\">\n                        <label [for]=\"txtPreguntaTresB\">3. ¿Cuál es el número de cedula del cotizante?</label>\n                        <select id=\"txtPreguntaTresB\" class=\"k-combobox\" formControlName=\"txtPreguntaTresB\"\n                            (change)=\"vaciar();\" aria-placeholder=\"Selecciona\">\n                            <option value=\"\">Selecciona</option>\n                            <option *ngFor=\"let a of lstPreguntasBenef\" [value]=\"a.DocumentoCotizante\">\n                                {{a.DocumentoCotizante}}</option>\n                        </select>\n                        <label id=\"txtPreguntaTresB\" class=\"validacion\">{{ValPreguntaTresBenef}}</label>\n                    </div>\n                </div>\n\n\n\n                <div class=\"col-md-4 offset-md-5\">\n\n                    <div class=\"form-group\">\n                        <br />\n                        <br />\n                        <button kendoButton type=\"submit\" #btnSiguiente class=\"k-button\" style=\"width: 40%;\"\n                            (click)=\"ConsultarPreguntasBenef()\">Siguiente</button>\n                        <br />\n                        <br />\n                    </div>\n                </div>\n\n                <!-- <div class=\"col-md-12 col-sm-12 row justificarContenido row align-items-center\">\n                    <div class=\"form-group\">\n                        <br />\n                        <br />\n\n                        <button kendoButton type=\"submit\" #btnSiguiente1 class=\"k-button\" style=\"width: 160%;\"\n                            (click)=\"ConsultarPreguntasBenef()\">Siguiente</button>\n                        <br />\n                        <br />\n\n                    </div>\n                </div> -->\n\n            </div>\n\n        </div>\n\n\n    </form>\n</div>\n<app-footer></app-footer>"
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/index.js!./src/app/modulos/shared/alerta/alerta.component.html":
+/*!***************************************************************************************!*\
+  !*** ./node_modules/raw-loader!./src/app/modulos/shared/alerta/alerta.component.html ***!
+  \***************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<div *ngIf=\"message\" [ngClass]=\"message.cssClass\">{{message.text}}</div>\n"
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/index.js!./src/app/modulos/shared/enlace/enlace.component.html":
+/*!***************************************************************************************!*\
+  !*** ./node_modules/raw-loader!./src/app/modulos/shared/enlace/enlace.component.html ***!
+  \***************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<!-- [minWidth]=\"650\"  -->\n<div class=\"col-md-8 offset-md-2\">\n    <kendo-dialog [minWidth]=\"650\" [width]=\"900\"  style=\"background-color:#bab6b6e0;\" Class=\"popupResponsive\" >\n        \n\n        <h1>\n            <br />\n            <br />\n\n            <div class=\"col-md-8  offset-md-2\">\n                <span class=\"auto-style3\" id=\"subtitulo\">Lo sentimos, no has contestado correctamente las</span><span\n                    class=\"auto-style3\" id=\"negrita1\"> preguntas de Seguridad</span>\n            </div>\n\n\n\n            <br />\n            <span class=\"auto-style3\">Recuerda que también puedes actualizar tus datos a través de: </span>\n\n        </h1>\n\n\n\n        <kendo-dialog-actions>\n            <div class=\"col-md-12 col-sm-6 row justificarContenido row align-items-center\" >\n                <!-- <class=\"col-md-8 offset-md-2\"></class> -->\n\n            <a  href=\"https://transaccional.saludtotal.com.co/Transaccional/plataforma/ingresar.aspx?\"target='_blank'>\n                <img src=\"assets/images/OV_Actualizacion_Datos.png\" alt=\"\" Class=\"imagenesLink\"></a>\n            <a  href=\"https://play.google.com/store/apps/details?id=com.saludtotal.saludtotaleps&hl=es_CO\"target='_blank'>\n                <img src=\"assets/images/APP_Actualizacion_Datos.png\" alt=\"\" Class=\"imagenesLink\"></a>\n            <a  href=\"https://transaccional.saludtotal.com.co/chatbotMVC/ChatBot/Redireccionar\" target='_blank'>\n                <img src=\"assets\\images/Pablo_Actualizacion_Datos.png\" alt=\"\" Class=\"imagenesLink\"></a>\n            <a  href=\"https://transaccional.saludtotal.com.co/DIRECTORIOPOS/\" target='_blank'>\n                <img src=\"assets\\images/Linea_Actualizacion_Datos.png\" alt=\"\" Class=\"imagenesLink\"></a>\n\n            \n                <br />\n                <br />\n            </div>\n            <br />\n            <div class=\"col-md-12 col-sm-6 row justificarContenido row align-items-center\">\n\n                <button (click)=\"accion('cerrar')\" class=\"cs-button\" style=\"width:20%;\">Cerrar</button>\n            </div>\n        </kendo-dialog-actions>\n\n    </kendo-dialog>\n\n\n</div>"
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/index.js!./src/app/modulos/shared/enlaceuno/enlaceuno.component.html":
+/*!*********************************************************************************************!*\
+  !*** ./node_modules/raw-loader!./src/app/modulos/shared/enlaceuno/enlaceuno.component.html ***!
+  \*********************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<kendo-dialog [minWidth]=\"500\" [width]=\"500\" style=\"background-color:#bab6b6e0;\" Class=\"popupResponsive\" >\n    <h1>\n          \n          <br />\n\n          <div class=\"col-md-10  offset-md-1\">\n              <span class=\"auto-style3\" id=\"subtitulo\">Lo sentimos, has realizado dos intentos fallidos, para realizar la actualización de datos  comunícate con nuestra Línea Total.</span>\n          </div>\n          \n         \n      </h1>\n  <kendo-dialog-actions>\n      <div class=\"col-md-9  offset-md-4\">\n      <a href=\"https://transaccional.saludtotal.com.co/DIRECTORIOPOS/\" target='_blank'><img\n                  src=\"assets\\images/Linea_Actualizacion_Datos1.png\" alt=\"\"></a>\n\n          <br />\n          <br />\n      </div>\n      <br />\n      <div class=\"col-md-9 offset-md-4\">\n\n          <button (click)=\"accion('cerrar')\" class=\"cs-button\" style=\"width:63%;\">Cerrar</button>\n      </div>\n  </kendo-dialog-actions>\n\n</kendo-dialog>\n"
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/index.js!./src/app/modulos/shared/footer/footer.component.html":
+/*!***************************************************************************************!*\
+  !*** ./node_modules/raw-loader!./src/app/modulos/shared/footer/footer.component.html ***!
+  \***************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = " <footer class=\"footer\">\n\n    <div class=\"row\">\n        <div class=\"col-md-1\" id=\"divfoot\">\n    <img src=\"assets/images/Logo_Vigilado.png\"  class=\"footer2\"> \n</div>\n<div class=\"col-md-10\"><img class=\"logoSaludTotalp\" src=\"assets/images/Pie_pagina-web.png\">\n</div>     \n</div>\n\n</footer>\n\n\n"
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/index.js!./src/app/modulos/shared/popup/popup.component.html":
+/*!*************************************************************************************!*\
+  !*** ./node_modules/raw-loader!./src/app/modulos/shared/popup/popup.component.html ***!
+  \*************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<kendo-dialog   [title]=\"titulo\" (close)=\"accion('cerrar')\" [minWidth]=\"250\" [width]=\"450\"  style=\"background-color:#bab6b6e0;\" Class=\"popupResponsive\" >\n    <!-- <p style=\"margin: 30px; text-align: center;\">{{ Mensaje.mensaje }}</p> -->\n    <h1>\n        <p style=\"margin: 30px; text-align: center;\">\n        <span class=\"auto-style3\"  id=\"subtitulo\"  >{{MensajeUP.mensajeUP}}</span>\n    </p>\n        </h1>\n    <!-- <kendo-dialog-actions>\n        <button kendoButton (click)=\"accion('aceptar')\" style=\"width: 35%;\">Si</button>\n        <button *ngIf=\"btnCancelar\"  (click)=\"accion('cancelar')\" class=\"cs-button\" style=\"width: 35%;\">No</button>\n    </kendo-dialog-actions> -->\n\n    <kendo-dialog-actions>\n        <button kendoButton (click)=\"accion('aceptar')\"     style=\"width: 45%;\">SI</button>\n        <button kendoButton *ngIf=\"btnCancelar\" (click)=\"accion('cancelar')\"    style=\"width: 45%;\">NO</button>\n    </kendo-dialog-actions>\n</kendo-dialog>\n"
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/index.js!./src/app/modulos/shared/top-bar/top-bar.component.html":
+/*!*****************************************************************************************!*\
+  !*** ./node_modules/raw-loader!./src/app/modulos/shared/top-bar/top-bar.component.html ***!
+  \*****************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<header class=\"top-bar\">\n    <div class=\"headerST\">\n        <div class=\"logotipos\">\n            <img class=\"logoSaludTotal\" src=\"assets/images/Logos_Actualizacion_Datos2.png\">\n        </div>\n        \n    </div>\n  \n       \n</header>\n\n"
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/index.js!./src/app/modulos/shared/ventana/ventana.component.html":
+/*!*****************************************************************************************!*\
+  !*** ./node_modules/raw-loader!./src/app/modulos/shared/ventana/ventana.component.html ***!
+  \*****************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<kendo-dialog  [title]=\"titulo\" (close)=\"accion('cerrar')\" [minWidth]=\"250\" [width]=\"450\"  style=\"background-color:#bab6b6e0;\" Class=\"popupResponsive\" >\n    <!-- <p style=\"margin: 30px; text-align: center;\">{{ Mensaje.mensaje }}</p> -->\n    <h1>\n        <p style=\"margin: 30px; text-align: center;\">\n        <span class=\"auto-style3\" id=\"subtitulo\"  >{{Mensaje.mensaje}}</span>\n    </p>\n        </h1>\n    <kendo-dialog-actions>\n        <button kendoButton (click)=\"accion('aceptar')\" style=\"width: 45%;\">Finalizar</button>\n        <button *ngIf=\"btnCancelar\"  (click)=\"accion('cancelar')\" class=\"cs-button\" style=\"width: 45%;\">Cancelar</button>\n    </kendo-dialog-actions>\n   \n</kendo-dialog>\n\n"
+
+/***/ }),
+
+/***/ "./src/app/Servicios/alerta.service.ts":
+/*!*********************************************!*\
+  !*** ./src/app/Servicios/alerta.service.ts ***!
+  \*********************************************/
+/*! exports provided: AlertaService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AlertaService", function() { return AlertaService; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
+// import { Injectable } from '@angular/core';
+
+// @Injectable({
+//   providedIn: 'root'
+// })
+// export class AlertaService {
+//   constructor() { }
+// }
+
+
+
+var AlertaService = /** @class */ (function () {
+    function AlertaService(router) {
+        var _this = this;
+        this.router = router;
+        this.subject = new rxjs__WEBPACK_IMPORTED_MODULE_3__["Subject"]();
+        this.keepAfterRouteChange = false;
+        // clear alert messages on route change unless 'keepAfterRouteChange' flag is true
+        this.router.events.subscribe(function (event) {
+            if (event instanceof _angular_router__WEBPACK_IMPORTED_MODULE_2__["NavigationStart"]) {
+                if (_this.keepAfterRouteChange) {
+                    // only keep for a single route change
+                    _this.keepAfterRouteChange = false;
+                }
+                else {
+                    // clear alert message
+                    _this.clear();
+                }
+            }
+        });
+    }
+    AlertaService.prototype.getAlert = function () {
+        return this.subject.asObservable();
+    };
+    AlertaService.prototype.success = function (message, isTimeOut, secondsTimeOut, keepAfterRouteChange) {
+        if (secondsTimeOut === void 0) { secondsTimeOut = 0; }
+        if (keepAfterRouteChange === void 0) { keepAfterRouteChange = false; }
+        this.keepAfterRouteChange = keepAfterRouteChange;
+        this.subject.next({ type: 'success', text: message });
+        this.setTimeOutAlert(isTimeOut, secondsTimeOut);
+    };
+    AlertaService.prototype.error = function (message, isTimeOut, secondsTimeOut, keepAfterRouteChange) {
+        if (secondsTimeOut === void 0) { secondsTimeOut = 0; }
+        if (keepAfterRouteChange === void 0) { keepAfterRouteChange = false; }
+        this.keepAfterRouteChange = keepAfterRouteChange;
+        this.subject.next({ type: 'error', text: message });
+        this.setTimeOutAlert(isTimeOut, secondsTimeOut);
+    };
+    AlertaService.prototype.info = function (message, isTimeOut, secondsTimeOut, keepAfterRouteChange) {
+        if (secondsTimeOut === void 0) { secondsTimeOut = 0; }
+        if (keepAfterRouteChange === void 0) { keepAfterRouteChange = false; }
+        this.keepAfterRouteChange = keepAfterRouteChange;
+        this.subject.next({ type: 'info', text: message });
+        this.setTimeOutAlert(isTimeOut, secondsTimeOut);
+    };
+    AlertaService.prototype.warning = function (message, isTimeOut, secondsTimeOut, keepAfterRouteChange) {
+        if (secondsTimeOut === void 0) { secondsTimeOut = 0; }
+        if (keepAfterRouteChange === void 0) { keepAfterRouteChange = false; }
+        this.keepAfterRouteChange = keepAfterRouteChange;
+        this.subject.next({ type: 'warning', text: message });
+        this.setTimeOutAlert(isTimeOut, secondsTimeOut);
+    };
+    AlertaService.prototype.primary = function (message, isTimeOut, secondsTimeOut, keepAfterRouteChange) {
+        if (secondsTimeOut === void 0) { secondsTimeOut = 0; }
+        if (keepAfterRouteChange === void 0) { keepAfterRouteChange = false; }
+        this.keepAfterRouteChange = keepAfterRouteChange;
+        this.subject.next({ type: 'primary', text: message });
+        this.setTimeOutAlert(isTimeOut, secondsTimeOut);
+    };
+    AlertaService.prototype.secondary = function (message, isTimeOut, secondsTimeOut, keepAfterRouteChange) {
+        if (secondsTimeOut === void 0) { secondsTimeOut = 0; }
+        if (keepAfterRouteChange === void 0) { keepAfterRouteChange = false; }
+        this.keepAfterRouteChange = keepAfterRouteChange;
+        this.subject.next({ type: 'secondary', text: message });
+        this.setTimeOutAlert(isTimeOut, secondsTimeOut);
+    };
+    AlertaService.prototype.clear = function () {
+        // clear by calling subject.next() without parameters
+        this.subject.next();
+    };
+    AlertaService.prototype.setTimeOutAlert = function (isTimeOut, secondsTimeOut) {
+        var _this = this;
+        if (isTimeOut) {
+            if (secondsTimeOut > 0) {
+                setTimeout(function () { _this.clear(); }, secondsTimeOut);
+            }
+            else { //1 segundo  por defecto para mantener la notificación visible
+                setTimeout(function () { _this.clear(); }, 1000);
+            }
+        }
+    };
+    AlertaService.ctorParameters = function () { return [
+        { type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"] }
+    ]; };
+    AlertaService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({ providedIn: 'root' })
+    ], AlertaService);
+    return AlertaService;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/Servicios/general.service.ts":
+/*!**********************************************!*\
+  !*** ./src/app/Servicios/general.service.ts ***!
+  \**********************************************/
+/*! exports provided: GeneralService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GeneralService", function() { return GeneralService; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+
+
+
+var GeneralService = /** @class */ (function () {
+    function GeneralService(http) {
+        this.http = http;
+    }
+    // /// Genera los tipos de documento existentes
+    GeneralService.prototype.ObtenerTipoDocumento = function (JWT) {
+        var _this = this;
+        return new Promise(function (resolve, reject) {
+            try {
+                //debugger
+                _this.urlGetTipoDoc = "";
+                _this.urlGetTipoDoc = JSON.parse(sessionStorage.getItem('configUpdate')).UrlActualizados + 'TipoDocumento/GetTipoDocumentoST?';
+                _this.get(_this.urlGetTipoDoc, true, JWT).subscribe(function (params) {
+                    resolve(params);
+                });
+            }
+            catch (ex) {
+                reject(ex);
+            }
+        });
+    };
+    /// Genera los tipos de documento habilitados
+    GeneralService.prototype.TipoDocumentohabilitado = function (JWT) {
+        var _this = this;
+        return new Promise(function (resolve, reject) {
+            try {
+                //debugger
+                _this.urlGetTipoDoc = "";
+                _this.urlGetTipoDoc = JSON.parse(sessionStorage.getItem('configUpdate')).UrlActualizados + 'TipoDocumento/GetTipoDocumentoHabilitado?';
+                _this.get(_this.urlGetTipoDoc, true, JWT).subscribe(function (params) {
+                    resolve(params);
+                });
+            }
+            catch (ex) {
+                reject(ex);
+            }
+        });
+    };
+    ///**Consultar Tipo Documento del Usuario:  string a int*/
+    GeneralService.prototype.ConsultaTipoDocumento = function (TipoDoc, JWT) {
+        var _this = this;
+        return new Promise(function (resolve, reject) {
+            try {
+                //debugger
+                _this.urlApiTipoDocumento = "";
+                _this.urlApiTipoDocumento = JSON.parse(sessionStorage.getItem('configUpdate')).UrlActualizados + 'TipoDocumento/GetTipoDocInt?';
+                _this.urlApiTipoDocumento = _this.urlApiTipoDocumento + 'TipoDocumento=' + TipoDoc;
+                _this.get(_this.urlApiTipoDocumento, true, JWT).subscribe(function (params) {
+                    resolve(params);
+                });
+            }
+            catch (ex) {
+                reject(ex);
+            }
+        });
+    };
+    /// Registrar datos de politica de manejo de datos
+    GeneralService.prototype.RegistrarPolitica = function (DocumentoTipo, Documento, JWT) {
+        var _this = this;
+        return new Promise(function (resolve, reject) {
+            try {
+                debugger;
+                _this.urlConsulta = "";
+                _this.urlConsulta = JSON.parse(sessionStorage.getItem('configUpdate')).UrlActualizados + 'Seguridad/RegistrarCondiciones?';
+                _this.urlConsulta = _this.urlConsulta + 'Aplicativo=Actualizados&TipoDocumento=' + DocumentoTipo + '&Documento=' + Documento + '&Aceptar=true';
+                _this.get(_this.urlConsulta, true, JWT).subscribe(function (params) {
+                    resolve(params);
+                });
+            }
+            catch (ex) {
+                reject(ex);
+            }
+        });
+    };
+    /// Consulta el estado del usuario
+    GeneralService.prototype.ConsultarEstado = function (BeneficiarioId, BeneficiarioTipoId, JWT) {
+        var _this = this;
+        return new Promise(function (resolve, reject) {
+            try {
+                //debugger
+                _this.urlConsulta = "";
+                _this.urlConsulta = JSON.parse(sessionStorage.getItem('configUpdate')).UrlActualizados + 'ConsultaAfiliadosUP/ConsultaIndividualUP?';
+                _this.urlConsulta = _this.urlConsulta + 'BeneficiarioId=' + BeneficiarioId + '&BeneficiarioTipoId=' + BeneficiarioTipoId + '&BeneficiarioConsecutivo=0';
+                _this.get(_this.urlConsulta, true, JWT).subscribe(function (params) {
+                    resolve(params);
+                });
+            }
+            catch (ex) {
+                reject(ex);
+            }
+        });
+    };
+    /// Consulta numero de errores por usuario
+    GeneralService.prototype.ConsultarErrores = function (BeneficiarioId, BeneficiarioTipoId, Opcion, JWT) {
+        var _this = this;
+        return new Promise(function (resolve, reject) {
+            try {
+                //debugger
+                _this.urlConsulta = "";
+                _this.urlConsulta = JSON.parse(sessionStorage.getItem('configUpdate')).UrlActualizados + 'ConsultaAfiliadosUP/ConsultaErrorUsuario?';
+                _this.urlConsulta = _this.urlConsulta + 'BeneficiarioId=' + BeneficiarioId + '&BeneficiarioTipoId=' + BeneficiarioTipoId + '&Opcion=' + Opcion;
+                _this.get(_this.urlConsulta, true, JWT).subscribe(function (params) {
+                    resolve(params);
+                });
+            }
+            catch (ex) {
+                reject(ex);
+            }
+        });
+    };
+    /// Consulta numero de errores permitidos
+    GeneralService.prototype.ConsultarErroresPER = function (JWT) {
+        var _this = this;
+        return new Promise(function (resolve, reject) {
+            try {
+                //debugger
+                _this.urlConsulta = "";
+                _this.urlConsulta = JSON.parse(sessionStorage.getItem('configUpdate')).UrlActualizados + 'ConsultaAfiliadosUP/ConsultaErroresPermitidos?';
+                // this.urlConsulta = this.urlConsulta + 'BeneficiarioId=' + BeneficiarioId + '&BeneficiarioTipoId=' + BeneficiarioTipoId ;
+                _this.get(_this.urlConsulta, true, JWT).subscribe(function (params) {
+                    resolve(params);
+                });
+            }
+            catch (ex) {
+                reject(ex);
+            }
+        });
+    };
+    /// Consulta el información de grupo familiar
+    GeneralService.prototype.ConsultarGrupo = function (BeneficiarioId, BeneficiarioTipoId, JWT) {
+        var _this = this;
+        return new Promise(function (resolve, reject) {
+            try {
+                //debugger
+                _this.urlConsulta = "";
+                _this.urlConsulta = JSON.parse(sessionStorage.getItem('configUpdate')).UrlActualizados + 'ConsultaAfiliadosUP/ConsultaGrupoFamiliarUP?';
+                _this.urlConsulta = _this.urlConsulta + 'BeneficiarioId=' + BeneficiarioId + '&BeneficiarioTipoId=' + BeneficiarioTipoId;
+                _this.get(_this.urlConsulta, true, JWT).subscribe(function (params) {
+                    resolve(params);
+                });
+            }
+            catch (ex) {
+                reject(ex);
+            }
+        });
+    };
+    /// ConsultaR PREGUNTAS de seguridad Cotizante
+    GeneralService.prototype.ValidarPreguntasCOTIZANTE = function (BeneficiarioId, BeneficiarioTipoId, JWT) {
+        var _this = this;
+        return new Promise(function (resolve, reject) {
+            try {
+                //debugger
+                _this.urlConsulta = "";
+                _this.urlConsulta = JSON.parse(sessionStorage.getItem('configUpdate')).UrlActualizados + 'Seguridad/GetPreguntasCOT?';
+                _this.urlConsulta = _this.urlConsulta + 'BeneficiarioId=' + BeneficiarioId + '&BeneficiarioTipoId=' + BeneficiarioTipoId + '&BeneficiarioConsecutivo=0';
+                _this.get(_this.urlConsulta, true, JWT).subscribe(function (params) {
+                    resolve(params);
+                });
+            }
+            catch (ex) {
+                reject(ex);
+            }
+        });
+    };
+    /// ConsultaR PREGUNTAS de seguridad Beneficiario
+    GeneralService.prototype.ConsultarPreguntasBENEF = function (BeneficiarioId, BeneficiarioTipoId, JWT) {
+        var _this = this;
+        return new Promise(function (resolve, reject) {
+            try {
+                //debugger
+                _this.urlConsulta = "";
+                _this.urlConsulta = JSON.parse(sessionStorage.getItem('configUpdate')).UrlActualizados + 'Seguridad/GetPreguntasBENEF?';
+                _this.urlConsulta = _this.urlConsulta + 'BeneficiarioId=' + BeneficiarioId + '&BeneficiarioTipoId=' + BeneficiarioTipoId + '&BeneficiarioConsecutivo=0';
+                _this.get(_this.urlConsulta, true, JWT).subscribe(function (params) {
+                    resolve(params);
+                });
+            }
+            catch (ex) {
+                reject(ex);
+            }
+        });
+    };
+    ///**Consultar los departamentos existentes */
+    GeneralService.prototype.ConsultaDepartamentos = function (JWT) {
+        var _this = this;
+        return new Promise(function (resolve, reject) {
+            try {
+                //debugger
+                _this.urlDptos = "";
+                _this.urlDptos = JSON.parse(sessionStorage.getItem('configUpdate')).UrlActualizados + 'Ubicacion/GetDpto?';
+                _this.get(_this.urlDptos, true, JWT).subscribe(function (params) {
+                    resolve(params);
+                });
+            }
+            catch (ex) {
+                reject(ex);
+            }
+        });
+    };
+    ///**Consultar las ciudades existentes de acuerdo al departamento seleccionado */
+    GeneralService.prototype.ConsultaCiudad = function (CodDpto, JWT) {
+        var _this = this;
+        return new Promise(function (resolve, reject) {
+            try {
+                //debugger
+                _this.urlCiudad = "";
+                _this.urlCiudad = JSON.parse(sessionStorage.getItem('configUpdate')).UrlActualizados + 'Ubicacion/GetCiudad?';
+                _this.urlCiudad = _this.urlCiudad + 'CodigoDpto=' + CodDpto;
+                _this.get(_this.urlCiudad, true, JWT).subscribe(function (params) {
+                    resolve(params);
+                });
+            }
+            catch (ex) {
+                reject(ex);
+            }
+        });
+    };
+    /// Envia datos para actualización de datos basicos de usuario
+    GeneralService.prototype.ActualizarDatosbasicos = function (BeneficiarioTipoId, BeneficiarioId, direccioncotizante, telefonocotizante, sMail, sCelular, sCiudadId, IdAfiliado, JWT) {
+        var _this = this;
+        return new Promise(function (resolve, reject) {
+            try {
+                //debugger
+                _this.urlConsulta = "";
+                _this.urlConsulta = JSON.parse(sessionStorage.getItem('configUpdate')).UrlActualizados + 'ActualizarDatos/ActualizarDatosAfiliado?';
+                _this.urlConsulta = _this.urlConsulta + 'BeneficiarioTipoId=' + BeneficiarioTipoId + '&BeneficiarioId=' + BeneficiarioId +
+                    '&direccioncotizante=' + direccioncotizante + '&telefonocotizante=' + telefonocotizante + '&sMail=' + sMail + '&sCelular=' + sCelular +
+                    '&sCiudadId=' + sCiudadId + '&IdAfiliado=' + IdAfiliado;
+                _this.get(_this.urlConsulta, true, JWT).subscribe(function (params) {
+                    resolve(params);
+                });
+            }
+            catch (ex) {
+                reject(ex);
+            }
+        });
+    };
+    GeneralService.prototype.JWTAfilUPDATE = function () {
+        var _this = this;
+        return new Promise(function (resolve, reject) {
+            try {
+                //debugger       
+                _this.TokenFijo = JSON.parse(sessionStorage.getItem('configUpdate')).TokenSeguridad;
+                _this.UrlGetToken = JSON.parse(sessionStorage.getItem('configUpdate')).UrlActualizados + 'Token/GetToken?Token=' + _this.TokenFijo + '&Origen=Actualizados';
+                _this.get(_this.UrlGetToken, false).subscribe(function (response) {
+                    if (!response.error) {
+                        resolve(response);
+                    }
+                    else {
+                        reject(response);
+                    }
+                }, function (exception) {
+                });
+            }
+            catch (ex) {
+                reject(ex);
+            }
+        });
+    };
+    GeneralService.prototype.get = function (url, auth, token) {
+        if (auth) {
+            var headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
+                'Content-Type': 'application/json',
+                'Authorization': token
+            });
+            var options = { headers: headers };
+            return this.http.get(url, options);
+        }
+        else {
+            return this.http.get(url);
+        }
+    };
+    GeneralService.prototype.post = function (url, metodo, body, auth, token) {
+        if (auth) {
+            var headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
+                'Content-Type': 'application/json',
+                'Authorization': token
+            });
+            var options = { headers: headers };
+            return this.http.post("" + url + metodo, body, options);
+        }
+        else {
+            return this.http.post("" + url + metodo, body);
+        }
+    };
+    GeneralService.ctorParameters = function () { return [
+        { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"] }
+    ]; };
+    GeneralService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+            providedIn: 'root'
+        })
+    ], GeneralService);
+    return GeneralService;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/Servicios/global.service.ts":
+/*!*********************************************!*\
+  !*** ./src/app/Servicios/global.service.ts ***!
+  \*********************************************/
+/*! exports provided: GlobalService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GlobalService", function() { return GlobalService; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+// import { Injectable } from '@angular/core';
+
+// @Injectable({
+//   providedIn: 'root'
+// })
+// export class GlobalService {
+//   constructor() { }
+// }
+
+// import {Turno} from '../Interfaces/turno';
+
+var GlobalService = /** @class */ (function () {
+    function GlobalService(router) {
+        this.router = router;
+        this.Token = '';
+        this.JWT = '';
+        this.idUsuario = 0;
+        if (sessionStorage.getItem('globalService') != undefined)
+            if (this.Token == null || this.Token == "") {
+                var globalService = JSON.parse(sessionStorage.getItem('globalService'));
+                this.JWT = globalService.JWT;
+                this.Token = globalService.Token;
+                this.usuario = globalService.usuario;
+                this.DatosbasicosUsuario = globalService.DatosbasicosUsuario;
+                this.EsCotizante = globalService.EsCotizante;
+                // this.Turno =globalService.Turno;
+                // this.Segundos=globalService.Segundos;
+                // this.yatiene=globalService.yatiene;
+                //this.AsignarInfoUsuario(usuario);
+            }
+    }
+    GlobalService.ctorParameters = function () { return [
+        { type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"] }
+    ]; };
+    GlobalService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+            providedIn: 'root'
+        })
+    ], GlobalService);
+    return GlobalService;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/Servicios/homeservice.service.ts":
+/*!**************************************************!*\
+  !*** ./src/app/Servicios/homeservice.service.ts ***!
+  \**************************************************/
+/*! exports provided: HomeserviceService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "HomeserviceService", function() { return HomeserviceService; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+/* harmony import */ var src_app_Servicios_global_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/Servicios/global.service */ "./src/app/Servicios/global.service.ts");
+/* harmony import */ var src_app_Servicios_alerta_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/app/Servicios/alerta.service */ "./src/app/Servicios/alerta.service.ts");
+/* harmony import */ var ngx_spinner__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ngx-spinner */ "./node_modules/ngx-spinner/fesm5/ngx-spinner.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+
+
+
+// import { AlertaService, GlobalService } from 'src/app/Servicios/.';
+
+
+
+
+var HomeserviceService = /** @class */ (function () {
+    function HomeserviceService(http, alertService, SpinnerService, router, global) {
+        this.http = http;
+        this.alertService = alertService;
+        this.SpinnerService = SpinnerService;
+        this.router = router;
+        this.global = global;
+        this.UrlActualizados = null;
+    }
+    /**
+     * Método que realiza una petición HTTP de tipo GET
+     * EdgarNV
+     * @param metodo Nombre del método a consultar
+     */
+    HomeserviceService.prototype.get = function (metodo, JWToken, auth) {
+        if (JWToken === void 0) { JWToken = ""; }
+        if (auth === void 0) { auth = true; }
+        if (this.UrlActualizados == null) {
+            this.UrlActualizados = JSON.parse(sessionStorage.getItem('configUpdate')).UrlActualizados;
+        }
+        if (auth) {
+            var headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
+                'Content-Type': 'application/json',
+                'Authorization': 'bearer ' + JWToken
+            });
+            var options = { headers: headers };
+            return this.http.get("" + this.UrlActualizados + metodo, options);
+        }
+        else {
+            return this.http.get("" + this.UrlActualizados + metodo);
+        }
+    };
+    /**
+     *  Método que realiza una petición HTTP de tipo POST
+     * @param metodo Nombre del método a consultar
+     * @param body Paámetros que van en el cuerpo de la petción
+     * @param auth Indicador de si necesita o no auteticación JWT
+     * @param JWToken  JSON Web Token
+     */
+    HomeserviceService.prototype.post = function (metodo, body, auth, JWToken) {
+        // debugger
+        this.SpinnerService.show();
+        if (this.UrlActualizados == null) {
+            this.UrlActualizados = JSON.parse(sessionStorage.getItem('configUpdate')).UrlActualizados;
+        }
+        if (auth) {
+            var headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpHeaders"]({
+                'Content-Type': 'application/json',
+                'Authorization': 'bearer ' + JWToken
+            });
+            var options = { headers: headers };
+            return this.http.post("" + this.UrlActualizados + metodo, body, options);
+        }
+        else {
+            return this.http.post("" + this.UrlActualizados + metodo, body);
+        }
+    };
+    /**
+    * Método que envia la infromación del formulario
+    * EdgarNV
+    * @param ObtenerInformacionParams
+    */
+    HomeserviceService.prototype.consultarParametro = function (toke, idParametro) {
+        var _this = this;
+        // debugger;
+        return new Promise(function (resolve, reject) {
+            try {
+                var bodyPrmts = { "idParametro": idParametro };
+                _this.post("ActualizarDatos/consultarParametro", bodyPrmts, true, toke).subscribe(function (res) {
+                    if (res.error) {
+                        resolve(res);
+                    }
+                    else {
+                        resolve(res);
+                    }
+                }, function (reject) {
+                    resolve(reject);
+                });
+            }
+            catch (error) {
+                _this.alertService.error(error.message, false);
+                _this.SpinnerService.hide();
+            }
+        });
+    };
+    HomeserviceService.ctorParameters = function () { return [
+        { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"] },
+        { type: src_app_Servicios_alerta_service__WEBPACK_IMPORTED_MODULE_4__["AlertaService"] },
+        { type: ngx_spinner__WEBPACK_IMPORTED_MODULE_5__["NgxSpinnerService"] },
+        { type: _angular_router__WEBPACK_IMPORTED_MODULE_6__["Router"] },
+        { type: src_app_Servicios_global_service__WEBPACK_IMPORTED_MODULE_3__["GlobalService"] }
+    ]; };
+    HomeserviceService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+            providedIn: 'root'
+        })
+    ], HomeserviceService);
+    return HomeserviceService;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/app-routing.module.ts":
+/*!***************************************!*\
+  !*** ./src/app/app-routing.module.ts ***!
+  \***************************************/
+/*! exports provided: AppRoutingModule */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AppRoutingModule", function() { return AppRoutingModule; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+
+
+
+var routes = [
+    {
+        path: '',
+        loadChildren: function () { return Promise.resolve(/*! import() */).then(__webpack_require__.bind(null, /*! ./modulos/home/home.module */ "./src/app/modulos/home/home.module.ts")).then(function (mod) { return mod.HomeModule; }); }
+    },
+    { path: '**', pathMatch: 'full', redirectTo: '' }
+];
+var AppRoutingModule = /** @class */ (function () {
+    function AppRoutingModule() {
+    }
+    AppRoutingModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
+            imports: [_angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"].forRoot(routes)],
+            exports: [_angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"]]
+        })
+    ], AppRoutingModule);
+    return AppRoutingModule;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/app.component.scss":
+/*!************************************!*\
+  !*** ./src/app/app.component.scss ***!
+  \************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2FwcC5jb21wb25lbnQuc2NzcyJ9 */"
+
+/***/ }),
+
+/***/ "./src/app/app.component.ts":
+/*!**********************************!*\
+  !*** ./src/app/app.component.ts ***!
+  \**********************************/
+/*! exports provided: AppComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AppComponent", function() { return AppComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+// import { Component } from '@angular/core';
+
+// @Component({
+//   selector: 'app-root',
+//   templateUrl: './app.component.html',
+//   styleUrls: ['./app.component.css']
+// })
+// export class AppComponent {
+//   title = 'ActualizadosST';
+// }
+
+var AppComponent = /** @class */ (function () {
+    function AppComponent() {
+        this.title = 'Actualizados';
+        this.rutaRegresar = ""; //YEnniferGH 05 Marzo 2020
+    }
+    AppComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-root',
+            template: __webpack_require__(/*! raw-loader!./app.component.html */ "./node_modules/raw-loader/index.js!./src/app/app.component.html"),
+            styles: [__webpack_require__(/*! ./app.component.scss */ "./src/app/app.component.scss")]
+        })
+    ], AppComponent);
+    return AppComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/app.module.ts":
+/*!*******************************!*\
+  !*** ./src/app/app.module.ts ***!
+  \*******************************/
+/*! exports provided: iniciar, AppModule */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "iniciar", function() { return iniciar; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AppModule", function() { return AppModule; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/platform-browser */ "./node_modules/@angular/platform-browser/fesm5/platform-browser.js");
+/* harmony import */ var _app_routing_module__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./app-routing.module */ "./src/app/app-routing.module.ts");
+/* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+/* harmony import */ var _modulos_shared_shared_module__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./modulos/shared/shared.module */ "./src/app/modulos/shared/shared.module.ts");
+/* harmony import */ var _modulos_home_home_module__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./modulos/home/home.module */ "./src/app/modulos/home/home.module.ts");
+/* harmony import */ var _progress_kendo_angular_layout__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @progress/kendo-angular-layout */ "./node_modules/@progress/kendo-angular-layout/dist/fesm5/index.js");
+/* harmony import */ var _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @angular/platform-browser/animations */ "./node_modules/@angular/platform-browser/fesm5/animations.js");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm5/common.js");
+/* harmony import */ var _progress_kendo_angular_intl_locales_es_all__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @progress/kendo-angular-intl/locales/es/all */ "./node_modules/@progress/kendo-angular-intl/locales/es/all.js");
+/* harmony import */ var _progress_kendo_angular_intl_locales_es_all__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(_progress_kendo_angular_intl_locales_es_all__WEBPACK_IMPORTED_MODULE_11__);
+/* harmony import */ var _progress_kendo_angular_dropdowns__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @progress/kendo-angular-dropdowns */ "./node_modules/@progress/kendo-angular-dropdowns/dist/fesm5/index.js");
+/* harmony import */ var ngx_spinner__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ngx-spinner */ "./node_modules/ngx-spinner/fesm5/ngx-spinner.js");
+// import { BrowserModule } from '@angular/platform-browser';
+// import { NgModule } from '@angular/core';
+
+// import { AppRoutingModule } from './app-routing.module';
+// import { AppComponent } from './app.component';
+// @NgModule({
+//   declarations: [
+//     AppComponent
+//   ],
+//   imports: [
+//     BrowserModule,
+//     AppRoutingModule
+//   ],
+//   providers: [],
+//   bootstrap: [AppComponent]
+// })
+// export class AppModule { }
+
+
+
+
+
+
+
+
+
+
+
+
+
+//import { ErrorInterceptor } from './Interceptador/error.interceptor';
+Object(_angular_common__WEBPACK_IMPORTED_MODULE_10__["registerLocaleData"])(_progress_kendo_angular_intl_locales_es_all__WEBPACK_IMPORTED_MODULE_11___default.a, 'es-ES');
+// export function iniciar(http: HttpClient,usuarioService: UsuarioService, globalService: GlobalService): (() => Promise<boolean>) {
+function iniciar(http) {
+    return function () {
+        return new Promise(function (resolve) {
+            var config = {};
+            var jsonFile = 'assets/config/config.json';
+            http.get(jsonFile).toPromise().then(function (ConfigJson) {
+                // config.UrlPBS = ConfigJson.UrlPBS;
+                config.UrlActualizados = ConfigJson.UrlActualizados;
+                config.TokenSeguridad = ConfigJson.TokenSeguridad;
+                // config
+                // if(config.EjecutarLocal){
+                //   config.Token = ConfigJson.Token; 
+                // }
+                sessionStorage.setItem('configUpdate', JSON.stringify(config));
+                resolve(true);
+            });
+        });
+    };
+}
+var AppModule = /** @class */ (function () {
+    function AppModule() {
+    }
+    AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_4__["NgModule"])({
+            declarations: [
+                _app_component__WEBPACK_IMPORTED_MODULE_3__["AppComponent"]
+            ],
+            imports: [
+                _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],
+                _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_9__["BrowserAnimationsModule"],
+                _app_routing_module__WEBPACK_IMPORTED_MODULE_2__["AppRoutingModule"],
+                _angular_common_http__WEBPACK_IMPORTED_MODULE_5__["HttpClientModule"], ngx_spinner__WEBPACK_IMPORTED_MODULE_13__["NgxSpinnerModule"],
+                _modulos_shared_shared_module__WEBPACK_IMPORTED_MODULE_6__["ShareddModule"],
+                _modulos_home_home_module__WEBPACK_IMPORTED_MODULE_7__["HomeModule"],
+                _progress_kendo_angular_layout__WEBPACK_IMPORTED_MODULE_8__["LayoutModule"],
+                _progress_kendo_angular_dropdowns__WEBPACK_IMPORTED_MODULE_12__["DropDownsModule"]
+            ],
+            providers: [
+                {
+                    provide: _angular_core__WEBPACK_IMPORTED_MODULE_4__["APP_INITIALIZER"],
+                    useFactory: iniciar,
+                    deps: [
+                        _angular_common_http__WEBPACK_IMPORTED_MODULE_5__["HttpClient"]
+                    ],
+                    multi: true
+                },
+                { provide: _angular_core__WEBPACK_IMPORTED_MODULE_4__["LOCALE_ID"], useValue: 'es-ES' },
+            ],
+            bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_3__["AppComponent"]]
+        })
+    ], AppModule);
+    return AppModule;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/interfaces/mensaje.ts":
+/*!***************************************!*\
+  !*** ./src/app/interfaces/mensaje.ts ***!
+  \***************************************/
+/*! exports provided: tipoMensaje, respuestaMensaje, tipoMensajeUP, respuestaMensajeUP, tipoMensajeEnlace, respuestaMensajeEnlace, tipoMensajeEnlaceUNO, respuestaMensajeEnlaceUNO */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "tipoMensaje", function() { return tipoMensaje; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "respuestaMensaje", function() { return respuestaMensaje; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "tipoMensajeUP", function() { return tipoMensajeUP; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "respuestaMensajeUP", function() { return respuestaMensajeUP; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "tipoMensajeEnlace", function() { return tipoMensajeEnlace; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "respuestaMensajeEnlace", function() { return respuestaMensajeEnlace; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "tipoMensajeEnlaceUNO", function() { return tipoMensajeEnlaceUNO; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "respuestaMensajeEnlaceUNO", function() { return respuestaMensajeEnlaceUNO; });
+var tipoMensaje;
+(function (tipoMensaje) {
+    tipoMensaje[tipoMensaje["Confirmacion"] = 0] = "Confirmacion";
+    tipoMensaje[tipoMensaje["Informacion"] = 1] = "Informacion";
+    tipoMensaje[tipoMensaje["Verificacion"] = 2] = "Verificacion";
+    tipoMensaje[tipoMensaje["General"] = 3] = "General";
+    tipoMensaje[tipoMensaje["Error"] = 4] = "Error";
+})(tipoMensaje || (tipoMensaje = {}));
+var respuestaMensaje;
+(function (respuestaMensaje) {
+    respuestaMensaje[respuestaMensaje["Aceptar"] = 0] = "Aceptar";
+    respuestaMensaje[respuestaMensaje["Cancelar"] = 1] = "Cancelar";
+    respuestaMensaje[respuestaMensaje["Cerrar"] = 2] = "Cerrar";
+})(respuestaMensaje || (respuestaMensaje = {}));
+var tipoMensajeUP;
+(function (tipoMensajeUP) {
+    tipoMensajeUP[tipoMensajeUP["Confirmacion"] = 0] = "Confirmacion";
+    tipoMensajeUP[tipoMensajeUP["Informacion"] = 1] = "Informacion";
+    tipoMensajeUP[tipoMensajeUP["Verificacion"] = 2] = "Verificacion";
+    tipoMensajeUP[tipoMensajeUP["General"] = 3] = "General";
+    tipoMensajeUP[tipoMensajeUP["Error"] = 4] = "Error";
+})(tipoMensajeUP || (tipoMensajeUP = {}));
+var respuestaMensajeUP;
+(function (respuestaMensajeUP) {
+    respuestaMensajeUP[respuestaMensajeUP["Aceptar"] = 0] = "Aceptar";
+    respuestaMensajeUP[respuestaMensajeUP["Cancelar"] = 1] = "Cancelar";
+    respuestaMensajeUP[respuestaMensajeUP["Cerrar"] = 2] = "Cerrar";
+})(respuestaMensajeUP || (respuestaMensajeUP = {}));
+var tipoMensajeEnlace;
+(function (tipoMensajeEnlace) {
+    tipoMensajeEnlace[tipoMensajeEnlace["Confirmacion"] = 0] = "Confirmacion";
+    tipoMensajeEnlace[tipoMensajeEnlace["Informacion"] = 1] = "Informacion";
+    tipoMensajeEnlace[tipoMensajeEnlace["Verificacion"] = 2] = "Verificacion";
+    tipoMensajeEnlace[tipoMensajeEnlace["General"] = 3] = "General";
+    tipoMensajeEnlace[tipoMensajeEnlace["Error"] = 4] = "Error";
+})(tipoMensajeEnlace || (tipoMensajeEnlace = {}));
+var respuestaMensajeEnlace;
+(function (respuestaMensajeEnlace) {
+    respuestaMensajeEnlace[respuestaMensajeEnlace["Cerrar"] = 0] = "Cerrar";
+})(respuestaMensajeEnlace || (respuestaMensajeEnlace = {}));
+var tipoMensajeEnlaceUNO;
+(function (tipoMensajeEnlaceUNO) {
+    tipoMensajeEnlaceUNO[tipoMensajeEnlaceUNO["Confirmacion"] = 0] = "Confirmacion";
+    tipoMensajeEnlaceUNO[tipoMensajeEnlaceUNO["Informacion"] = 1] = "Informacion";
+    tipoMensajeEnlaceUNO[tipoMensajeEnlaceUNO["Verificacion"] = 2] = "Verificacion";
+    tipoMensajeEnlaceUNO[tipoMensajeEnlaceUNO["General"] = 3] = "General";
+    tipoMensajeEnlaceUNO[tipoMensajeEnlaceUNO["Error"] = 4] = "Error";
+})(tipoMensajeEnlaceUNO || (tipoMensajeEnlaceUNO = {}));
+var respuestaMensajeEnlaceUNO;
+(function (respuestaMensajeEnlaceUNO) {
+    respuestaMensajeEnlaceUNO[respuestaMensajeEnlaceUNO["Cerrar"] = 0] = "Cerrar";
+})(respuestaMensajeEnlaceUNO || (respuestaMensajeEnlaceUNO = {}));
+
+
+/***/ }),
+
+/***/ "./src/app/modulos/home/home-routing.module.ts":
+/*!*****************************************************!*\
+  !*** ./src/app/modulos/home/home-routing.module.ts ***!
+  \*****************************************************/
+/*! exports provided: HomeRoutingModule */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "HomeRoutingModule", function() { return HomeRoutingModule; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _home_home_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./home/home.component */ "./src/app/modulos/home/home/home.component.ts");
+
+
+
+
+var externalUrlProvider = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["InjectionToken"]('externalUrlRedirectResolver');
+var deactivateGuard = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["InjectionToken"]('deactivateGuard');
+var HOME_ROUTES = [
+    { path: '', component: _home_home_component__WEBPACK_IMPORTED_MODULE_3__["HomeComponent"] },
+    { path: 'ActualizarDatos', loadChildren: function () { return __webpack_require__.e(/*! import() | src-app-modulos-datosupdate-datosupdate-module */ "src-app-modulos-datosupdate-datosupdate-module").then(__webpack_require__.bind(null, /*! src/app/modulos/datosupdate/datosupdate.module */ "./src/app/modulos/datosupdate/datosupdate.module.ts")).then(function (mod) { return mod.DatosupdateModule; }); } },
+    { path: 'externalRedirect', canActivate: [externalUrlProvider], component: _home_home_component__WEBPACK_IMPORTED_MODULE_3__["HomeComponent"] },
+];
+var HomeRoutingModule = /** @class */ (function () {
+    function HomeRoutingModule() {
+    }
+    HomeRoutingModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
+            imports: [
+                _angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"].forChild(HOME_ROUTES)
+            ],
+            exports: [
+                _angular_router__WEBPACK_IMPORTED_MODULE_2__["RouterModule"]
+            ], providers: [
+                {
+                    //Se agrega controlador de rutas externas al aplicativo recaudos.YenniferGH 05 Marzo 2020
+                    provide: externalUrlProvider,
+                    useValue: function (route) {
+                        var externalUrl = route.paramMap.get('externalUrl');
+                        window.open(externalUrl, '_self');
+                    },
+                },
+                {
+                    provide: deactivateGuard,
+                    useValue: function () {
+                        return false;
+                    }
+                },
+            ],
+        })
+    ], HomeRoutingModule);
+    return HomeRoutingModule;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/modulos/home/home.module.ts":
+/*!*********************************************!*\
+  !*** ./src/app/modulos/home/home.module.ts ***!
+  \*********************************************/
+/*! exports provided: HomeModule */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "HomeModule", function() { return HomeModule; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm5/common.js");
+/* harmony import */ var _home_home_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./home/home.component */ "./src/app/modulos/home/home/home.component.ts");
+/* harmony import */ var _home_routing_module__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./home-routing.module */ "./src/app/modulos/home/home-routing.module.ts");
+/* harmony import */ var _shared_shared_module__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../shared/shared.module */ "./src/app/modulos/shared/shared.module.ts");
+/* harmony import */ var _angular_common_locales_es__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/common/locales/es */ "./node_modules/@angular/common/locales/es.js");
+/* harmony import */ var _angular_common_locales_es__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_angular_common_locales_es__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
+/* harmony import */ var _progress_kendo_angular_intl_locales_de_all__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @progress/kendo-angular-intl/locales/de/all */ "./node_modules/@progress/kendo-angular-intl/locales/de/all.js");
+/* harmony import */ var _progress_kendo_angular_intl_locales_de_all__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(_progress_kendo_angular_intl_locales_de_all__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var _progress_kendo_angular_intl_locales_es_all__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @progress/kendo-angular-intl/locales/es/all */ "./node_modules/@progress/kendo-angular-intl/locales/es/all.js");
+/* harmony import */ var _progress_kendo_angular_intl_locales_es_all__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(_progress_kendo_angular_intl_locales_es_all__WEBPACK_IMPORTED_MODULE_9__);
+
+
+
+
+
+
+
+
+
+
+Object(_angular_common__WEBPACK_IMPORTED_MODULE_2__["registerLocaleData"])(_angular_common_locales_es__WEBPACK_IMPORTED_MODULE_6___default.a, 'es-ES');
+var HomeModule = /** @class */ (function () {
+    function HomeModule() {
+    }
+    HomeModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
+            declarations: [_home_home_component__WEBPACK_IMPORTED_MODULE_3__["HomeComponent"]],
+            imports: [
+                _angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"],
+                _home_routing_module__WEBPACK_IMPORTED_MODULE_4__["HomeRoutingModule"],
+                _shared_shared_module__WEBPACK_IMPORTED_MODULE_5__["ShareddModule"],
+                _angular_forms__WEBPACK_IMPORTED_MODULE_7__["ReactiveFormsModule"],
+            ],
+            providers: [
+                { provide: _angular_core__WEBPACK_IMPORTED_MODULE_1__["LOCALE_ID"], useValue: 'es-ES' }, [_angular_common__WEBPACK_IMPORTED_MODULE_2__["DatePipe"]]
+            ],
+        })
+    ], HomeModule);
+    return HomeModule;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/modulos/home/home/home.component.scss":
+/*!*******************************************************!*\
+  !*** ./src/app/modulos/home/home/home.component.scss ***!
+  \*******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL21vZHVsb3MvaG9tZS9ob21lL2hvbWUuY29tcG9uZW50LnNjc3MifQ== */"
+
+/***/ }),
+
+/***/ "./src/app/modulos/home/home/home.component.ts":
+/*!*****************************************************!*\
+  !*** ./src/app/modulos/home/home/home.component.ts ***!
+  \*****************************************************/
+/*! exports provided: HomeComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "HomeComponent", function() { return HomeComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
+/* harmony import */ var ngx_spinner__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ngx-spinner */ "./node_modules/ngx-spinner/fesm5/ngx-spinner.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var src_app_Servicios_general_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! src/app/Servicios/general.service */ "./src/app/Servicios/general.service.ts");
+/* harmony import */ var src_app_Servicios_global_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! src/app/Servicios/global.service */ "./src/app/Servicios/global.service.ts");
+/* harmony import */ var src_app_Servicios_alerta_service__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! src/app/Servicios/alerta.service */ "./src/app/Servicios/alerta.service.ts");
+/* harmony import */ var src_app_interfaces_mensaje__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! src/app/interfaces/mensaje */ "./src/app/interfaces/mensaje.ts");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm5/common.js");
+/* harmony import */ var src_app_Servicios_homeservice_service__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! src/app/Servicios/homeservice.service */ "./src/app/Servicios/homeservice.service.ts");
+
+
+
+
+
+
+
+
+
+
+
+
+var HomeComponent = /** @class */ (function () {
+    //http: any;
+    function HomeComponent(router, formBuilder, activatedRoute, generalService, globalService, alertService, datepipe, SpinnerService, homeserviceService) {
+        //this.SpinnerService.show();.
+        this.router = router;
+        this.formBuilder = formBuilder;
+        this.activatedRoute = activatedRoute;
+        this.generalService = generalService;
+        this.globalService = globalService;
+        this.alertService = alertService;
+        this.datepipe = datepipe;
+        this.SpinnerService = SpinnerService;
+        this.homeserviceService = homeserviceService;
+        this.title = 'Actualizados';
+        this.rutaRegresar = "";
+        this.lstItems = [];
+        this.abrirVentana = false;
+        this.abrirEnlace = false;
+        this.abrirEnlaceUNO = false;
+        this.mensaje = null;
+        this.mensajeEnlace = null;
+        this.mensajeEnlaceUNO = null;
+        this.InfoUsuario = null;
+        this.Preguntas = 0; // 1 Cotizante - 2 Beneficiario
+        this.lstPreguntasCot = null;
+        this.lstPreguntasBenef = null;
+        this.DocVacio = "";
+        this.TipoDocumento = null;
+        this.NumeroTipoDoc = null;
+        this.lstTipoDoc = [];
+        this.TipoDocRechazados = [];
+        this.ResultErrores = 0;
+        this.ResultErroresPermitidos = 0;
+        this.listMayor60 = [];
+        this.Beneficiariosmayoresde60años = null;
+        this.CheckPoliticas = false;
+        // ReiniciarCheck: boolean = false;
+        this.patternText = "^[a-zA-Z0-9]+$";
+        this.regexnames = "^[a-zA-ZñÑáéíóúÁÉÍÓÚ\\s]*\\s*[a-zA-ZñÑáéíóúÁÉÍÓÚ\\s]*\\s*$";
+        this.regexnumeros = "^[+-]?\\d+(\\.\\d+)?$";
+        this.regexemail = "\\w+([-+.']\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*";
+        this.mensajehome = "... Cargando ...";
+        this.actNombreModulo = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"]();
+        this.ruta = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"]();
+        this.gridState = {
+            skip: 0,
+            take: 6,
+            filter: {
+                logic: 'and',
+                filters: []
+            }
+        };
+        this.cargarCombos();
+    }
+    // CARGAR LOS TIPOS DE DOCUMENTO EXISTENTES EN BD
+    HomeComponent.prototype.cargarCombos = function () {
+        var _this = this;
+        this.SpinnerService.show();
+        this.listMayor60 = [];
+        this.listMayor60.push({ Codigo: "1", Nombre: "SI" }, { Codigo: "2", Nombre: "NO" });
+        try {
+            //debugger
+            this.generalService.JWTAfilUPDATE().then(function (res) {
+                _this.globalService.JWT = res.Token;
+                //debugger
+                _this.generalService.TipoDocumentohabilitado(_this.globalService.JWT).then(function (response) {
+                    //debugger
+                    _this.lstTipoDoc = response;
+                    // let CambioMinusculas = response;
+                    // CambioMinusculas.forEach((element) => {
+                    //   // var Minuscula = element.Descripcion;
+                    //   // element.Descripcion =  Minuscula[0].toLocaleUpperCase()+  Minuscula.slice(1).toLowerCase();
+                    //   if (element.Descripcion == "CEDULA DE CIUDADANIA") { element.Descripcion = "Cédula de Ciudadania" }
+                    //   if (element.Descripcion == "CARNET DIPLOMATICO") { element.Descripcion = "Carnet Diplomático" }
+                    //   if (element.Descripcion == "CEDULA DE EXTRANJERIA") { element.Descripcion = "Cédula de Extranjería" }
+                    //   if (element.Descripcion == "PASAPORTE") { element.Descripcion = "Pasaporte" }
+                    //   if (element.Descripcion == "SALVOCONDUCTO") { element.Descripcion = "Salvoconducto" }
+                    //   this.lstItems.push({ CambioMinusculas: element })
+                    // });
+                    _this.generalService.ConsultarErroresPER(_this.globalService.JWT).then(function (param) {
+                        //debugger
+                        _this.ResultErroresPermitidos = param;
+                    });
+                });
+            }, function (rej) {
+                console.log(rej);
+            });
+        }
+        catch (error) {
+            console.log(error);
+            this.SpinnerService.hide();
+        }
+        this.SpinnerService.hide();
+    };
+    // CONSULTA EL USUARIO INICIAL DIGITADO//
+    HomeComponent.prototype.ConsultarUsuario = function () {
+        var _this = this;
+        this.SpinnerService.show();
+        if (this.formUpdate.get('ddlTipoIdentificacion').invalid) {
+            this.validacionT = "Debes seleccionar el tipo de identificación.";
+            this.SpinnerService.hide();
+            return;
+        }
+        else {
+            this.validacionT = "";
+        }
+        if (this.formUpdate.get('txtNumeroIdentificacion').invalid) {
+            this.validacion = "Debes digitar solo números sin espacios, ni puntos.";
+            this.SpinnerService.hide();
+            return;
+        }
+        else {
+            this.validacion = "";
+        }
+        if (!this.CheckPoliticas) {
+            this.ValidarPolitica = "Debes aceptar la politica de datos personales para continuar.";
+            this.SpinnerService.hide();
+            return;
+        }
+        this.Documento = this.formUpdate.get('txtNumeroIdentificacion').value;
+        // this.DocumentoTipo = this.formUpdate.get('ddlTipoIdentificacion').value;
+        try {
+            this.generalService.JWTAfilUPDATE().then(function (res) {
+                _this.globalService.JWT = res.Token;
+                ////debugger
+                // SE CONSULTA LAS CANTIDAD DE VECES QUE HA ERRADO
+                // });
+                //debugger
+                _this.generalService.RegistrarPolitica(_this.DocumentoTipo, _this.Documento, _this.globalService.JWT).then(function (param) {
+                    _this.generalService.ConsultarEstado(_this.Documento, _this.DocumentoTipo, _this.globalService.JWT).then(function (param) {
+                        //debugger
+                        _this.InfoUsuario = param[0];
+                        _this.generalService.ConsultarErrores(_this.Documento, _this.DocumentoTipo, 0, _this.globalService.JWT).then(function (param) {
+                            //debugger
+                            _this.ResultErrores = param;
+                            if (_this.InfoUsuario != undefined) {
+                                // if (parseInt(this.InfoUsuario.Edad) < 18) {
+                                //   this.mensaje = {
+                                //     tipo: tipoMensaje.Informacion,
+                                //     mensaje: "Por política de protección de datos personales el proceso de actualización solo puede ser realizado por el cotizante o cabeza del núcleo familiar y los beneficiarios mayores de edad."
+                                //   }
+                                //   this.abrirVentana = true;
+                                //   this.SpinnerService.hide();
+                                // } else {
+                                // if (this.InfoUsuario.EstadoGeneral == "Activo") {
+                                _this.formUpdate.controls['ddlTipoIdentificacion'].disable();
+                                if (_this.ResultErrores == _this.ResultErroresPermitidos) {
+                                    _this.mensajeEnlaceUNO = {
+                                        tipoEnlaceUNO: src_app_interfaces_mensaje__WEBPACK_IMPORTED_MODULE_8__["tipoMensajeEnlaceUNO"].Informacion,
+                                    };
+                                    _this.abrirEnlaceUNO = true;
+                                    _this.SpinnerService.hide();
+                                    _this.limpiar();
+                                }
+                                else {
+                                    _this.globalService.DatosbasicosUsuario = _this.InfoUsuario;
+                                    if (_this.InfoUsuario.Parentesco == "COTIZANTE") {
+                                        _this.globalService.EsCotizante = true;
+                                        _this.Preguntas = 1;
+                                        _this.ObtenerPreguntasCotizante();
+                                    }
+                                    else {
+                                        _this.globalService.EsCotizante = false;
+                                        _this.Preguntas = 2;
+                                        _this.ObtenerPreguntasBeneficiario();
+                                    }
+                                }
+                                // } else {
+                                //   this.mensaje = {
+                                //     tipo: tipoMensaje.Informacion,
+                                //     mensaje: "Verificamos en nuestro sistema integrado de información y teniendo en cuenta tu estado de afiliación, debes realizar la solicitud por medio de nuestro punto de atención en casa. https://transaccional.saludtotal.com.co / turnoVirtual"
+                                //   }
+                                //   this.abrirVentana = true;
+                                //   this.SpinnerService.hide();
+                                // }
+                                // }
+                            }
+                            else {
+                                _this.mensaje = {
+                                    tipo: src_app_interfaces_mensaje__WEBPACK_IMPORTED_MODULE_8__["tipoMensaje"].Informacion,
+                                    mensaje: "No existe información para los datos de consulta."
+                                };
+                                _this.abrirVentana = true;
+                                _this.SpinnerService.hide();
+                            }
+                        }); // fin consulta de errores
+                    }); // fin consulta usuario
+                }); // fin Registro politicas
+            }, function (rej) {
+                console.log(rej);
+            });
+        }
+        catch (error) {
+            console.log(error);
+            this.SpinnerService.hide();
+        }
+        //this.SpinnerService.hide();
+    };
+    ///SE OBTIENEN PREGUNTAS DEL COTIZANTE
+    HomeComponent.prototype.ObtenerPreguntasCotizante = function () {
+        var _this = this;
+        this.SpinnerService.show();
+        try {
+            //debugger
+            this.generalService.JWTAfilUPDATE().then(function (res) {
+                _this.globalService.JWT = res.Token;
+                //debugger
+                _this.generalService.ValidarPreguntasCOTIZANTE(_this.Documento, _this.DocumentoTipo, _this.globalService.JWT).then(function (response) {
+                    //debugger
+                    _this.lstPreguntasCot = response;
+                    if (_this.lstPreguntasCot.length > 0) {
+                        /*Conversion Fecha de nacimiento*/
+                        var Question = response;
+                        Question.forEach(function (element) {
+                            var FechaNacimientos = new Date(element.FechaNacimiento);
+                            var options = { year: 'numeric', month: 'long', day: 'numeric' };
+                            element.FechaNacimiento = FechaNacimientos.toLocaleDateString("es-ES", options);
+                            _this.lstItems.push({ Question: element });
+                            // this.datepipe.transform(this.FormArl.get('dtpFechaFinal').value, 'yyyy-MM-dd');
+                        });
+                    }
+                });
+            }, function (rej) {
+                console.log(rej);
+            });
+        }
+        catch (error) {
+            console.log(error);
+            this.SpinnerService.hide();
+        }
+        this.SpinnerService.hide();
+    };
+    ///SE OBTIENEN PREGUNTAS DEL BENEFICIARIO
+    HomeComponent.prototype.ObtenerPreguntasBeneficiario = function () {
+        var _this = this;
+        this.SpinnerService.show();
+        try {
+            //debugger
+            this.generalService.JWTAfilUPDATE().then(function (res) {
+                _this.globalService.JWT = res.Token;
+                //debugger
+                _this.generalService.ConsultarPreguntasBENEF(_this.Documento, _this.DocumentoTipo, _this.globalService.JWT).then(function (response) {
+                    //debugger
+                    _this.lstPreguntasBenef = response;
+                    /*Conversion Fecha de nacimiento*/
+                    var Question = response;
+                    Question.forEach(function (element) {
+                        var FechaNacimientos = new Date(element.FechaNacimiento);
+                        var options = { year: 'numeric', month: 'long', day: 'numeric' };
+                        element.FechaNacimiento = FechaNacimientos.toLocaleDateString("es-ES", options);
+                        _this.lstItems.push({ Question: element });
+                        // this.datepipe.transform(this.FormArl.get('dtpFechaFinal').value, 'yyyy-MM-dd');
+                    });
+                });
+            }, function (rej) {
+                console.log(rej);
+            });
+        }
+        catch (error) {
+            console.log(error);
+            this.SpinnerService.hide();
+        }
+        this.SpinnerService.hide();
+    };
+    // SE VALIDAN PREGUNTAS DEL COTIZANTE
+    HomeComponent.prototype.ConsultarPreguntasCot = function () {
+        var _this = this;
+        ////debugger
+        this.SpinnerService.show();
+        if (this.formUpdate.get('txtPreguntaUnoC').invalid) {
+            this.ValPreguntaUnoCot = "Debes responder la pregunta para continuar.";
+            this.SpinnerService.hide();
+            return;
+        }
+        else {
+            this.ValPreguntaUnoCot = "";
+        }
+        if (this.formUpdate.get('txtPreguntaDosC').invalid) {
+            this.ValPreguntaDosCot = "Debes responder la pregunta para continuar.";
+            this.SpinnerService.hide();
+            return;
+        }
+        else {
+            this.ValPreguntaDosCot = "";
+        }
+        if (this.formUpdate.get('txtPreguntaTresC').invalid) {
+            this.ValPreguntaTresCot = "Debes responder la pregunta para continuar.";
+            this.SpinnerService.hide();
+            return;
+        }
+        else {
+            this.ValPreguntaTresCot = "";
+        }
+        if (JSON.parse(this.InfoUsuario.BenefMayores60años) > 0) {
+            this.Beneficiariosmayoresde60años = "SI";
+        }
+        else {
+            this.Beneficiariosmayoresde60años = "NO";
+        }
+        this.QFechaNacimiento = this.formUpdate.get('txtPreguntaUnoC').value;
+        this.QBenefMayores60 = this.formUpdate.get('txtPreguntaDosC').value;
+        this.QEmpresa = this.formUpdate.get('txtPreguntaTresC').value;
+        // -----------
+        var options = { year: 'numeric', month: 'long', day: 'numeric' };
+        this.FechaNacimientoCorrecta = new Date(this.InfoUsuario.FechaNacimiento).toLocaleDateString("es-ES", options);
+        if ((this.FechaNacimientoCorrecta == this.QFechaNacimiento) &&
+            (this.Beneficiariosmayoresde60años == this.QBenefMayores60) &&
+            (this.InfoUsuario.NombreEmpresa == this.QEmpresa)) {
+            this.IrAModulo(1, "ActualizarDatos");
+        }
+        else {
+            //debugger
+            // SE CONSULTA LAS CANTIDAD DE VECES QUE HA ERRADO
+            this.generalService.ConsultarErrores(this.Documento, this.DocumentoTipo, 1, this.globalService.JWT).then(function (param) {
+                //debugger
+                _this.ResultErrores = param;
+                // });
+                //debugger
+                if (_this.ResultErrores == _this.ResultErroresPermitidos) {
+                    _this.mensajeEnlaceUNO = {
+                        tipoEnlaceUNO: src_app_interfaces_mensaje__WEBPACK_IMPORTED_MODULE_8__["tipoMensajeEnlaceUNO"].Informacion,
+                    };
+                    _this.abrirEnlaceUNO = true;
+                    _this.SpinnerService.hide();
+                    _this.limpiar();
+                }
+                else {
+                    _this.mensajeEnlace = {
+                        tipoEnlace: src_app_interfaces_mensaje__WEBPACK_IMPORTED_MODULE_8__["tipoMensajeEnlace"].Informacion
+                    };
+                    _this.abrirEnlace = true;
+                    _this.SpinnerService.hide();
+                }
+            });
+        }
+    };
+    // SE VALIDAN PREGUNTAS DEL BENEFICIARIO
+    HomeComponent.prototype.ConsultarPreguntasBenef = function () {
+        //debugger
+        this.SpinnerService.show();
+        if (this.formUpdate.get('txtPreguntaUnoB').invalid) {
+            this.ValPreguntaUnoBenef = "Debes responder la pregunta para continuar.";
+            this.SpinnerService.hide();
+            return;
+        }
+        else {
+            this.ValPreguntaUnoBenef = "";
+        }
+        if (this.formUpdate.get('txtPreguntaDosB').invalid) {
+            this.ValPreguntaDosBenef = "Debes responder la pregunta para continuar.";
+            this.SpinnerService.hide();
+            return;
+        }
+        else {
+            this.ValPreguntaDosBenef = "";
+        }
+        if (this.formUpdate.get('txtPreguntaTresB').invalid) {
+            this.ValPreguntaTresBenef = "Debes responder la pregunta para continuar.";
+            this.SpinnerService.hide();
+            return;
+        }
+        else {
+            this.ValPreguntaTresBenef = "";
+        }
+        this.QFechaNacimiento = this.formUpdate.get('txtPreguntaUnoB').value;
+        this.QDireccion = this.formUpdate.get('txtPreguntaDosB').value;
+        this.QDocumentoCotizante = this.formUpdate.get('txtPreguntaTresB').value;
+        // -----------
+        var options = { year: 'numeric', month: 'long', day: 'numeric' };
+        this.FechaNacimientoCorrecta = new Date(this.InfoUsuario.FechaNacimiento).toLocaleDateString("es-ES", options);
+        if ((this.FechaNacimientoCorrecta == this.QFechaNacimiento) &&
+            (this.InfoUsuario.Direccion == this.QDireccion) &&
+            (this.InfoUsuario.CotizanteId == this.QDocumentoCotizante)) {
+            this.IrAModulo(1, "ActualizarDatos");
+        }
+        else {
+            this.mensajeEnlace = {
+                tipoEnlace: src_app_interfaces_mensaje__WEBPACK_IMPORTED_MODULE_8__["tipoMensajeEnlace"].Informacion
+            };
+            this.abrirEnlace = true;
+            this.SpinnerService.hide();
+        }
+    };
+    HomeComponent.prototype.ActivarCheckPoliticas = function () {
+        this.CheckPoliticas = true;
+        this.ValidarPolitica = "";
+    };
+    HomeComponent.prototype.vaciar = function () {
+        //debugger
+        if (this.formUpdate.get('txtNumeroIdentificacion').valid) {
+            this.validacion = "";
+        }
+        if (this.formUpdate.get('ddlTipoIdentificacion').valid) {
+            this.validacionT = "";
+            this.DocumentoTipo = this.formUpdate.get('ddlTipoIdentificacion').value;
+        }
+        if (this.lstTipoDoc != null || this.lstTipoDoc != undefined) {
+            this.validacionT = "";
+        }
+        if (this.formUpdate.get('txtPreguntaUnoC').valid) {
+            this.ValPreguntaUnoCot = "";
+        }
+        if (this.formUpdate.get('txtPreguntaDosC').valid) {
+            this.ValPreguntaDosCot = "";
+        }
+        if (this.formUpdate.get('txtPreguntaTresC').valid) {
+            this.ValPreguntaTresCot = "";
+        }
+        if (this.formUpdate.get('txtPreguntaUnoB').valid) {
+            this.ValPreguntaUnoBenef = "";
+        }
+        if (this.formUpdate.get('txtPreguntaDosB').valid) {
+            this.ValPreguntaDosBenef = "";
+        }
+        if (this.formUpdate.get('txtPreguntaTresB').valid) {
+            this.ValPreguntaTresBenef = "";
+        }
+    };
+    HomeComponent.prototype.recibirRespuestaMensaje = function (respuestaMensaje) {
+        this.abrirVentana = false;
+        this.IrAModulo(0, "");
+        // this.limpiar();
+    };
+    HomeComponent.prototype.recibirRespuestaMensajeEnlace = function (respuestaMensaje) {
+        this.abrirEnlace = false;
+        this.IrAModulo(0, "");
+        this.limpiar();
+    };
+    HomeComponent.prototype.recibirRespuestaMensajeEnlaceUNO = function (respuestaMensaje) {
+        this.abrirEnlaceUNO = false;
+        this.IrAModulo(0, "");
+        this.limpiar();
+    };
+    HomeComponent.prototype.limpiar = function () {
+        this.formUpdate.controls['txtNumeroIdentificacion'].reset();
+        this.formUpdate.controls['ddlTipoIdentificacion'].enable();
+        this.formUpdate.controls['txtPreguntaUnoC'].reset();
+        this.formUpdate.controls['txtPreguntaDosC'].reset();
+        this.formUpdate.controls['txtPreguntaTresC'].reset();
+        this.formUpdate.controls['txtPreguntaUnoB'].reset();
+        this.formUpdate.controls['txtPreguntaDosB'].reset();
+        this.formUpdate.controls['txtPreguntaTresB'].reset();
+        // this.formUpdate.controls['ddlTipoIdentificacion'].reset();
+        this.CheckPoliticas = false;
+        this.Preguntas = 0;
+        this.lstPreguntasCot = null;
+        //this.cargarCombos();
+    };
+    HomeComponent.prototype.IrAModulo = function (id, ruta) {
+        //this.SpinnerService.show();
+        this.router.navigate([ruta, id], { skipLocationChange: true });
+    };
+    // redirecionar(){
+    //   const url_api = "http://localhost:4200/";
+    //   return this.http.get(url_api);
+    //   }
+    HomeComponent.prototype.ngOnInit = function () {
+        this.formUpdate = this.formBuilder.group({
+            txtNumeroIdentificacion: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].minLength(4), _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].maxLength(20), _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].pattern(this.regexnumeros)]],
+            ddlTipoIdentificacion: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].nullValidator]],
+            txtPreguntaUnoC: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].nullValidator]],
+            txtPreguntaDosC: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].nullValidator]],
+            txtPreguntaTresC: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].nullValidator]],
+            txtPreguntaUnoB: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].nullValidator]],
+            txtPreguntaDosB: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].nullValidator]],
+            txtPreguntaTresB: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].nullValidator]],
+        });
+        this.limpiar();
+        this.CargarDatosInciales();
+    };
+    HomeComponent.prototype.CargarDatosInciales = function () {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
+            return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, this.ConsultarMensajeHome()];
+                    case 1:
+                        _a.sent();
+                        return [2 /*return*/];
+                }
+            });
+        });
+    };
+    /*
+      Metodo que consulta el mensaje arriba del formulario en el home
+    */
+    HomeComponent.prototype.ConsultarMensajeHome = function () {
+        var _this = this;
+        try {
+        }
+        catch (error) {
+            this.SpinnerService.hide();
+        }
+        this.SpinnerService.show();
+        this.listMayor60 = [];
+        this.listMayor60.push({ Codigo: "1", Nombre: "SI" }, { Codigo: "2", Nombre: "NO" });
+        try {
+            //debugger
+            this.generalService.JWTAfilUPDATE().then(function (res) {
+                _this.globalService.JWT = res.Token;
+                //debugger
+                _this.homeserviceService.consultarParametro(_this.globalService.JWT, "MenHomeActualizados").then(function (respose) {
+                    if (!respose.error) {
+                        // aqui va la logica de mostrar la variable
+                        _this.mensajehome = respose.data.Valor;
+                        _this.SpinnerService.hide();
+                    }
+                    else {
+                        // aqui va el mensaje estandar
+                        console.log(respose.mensajeError);
+                        _this.SpinnerService.hide();
+                    }
+                });
+            }, function (rej) {
+                console.log(rej);
+            });
+        }
+        catch (error) {
+            console.log(error);
+            this.SpinnerService.hide();
+        }
+        this.SpinnerService.hide();
+    };
+    HomeComponent.ctorParameters = function () { return [
+        { type: _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"] },
+        { type: _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormBuilder"] },
+        { type: _angular_router__WEBPACK_IMPORTED_MODULE_4__["ActivatedRoute"] },
+        { type: src_app_Servicios_general_service__WEBPACK_IMPORTED_MODULE_5__["GeneralService"] },
+        { type: src_app_Servicios_global_service__WEBPACK_IMPORTED_MODULE_6__["GlobalService"] },
+        { type: src_app_Servicios_alerta_service__WEBPACK_IMPORTED_MODULE_7__["AlertaService"] },
+        { type: _angular_common__WEBPACK_IMPORTED_MODULE_9__["DatePipe"] },
+        { type: ngx_spinner__WEBPACK_IMPORTED_MODULE_3__["NgxSpinnerService"] },
+        { type: src_app_Servicios_homeservice_service__WEBPACK_IMPORTED_MODULE_10__["HomeserviceService"] }
+    ]; };
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Output"])()
+    ], HomeComponent.prototype, "actNombreModulo", void 0);
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Output"])()
+    ], HomeComponent.prototype, "ruta", void 0);
+    HomeComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-home',
+            template: __webpack_require__(/*! raw-loader!./home.component.html */ "./node_modules/raw-loader/index.js!./src/app/modulos/home/home/home.component.html"),
+            styles: [__webpack_require__(/*! ./home.component.scss */ "./src/app/modulos/home/home/home.component.scss")]
+        })
+    ], HomeComponent);
+    return HomeComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/modulos/shared/alerta/alerta.component.ts":
+/*!***********************************************************!*\
+  !*** ./src/app/modulos/shared/alerta/alerta.component.ts ***!
+  \***********************************************************/
+/*! exports provided: AlertaComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AlertaComponent", function() { return AlertaComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var src_app_Servicios_alerta_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/Servicios/alerta.service */ "./src/app/Servicios/alerta.service.ts");
+
+
+
+var AlertaComponent = /** @class */ (function () {
+    function AlertaComponent(alertService) {
+        this.alertService = alertService;
+    }
+    AlertaComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.subscription = this.alertService.getAlert()
+            .subscribe(function (message) {
+            switch (message && message.type) {
+                case 'success':
+                    message.cssClass = 'alert alert-success';
+                    break;
+                case 'error':
+                    message.cssClass = 'alert alert-danger';
+                    break;
+                case 'warning':
+                    message.cssClass = 'alert alert-warning';
+                    break;
+                case 'primary':
+                    message.class = 'alert alert-primary';
+                    break;
+                case 'secondary':
+                    message.class = 'alert alert-secondary';
+                    break;
+                case 'info':
+                    message.class = 'alert alert-info';
+                    break;
+            }
+            _this.message = message;
+        });
+    };
+    AlertaComponent.prototype.ngOnDestroy = function () {
+        this.subscription.unsubscribe();
+    };
+    AlertaComponent.ctorParameters = function () { return [
+        { type: src_app_Servicios_alerta_service__WEBPACK_IMPORTED_MODULE_2__["AlertaService"] }
+    ]; };
+    AlertaComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({ selector: 'alerta', template: __webpack_require__(/*! raw-loader!./alerta.component.html */ "./node_modules/raw-loader/index.js!./src/app/modulos/shared/alerta/alerta.component.html") })
+    ], AlertaComponent);
+    return AlertaComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/modulos/shared/enlace/enlace.component.css":
+/*!************************************************************!*\
+  !*** ./src/app/modulos/shared/enlace/enlace.component.css ***!
+  \************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = ".img{\r\n    max-width: 100%  !important;;\r\n    max-height: 100%  !important;;\r\n    display: block !important; /* remove extra space below image */\r\n    -o-object-fit: cover !important;\r\n       object-fit: cover !important;\r\n}\r\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvbW9kdWxvcy9zaGFyZWQvZW5sYWNlL2VubGFjZS5jb21wb25lbnQuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0lBQ0ksMkJBQTJCO0lBQzNCLDRCQUE0QjtJQUM1Qix5QkFBeUIsRUFBRSxtQ0FBbUM7SUFDOUQsK0JBQTRCO09BQTVCLDRCQUE0QjtBQUNoQyIsImZpbGUiOiJzcmMvYXBwL21vZHVsb3Mvc2hhcmVkL2VubGFjZS9lbmxhY2UuY29tcG9uZW50LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIi5pbWd7XHJcbiAgICBtYXgtd2lkdGg6IDEwMCUgICFpbXBvcnRhbnQ7O1xyXG4gICAgbWF4LWhlaWdodDogMTAwJSAgIWltcG9ydGFudDs7XHJcbiAgICBkaXNwbGF5OiBibG9jayAhaW1wb3J0YW50OyAvKiByZW1vdmUgZXh0cmEgc3BhY2UgYmVsb3cgaW1hZ2UgKi9cclxuICAgIG9iamVjdC1maXQ6IGNvdmVyICFpbXBvcnRhbnQ7XHJcbn0iXX0= */"
+
+/***/ }),
+
+/***/ "./src/app/modulos/shared/enlace/enlace.component.ts":
+/*!***********************************************************!*\
+  !*** ./src/app/modulos/shared/enlace/enlace.component.ts ***!
+  \***********************************************************/
+/*! exports provided: EnlaceComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EnlaceComponent", function() { return EnlaceComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var src_app_interfaces_mensaje__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/interfaces/mensaje */ "./src/app/interfaces/mensaje.ts");
+/* harmony import */ var ngx_spinner__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ngx-spinner */ "./node_modules/ngx-spinner/fesm5/ngx-spinner.js");
+
+
+
+
+var EnlaceComponent = /** @class */ (function () {
+    function EnlaceComponent(SpinnerService) {
+        this.SpinnerService = SpinnerService;
+        this.respuestaMensajeEnlace = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"]();
+        this.titulo = '';
+        this.AllImage = false;
+        this.SpinnerService.show();
+    }
+    EnlaceComponent.prototype.ngOnInit = function () {
+        //debugger
+        // if(this.MensajeEnlace.opcion =="1"){
+        //   this.AllImage = true;
+        // }else{
+        //   this.AllImage = false;
+        // }
+        switch (this.MensajeEnlace.tipoEnlace) {
+            case src_app_interfaces_mensaje__WEBPACK_IMPORTED_MODULE_2__["tipoMensajeEnlace"].Confirmacion: {
+                this.titulo = '';
+                // this.btnCancelar = true;
+                break;
+            }
+            case src_app_interfaces_mensaje__WEBPACK_IMPORTED_MODULE_2__["tipoMensajeEnlace"].Error: {
+                this.titulo = '';
+                break;
+            }
+            case src_app_interfaces_mensaje__WEBPACK_IMPORTED_MODULE_2__["tipoMensajeEnlace"].Informacion: {
+                this.titulo = '';
+                break;
+            }
+            case src_app_interfaces_mensaje__WEBPACK_IMPORTED_MODULE_2__["tipoMensajeEnlace"].Verificacion: {
+                this.titulo = '';
+                break;
+            }
+        }
+    };
+    EnlaceComponent.prototype.accion = function (accion) {
+        switch (accion) {
+            case 'cerrar': {
+                this.respuestaMensajeEnlace.emit(src_app_interfaces_mensaje__WEBPACK_IMPORTED_MODULE_2__["respuestaMensajeEnlace"].Cerrar);
+                this.SpinnerService.hide();
+                break;
+            }
+        }
+    };
+    EnlaceComponent.ctorParameters = function () { return [
+        { type: ngx_spinner__WEBPACK_IMPORTED_MODULE_3__["NgxSpinnerService"] }
+    ]; };
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])()
+    ], EnlaceComponent.prototype, "MensajeEnlace", void 0);
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Output"])()
+    ], EnlaceComponent.prototype, "respuestaMensajeEnlace", void 0);
+    EnlaceComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-enlace',
+            template: __webpack_require__(/*! raw-loader!./enlace.component.html */ "./node_modules/raw-loader/index.js!./src/app/modulos/shared/enlace/enlace.component.html"),
+            styles: [__webpack_require__(/*! ./enlace.component.css */ "./src/app/modulos/shared/enlace/enlace.component.css")]
+        })
+    ], EnlaceComponent);
+    return EnlaceComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/modulos/shared/enlaceuno/enlaceuno.component.css":
+/*!******************************************************************!*\
+  !*** ./src/app/modulos/shared/enlaceuno/enlaceuno.component.css ***!
+  \******************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL21vZHVsb3Mvc2hhcmVkL2VubGFjZXVuby9lbmxhY2V1bm8uY29tcG9uZW50LmNzcyJ9 */"
+
+/***/ }),
+
+/***/ "./src/app/modulos/shared/enlaceuno/enlaceuno.component.ts":
+/*!*****************************************************************!*\
+  !*** ./src/app/modulos/shared/enlaceuno/enlaceuno.component.ts ***!
+  \*****************************************************************/
+/*! exports provided: EnlaceunoComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EnlaceunoComponent", function() { return EnlaceunoComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var src_app_interfaces_mensaje__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/interfaces/mensaje */ "./src/app/interfaces/mensaje.ts");
+/* harmony import */ var ngx_spinner__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ngx-spinner */ "./node_modules/ngx-spinner/fesm5/ngx-spinner.js");
+
+
+
+
+var EnlaceunoComponent = /** @class */ (function () {
+    function EnlaceunoComponent(SpinnerService) {
+        this.SpinnerService = SpinnerService;
+        this.respuestaMensajeEnlaceUNO = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"]();
+        this.titulo = '';
+        this.AllImage = false;
+        this.SpinnerService.show();
+    }
+    EnlaceunoComponent.prototype.ngOnInit = function () {
+        // debugger
+        switch (this.MensajeEnlaceUNO.tipoEnlaceUNO) {
+            case src_app_interfaces_mensaje__WEBPACK_IMPORTED_MODULE_2__["tipoMensajeEnlaceUNO"].Confirmacion: {
+                this.titulo = '';
+                // this.btnCancelar = true;
+                break;
+            }
+            case src_app_interfaces_mensaje__WEBPACK_IMPORTED_MODULE_2__["tipoMensajeEnlaceUNO"].Error: {
+                this.titulo = '';
+                break;
+            }
+            case src_app_interfaces_mensaje__WEBPACK_IMPORTED_MODULE_2__["tipoMensajeEnlaceUNO"].Informacion: {
+                this.titulo = '';
+                break;
+            }
+            case src_app_interfaces_mensaje__WEBPACK_IMPORTED_MODULE_2__["tipoMensajeEnlaceUNO"].Verificacion: {
+                this.titulo = '';
+                break;
+            }
+        }
+    };
+    EnlaceunoComponent.prototype.accion = function (accion) {
+        switch (accion) {
+            case 'cerrar': {
+                this.respuestaMensajeEnlaceUNO.emit(src_app_interfaces_mensaje__WEBPACK_IMPORTED_MODULE_2__["respuestaMensajeEnlaceUNO"].Cerrar);
+                this.SpinnerService.hide();
+                break;
+            }
+        }
+    };
+    EnlaceunoComponent.ctorParameters = function () { return [
+        { type: ngx_spinner__WEBPACK_IMPORTED_MODULE_3__["NgxSpinnerService"] }
+    ]; };
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])()
+    ], EnlaceunoComponent.prototype, "MensajeEnlaceUNO", void 0);
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Output"])()
+    ], EnlaceunoComponent.prototype, "respuestaMensajeEnlaceUNO", void 0);
+    EnlaceunoComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-enlaceuno',
+            template: __webpack_require__(/*! raw-loader!./enlaceuno.component.html */ "./node_modules/raw-loader/index.js!./src/app/modulos/shared/enlaceuno/enlaceuno.component.html"),
+            styles: [__webpack_require__(/*! ./enlaceuno.component.css */ "./src/app/modulos/shared/enlaceuno/enlaceuno.component.css")]
+        })
+    ], EnlaceunoComponent);
+    return EnlaceunoComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/modulos/shared/footer/footer.component.css":
+/*!************************************************************!*\
+  !*** ./src/app/modulos/shared/footer/footer.component.css ***!
+  \************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL21vZHVsb3Mvc2hhcmVkL2Zvb3Rlci9mb290ZXIuY29tcG9uZW50LmNzcyJ9 */"
+
+/***/ }),
+
+/***/ "./src/app/modulos/shared/footer/footer.component.ts":
+/*!***********************************************************!*\
+  !*** ./src/app/modulos/shared/footer/footer.component.ts ***!
+  \***********************************************************/
+/*! exports provided: FooterComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FooterComponent", function() { return FooterComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+
+
+var FooterComponent = /** @class */ (function () {
+    function FooterComponent() {
+    }
+    FooterComponent.prototype.ngOnInit = function () {
+    };
+    FooterComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-footer',
+            template: __webpack_require__(/*! raw-loader!./footer.component.html */ "./node_modules/raw-loader/index.js!./src/app/modulos/shared/footer/footer.component.html"),
+            styles: [__webpack_require__(/*! ./footer.component.css */ "./src/app/modulos/shared/footer/footer.component.css")]
+        })
+    ], FooterComponent);
+    return FooterComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/modulos/shared/popup/popup.component.css":
+/*!**********************************************************!*\
+  !*** ./src/app/modulos/shared/popup/popup.component.css ***!
+  \**********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL21vZHVsb3Mvc2hhcmVkL3BvcHVwL3BvcHVwLmNvbXBvbmVudC5jc3MifQ== */"
+
+/***/ }),
+
+/***/ "./src/app/modulos/shared/popup/popup.component.ts":
+/*!*********************************************************!*\
+  !*** ./src/app/modulos/shared/popup/popup.component.ts ***!
+  \*********************************************************/
+/*! exports provided: PopupComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PopupComponent", function() { return PopupComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var src_app_interfaces_mensaje__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/interfaces/mensaje */ "./src/app/interfaces/mensaje.ts");
+
+
+
+var PopupComponent = /** @class */ (function () {
+    function PopupComponent() {
+        this.respuestaMensajeUP = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"]();
+        this.titulo = '';
+        this.btnCancelar = false;
+    }
+    PopupComponent.prototype.ngOnInit = function () {
+        switch (this.MensajeUP.tipoUP) {
+            case src_app_interfaces_mensaje__WEBPACK_IMPORTED_MODULE_2__["tipoMensajeUP"].Confirmacion: {
+                this.titulo = '';
+                this.btnCancelar = true;
+                break;
+            }
+            case src_app_interfaces_mensaje__WEBPACK_IMPORTED_MODULE_2__["tipoMensajeUP"].Error: {
+                this.titulo = '';
+                break;
+            }
+            case src_app_interfaces_mensaje__WEBPACK_IMPORTED_MODULE_2__["tipoMensajeUP"].Informacion: {
+                this.titulo = '';
+                break;
+            }
+            case src_app_interfaces_mensaje__WEBPACK_IMPORTED_MODULE_2__["tipoMensajeUP"].Verificacion: {
+                this.titulo = '';
+                break;
+            }
+        }
+    };
+    PopupComponent.prototype.accion = function (accion) {
+        switch (accion) {
+            case 'cerrar': {
+                this.respuestaMensajeUP.emit(src_app_interfaces_mensaje__WEBPACK_IMPORTED_MODULE_2__["respuestaMensajeUP"].Cerrar);
+                break;
+            }
+            case 'aceptar': {
+                this.respuestaMensajeUP.emit(src_app_interfaces_mensaje__WEBPACK_IMPORTED_MODULE_2__["respuestaMensajeUP"].Aceptar);
+                break;
+            }
+            case 'cancelar': {
+                this.respuestaMensajeUP.emit(src_app_interfaces_mensaje__WEBPACK_IMPORTED_MODULE_2__["respuestaMensajeUP"].Cancelar);
+                break;
+            }
+        }
+    };
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])()
+    ], PopupComponent.prototype, "MensajeUP", void 0);
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Output"])()
+    ], PopupComponent.prototype, "respuestaMensajeUP", void 0);
+    PopupComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-popup',
+            template: __webpack_require__(/*! raw-loader!./popup.component.html */ "./node_modules/raw-loader/index.js!./src/app/modulos/shared/popup/popup.component.html"),
+            styles: [__webpack_require__(/*! ./popup.component.css */ "./src/app/modulos/shared/popup/popup.component.css")]
+        })
+    ], PopupComponent);
+    return PopupComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/modulos/shared/shared.module.ts":
+/*!*************************************************!*\
+  !*** ./src/app/modulos/shared/shared.module.ts ***!
+  \*************************************************/
+/*! exports provided: ShareddModule */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ShareddModule", function() { return ShareddModule; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm5/common.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _progress_kendo_angular_dialog__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @progress/kendo-angular-dialog */ "./node_modules/@progress/kendo-angular-dialog/dist/fesm5/index.js");
+/* harmony import */ var _progress_kendo_angular_buttons__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @progress/kendo-angular-buttons */ "./node_modules/@progress/kendo-angular-buttons/dist/fesm5/index.js");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
+/* harmony import */ var _progress_kendo_angular_dropdowns__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @progress/kendo-angular-dropdowns */ "./node_modules/@progress/kendo-angular-dropdowns/dist/fesm5/index.js");
+/* harmony import */ var _progress_kendo_angular_scrollview__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @progress/kendo-angular-scrollview */ "./node_modules/@progress/kendo-angular-scrollview/dist/fesm5/index.js");
+/* harmony import */ var _footer_footer_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./footer/footer.component */ "./src/app/modulos/shared/footer/footer.component.ts");
+/* harmony import */ var _top_bar_top_bar_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./top-bar/top-bar.component */ "./src/app/modulos/shared/top-bar/top-bar.component.ts");
+/* harmony import */ var _alerta_alerta_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./alerta/alerta.component */ "./src/app/modulos/shared/alerta/alerta.component.ts");
+/* harmony import */ var _ventana_ventana_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./ventana/ventana.component */ "./src/app/modulos/shared/ventana/ventana.component.ts");
+/* harmony import */ var _popup_popup_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./popup/popup.component */ "./src/app/modulos/shared/popup/popup.component.ts");
+/* harmony import */ var _enlace_enlace_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./enlace/enlace.component */ "./src/app/modulos/shared/enlace/enlace.component.ts");
+/* harmony import */ var _enlaceuno_enlaceuno_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./enlaceuno/enlaceuno.component */ "./src/app/modulos/shared/enlaceuno/enlaceuno.component.ts");
+// import { NgModule } from '@angular/core';
+// import { CommonModule } from '@angular/common';
+// import { AlertaComponent } from './alerta/alerta.component';
+// import { FooterComponent } from './footer/footer.component';
+// import { VentanaComponent } from './ventana/ventana.component';
+// import { TopBarComponent } from './top-bar/top-bar.component';
+
+// @NgModule({
+//   declarations: [AlertaComponent, FooterComponent, VentanaComponent, TopBarComponent],
+//   imports: [
+//     CommonModule
+//   ]
+// })
+// export class SharedModule { }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// import { VentanaComponent } from './ventana/ventana.component';
+// import { AlertaComponent } from './alerta/alerta.component';
+var ShareddModule = /** @class */ (function () {
+    function ShareddModule() {
+    }
+    ShareddModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
+            declarations: [_footer_footer_component__WEBPACK_IMPORTED_MODULE_9__["FooterComponent"], _top_bar_top_bar_component__WEBPACK_IMPORTED_MODULE_10__["TopBarComponent"], _alerta_alerta_component__WEBPACK_IMPORTED_MODULE_11__["AlertaComponent"], _ventana_ventana_component__WEBPACK_IMPORTED_MODULE_12__["VentanaComponent"], _popup_popup_component__WEBPACK_IMPORTED_MODULE_13__["PopupComponent"], _enlace_enlace_component__WEBPACK_IMPORTED_MODULE_14__["EnlaceComponent"], _enlaceuno_enlaceuno_component__WEBPACK_IMPORTED_MODULE_15__["EnlaceunoComponent"]],
+            // declarations: [],
+            imports: [
+                _angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"],
+                _angular_router__WEBPACK_IMPORTED_MODULE_3__["RouterModule"],
+                _progress_kendo_angular_dialog__WEBPACK_IMPORTED_MODULE_4__["DialogModule"],
+                _progress_kendo_angular_buttons__WEBPACK_IMPORTED_MODULE_5__["ButtonsModule"],
+                _angular_forms__WEBPACK_IMPORTED_MODULE_6__["ReactiveFormsModule"],
+                _progress_kendo_angular_dropdowns__WEBPACK_IMPORTED_MODULE_7__["DropDownsModule"],
+                _progress_kendo_angular_scrollview__WEBPACK_IMPORTED_MODULE_8__["ScrollViewModule"]
+            ],
+            exports: [_top_bar_top_bar_component__WEBPACK_IMPORTED_MODULE_10__["TopBarComponent"], _footer_footer_component__WEBPACK_IMPORTED_MODULE_9__["FooterComponent"], _alerta_alerta_component__WEBPACK_IMPORTED_MODULE_11__["AlertaComponent"], _ventana_ventana_component__WEBPACK_IMPORTED_MODULE_12__["VentanaComponent"], _popup_popup_component__WEBPACK_IMPORTED_MODULE_13__["PopupComponent"], _enlace_enlace_component__WEBPACK_IMPORTED_MODULE_14__["EnlaceComponent"], _enlaceuno_enlaceuno_component__WEBPACK_IMPORTED_MODULE_15__["EnlaceunoComponent"]]
+            //exports: [ ]
+        })
+    ], ShareddModule);
+    return ShareddModule;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/modulos/shared/top-bar/top-bar.component.css":
+/*!**************************************************************!*\
+  !*** ./src/app/modulos/shared/top-bar/top-bar.component.css ***!
+  \**************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL21vZHVsb3Mvc2hhcmVkL3RvcC1iYXIvdG9wLWJhci5jb21wb25lbnQuY3NzIn0= */"
+
+/***/ }),
+
+/***/ "./src/app/modulos/shared/top-bar/top-bar.component.ts":
+/*!*************************************************************!*\
+  !*** ./src/app/modulos/shared/top-bar/top-bar.component.ts ***!
+  \*************************************************************/
+/*! exports provided: TopBarComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TopBarComponent", function() { return TopBarComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+
+
+var TopBarComponent = /** @class */ (function () {
+    function TopBarComponent() {
+    }
+    TopBarComponent.prototype.ngOnInit = function () {
+    };
+    TopBarComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-top-bar',
+            template: __webpack_require__(/*! raw-loader!./top-bar.component.html */ "./node_modules/raw-loader/index.js!./src/app/modulos/shared/top-bar/top-bar.component.html"),
+            styles: [__webpack_require__(/*! ./top-bar.component.css */ "./src/app/modulos/shared/top-bar/top-bar.component.css")]
+        })
+    ], TopBarComponent);
+    return TopBarComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/modulos/shared/ventana/ventana.component.scss":
+/*!***************************************************************!*\
+  !*** ./src/app/modulos/shared/ventana/ventana.component.scss ***!
+  \***************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL21vZHVsb3Mvc2hhcmVkL3ZlbnRhbmEvdmVudGFuYS5jb21wb25lbnQuc2NzcyJ9 */"
+
+/***/ }),
+
+/***/ "./src/app/modulos/shared/ventana/ventana.component.ts":
+/*!*************************************************************!*\
+  !*** ./src/app/modulos/shared/ventana/ventana.component.ts ***!
+  \*************************************************************/
+/*! exports provided: VentanaComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "VentanaComponent", function() { return VentanaComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var src_app_interfaces_mensaje__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/interfaces/mensaje */ "./src/app/interfaces/mensaje.ts");
+
+
+
+var VentanaComponent = /** @class */ (function () {
+    function VentanaComponent() {
+        this.respuestaMensaje = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"]();
+        this.titulo = '';
+        this.btnCancelar = false;
+    }
+    VentanaComponent.prototype.ngOnInit = function () {
+        switch (this.Mensaje.tipo) {
+            case src_app_interfaces_mensaje__WEBPACK_IMPORTED_MODULE_2__["tipoMensaje"].Confirmacion: {
+                this.titulo = '';
+                this.btnCancelar = true;
+                break;
+            }
+            case src_app_interfaces_mensaje__WEBPACK_IMPORTED_MODULE_2__["tipoMensaje"].Error: {
+                this.titulo = '';
+                break;
+            }
+            case src_app_interfaces_mensaje__WEBPACK_IMPORTED_MODULE_2__["tipoMensaje"].Informacion: {
+                this.titulo = '';
+                break;
+            }
+            case src_app_interfaces_mensaje__WEBPACK_IMPORTED_MODULE_2__["tipoMensaje"].Verificacion: {
+                this.titulo = '';
+                break;
+            }
+        }
+    };
+    VentanaComponent.prototype.accion = function (accion) {
+        switch (accion) {
+            case 'cerrar': {
+                this.respuestaMensaje.emit(src_app_interfaces_mensaje__WEBPACK_IMPORTED_MODULE_2__["respuestaMensaje"].Cerrar);
+                break;
+            }
+            case 'aceptar': {
+                this.respuestaMensaje.emit(src_app_interfaces_mensaje__WEBPACK_IMPORTED_MODULE_2__["respuestaMensaje"].Aceptar);
+                break;
+            }
+            case 'cancelar': {
+                this.respuestaMensaje.emit(src_app_interfaces_mensaje__WEBPACK_IMPORTED_MODULE_2__["respuestaMensaje"].Cancelar);
+                break;
+            }
+        }
+    };
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])()
+    ], VentanaComponent.prototype, "Mensaje", void 0);
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Output"])()
+    ], VentanaComponent.prototype, "respuestaMensaje", void 0);
+    VentanaComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-ventana',
+            template: __webpack_require__(/*! raw-loader!./ventana.component.html */ "./node_modules/raw-loader/index.js!./src/app/modulos/shared/ventana/ventana.component.html"),
+            styles: [__webpack_require__(/*! ./ventana.component.scss */ "./src/app/modulos/shared/ventana/ventana.component.scss")]
+        })
+    ], VentanaComponent);
+    return VentanaComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/environments/environment.ts":
+/*!*****************************************!*\
+  !*** ./src/environments/environment.ts ***!
+  \*****************************************/
+/*! exports provided: environment */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "environment", function() { return environment; });
+// This file can be replaced during build by using the `fileReplacements` array.
+// `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
+// The list of file replacements can be found in `angular.json`.
+var environment = {
+    production: false
+};
+/*
+ * For easier debugging in development mode, you can import the following file
+ * to ignore zone related error stack frames such as `zone.run`, `zoneDelegate.invokeTask`.
+ *
+ * This import should be commented out in production mode because it will have a negative impact
+ * on performance if an error is thrown.
+ */
+// import 'zone.js/dist/zone-error';  // Included with Angular CLI.
+
+
+/***/ }),
+
+/***/ "./src/main.ts":
+/*!*********************!*\
+  !*** ./src/main.ts ***!
+  \*********************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/platform-browser-dynamic */ "./node_modules/@angular/platform-browser-dynamic/fesm5/platform-browser-dynamic.js");
+/* harmony import */ var _app_app_module__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./app/app.module */ "./src/app/app.module.ts");
+/* harmony import */ var _environments_environment__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./environments/environment */ "./src/environments/environment.ts");
+
+
+
+
+if (_environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].production) {
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["enableProdMode"])();
+}
+Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_1__["platformBrowserDynamic"])().bootstrapModule(_app_app_module__WEBPACK_IMPORTED_MODULE_2__["AppModule"])
+    .catch(function (err) { return console.error(err); });
+
+
+/***/ }),
+
+/***/ 0:
+/*!***************************!*\
+  !*** multi ./src/main.ts ***!
+  \***************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(/*! D:\EdgarNV_\Documentos\Angular\ActualizadosST\src\main.ts */"./src/main.ts");
+
+
+/***/ })
+
+},[[0,"runtime","vendor"]]]);
+//# sourceMappingURL=main-es5.js.map

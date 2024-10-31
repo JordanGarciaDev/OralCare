@@ -1521,8 +1521,6 @@ h3 {
               $.each(data, function(index, item) {
                   selectEstadoCivil.append('<option value="' + item.id + '">' + item.nombre + '</option>');
               });
-              // Inicializa Select2 para estado civil
-              selectEstadoCivil.select2();
           },
           error: function(xhr, status, error) {
               console.log(xhr.responseText); // Ver el error del servidor
@@ -1634,27 +1632,25 @@ h3 {
   function submitForm() {
     const formData = new FormData(document.getElementById("candidatoForm"));
 
-    $.ajax({
-      url: "guardar_candidato.php", // Cambia a la ruta correcta de tu archivo PHP
-      type: "POST",
-      data: formData,
-      contentType: false,
-      processData: false,
-        success: function(respuesta) {
-            console.log("Respuesta completa:", respuesta);
-            try {
-                let data = JSON.parse(respuesta); // intenta convertir la respuesta a JSON
-                if (data.success) {
-                    alert("Información enviada correctamente.");
-                } else {
-                    alert("Hubo un error en el procesamiento: " + (data.message || 'Respuesta inesperada.'));
-                }
-            } catch (e) {
-                console.error("Error al analizar JSON:", e);
-                alert("Error en el formato de la respuesta. Verifica el servidor.");
-            }
-        },
-
-    });
+      $.ajax({
+          url: "guardar_candidato.php", // Cambia a la ruta correcta de tu archivo PHP
+          type: "POST",
+          data: formData,
+          contentType: false,
+          processData: false,
+          dataType: 'json', // Espera un JSON automáticamente
+          success: function(data) {
+              console.log("Respuesta completa:", data);
+              if (data.success) {
+                  alert(data.message);
+              } else {
+                  alert("Hubo un error en el procesamiento: " + (data.message || 'Respuesta inesperada.'));
+              }
+          },
+          error: function(jqXHR, textStatus, errorThrown) {
+              console.error("Error en la solicitud:", textStatus, errorThrown);
+              alert("Error al procesar la solicitud.");
+          }
+      });
   }
 </script>

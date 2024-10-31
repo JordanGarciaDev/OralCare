@@ -3,60 +3,63 @@ require_once("./SGOC/app/config.php");
 
 header('Content-Type: application/json');
 
-//$response = ['success' => false, 'message' => ''];
+$response = ["success" => false, "message" => ""];
 
 $action = isset($_GET['action']) ? $_GET['action'] : '';
 
-// Obtener tipos de identificacion
 if ($action == 'tipo_identificacion') {
     $query = "SELECT id, nombre FROM tipo_identificacion ORDER BY nombre ASC";
     $result = $conn->query($query);
-    $data = array();
+    $data = [];
 
     if ($result) {
         while ($row = $result->fetch_assoc()) {
             $data[] = $row;
         }
         echo json_encode($data);
+        exit;
     } else {
-        echo json_encode(array('error' => $conn->error));
+        echo json_encode(["error" => $conn->error]);
+        exit;
     }
 }
 
-// Obtener ciudades
 if ($action == 'ciudades') {
     $query = "SELECT id_municipio, municipio FROM municipios";
     $result = $conn->query($query);
-    $data = array();
+    $data = [];
 
     if ($result) {
         while ($row = $result->fetch_assoc()) {
             $data[] = $row;
         }
         echo json_encode($data);
+        exit;
     } else {
-        echo json_encode(array('error' => $conn->error));
+        echo json_encode(["error" => $conn->error]);
+        exit;
     }
 }
 
-// Obtener estado_civil
 if ($action == 'estados_civil') {
     $query = "SELECT id, nombre FROM estados_civiles";
     $result = $conn->query($query);
-    $data = array();
+    $data = [];
 
     if ($result) {
         while ($row = $result->fetch_assoc()) {
             $data[] = $row;
         }
         echo json_encode($data);
+        exit;
     } else {
-        echo json_encode(array('error' => $conn->error));
+        echo json_encode(["error" => $conn->error]);
+        exit;
     }
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-
+    // Recopilar y procesar datos de entrada
     $nombreCompleto = $_POST['nombre_completo'];
     $tipoDoc = $_POST['ddlTipoIdentificacion'];
     $numDoc = $_POST['txtNumeroIdentificacion'];
@@ -74,14 +77,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $tipoSangre = $_POST['tipo_sangre'];
 
     $rutaCarpeta = __DIR__ . '/SGOC/uploads/OfertasLaborales/cv/';
-
     $nombreArchivo = str_replace(' ', '_', $nombreCompleto) . '-' . $numDoc . '.' . pathinfo($_FILES['hoja_vida']['name'], PATHINFO_EXTENSION);
     $rutaArchivo = $rutaCarpeta . $nombreArchivo;
 
     if (move_uploaded_file($_FILES['hoja_vida']['tmp_name'], $rutaArchivo)) {
         $cv = $rutaArchivo;
     } else {
-        $response['message'] = "Error al subir el archivo. En la carpeta ".$rutaCarpeta;
+        $response['message'] = "Error al subir el archivo. En la carpeta " . $rutaCarpeta;
         echo json_encode($response);
         exit;
     }
@@ -96,15 +98,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     );
 
     if ($stmt->execute()) {
-        $response['success'] = true;
-        $response['message'] = "Candidato guardado exitosamente.";
+        $response["success"] = true;
+        $response["message"] = "Candidato guardado exitosamente.";
     } else {
-        $response['message'] = "Error al guardar los datos: " . $stmt->error;
+        $response["message"] = "Error al guardar los datos: " . $stmt->error;
     }
     echo json_encode($response);
-
-    $stmt->close();
-    $conn->close();
+    exit;
 }
-
-?>

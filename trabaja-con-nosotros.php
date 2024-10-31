@@ -1451,6 +1451,13 @@ h3 {
                           <input type="email" class="form-control" id="email_personal" name="email_personal" placeholder="Escriba el email personal" required>
                       </div>
                   </div>
+
+                  <div class="col-md-3">
+                      <div class="form-group">
+                          <label for="email_empresarial">Email Empresarial:</label>
+                          <input type="email" class="form-control" id="email_empresarial" name="email_empresarial" placeholder="Escriba el email empresarial">
+                      </div>
+                  </div>
               </div>
 
 
@@ -1489,162 +1496,148 @@ h3 {
       </div>
     </form>
 
-          <script>
-              let currentStep = 1;
+   <script>
+  let currentStep = 1;
 
-              $(document).ready(function() {
-                  // Cargar datos en los selects al iniciar
-                  loadSelects();
-              });
+  $(document).ready(function() {
+    // Cargar datos en los selects al iniciar
+    loadSelects();
+  });
 
-              function loadSelects() {
-                  // Llenar estado civil
-                  $.ajax({
-                      url: 'guardar_candidato.php?action=estados_civil',
-                      type: 'GET',
-                      dataType: 'json',
-                      success: function(data) {
-                          console.log(data); // Verifica aquí
-                          var selectEstadoCivil = $('#estado_civil');
-                          selectEstadoCivil.empty().append('<option value="">Seleccione</option>');
-                          $.each(data, function(index, item) {
-                              selectEstadoCivil.append('<option value="' + item.id + '">' + item.nombre + '</option>');
-                          });
-                      },
-                      error: function(xhr, status, error) {
-                          console.log(xhr.responseText); // Ver el error del servidor
-                          alert("Error al cargar los estados civiles.");
-                      }
-                  });
+  function loadSelects() {
+    // Llenar estado civil
+$.ajax({
+    url: 'guardar_candidato.php?action=estados_civil',
+    type: 'GET',
+    dataType: 'json',
+    success: function(data) {
+      console.log(data); // Verifica aquí
+      var selectEstadoCivil = $('#estado_civil');
+      selectEstadoCivil.empty().append('<option value="">Seleccione</option>');
+      $.each(data, function(index, item) {
+        selectEstadoCivil.append('<option value="' + item.id + '">' + item.nombre + '</option>');
+      });
+    },
+    error: function(xhr, status, error) {
+      console.log(xhr.responseText); // Ver el error del servidor
+      alert("Error al cargar los estados civiles.");
+    }
+  });
+    
+    // Llenar tipo_identificacion
+    $.ajax({
+      url: 'guardar_candidato.php?action=tipo_identificacion',
+      type: 'GET',
+      dataType: 'json',
+      success: function(data) {
+        var selectTipoID = $('#ddlTipoIdentificacion');
+        selectTipoID.empty();
+        selectTipoID.append('<option value="">Seleccione</option>');
+        $.each(data, function(index, item) {
+          selectTipoID.append('<option value="' + item.id + '">' + item.nombre + '</option>');
+        });
+      },
+      error: function() {
+        alert("Error al cargar los tipos de identificación.");
+      }
+    });
+    
+    // Llenar lugar de expedición y municipios
+    $.ajax({
+      url: 'guardar_candidato.php?action=ciudades',
+      type: 'GET',
+      dataType: 'json',
+      success: function(data) {
+        var selectLugExp = $('#lug_exp');
+        var selectCiudad = $('#ciudad_residencia');
 
-                  // Llenar tipo_identificacion
-                  $.ajax({
-                      url: 'guardar_candidato.php?action=tipo_identificacion',
-                      type: 'GET',
-                      dataType: 'json',
-                      success: function(data) {
-                          var selectTipoID = $('#ddlTipoIdentificacion');
-                          selectTipoID.empty();
-                          selectTipoID.append('<option value="">Seleccione</option>');
-                          $.each(data, function(index, item) {
-                              selectTipoID.append('<option value="' + item.id + '">' + item.nombre + '</option>');
-                          });
-                      },
-                      error: function() {
-                          alert("Error al cargar los tipos de identificación.");
-                      }
-                  });
+        // Llena el select de Ciudades
+        selectCiudad.empty();
+        selectCiudad.append('<option value="">Seleccione</option>');
+        $.each(data, function(index, item) {
+          selectCiudad.append('<option value="' + item.id_municipio + '">' + item.municipio + '</option>');
+        });
 
-                  // Llenar lugar de expedición y municipios
-                  $.ajax({
-                      url: 'guardar_candidato.php?action=ciudades',
-                      type: 'GET',
-                      dataType: 'json',
-                      success: function(data) {
-                          var selectLugExp = $('#lug_exp');
-                          var selectCiudad = $('#ciudad_residencia');
+        // Llena el select de Lugar de expedición
+        selectLugExp.empty();
+        selectLugExp.append('<option value="">Seleccione</option>');
+        $.each(data, function(index, item) {
+          selectLugExp.append('<option value="' + item.id_municipio + '">' + item.municipio + '</option>');
+        });
+      },
+      error: function() {
+        alert("Error al cargar las ciudades.");
+      }
+    });
+  }
 
-                          // Llena el select de Ciudades
-                          selectCiudad.empty();
-                          selectCiudad.append('<option value="">Seleccione</option>');
-                          $.each(data, function(index, item) {
-                              selectCiudad.append('<option value="' + item.id_municipio + '">' + item.municipio + '</option>');
-                          });
+  function nextStep() {
+    if (currentStep === 1) {
+      let step1Valid = true;
+      document.querySelectorAll('#step1 [required]').forEach(function(input) {
+        if (!input.checkValidity()) {
+          step1Valid = false;
+          document.getElementById('validar1').textContent = "Por favor, completa todos los campos obligatorios en el primer paso.";
+        } else {
+          document.getElementById('validar1').textContent = "";
+        }
+      });
 
-                          // Llena el select de Lugar de expedición
-                          selectLugExp.empty();
-                          selectLugExp.append('<option value="">Seleccione</option>');
-                          $.each(data, function(index, item) {
-                              selectLugExp.append('<option value="' + item.id_municipio + '">' + item.municipio + '</option>');
-                          });
-                      },
-                      error: function() {
-                          alert("Error al cargar las ciudades.");
-                      }
-                  });
-              }
+      if (step1Valid) {
+        document.getElementById('step1').style.display = 'none';
+        document.getElementById('step2').style.display = 'block';
+        currentStep++;
+        document.getElementById('nextButton').textContent = "Siguiente";
+      }
+    } else if (currentStep === 2) {
+      let step2Valid = true;
+      document.querySelectorAll('#step2 [required]').forEach(function(input) {
+        if (!input.checkValidity()) {
+          step2Valid = false;
+        }
+      });
 
-              function nextStep() {
-                  if (currentStep === 1) {
-                      let step1Valid = true;
-                      let currentInputs = document.querySelectorAll('#step1 [required]');
+      if (step2Valid) {
+        document.getElementById('step2').style.display = 'none';
+        document.getElementById('step3').style.display = 'block';
+        currentStep++;
+        document.getElementById('nextButton').textContent = "Terminar"; // Cambiar el texto a "Terminar"
+      }
+    } else if (currentStep === 3) {
+      let step3Valid = true;
+      document.querySelectorAll('#step3 [required]').forEach(function(input) {
+        if (!input.checkValidity()) {
+          step3Valid = false;
+        }
+      });
 
-                      currentInputs.forEach(input => {
-                          if (!input.checkValidity()) {
-                              step1Valid = false;
-                              input.classList.add('is-invalid'); // Agrega clase de error si es necesario
-                          } else {
-                              input.classList.remove('is-invalid'); // Remueve clase de error si es válido
-                          }
-                      });
+      if (step3Valid) {
+        // Llama a la función submitForm para enviar el formulario
+        submitForm();
+      }
+    }
+  }
 
-                      if (step1Valid) {
-                          document.getElementById('step1').style.display = 'none';
-                          document.getElementById('step2').style.display = 'block';
-                          currentStep++;
-                          document.getElementById('nextButton').textContent = "Siguiente";
-                      } else {
-                          document.getElementById('validar1').textContent = "Por favor, completa todos los campos obligatorios en el primer paso.";
-                      }
-                  } else if (currentStep === 2) {
-                      let step2Valid = true;
-                      let currentInputs = document.querySelectorAll('#step2 [required]');
+  function submitForm() {
+    const formData = new FormData(document.getElementById("candidatoForm"));
 
-                      currentInputs.forEach(input => {
-                          if (!input.checkValidity()) {
-                              step2Valid = false;
-                              input.classList.add('is-invalid'); // Agrega clase de error si es necesario
-                          } else {
-                              input.classList.remove('is-invalid'); // Remueve clase de error si es válido
-                          }
-                      });
-
-                      if (step2Valid) {
-                          document.getElementById('step2').style.display = 'none';
-                          document.getElementById('step3').style.display = 'block';
-                          currentStep++;
-                          document.getElementById('nextButton').textContent = "Terminar"; // Cambiar el texto a "Terminar"
-                      }
-                  } else if (currentStep === 3) {
-                      let step3Valid = true;
-                      let currentInputs = document.querySelectorAll('#step3 [required]');
-
-                      currentInputs.forEach(input => {
-                          if (!input.checkValidity()) {
-                              step3Valid = false;
-                              input.classList.add('is-invalid'); // Agrega clase de error si es necesario
-                          } else {
-                              input.classList.remove('is-invalid'); // Remueve clase de error si es válido
-                          }
-                      });
-
-                      if (step3Valid) {
-                          // Llama a la función submitForm para enviar el formulario
-                          submitForm();
-                      }
-                  }
-              }
-
-              function submitForm() {
-                  const formData = new FormData(document.getElementById("candidatoForm"));
-
-                  $.ajax({
-                      url: "guardar_candidato.php", // Cambia a la ruta correcta de tu archivo PHP
-                      type: "POST",
-                      data: formData,
-                      contentType: false,
-                      processData: false,
-                      success: function(response) {
-                          alert("Gracias por aplicar a la vacante.");
-
-                          // Cerrar la ventana después de un pequeño retraso
-                          setTimeout(function() {
-                              window.close(); // Cierra la ventana al terminar
-                          }, 2000); // Espera 2 segundos antes de cerrar
-                      },
-                      error: function() {
-                          alert("Hubo un error al enviar la información. Por favor, inténtalo de nuevo.");
-                      }
-                  });
-              }
-          </script>
+    $.ajax({
+      url: "guardar_candidato.php", // Cambia a la ruta correcta de tu archivo PHP
+      type: "POST",
+      data: formData,
+      contentType: false,
+      processData: false,
+      success: function(response) {
+        alert("Gracias por aplicar a la vacante.");
+        
+        // Cerrar la ventana después de un pequeño retraso
+        setTimeout(function() {
+          window.close(); // Cierra la ventana al terminar
+        }, 2000); // Espera 2 segundos antes de cerrar
+      },
+      error: function() {
+        alert("Hubo un error al enviar la información. Por favor, inténtalo de nuevo.");
+      }
+    });
+  }
+</script>

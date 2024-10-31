@@ -1456,7 +1456,7 @@ h3 {
                       </div>
                   </div>
 
-                  <div class="col-md-3 offset-md-3">
+                  <div class="col-md-3">
                       <div class="form-group">
                           <label for="tipo_sangre">Tipo de Sangre:</label>
                           <select class="form-control" id="tipo_sangre" name="tipo_sangre" required>

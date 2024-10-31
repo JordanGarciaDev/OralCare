@@ -46,11 +46,7 @@ if ($action == 'save') {
     $ciudad_residencia = $_POST['ciudad_residencia'];
     $tel_movil = $_POST['tel_movil'];
     $email_personal = $_POST['email_personal'];
-    $email_empresarial = $_POST['email_empresarial'];
     $cargo_id = $_POST['cargo_id'];
-    $salario = $_POST['salario'];
-    $fingreso = $_POST['fingreso'];
-    $fretiro = $_POST['fretiro'];
     $tipo_sangre = $_POST['tipo_sangre'];
 
     // Insertar o actualizar en la base de datos
@@ -58,11 +54,11 @@ if ($action == 'save') {
         $estado = 2; // Candidato
 
         // Crear nuevo registro
-        $query = "INSERT INTO candidatos (nombre_completo, tipo_doc, num_doc, lug_exp, fec_nacimiento, nacionalidad, sexo, estado_civil, dir_residencia, barrio_residencia, ciudad_residencia, tel_movil, email_personal, email_empresarial, cargo_id, salario, fingreso, fretiro, tipo_sangre, estado) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        $query = "INSERT INTO candidatos (nombre_completo, tipo_doc, num_doc, lug_exp, fec_nacimiento, nacionalidad, sexo, estado_civil, dir_residencia, barrio_residencia, ciudad_residencia, tel_movil, email_personal, cargo_id, tipo_sangre, estado) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         $stmt = $conn->prepare($query);
         $stmt->bind_param(
-            'siiisssissiissiisssi',
-            $nombre_completo,$tipo_doc,$num_doc,$lug_exp,$fec_nacimiento,$nacionalidad,$sexo,$estado_civil,$dir_residencia,$barrio_residencia,$ciudad_residencia,$tel_movil,$email_personal,$email_empresarial,$cargo_id,$salario,$fingreso,$fretiro,$tipo_sangre,$estado);
+            'siiisssissiisisi',
+            $nombre_completo,$tipo_doc,$num_doc,$lug_exp,$fec_nacimiento,$nacionalidad,$sexo,$estado_civil,$dir_residencia,$barrio_residencia,$ciudad_residencia,$tel_movil,$email_personal,$cargo_id,$tipo_sangre,$estado);
         $stmt->execute();
         $stmt->close();
     }
@@ -70,10 +66,10 @@ if ($action == 'save') {
         $estado = $_POST['estado']; // Se cambia a 0 Activo ó sino 1 que es activo
 
         // Actualizar registro existente
-        $query = "UPDATE candidatos SET nombre_completo = ?, tipo_doc = ?, num_doc = ?, lug_exp = ?, fec_nacimiento = ?, nacionalidad = ?, sexo = ?, estado_civil = ?, dir_residencia = ?, barrio_residencia = ?, ciudad_residencia = ?, tel_movil = ?, email_personal = ?, email_empresarial = ?, cargo_id = ?, salario = ?, fingreso = ?, fretiro = ?, tipo_sangre = ?, estado = ? WHERE id = ?";
+        $query = "UPDATE candidatos SET nombre_completo = ?, tipo_doc = ?, num_doc = ?, lug_exp = ?, fec_nacimiento = ?, nacionalidad = ?, sexo = ?, estado_civil = ?, dir_residencia = ?, barrio_residencia = ?, ciudad_residencia = ?, tel_movil = ?, email_personal = ?, cargo_id = ?, tipo_sangre = ?, estado = ? WHERE id = ?";
         $stmt = $conn->prepare($query);
         $stmt->bind_param(
-            'sssisssisssissisissii',
+            'sssisssisssisissii',
             $nombre_completo,
             $tipo_doc,
             $num_doc,
@@ -87,11 +83,7 @@ if ($action == 'save') {
             $ciudad_residencia,
             $tel_movil,
             $email_personal,
-            $email_empresarial,
             $cargo_id,
-            $salario,
-            $fingreso,
-            $fretiro,
             $tipo_sangre,
             $estado,
             $id

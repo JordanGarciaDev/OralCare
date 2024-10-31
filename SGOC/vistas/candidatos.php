@@ -55,14 +55,14 @@ $titulo = "Gestión de Candidatos"; // Título específico para esta vista
                     <div class="modal-dialog modal-lg">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="modalEmpleadoLabel">Datos del Empleado</h5>
+                                <h5 class="modal-title" id="modalEmpleadoLabel">Datos del Candidato</h5>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
                                 <div class="card">
                                     <div class="card-header">
                                         <h5 class="card-title">Datos Básicos</h5>
-                                        <h6 class="card-subtitle text-muted">Escriba aquí los datos personales del empleado</h6>
+                                        <h6 class="card-subtitle text-muted">Escriba aquí los datos personales del candidato</h6>
                                     </div>
                                     <div class="card-body">
                                         <form id="empleadoForm" enctype="multipart/form-data">
@@ -80,7 +80,7 @@ $titulo = "Gestión de Candidatos"; // Título específico para esta vista
                                                 </div>
                                                 <div class="mb-3 col-md-4">
                                                     <label class="form-label" for="num_doc"><span style="color:red">*</span>Número de Documento</label>
-                                                    <input type="text" class="form-control" id="num_doc" name="num_doc" placeholder="Escriba el número de documento" required>
+                                                    <input type="number" class="form-control" id="num_doc" name="num_doc" placeholder="Escriba el número de documento" required>
                                                 </div>
 
                                                 <div class="mb-3 col-md-4">
@@ -136,31 +136,18 @@ $titulo = "Gestión de Candidatos"; // Título específico para esta vista
 
                                                 <div class="mb-3 col-md-4">
                                                     <label class="form-label" for="tel_movil"><span style="color:red">*</span>Teléfono Móvil</label>
-                                                    <input type="text" class="form-control" id="tel_movil" name="tel_movil" placeholder="Escriba el teléfono móvil" required>
+                                                    <input type="number" class="form-control" id="tel_movil" name="tel_movil" placeholder="Escriba el teléfono móvil" required>
                                                 </div>
                                                 <div class="mb-3 col-md-4">
                                                     <label class="form-label" for="email_personal"><span style="color:red">*</span>Email Personal</label>
                                                     <input type="email" class="form-control" id="email_personal" name="email_personal" placeholder="Escriba el email personal" required>
                                                 </div>
                                                 <div class="mb-3 col-md-4">
-                                                    <label class="form-label" for="email_empresarial">Email Empresarial</label>
-                                                    <input type="email" class="form-control" id="email_empresarial" name="email_empresarial" placeholder="Escriba el email empresarial">
-                                                </div>
-
-                                                <div class="mb-3 col-md-4">
                                                     <label class="form-label" for="cargo_id"><span style="color:red">*</span>Cargo</label>
                                                     <select class="form-select" id="cargo_id" name="cargo_id" required>
                                                         <option value="">Seleccione</option>
                                                         <!-- Opciones se llenan desde la base de datos -->
                                                     </select>
-                                                </div>
-                                                <div class="mb-3 col-md-4">
-                                                    <label class="form-label" for="salario"><span style="color:red">*</span>Salario</label>
-                                                    <input type="number" class="form-control" id="salario" name="salario" placeholder="Escriba el salario">
-                                                </div>
-                                                <div class="mb-3 col-md-4">
-                                                    <label class="form-label" for="fingreso"><span style="color:red">*</span>Fecha de Ingreso</label>
-                                                    <input type="date" class="form-control" id="fingreso" name="fingreso" required>
                                                 </div>
                                                 <div class="mb-3 col-md-4">
                                                     <label class="form-label" for="tipo_sangre"><span style="color:red">*</span>Tipo de Sangre</label>
@@ -191,11 +178,7 @@ $titulo = "Gestión de Candidatos"; // Título específico para esta vista
                                                         <input type="file" class="form-control" id="hoja_vida" name="hoja_vida">
                                                     </div>
                                                 </div>
-                                                <div class="mb-3 col-md-4" id="fretiroDiv" style="display: none;">
-                                                    <label class="form-label" for="fretiro"><span style="color:red">*</span>Fecha de Retiro</label>
-                                                    <input type="date" class="form-control" id="fretiro" name="fretiro">
-                                                </div>
-                                                <div class="mb-3 col-md-12">
+                                                 <div class="mb-3 col-md-12">
                                                     <button type="submit" class="btn btn-primary">Guardar</button>
                                                 </div>
                                             </div>
@@ -217,18 +200,6 @@ $titulo = "Gestión de Candidatos"; // Título específico para esta vista
 
     <script>
         $(document).ready(function () {
-// Muestra el input de fecha de retiro si el select cambia a retirado
-            document.getElementById("estado").addEventListener("change", function() {
-                var estado = this.value;
-                var fretiroDiv = document.getElementById("fretiroDiv");
-
-                if (estado === "retirado") {
-                    fretiroDiv.style.display = "block";
-                } else {
-                    fretiroDiv.style.display = "none";
-                }
-            });
-
             function llenarSelectsEmp(tipoIdentificacionID = '', tipoDocID = '', lugarExpID = '', ciudadResidenciaID = '', estadoCivilID = '', cargoID = '') {
                 // Llenar tipo de identificación
                 $.ajax({
@@ -398,10 +369,6 @@ $titulo = "Gestión de Candidatos"; // Título específico para esta vista
                         $('#barrio_residencia').val(empleado.barrio_residencia);
                         $('#tel_movil').val(empleado.tel_movil);
                         $('#email_personal').val(empleado.email_personal);
-                        $('#email_empresarial').val(empleado.email_empresarial);
-                        $('#salario').val(empleado.salario);
-                        $('#fingreso').val(empleado.fingreso);
-                        $('#fretiro').val(empleado.fretiro);
                         $('#tipo_sangre').val(empleado.tipo_sangre);
                         $('#estado').val(empleado.estado);
 

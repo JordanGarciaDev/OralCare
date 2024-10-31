@@ -1,7 +1,7 @@
 <?php
-header('Content-Type: application/json');
-
 require_once("./SGOC/app/config.php");
+
+header('Content-Type: application/json');
 
 //$response = ['success' => false, 'message' => ''];
 
@@ -56,6 +56,7 @@ if ($action == 'estados_civil') {
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
     $nombreCompleto = $_POST['nombre_completo'];
     $tipoDoc = $_POST['ddlTipoIdentificacion'];
     $numDoc = $_POST['txtNumeroIdentificacion'];
@@ -71,22 +72,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $emailPersonal = $_POST['email_personal'];
     $emailEmpresarial = $_POST['email_empresarial'];
     $tipoSangre = $_POST['tipo_sangre'];
-    
-	$rutaCarpeta = __DIR__ . '/uploads/OfertasLaborales/cv/';
-	$nombreArchivo = str_replace(' ', '_', $nombreCompleto) . '-' . $numDoc . '.' . pathinfo($_FILES['hoja_vida']['name'], PATHINFO_EXTENSION);
+
+    $rutaCarpeta = __DIR__ . '/SGOC/uploads/OfertasLaborales/cv/';
+
+    $nombreArchivo = str_replace(' ', '_', $nombreCompleto) . '-' . $numDoc . '.' . pathinfo($_FILES['hoja_vida']['name'], PATHINFO_EXTENSION);
     $rutaArchivo = $rutaCarpeta . $nombreArchivo;
 
     if (move_uploaded_file($_FILES['hoja_vida']['tmp_name'], $rutaArchivo)) {
         $cv = $rutaArchivo;
     } else {
-        $response['message'] = "Error al subir el archivo.";
+        $response['message'] = "Error al subir el archivo. En la carpeta ".$rutaCarpeta;
         echo json_encode($response);
         exit;
     }
 
     $sql = "INSERT INTO candidatos (nombre_completo, tipo_doc, num_doc, lug_exp, fec_nacimiento, nacionalidad, sexo, estado_civil, dir_residencia, barrio_residencia, ciudad_residencia, tel_movil, email_personal, email_empresarial, tipo_sangre, cv, estado)
             VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'candidato')";
-    
+
     $stmt = $conn->prepare($sql);
     $stmt->bind_param(
         "sissssssssisssss",
@@ -96,11 +98,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($stmt->execute()) {
         $response['success'] = true;
         $response['message'] = "Candidato guardado exitosamente.";
-		echo json_encode($response);
     } else {
         $response['message'] = "Error al guardar los datos: " . $stmt->error;
-		echo json_encode($response);
     }
+    echo json_encode($response);
 
     $stmt->close();
     $conn->close();

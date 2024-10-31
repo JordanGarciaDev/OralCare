@@ -69,6 +69,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $ciudadResidencia = $_POST['ciudad_residencia'];
     $telMovil = $_POST['tel_movil'];
     $emailPersonal = $_POST['email_personal'];
+    $emailEmpresarial = $_POST['email_empresarial'];
     $tipoSangre = $_POST['tipo_sangre'];
     
 	$rutaCarpeta = __DIR__ . '/uploads/OfertasLaborales/cv/';
@@ -83,13 +84,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         exit;
     }
 
-    $sql = "INSERT INTO candidatos (nombre_completo, tipo_doc, num_doc, lug_exp, fec_nacimiento, nacionalidad, sexo, estado_civil, dir_residencia, barrio_residencia, ciudad_residencia, tel_movil, email_personal, tipo_sangre, cv, estado)
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'candidato')";
+    $sql = "INSERT INTO candidatos (nombre_completo, tipo_doc, num_doc, lug_exp, fec_nacimiento, nacionalidad, sexo, estado_civil, dir_residencia, barrio_residencia, ciudad_residencia, tel_movil, email_personal, email_empresarial, tipo_sangre, cv, estado)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'candidato')";
     
     $stmt = $conn->prepare($sql);
     $stmt->bind_param(
         "sissssssssisssss",
-        $nombreCompleto, $tipoDoc, $numDoc, $lugExp, $fecNacimiento, $nacionalidad, $sexo, $estadoCivil, $dirResidencia, $barrioResidencia, $ciudadResidencia, $telMovil, $emailPersonal, $tipoSangre, $cv
+        $nombreCompleto, $tipoDoc, $numDoc, $lugExp, $fecNacimiento, $nacionalidad, $sexo, $estadoCivil, $dirResidencia, $barrioResidencia, $ciudadResidencia, $telMovil, $emailPersonal, $emailEmpresarial, $tipoSangre, $cv
     );
 
     if ($stmt->execute()) {

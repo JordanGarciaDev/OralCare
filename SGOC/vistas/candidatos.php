@@ -15,7 +15,7 @@ $titulo = "Gestión de Candidatos"; // Título específico para esta vista
             <div class="container-fluid p-0">
                 <div class="mb-3">
                     <h1 class="h3 d-inline align-middle"><i class="align-middle me-2 fas fa-fw fa-users"></i><?=$titulo;?></h1>
-                    <button class="btn btn-primary float-end" id="addNuevo" data-bs-toggle="modal" data-bs-target="#modalEmpleado"><i class="align-middle me-2 fas fa-fw fa-plus"></i>Agregar Nuevo</button>
+                    <button class="d-none btn btn-primary float-end" id="addNuevo" data-bs-toggle="modal" data-bs-target="#modalEmpleado"><i class="align-middle me-2 fas fa-fw fa-plus"></i>Agregar Nuevo</button>
                 </div>
 
                 <div class="row">
@@ -70,33 +70,32 @@ $titulo = "Gestión de Candidatos"; // Título específico para esta vista
                                             <div class="row">
                                                 <div class="mb-3 col-md-4">
                                                     <label class="form-label" for="nombre_completo"><span style="color:red">*</span>Nombre Completo</label>
-                                                    <input type="text" class="form-control" id="nombre_completo" name="nombre_completo" placeholder="Escriba el nombre completo del empleado" required>
+                                                    <input readonly type="text" class="form-control" id="nombre_completo" name="nombre_completo" placeholder="Escriba el nombre completo del empleado" required>
                                                 </div>
                                                 <div class="mb-3 col-md-4">
                                                     <label class="form-label" for="tipo_doc"><span style="color:red">*</span>Tipo de Documento</label>
-                                                    <select class="form-select" id="tipo_doc" name="tipo_doc" required>
+                                                    <select disabled class="form-select" id="tipo_doc" name="tipo_doc" required>
                                                         <option value="">Seleccione</option>
                                                     </select>
                                                 </div>
                                                 <div class="mb-3 col-md-4">
                                                     <label class="form-label" for="num_doc"><span style="color:red">*</span>Número de Documento</label>
-                                                    <input type="number" class="form-control" id="num_doc" name="num_doc" placeholder="Escriba el número de documento" required>
+                                                    <input readonly type="number" class="form-control" id="num_doc" name="num_doc" placeholder="Escriba el número de documento" required>
                                                 </div>
-
                                                 <div class="mb-3 col-md-4">
                                                     <label class="form-label" for="lug_exp"><span style="color:red">*</span>Lugar de Expedición</label>
-                                                    <select class="form-select" id="lug_exp" name="lug_exp" required>
+                                                    <select disabled class="form-select" id="lug_exp" name="lug_exp" required>
                                                         <option value="">Seleccione</option>
                                                         <!-- Opciones se llenan desde la base de datos -->
                                                     </select>
                                                 </div>
                                                 <div class="mb-3 col-md-4">
                                                     <label class="form-label" for="fec_nacimiento"><span style="color:red">*</span>Fecha de Nacimiento</label>
-                                                    <input type="date" class="form-control" id="fec_nacimiento" name="fec_nacimiento" required>
+                                                    <input readonly type="date" class="form-control" id="fec_nacimiento" name="fec_nacimiento" required>
                                                 </div>
                                                 <div class="mb-3 col-md-4">
                                                     <label class="form-label" for="nacionalidad"><span style="color:red">*</span>Nacionalidad</label>
-                                                    <select class="form-select" id="nacionalidad" name="nacionalidad" required>
+                                                    <select disabled class="form-select" id="nacionalidad" name="nacionalidad" required>
                                                         <option value="">Seleccione</option>
                                                         <option value="CO">Colombiano</option>
                                                         <option value="EX">Extranjero</option>
@@ -105,7 +104,7 @@ $titulo = "Gestión de Candidatos"; // Título específico para esta vista
 
                                                 <div class="mb-3 col-md-4">
                                                     <label class="form-label" for="sexo"><span style="color:red">*</span>Sexo</label>
-                                                    <select class="form-select" id="sexo" name="sexo" required>
+                                                    <select disabled class="form-select" id="sexo" name="sexo" required>
                                                         <option value="">Seleccione</option>
                                                         <option value="M">Masculino</option>
                                                         <option value="F">Femenino</option>
@@ -113,22 +112,22 @@ $titulo = "Gestión de Candidatos"; // Título específico para esta vista
                                                 </div>
                                                 <div class="mb-3 col-md-4">
                                                     <label class="form-label" for="estado_civil"><span style="color:red">*</span>Estado Civil</label>
-                                                    <select class="form-select" id="estado_civil" name="estado_civil" required>
+                                                    <select disabled class="form-select" id="estado_civil" name="estado_civil" required>
                                                         <option value="">Seleccione</option>
                                                     </select>
                                                 </div>
                                                 <div class="mb-3 col-md-4">
                                                     <label class="form-label" for="dir_residencia"><span style="color:red">*</span>Dirección de Residencia</label>
-                                                    <input type="text" class="form-control" id="dir_residencia" name="dir_residencia" placeholder="Escriba la dirección" required>
+                                                    <input readonly type="text" class="form-control" id="dir_residencia" name="dir_residencia" placeholder="Escriba la dirección" required>
                                                 </div>
 
                                                 <div class="mb-3 col-md-4">
                                                     <label class="form-label" for="barrio_residencia"><span style="color:red">*</span>Barrio de Residencia</label>
-                                                    <input type="text" class="form-control" id="barrio_residencia" name="barrio_residencia" placeholder="Escriba el barrio" required>
+                                                    <input readonly type="text" class="form-control" id="barrio_residencia" name="barrio_residencia" placeholder="Escriba el barrio" required>
                                                 </div>
                                                 <div class="mb-3 col-md-4">
                                                     <label class="form-label" for="ciudad_residencia"><span style="color:red">*</span>Ciudad de Residencia</label>
-                                                    <select class="form-select" id="ciudad_residencia" name="ciudad_residencia" required>
+                                                    <select disabled class="form-select" id="ciudad_residencia" name="ciudad_residencia" required>
                                                         <option value="">Seleccione</option>
                                                         <!-- Opciones se llenan desde la base de datos -->
                                                     </select>
@@ -136,22 +135,22 @@ $titulo = "Gestión de Candidatos"; // Título específico para esta vista
 
                                                 <div class="mb-3 col-md-4">
                                                     <label class="form-label" for="tel_movil"><span style="color:red">*</span>Teléfono Móvil</label>
-                                                    <input type="number" class="form-control" id="tel_movil" name="tel_movil" placeholder="Escriba el teléfono móvil" required>
+                                                    <input readonly type="number" class="form-control" id="tel_movil" name="tel_movil" placeholder="Escriba el teléfono móvil" required>
                                                 </div>
                                                 <div class="mb-3 col-md-4">
                                                     <label class="form-label" for="email_personal"><span style="color:red">*</span>Email Personal</label>
-                                                    <input type="email" class="form-control" id="email_personal" name="email_personal" placeholder="Escriba el email personal" required>
+                                                    <input readonly type="email" class="form-control" id="email_personal" name="email_personal" placeholder="Escriba el email personal" required>
                                                 </div>
                                                 <div class="mb-3 col-md-4">
                                                     <label class="form-label" for="cargo_id"><span style="color:red">*</span>Cargo</label>
-                                                    <select class="form-select" id="cargo_id" name="cargo_id" required>
+                                                    <select disabled class="form-select" id="cargo_id" name="cargo_id" required>
                                                         <option value="">Seleccione</option>
                                                         <!-- Opciones se llenan desde la base de datos -->
                                                     </select>
                                                 </div>
                                                 <div class="mb-3 col-md-4">
                                                     <label class="form-label" for="tipo_sangre"><span style="color:red">*</span>Tipo de Sangre</label>
-                                                    <select class="form-select" id="tipo_sangre" name="tipo_sangre" required>
+                                                    <select disabled class="form-select" id="tipo_sangre" name="tipo_sangre" required>
                                                         <option value="">Seleccione</option>
                                                         <option value="A+">A+</option>
                                                         <option value="A-">A-</option>
@@ -164,17 +163,32 @@ $titulo = "Gestión de Candidatos"; // Título específico para esta vista
                                                     </select>
                                                 </div>
                                                 <div class="mb-3 col-md-4">
+<<<<<<< Updated upstream
                                                     <label class="form-label" for="estado"><span style="color:red">*</span>¿Continúa Proceso?</label>
                                                     <select class="form-select" id="estado" name="estado" required>
+=======
+                                                    <label class="form-label" for="estado"><span style="color:red">*</span>¿Continúa proceso?</label>
+                                                    <select class="form-select" id="estado" name="estado" required onchange="mostrarFechaYHora()">
+                                                        <option value="" selected="">Seleccione</option>
+>>>>>>> Stashed changes
                                                         <option value="activo">Si</option>
                                                         <option value="retirado">No</option>
                                                     </select>
                                                 </div>
+                                                <div class="mb-3 col-md-4" id="fechaContainer" style="display: none;">
+                                                    <label class="form-label" for="fechaEntrevista"><span style="color:red">*</span>Fecha</label>
+                                                    <input type="date" class="form-control" id="fechaEntrevista" name="fechapro" required>
+                                                </div>
+                                                <div class="mb-3 col-md-4" id="horaContainer" style="display: none;">
+                                                    <label class="form-label" for="horaEntrevista"><span style="color:red">*</span>Hora</label>
+                                                    <input type="time" class="form-control" id="horaEntrevista" name="horapro" required>
+                                                </div>
+
                                                 <!-- Sección final con archivo -->
                                                 <div class="mb-3 col-md-4">
                                                     <div class="mb-3">
-                                                        <label class="form-label">Cargar Hoja de Vida</label>
-                                                        <input type="file" class="form-control" id="hoja_vida" name="hoja_vida">
+                                                        <label class="form-label">Ver Hoja de Vida</label>
+                                                        <span></span>
                                                     </div>
                                                 </div>
                                                  <div class="mb-3 col-md-12">
@@ -369,8 +383,13 @@ $titulo = "Gestión de Candidatos"; // Título específico para esta vista
                         $('#tel_movil').val(empleado.tel_movil);
                         $('#email_personal').val(empleado.email_personal);
                         $('#tipo_sangre').val(empleado.tipo_sangre);
+<<<<<<< Updated upstream
                         $('#estado').val(empleado.estado);
                          // Llama a la función para llenar los selects con valores preseleccionados
+=======
+
+                        // Llama a la función para llenar los selects con valores preseleccionados
+>>>>>>> Stashed changes
                         llenarSelectsEmp(
                             empleado.tipo_doc,            // ID de tipo de identificación
                             empleado.tipo_doc,            // ID de tipo de documento
@@ -379,7 +398,6 @@ $titulo = "Gestión de Candidatos"; // Título específico para esta vista
                             empleado.estado_civil,        // ID de estado civil
                             empleado.cargo_id,            // ID de cargo
                             empleado.nacionalidad,         // ID de nacionalidad
-                            empleado.estado         // ID de estado
                         );
 
                         $('#modalEmpleado').modal('show');
@@ -409,6 +427,17 @@ $titulo = "Gestión de Candidatos"; // Título específico para esta vista
                 }
             });
         });
+        function mostrarFechaYHora() {
+            const estado = $('#estado').val();
+            if (estado === 'activo') {
+                $('#fechaContainer').show();
+                $('#horaContainer').show();
+            } else {
+                $('#fechaContainer').hide();
+                $('#horaContainer').hide();
+            }
+        }
+
     </script>
 <?php
 include(LAYOUT . '/footer.php');

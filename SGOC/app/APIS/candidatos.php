@@ -48,17 +48,92 @@ if ($action == 'save') {
     $email_personal = $_POST['email_personal'];
     $cargo_id = $_POST['cargo_id'];
     $tipo_sangre = $_POST['tipo_sangre'];
+    $fechapro = $_POST['fechapro'];
+    $horapro = $_POST['horapro'];
 
     // Insertar o actualizar en la base de datos
     if ($id == '') {
         $estado = 2; // Candidato
-
         // Crear nuevo registro
         $query = "INSERT INTO candidatos (nombre_completo, tipo_doc, num_doc, lug_exp, fec_nacimiento, nacionalidad, sexo, estado_civil, dir_residencia, barrio_residencia, ciudad_residencia, tel_movil, email_personal, cargo_id, tipo_sangre, estado) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         $stmt = $conn->prepare($query);
         $stmt->bind_param(
             'siiisssissiisisi',
+<<<<<<< Updated upstream
             $nombre_completo, $tipo_doc, $num_doc, $lug_exp, $fec_nacimiento, $nacionalidad, $sexo, $estado_civil, $dir_residencia, $barrio_residencia, $ciudad_residencia, $tel_movil, $email_personal, $cargo_id, $tipo_sangre, $estado
+=======
+            $nombre_completo,$tipo_doc,$num_doc,$lug_exp,$fec_nacimiento,$nacionalidad,$sexo,$estado_civil,$dir_residencia,$barrio_residencia,$ciudad_residencia,$tel_movil,$email_personal,$cargo_id,$tipo_sangre,$estado);
+        $stmt->execute();
+        $stmt->close();
+    }
+    else {
+            $estado = $_POST['estado']; // Se cambia a 0 Activo o sino 1 que es activo
+
+        if ($estado == 'activo') {
+            // Obtener datos del candidato
+            $query = "SELECT * FROM candidatos WHERE id = ?";
+            $stmt = $conn->prepare($query);
+            $stmt->bind_param('i', $id);
+            $stmt->execute();
+            $result = $stmt->get_result();
+            $candidato = $result->fetch_assoc();
+            $stmt->close(); // Cerrar el statement después de usarlo
+
+            // Insertar en la tabla de programacion_entrevistas
+            $query = "INSERT INTO programacion_entrevistas (empleado_id, cargo_id, fechapro, horapro) 
+                              VALUES (?, ?, ?, ?)";
+            $stmt = $conn->prepare($query);
+            $stmt->bind_param('iiss',$candidato['id'],$candidato['cargo_id'],$fechapro,$horapro);
+
+
+            // Insertar en la tabla de empleados
+            $query = "INSERT INTO empleados (nombre_completo, tipo_doc, num_doc, lug_exp, fec_nacimiento, nacionalidad, sexo, estado_civil, dir_residencia, barrio_residencia, ciudad_residencia, tel_movil, email_personal, cargo_id, tipo_sangre, estado) 
+                              VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            $stmt = $conn->prepare($query);
+            $stmt->bind_param(
+                'siiisssissiisisi',
+                $candidato['nombre_completo'],
+                $candidato['tipo_doc'],
+                $candidato['num_doc'],
+                $candidato['lug_exp'],
+                $candidato['fec_nacimiento'],
+                $candidato['nacionalidad'],
+                $candidato['sexo'],
+                $candidato['estado_civil'],
+                $candidato['dir_residencia'],
+                $candidato['barrio_residencia'],
+                $candidato['ciudad_residencia'],
+                $candidato['tel_movil'],
+                $candidato['email_personal'],
+                $candidato['cargo_id'],
+                $candidato['tipo_sangre'],
+                'activo'
+            );
+        }
+
+        // Actualizar registro existente
+        $query = "UPDATE candidatos SET nombre_completo = ?, tipo_doc = ?, num_doc = ?, lug_exp = ?, fec_nacimiento = ?, nacionalidad = ?, sexo = ?, estado_civil = ?, dir_residencia = ?, barrio_residencia = ?, ciudad_residencia = ?, tel_movil = ?, email_personal = ?, cargo_id = ?, tipo_sangre = ?, estado = ? WHERE id = ?";
+        $stmt = $conn->prepare($query);
+        $stmt->bind_param(
+            'sssisssisssisissii',
+            $nombre_completo,
+            $tipo_doc,
+            $num_doc,
+            $lug_exp,
+            $fec_nacimiento,
+            $nacionalidad,
+            $sexo,
+            $estado_civil,
+            $dir_residencia,
+            $barrio_residencia,
+            $ciudad_residencia,
+            $tel_movil,
+            $email_personal,
+            $cargo_id,
+            $tipo_sangre,
+            $estado,
+            $id
+>>>>>>> Stashed changes
         );
         $stmt->execute();
         $stmt->close();

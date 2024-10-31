@@ -1,15 +1,15 @@
 <!DOCTYPE html>
-<!-- saved from url=(0055)https://transaccional.saludtotal.com.co/ActualizadosST/ -->
-<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   
   <title>Trabaja Con Nostros - Clinicas Oral Care</title>
-  <!--<base href="/ActualizadosST/">--><base href=".">
-
-  <!-- <base href="/ActualizadosST/"> -->
-
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="https://transaccional.saludtotal.com.co/ActualizadosST/favicon.ico">
   <link href="./trabaja-con-nosotros_files/bootstrap.min.css" rel="stylesheet">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
 <style type="text/css">@charset "UTF-8";
 /* You can add global styles to this file, and also import other style files */
 /* You can add global styles to this file, and also import other style files */
@@ -33,7 +33,7 @@
 }
 @font-face {
   font-family: "Futura-Std-Book";
-  src: url('Futura-Std-Book.ttf') format("truetype");
+  src: url('./trabaja-con-nosotros_files/Futura-Std-Book.ttf') format("truetype");
 }
 @font-face {
   font-family: "Futura-Std-Medium-Condensed";
@@ -562,7 +562,7 @@ app-top-login {
 }
 @font-face {
   font-family: "Futura-Light";
-  src: url('Futura-Std-Book.ttf') format("OpenType");
+  src: url('./trabaja-con-nosotros_files/Futura-Std-Book.ttf') format("OpenType");
 }
 .k-button, .k-button-group.k-state-disabled .k-button:not(.k-state-active),
 .k-button-group .k-button.k-state-disabled:not(.k-state-active), .k-list-container .k-nodata .k-button, .k-grouping-header .k-group-indicator, .k-spreadsheet-filter, .k-pivot-toolbar .k-button,
@@ -572,7 +572,7 @@ app-top-login {
   border-radius: 3rem;
   border: none;
   color: #ffffff;
-  background-image: url('Degradado_Azul.jpg');
+  background-image: url('./trabaja-con-nosotros_files/Degradado_Azul.jpg');
   font-family: Futura-Std-Book;
   color: #86817B;
   height: 40px;
@@ -589,7 +589,7 @@ app-top-login {
   border-radius: 3rem;
   border: none;
   color: #ffffff;
-  background-image: url('Degradado_Azul.jpg');
+  background-image: url('./trabaja-con-nosotros_files/Degradado_Azul.jpg');
   font-family: Futura-Std-Book;
 }
 .k-button:active, .k-button.k-state-active, .k-button.k-state-selected, .k-button-group > input[type=radio]:checked + .k-button,
@@ -599,7 +599,7 @@ app-top-login {
   border-radius: 3rem;
   border: none;
   color: #ffffff;
-  background-image: url('Degradado_Azul.jpg');
+  background-image: url('./trabaja-con-nosotros_files/Degradado_Azul.jpg');
   font-family: Futura-Std-Book;
 }
 .k-button[disabled], .k-button[disabled]:focus, .k-button.k-state-focused[disabled],
@@ -625,7 +625,7 @@ app-top-login {
   border-radius: 3rem;
   border: none;
   color: #ffffff;
-  background-image: url('Degradado_Rojo.jpg');
+  background-image: url('./trabaja-con-nosotros_files/Degradado_Rojo.jpg');
   font-family: Futura-Std-Book;
   height: 40px;
 }
@@ -634,7 +634,7 @@ app-top-login {
   border-radius: 3rem;
   border: none;
   color: #ffffff;
-  background-image: url('Degradado_Azul.jpg');
+  background-image: url('./trabaja-con-nosotros_files/Degradado_Azul.jpg');
   font-family: Futura-Std-Book;
   height: 40px;
 }
@@ -1098,12 +1098,12 @@ h3 {
 .k-dialog-titlebar {
   border-color: inherit;
   color: #fff;
-  background-image: url('Degradado_Azul.jpg');
+  background-image: url('./trabaja-con-nosotros_files/Degradado_Azul.jpg');
 }
 .k-window-titlebar {
   border-color: inherit;
   color: #fff;
-  background-image: url('Degradado_Azul.jpg');
+  background-image: url('./trabaja-con-nosotros_files/Degradado_Azul.jpg');
 }
 .k-window-titlebar {
   background-clip: padding-box;
@@ -1312,15 +1312,9 @@ h3 {
 /*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL21vZHVsb3Mvc2hhcmVkL2Zvb3Rlci9mb290ZXIuY29tcG9uZW50LmNzcyJ9 */</style><style>
 /*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL21vZHVsb3MvaG9tZS9ob21lL2hvbWUuY29tcG9uZW50LnNjc3MifQ== */</style></head>
 <body cz-shortcut-listen="true">
-  <app-root _nghost-hnu-c0="" ng-version="8.0.3"><div _ngcontent-hnu-c0="" style="text-align:center"></div><app-top-bar _ngcontent-hnu-c0="" _nghost-hnu-c1=""><header _ngcontent-hnu-c1="" class="top-bar"><div _ngcontent-hnu-c1="" class="headerST"><div _ngcontent-hnu-c1="" class="logotipos"><img _ngcontent-hnu-c1="" class="logoSaludTotal" src="./trabaja-con-nosotros_files/Logos_Actualizacion_Datos2.png"></div></div></header></app-top-bar><alerta _ngcontent-hnu-c0=""><!--bindings={}--></alerta><router-outlet _ngcontent-hnu-c0=""></router-outlet><app-home _nghost-hnu-c4="" class="ng-star-inserted"><!--bindings={
-  "ng-reflect-ng-if": "false"
-}--><!--bindings={
-  "ng-reflect-ng-if": "false"
-}--><!--bindings={
-  "ng-reflect-ng-if": "false"
-}--><div _ngcontent-hnu-c4="" style="text-align:center"></div><alerta _ngcontent-hnu-c4=""><!--bindings={}--></alerta><p _ngcontent-hnu-c4=""><br _ngcontent-hnu-c4=""></p><div _ngcontent-hnu-c4="" class="">
+  <app-root _nghost-hnu-c0="" ng-version="8.0.3"><div _ngcontent-hnu-c0="" style="text-align:center"></div><app-top-bar _ngcontent-hnu-c0="" _nghost-hnu-c1=""><header _ngcontent-hnu-c1="" class="top-bar"><div _ngcontent-hnu-c1="" class="headerST"><div _ngcontent-hnu-c1="" class="logotipos"><img _ngcontent-hnu-c1="" class="logoSaludTotal" src="./trabaja-con-nosotros_files/Logos_Actualizacion_Datos2.png"></div></div></header></app-top-bar><alerta _ngcontent-hnu-c0=""><!--bindings={}--></alerta><router-outlet _ngcontent-hnu-c0=""></router-outlet><app-home _nghost-hnu-c4="" class="ng-star-inserted"><div _ngcontent-hnu-c4="" style="text-align:center"></div><alerta _ngcontent-hnu-c4=""><!--bindings={}--></alerta><p _ngcontent-hnu-c4=""><br _ngcontent-hnu-c4=""></p><div _ngcontent-hnu-c4="" class="">
 
-    <form novalidate class="ng-untouched ng-pristine ng-invalid" id="mainForm">
+    <form novalidate class="ng-untouched ng-pristine ng-invalid" id="candidatoForm" enctype="multipart/form-data">
       <br id="formContainer">
 
         <div id="step1">
@@ -1330,15 +1324,7 @@ h3 {
               <div class="form-group">
                 <label for="ddlTipoIdentificacion">Tipo de documento</label>
                 <span style="color: #7F7F7F;">*</span>
-                <select class="k-combobox" id="ddlTipoIdentificacion" required>
-                  <option disabled selected value="">Selecciona</option>
-                  <option value="C">Cédula de Ciudadania</option>
-                  <option value="CD">Carnet Diplomático</option>
-                  <option value="E">Cédula de Extranjería</option>
-                  <option value="P">Pasaporte</option>
-                  <option value="PE">Permiso Especial de Permanencia</option>
-                  <option value="PT">Permiso por protección temporal</option>
-                  <option value="SC">Salvoconducto</option>
+                <select class="k-combobox" id="ddlTipoIdentificacion" name="ddlTipoIdentificacion" required>
                 </select>
                 <label class="validacion" id="validar1"></label>
               </div>
@@ -1347,7 +1333,7 @@ h3 {
               <div class="form-group">
                 <label for="txtNumeroIdentificacion">Número de Documento</label>
                 <span style="color: #7F7F7F;">*</span>
-                <input class="k-textbox" id="txtNumeroIdentificacion" maxlength="20" minlength="4" type="number" required>
+                <input class="k-textbox" id="txtNumeroIdentificacion" name="txtNumeroIdentificacion" placeholder="Escribe tu Número de Documento"  maxlength="20" minlength="4" type="number" required>
                 <label class="validacion" id="validar2"></label>
               </div>
             </div>
@@ -1367,7 +1353,7 @@ h3 {
               <div class="form-group">
                 <label for="lug_exp">Lugar de Expedición:</label>
                 <select class="form-control" id="lug_exp" name="lug_exp" >
-                  <option value="">Seleccione</option>
+                  <option value="1">Seleccione</option>
                   <!-- Agregar opciones aquí -->
                 </select>
               </div>
@@ -1444,8 +1430,8 @@ h3 {
                           <label for="ciudad_residencia">Ciudad de Residencia:</label>
                           <select class="form-control" id="ciudad_residencia" name="ciudad_residencia" required>
                               <option value="">Seleccione</option>
-                              <option value="CO">Cali</option>
-                              <option value="EX">Medellín</option>
+                              <option value="1">Cali</option>
+                              <option value="2">Medellín</option>
                           </select>
                       </div>
                   </div>
@@ -1482,7 +1468,14 @@ h3 {
                           <label for="tipo_sangre">Tipo de Sangre:</label>
                           <select class="form-control" id="tipo_sangre" name="tipo_sangre" required>
                               <option value="">Seleccione</option>
-                              <!-- Opciones adicionales aquí -->
+								<option value="A+">A+</option>
+								<option value="A-">A-</option>
+								<option value="B+">B+</option>
+								<option value="B-">B-</option>
+								<option value="AB+">AB+</option>
+								<option value="AB-">AB-</option>
+								<option value="O+">O+</option>
+								<option value="O-">O-</option>
                           </select>
                       </div>
                   </div>
@@ -1498,39 +1491,153 @@ h3 {
       </br>
               <div class="row">
         <div class="col-md-4 offset-md-5">
-          <button class="k-button" style="width: 40%;" type="button" onclick="nextStep()">Siguiente</button>
+          <button class="k-button" style="width: 40%;" type="button" id="nextButton" onclick="nextStep()">Siguiente</button>
         </div>
       </div>
     </form>
 
-      <script>
-      let currentStep = 1;
+   <script>
+  let currentStep = 1;
 
-      function nextStep() {
-        const steps = document.querySelectorAll('[id^="step"]');
-        const currentInputs = steps[currentStep - 1].querySelectorAll('input[required], select[required]');
-        let allValid = true;
+  $(document).ready(function() {
+    // Cargar datos en los selects al iniciar
+    loadSelects();
+  });
 
-          if (currentStep > steps.length) document.getElementById('mainForm').submit();
+  function loadSelects() {
+    // Llenar estado civil
+$.ajax({
+    url: 'guardar_candidato.php?action=estados_civil',
+    type: 'GET',
+    dataType: 'json',
+    success: function(data) {
+      console.log(data); // Verifica aquí
+      var selectEstadoCivil = $('#estado_civil');
+      selectEstadoCivil.empty().append('<option value="">Seleccione</option>');
+      $.each(data, function(index, item) {
+        selectEstadoCivil.append('<option value="' + item.id + '">' + item.nombre + '</option>');
+      });
+    },
+    error: function(xhr, status, error) {
+      console.log(xhr.responseText); // Ver el error del servidor
+      alert("Error al cargar los estados civiles.");
+    }
+  });
+    
+    // Llenar tipo_identificacion
+    $.ajax({
+      url: 'guardar_candidato.php?action=tipo_identificacion',
+      type: 'GET',
+      dataType: 'json',
+      success: function(data) {
+        var selectTipoID = $('#ddlTipoIdentificacion');
+        selectTipoID.empty();
+        selectTipoID.append('<option value="">Seleccione</option>');
+        $.each(data, function(index, item) {
+          selectTipoID.append('<option value="' + item.id + '">' + item.nombre + '</option>');
+        });
+      },
+      error: function() {
+        alert("Error al cargar los tipos de identificación.");
+      }
+    });
+    
+    // Llenar lugar de expedición y municipios
+    $.ajax({
+      url: 'guardar_candidato.php?action=ciudades',
+      type: 'GET',
+      dataType: 'json',
+      success: function(data) {
+        var selectLugExp = $('#lug_exp');
+        var selectCiudad = $('#ciudad_residencia');
 
-          currentInputs.forEach(input => {
-          if (!input.checkValidity()) {
-            allValid = false;
-            input.classList.add('is-invalid'); // Agrega clase de error si es necesario
-          } else {
-            input.classList.remove('is-invalid'); // Remueve clase de error si es válido
-          }
+        // Llena el select de Ciudades
+        selectCiudad.empty();
+        selectCiudad.append('<option value="">Seleccione</option>');
+        $.each(data, function(index, item) {
+          selectCiudad.append('<option value="' + item.id_municipio + '">' + item.municipio + '</option>');
         });
 
-        if (allValid) {
-          steps[currentStep - 1].style.display = 'none'; // Oculta el paso actual
-          currentStep++;
-          if (currentStep <= steps.length) {
-            steps[currentStep - 1].style.display = 'block'; // Muestra el siguiente paso
-          }
-        } else {
-          alert("Por favor, complete todos los campos obligatorios."); // Mensaje de error
-        }
+        // Llena el select de Lugar de expedición
+        selectLugExp.empty();
+        selectLugExp.append('<option value="">Seleccione</option>');
+        $.each(data, function(index, item) {
+          selectLugExp.append('<option value="' + item.id_municipio + '">' + item.municipio + '</option>');
+        });
+      },
+      error: function() {
+        alert("Error al cargar las ciudades.");
       }
-    </script>
+    });
+  }
 
+  function nextStep() {
+    if (currentStep === 1) {
+      let step1Valid = true;
+      document.querySelectorAll('#step1 [required]').forEach(function(input) {
+        if (!input.checkValidity()) {
+          step1Valid = false;
+          document.getElementById('validar1').textContent = "Por favor, completa todos los campos obligatorios en el primer paso.";
+        } else {
+          document.getElementById('validar1').textContent = "";
+        }
+      });
+
+      if (step1Valid) {
+        document.getElementById('step1').style.display = 'none';
+        document.getElementById('step2').style.display = 'block';
+        currentStep++;
+        document.getElementById('nextButton').textContent = "Siguiente";
+      }
+    } else if (currentStep === 2) {
+      let step2Valid = true;
+      document.querySelectorAll('#step2 [required]').forEach(function(input) {
+        if (!input.checkValidity()) {
+          step2Valid = false;
+        }
+      });
+
+      if (step2Valid) {
+        document.getElementById('step2').style.display = 'none';
+        document.getElementById('step3').style.display = 'block';
+        currentStep++;
+        document.getElementById('nextButton').textContent = "Terminar"; // Cambiar el texto a "Terminar"
+      }
+    } else if (currentStep === 3) {
+      let step3Valid = true;
+      document.querySelectorAll('#step3 [required]').forEach(function(input) {
+        if (!input.checkValidity()) {
+          step3Valid = false;
+        }
+      });
+
+      if (step3Valid) {
+        // Llama a la función submitForm para enviar el formulario
+        submitForm();
+      }
+    }
+  }
+
+  function submitForm() {
+    const formData = new FormData(document.getElementById("candidatoForm"));
+
+    $.ajax({
+      url: "guardar_candidato.php", // Cambia a la ruta correcta de tu archivo PHP
+      type: "POST",
+      data: formData,
+      contentType: false,
+      processData: false,
+      success: function(response) {
+        alert("Gracias por aplicar a la vacante.");
+        
+        // Cerrar la ventana después de un pequeño retraso
+        setTimeout(function() {
+          window.close(); // Cierra la ventana al terminar
+        }, 2000); // Espera 2 segundos antes de cerrar
+      },
+      error: function() {
+        alert("Hubo un error al enviar la información. Por favor, inténtalo de nuevo.");
+      }
+    });
+  }
+</script>

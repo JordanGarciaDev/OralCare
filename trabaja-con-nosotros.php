@@ -1456,33 +1456,26 @@ h3 {
                       </div>
                   </div>
 
-                  <div class="col-md-3">
+                  <div class="col-md-3 offset-md-3">
                       <div class="form-group">
-                          <label for="email_empresarial">Email Empresarial:</label>
-                          <input type="email" class="form-control" id="email_empresarial" name="email_empresarial" placeholder="Escriba el email empresarial">
+                          <label for="tipo_sangre">Tipo de Sangre:</label>
+                          <select class="form-control" id="tipo_sangre" name="tipo_sangre" required>
+                              <option value="">Seleccione</option>
+                              <option value="A+">A+</option>
+                              <option value="A-">A-</option>
+                              <option value="B+">B+</option>
+                              <option value="B-">B-</option>
+                              <option value="AB+">AB+</option>
+                              <option value="AB-">AB-</option>
+                              <option value="O+">O+</option>
+                              <option value="O-">O-</option>
+                          </select>
                       </div>
                   </div>
               </div>
 
 
               <div class="row">
-
-                  <div class="col-md-3 offset-md-3">
-                      <div class="form-group">
-                          <label for="tipo_sangre">Tipo de Sangre:</label>
-                          <select class="form-control" id="tipo_sangre" name="tipo_sangre" required>
-                              <option value="">Seleccione</option>
-								<option value="A+">A+</option>
-								<option value="A-">A-</option>
-								<option value="B+">B+</option>
-								<option value="B-">B-</option>
-								<option value="AB+">AB+</option>
-								<option value="AB-">AB-</option>
-								<option value="O+">O+</option>
-								<option value="O-">O-</option>
-                          </select>
-                      </div>
-                  </div>
 
                   <div class="col-md-3">
                       <div class="form-group">

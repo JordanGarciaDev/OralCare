@@ -58,41 +58,97 @@ if ($action == 'save') {
         $stmt = $conn->prepare($query);
         $stmt->bind_param(
             'siiisssissiisisi',
-            $nombre_completo,$tipo_doc,$num_doc,$lug_exp,$fec_nacimiento,$nacionalidad,$sexo,$estado_civil,$dir_residencia,$barrio_residencia,$ciudad_residencia,$tel_movil,$email_personal,$cargo_id,$tipo_sangre,$estado);
-        $stmt->execute();
-        $stmt->close();
-    }
-    else {
-        $estado = $_POST['estado']; // Se cambia a 0 Activo ó sino 1 que es activo
-
-        // Actualizar registro existente
-        $query = "UPDATE candidatos SET nombre_completo = ?, tipo_doc = ?, num_doc = ?, lug_exp = ?, fec_nacimiento = ?, nacionalidad = ?, sexo = ?, estado_civil = ?, dir_residencia = ?, barrio_residencia = ?, ciudad_residencia = ?, tel_movil = ?, email_personal = ?, cargo_id = ?, tipo_sangre = ?, estado = ? WHERE id = ?";
-        $stmt = $conn->prepare($query);
-        $stmt->bind_param(
-            'sssisssisssisissii',
-            $nombre_completo,
-            $tipo_doc,
-            $num_doc,
-            $lug_exp,
-            $fec_nacimiento,
-            $nacionalidad,
-            $sexo,
-            $estado_civil,
-            $dir_residencia,
-            $barrio_residencia,
-            $ciudad_residencia,
-            $tel_movil,
-            $email_personal,
-            $cargo_id,
-            $tipo_sangre,
-            $estado,
-            $id
+            $nombre_completo, $tipo_doc, $num_doc, $lug_exp, $fec_nacimiento, $nacionalidad, $sexo, $estado_civil, $dir_residencia, $barrio_residencia, $ciudad_residencia, $tel_movil, $email_personal, $cargo_id, $tipo_sangre, $estado
         );
         $stmt->execute();
         $stmt->close();
     }
+    else {
+        $estado = $_POST['estado']; // Se cambia a 0 Activo o sino 1 que es activo
+
+        if ($estado == 'activo') {
+            // Obtener datos del candidato
+            $query = "SELECT * FROM candidatos WHERE id = ?";
+            $stmt = $conn->prepare($query);
+
+            // Verificar que la preparación del statement fue exitosa
+            if (!$stmt) {
+                die("Error en la preparación de la consulta: " . $conn->error);
+            }
+
+            $stmt->bind_param('i', $id);
+            $stmt->execute();
+            $result = $stmt->get_result();
+            $candidato = $result->fetch_assoc();
+            $stmt->close(); // Cerrar el statement después de usarlo
+
+            // Insertar en la tabla de empleados
+            $query = "INSERT INTO empleados (nombre_completo, tipo_doc, num_doc, lug_exp, fec_nacimiento, nacionalidad, sexo, estado_civil, dir_residencia, barrio_residencia, ciudad_residencia, tel_movil, email_personal, cargo_id, tipo_sangre, estado) 
+                              VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            $stmt = $conn->prepare($query);
+
+            // Verificar que la preparación del statement fue exitosa
+            if (!$stmt) {
+                die("Error en la preparación de la consulta: " . $conn->error);
+            }
+
+            $stmt->bind_param(
+                'siiisssissiisiss',
+                $candidato['nombre_completo'],
+                $candidato['tipo_doc'],
+                $candidato['num_doc'],
+                $candidato['lug_exp'],
+                $candidato['fec_nacimiento'],
+                $candidato['nacionalidad'],
+                $candidato['sexo'],
+                $candidato['estado_civil'],
+                $candidato['dir_residencia'],
+                $candidato['barrio_residencia'],
+                $candidato['ciudad_residencia'],
+                $candidato['tel_movil'],
+                $candidato['email_personal'],
+                $candidato['cargo_id'],
+                $candidato['tipo_sangre'],
+                $candidato['estado']
+            );
+        }
+
+
+        else{
+
+            // Actualizar registro existente
+            $query = "UPDATE candidatos SET nombre_completo = ?, tipo_doc = ?, num_doc = ?, lug_exp = ?, fec_nacimiento = ?, nacionalidad = ?, sexo = ?, estado_civil = ?, dir_residencia = ?, barrio_residencia = ?, ciudad_residencia = ?, tel_movil = ?, email_personal = ?, cargo_id = ?, tipo_sangre = ?, estado = ? WHERE id = ?";
+            $stmt = $conn->prepare($query);
+            $stmt->bind_param(
+                'sssisssisssisissii',
+                $nombre_completo,
+                $tipo_doc,
+                $num_doc,
+                $lug_exp,
+                $fec_nacimiento,
+                $nacionalidad,
+                $sexo,
+                $estado_civil,
+                $dir_residencia,
+                $barrio_residencia,
+                $ciudad_residencia,
+                $tel_movil,
+                $email_personal,
+                $cargo_id,
+                $tipo_sangre,
+                $estado,
+                $id
+            );
+        }
+
+        $stmt->execute();
+        $stmt->close();
+    }
+
+
     echo json_encode(array('status' => 'success'));
 }
+
 
 
 // Editar (obtener un empleado por id)

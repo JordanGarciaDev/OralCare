@@ -164,11 +164,10 @@ $titulo = "Gestión de Candidatos"; // Título específico para esta vista
                                                     </select>
                                                 </div>
                                                 <div class="mb-3 col-md-4">
-                                                    <label class="form-label" for="estado"><span style="color:red">*</span>Estado</label>
+                                                    <label class="form-label" for="estado"><span style="color:red">*</span>¿Continúa Proceso?</label>
                                                     <select class="form-select" id="estado" name="estado" required>
-                                                        <option value="candidato" selected>Candidato</option>
-                                                        <option value="activo">Activo</option>
-                                                        <option value="retirado">Retirado</option>
+                                                        <option value="activo">Si</option>
+                                                        <option value="retirado">No</option>
                                                     </select>
                                                 </div>
                                                 <!-- Sección final con archivo -->
@@ -371,8 +370,7 @@ $titulo = "Gestión de Candidatos"; // Título específico para esta vista
                         $('#email_personal').val(empleado.email_personal);
                         $('#tipo_sangre').val(empleado.tipo_sangre);
                         $('#estado').val(empleado.estado);
-
-                        // Llama a la función para llenar los selects con valores preseleccionados
+                         // Llama a la función para llenar los selects con valores preseleccionados
                         llenarSelectsEmp(
                             empleado.tipo_doc,            // ID de tipo de identificación
                             empleado.tipo_doc,            // ID de tipo de documento

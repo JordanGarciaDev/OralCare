@@ -42,7 +42,7 @@
             var _conf = confirm("Realmente deseas eliminar estos datos")
             if(_conf == true){
                 $.ajax({
-                    url:'classes/Forms.php?a=delete_form',
+                    url:'app/APIS/preguntas_entrevistas.php?a=delete_form',
                     method:'POST',
                     data:{form_code: $(this).attr('data-id')},
                     dataType:'json',

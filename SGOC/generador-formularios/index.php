@@ -1,7 +1,7 @@
 <?php 
 
 ob_start();
-require_once('./classes/DBConnection.php');
+require_once('./app/config.php');
 $db = new DBConnection();
 
 $page = isset($_GET['p']) ? $_GET['p'] : "forms";

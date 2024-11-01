@@ -1,4 +1,4 @@
-<script src="./js/form-builder.js"></script>
+<script src="../assets/js/form-builder.js"></script>
 <div class="row">
     <div class="col-lg-12">
         <div class="card bg-primary text-white">

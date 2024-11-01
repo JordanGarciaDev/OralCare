@@ -1,7 +1,7 @@
 <?php 
 extract($_GET);
 ?>
-<script src="./js/form-builder.js"></script>
+<script src="../assets/js/form-builder.js"></script>
 <div class="row">
     <div class="col-lg-12">
         <div class="card bg-primary text-white">
@@ -20,7 +20,7 @@ $data = array();
 while($row = $responses->fetch_assoc()){
     $data[$row['meta_field']]['value'] = $row['meta_value'];
     $data[$row['meta_field']]['type'] = "text";
-    if(is_file("./uploads/".$row['meta_value'])){
+    if(is_file("./../uploads/".$row['meta_value'])){
         $data[$row['meta_field']]['type'] = "file";
     }
 }
@@ -39,7 +39,7 @@ while($row = $responses->fetch_assoc()){
             if(!!data[item] && data[item]['type'] == 'file'){
                 var el = $("<a download>")
                 el.attr({
-                    href:"./uploads/"+data[item]['value']
+                    href:"./../uploads/"+data[item]['value']
                 })
                 el.text(data[item]['value'])
                 $(this).find('.choice-field').append(el)

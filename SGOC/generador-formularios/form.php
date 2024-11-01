@@ -1,7 +1,7 @@
 <?php 
 
 ob_start();
-require_once('./classes/DBConnection.php');
+require_once('./app/config.php');
 $db = new DBConnection();
 
 $code = isset($_GET['code']) ? $_GET['code'] : "";
@@ -32,7 +32,7 @@ ob_end_flush();
     <script>
         var form_code = "<?php echo $code ?>";
     </script>
-    <script src="./js/form-build-display.js"></script>
+    <script src="../assets/js/form-build-display.js"></script>
 </head>
 
 <body class='bg-dark'>

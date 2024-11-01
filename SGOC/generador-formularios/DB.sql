@@ -576,7 +576,7 @@ CREATE TABLE `files` (
 
 /*Data for the table `files` */
 
-insert  into `files`(`id`,`label`,`path`,`created_at`,`updated_at`) values (1,'Sistema Generador de Facturas en Python','uploads/1667314547_80db939bc190d62cc184.jpg','2022-11-01 09:55:47','2022-11-01 10:09:14');
+insert  into `files`(`id`,`label`,`path`,`created_at`,`updated_at`) values (1,'Sistema Generador de Facturas en Python','../uploads/1667314547_80db939bc190d62cc184.jpg','2022-11-01 09:55:47','2022-11-01 10:09:14');
 
 /*Table structure for table `form_list` */
 
@@ -1909,9 +1909,9 @@ CREATE TABLE `system_info` (
 
 insert  into `system_info`(`id`,`meta_field`,`meta_value`) values (1,'name','Sistema de Información de Estudiantes en PHP y MySQL');
 insert  into `system_info`(`id`,`meta_field`,`meta_value`) values (6,'short_name','SIE');
-insert  into `system_info`(`id`,`meta_field`,`meta_value`) values (11,'logo','uploads/logo-1647660173.png');
-insert  into `system_info`(`id`,`meta_field`,`meta_value`) values (13,'user_avatar','uploads/user_avatar.jpg');
-insert  into `system_info`(`id`,`meta_field`,`meta_value`) values (14,'cover','uploads/cover-1647660173.png');
+insert  into `system_info`(`id`,`meta_field`,`meta_value`) values (11,'logo','../uploads/logo-1647660173.png');
+insert  into `system_info`(`id`,`meta_field`,`meta_value`) values (13,'user_avatar','../uploads/user_avatar.jpg');
+insert  into `system_info`(`id`,`meta_field`,`meta_value`) values (14,'cover','../uploads/cover-1647660173.png');
 
 /*Table structure for table `system_settings` */
 

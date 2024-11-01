@@ -1,11 +1,11 @@
 
-<link rel="stylesheet" href="./fontawesome-free/css/all.min.css">
-<link rel="stylesheet" href="./css/bootstrap.min.css">
-<link rel="stylesheet" href="./DataTables/datatables.min.css">
-<link rel="stylesheet" href="./css/custom.css">
-<script src="./js/jquery-3.6.0.min.js"></script>
-<script src="./js/popper.min.js"></script>
-<script src="./js/jquery-ui.js"></script>
-<script src="./js/bootstrap.min.js"></script>
-<script src="./DataTables/datatables.min.js"></script>
-<script src="./js/script.js"></script>
+<link rel="stylesheet" href="../assets/fonts/fontawesome-free/css/all.min.css">
+<link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+<link rel="stylesheet" href="../assets/DataTables/datatables.min.css">
+<link rel="stylesheet" href="../assets/css/custom.css">
+<script src="../assets/js/jquery-3.6.0.min.js"></script>
+<script src="../assets/js/popper.min.js"></script>
+<script src="../assets/js/jquery-ui.js"></script>
+<script src="../assets/js/bootstrap.min.js"></script>
+<script src="../assets/DataTables/datatables.min.js"></script>
+<script src="../assets/js/script.js"></script>

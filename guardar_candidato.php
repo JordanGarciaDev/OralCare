@@ -76,9 +76,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $emailEmpresarial = $_POST['email_empresarial'];
     $tipoSangre = $_POST['tipo_sangre'];
 
-    $rutaCarpeta = __DIR__ . '/SGOC/uploads/OfertasLaborales/cv/';
+    //$rutaCarpeta = __DIR__ . '/SGOC/uploads/OfertasLaborales/cv/';
+    $rutaCarpeta = $_SERVER['DOCUMENT_ROOT'] . '/OralCare/SGOC/uploads/OfertasLaborales/cv/';  // Carpeta donde se guardarán las documentos
+
     $nombreArchivo = str_replace(' ', '_', $nombreCompleto) . '-' . $numDoc . '.' . pathinfo($_FILES['hoja_vida']['name'], PATHINFO_EXTENSION);
-    $rutaArchivo = $rutaCarpeta . $nombreArchivo;
+    $rutaArchivo = uniqid().$rutaCarpeta.$nombreArchivo;
 
     if (move_uploaded_file($_FILES['hoja_vida']['tmp_name'], $rutaArchivo)) {
         $cv = $rutaArchivo;

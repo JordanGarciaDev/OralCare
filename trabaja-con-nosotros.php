@@ -1333,7 +1333,7 @@ h3 {
                 <label class="validacion" id="validar1"></label>
               </div>
             </div>
-            <div class="col-md-3">
+            <div class="col-md-3 ">
               <div class="form-group">
                 <label for="txtNumeroIdentificacion">Número de Documento</label>
                 <span style="color: #7F7F7F;">*</span>

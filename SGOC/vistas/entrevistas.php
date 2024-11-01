@@ -27,7 +27,7 @@ include(LAYOUT . '/header.php');
                                     <thead>
                                     <tr>
                                         <th>ID</th>
-                                        <th>Nombre del empleado</th>
+                                        <th>Nombre del candidato</th>
                                         <th>Fecha</th>
                                         <th>Acciones</th>
                                     </tr>
@@ -35,7 +35,7 @@ include(LAYOUT . '/header.php');
                                     <tfoot>
                                     <tr>
                                         <th>ID</th>
-                                        <th>Nombre del empleado</th>
+                                        <th>Nombre del candidato</th>
                                         <th>Fecha</th>
                                         <th>Acciones</th>
                                     </tr>
@@ -60,7 +60,7 @@ include(LAYOUT . '/header.php');
                                     <div class="mb-3">
                                         <label for="emp_id" class="form-label">Empleado</label>
                                         <select class="form-select" id="emp_id" name="emp_id" required="">
-                                            <option value="">Seleccione un empleado</option>
+                                            <option value="">Seleccione un candidato</option>
                                         </select>
                                     </div>
                                     <span id="tpregunta"></span>
@@ -90,9 +90,9 @@ include(LAYOUT . '/header.php');
         $(document).ready(function() {
 
             function llenarSelects(tipoPreguntaID = '') {
-                // Llenar el select de empleados
+                // Llenar el select de candidatos
                 $.ajax({
-                    url: '<?= API ?>entrevistas.php?action=empleados',
+                    url: '<?= API ?>entrevistas.php?action=candidatos',
                     type: 'GET',
                     dataType: 'json',
                     success: function(data) {
@@ -100,15 +100,15 @@ include(LAYOUT . '/header.php');
                         empleadoSelect.empty(); // Limpiar opciones previas
 
                         // Agregar la opción por defecto
-                        empleadoSelect.append('<option value="">Seleccione un empleado</option>');
+                        empleadoSelect.append('<option value="">Seleccione un candidato</option>');
 
-                        // Llenar el select con los datos de empleados de la API
-                        $.each(data.data, function(index, empleado) {
-                            empleadoSelect.append('<option value="' + empleado.id + '">' + empleado.nombre_completo + '</option>');
+                        // Llenar el select con los datos de candidatos de la API
+                        $.each(data.data, function(index, candidato) {
+                            empleadoSelect.append('<option value="' + candidato.id + '">' + candidato.nombre_completo + '</option>');
                         });
                     },
                     error: function() {
-                        console.error("Error al cargar los empleados.");
+                        console.error("Error al cargar los candidatos.");
                     }
                 });
                 // Llenar las preguntas y respuestas
@@ -154,8 +154,8 @@ include(LAYOUT . '/header.php');
                         "data": null,
                         "render": function (data, type, row) {
                             return `
-                        <button class="btn btn-sm btn-warning edit" data-id="` + data.idEntrevista + `"><i class="align-middle me-2 fas fa-fw fa-edit"></i>Editar</button>
-                        <button class="btn btn-sm btn-danger delete" data-id="` + data.idEntrevista + `"><i class="align-middle me-2 fas fa-fw fa-trash-alt"></i>Eliminar</button>
+                        <button class="btn btn-sm btn-success edit" data-id="` + data.idEntrevista + `"><i class="align-middle fas fa-fw fa-edit"></i>Editar</button>
+                        <button class="btn btn-sm btn-danger delete" data-id="` + data.idEntrevista + `"><i class="align-middle fas fa-fw fa-trash-alt"></i></button>
                     `;
                         }
                     }

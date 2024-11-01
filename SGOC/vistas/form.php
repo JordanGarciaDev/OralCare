@@ -1,8 +1,6 @@
-<?php 
-
+<?php
 ob_start();
 require_once('./app/config.php');
-$db = new DBConnection();
 
 $code = isset($_GET['code']) ? $_GET['code'] : "";
 if(empty($code)){

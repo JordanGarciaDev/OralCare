@@ -71,16 +71,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $dirResidencia = $_POST['dir_residencia'];
     $barrioResidencia = $_POST['barrio_residencia'];
     $ciudadResidencia = $_POST['ciudad_residencia'];
+    $oferta_laboral_id = $_POST['oferta_laboral_id'];
     $telMovil = $_POST['tel_movil'];
     $emailPersonal = $_POST['email_personal'];
-    $emailEmpresarial = $_POST['email_empresarial'];
     $tipoSangre = $_POST['tipo_sangre'];
 
-    //$rutaCarpeta = __DIR__ . '/SGOC/uploads/OfertasLaborales/cv/';
-    $rutaCarpeta = $_SERVER['DOCUMENT_ROOT'] . '/OralCare/SGOC/uploads/OfertasLaborales/cv/';  // Carpeta donde se guardarán las documentos
-
+    $rutaCarpeta = __DIR__ . '/SGOC/uploads/OfertasLaborales/cv/';
     $nombreArchivo = str_replace(' ', '_', $nombreCompleto) . '-' . $numDoc . '.' . pathinfo($_FILES['hoja_vida']['name'], PATHINFO_EXTENSION);
-    $rutaArchivo = uniqid().$rutaCarpeta.$nombreArchivo;
+    $rutaArchivo = $rutaCarpeta . $nombreArchivo;
+
 
     if (move_uploaded_file($_FILES['hoja_vida']['tmp_name'], $rutaArchivo)) {
         $cv = $rutaArchivo;
@@ -90,18 +89,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         exit;
     }
 
-    $sql = "INSERT INTO candidatos (nombre_completo, tipo_doc, num_doc, lug_exp, fec_nacimiento, nacionalidad, sexo, estado_civil, dir_residencia, barrio_residencia, ciudad_residencia, tel_movil, email_personal, email_empresarial, tipo_sangre, cv, estado)
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'candidato')";
+    $sql = "INSERT INTO candidatos (oferta_laboral_id,nombre_completo, tipo_doc, num_doc, lug_exp, fec_nacimiento, nacionalidad, sexo, estado_civil, dir_residencia, barrio_residencia, ciudad_residencia, tel_movil, email_personal, tipo_sangre, cv, estado)
+            VALUES (?,?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'candidato')";
 
     $stmt = $conn->prepare($sql);
     $stmt->bind_param(
-        "sissssssssisssss",
-        $nombreCompleto, $tipoDoc, $numDoc, $lugExp, $fecNacimiento, $nacionalidad, $sexo, $estadoCivil, $dirResidencia, $barrioResidencia, $ciudadResidencia, $telMovil, $emailPersonal, $emailEmpresarial, $tipoSangre, $cv
+        "isissssssssissss",
+        $oferta_laboral_id,$nombreCompleto, $tipoDoc, $numDoc, $lugExp, $fecNacimiento, $nacionalidad, $sexo, $estadoCivil, $dirResidencia, $barrioResidencia, $ciudadResidencia, $telMovil, $emailPersonal, $tipoSangre, $cv
     );
 
     if ($stmt->execute()) {
         $response["success"] = true;
-        $response["message"] = "Candidato guardado exitosamente.";
+        $response["message"] = "Tus datos para esta oferta laboral han sido enviados con exito!.";
     } else {
         $response["message"] = "Error al guardar los datos: " . $stmt->error;
     }

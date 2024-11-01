@@ -7,15 +7,17 @@ $action = isset($_GET['action']) ? $_GET['action'] : '';
 // Obtener todos los candidatos
 if ($action == 'fetch') {
     $query = "SELECT e.id, e.nombre_completo,ti.nombre AS tipo_doc_nombre, e.tipo_doc, e.num_doc, 
-               c.municipio AS ciudad_residencia_nombre, 
+               c.municipio AS ciudad_residencia_nombre, ol.titulo_oferta,
                ca.nombre AS cargo_nombre,   CASE 
            WHEN e.estado = 'candidato' THEN 'Pendiente' 
            WHEN e.estado = 'en_proceso' THEN 'En Proceso' 
            WHEN e.estado = 'no_continua' THEN 'No Continúa' 
            ELSE e.estado 
-       END AS estado FROM candidatos AS e
+       END AS estado 
+       FROM candidatos AS e
         INNER JOIN municipios AS c ON e.ciudad_residencia = c.id_municipio
         INNER JOIN cargos AS ca ON e.cargo_id = ca.id
+        INNER JOIN ofertas_laborales AS ol ON e.oferta_laboral_id = ol.id
         INNER JOIN tipo_identificacion AS ti ON e.tipo_doc = ti.id";
 
     $result = $conn->query($query);

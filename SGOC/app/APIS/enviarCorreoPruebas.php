@@ -96,7 +96,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                                                             <span style="font-size:15px">Detalles de la entrevista:</span><br>
                                                                             <strong>Fecha de la entrevista:</strong> ' . $candidato['fechapro'] . ' a las ' . $candidato['horapro'] . '.<br>
                                                                             <strong>Duración estimada:</strong> 45 Minutos<br>
-                                                                            <strong>Modalidad:</strong> <a href="https://sgoc.clinicasoralcare.co/pruebas/" target="_blank">Virtual desde este link</a>.
+                                                                            <strong>Modalidad:</strong> <a href="https://sgoc.clinicasoralcare.co/OralCare/pruebas/" target="_blank">Virtual desde este link</a>.<br>
                                                                             <strong>Credenciales:</strong> Ingresa tu número de identificación en el usuario y contraseña.<br>
 
                                                                         </p>

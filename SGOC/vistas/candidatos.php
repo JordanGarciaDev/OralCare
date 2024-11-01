@@ -31,6 +31,7 @@ $titulo = "Gestión de Candidatos"; // Título específico para esta vista
                                         <th>Nombre Completo</th>
                                         <th>Ciudad Residencia</th>
                                         <th>Cargo Aplicado</th>
+                                        <th>Oferta Aplicada</th>
                                         <th>Estado</th>
                                         <th>Acciones</th>
                                     </tr>
@@ -41,6 +42,7 @@ $titulo = "Gestión de Candidatos"; // Título específico para esta vista
                                         <th>Nombre Completo</th>
                                         <th>Ciudad Residencia</th>
                                         <th>Cargo Aplicado</th>
+                                        <th>Oferta Aplicada</th>
                                         <th>Estado</th>
                                         <th>Acciones</th>
                                     </tr>
@@ -313,6 +315,7 @@ if ($_SESSION['userId'] == 1) {
                     { "data": "nombre_completo" },
                     { "data": "ciudad_residencia_nombre" },
                     { "data": "cargo_nombre" },
+                    { "data": "titulo_oferta" },
                     { "data": "estado" },
                     {
                         "data": null,
@@ -379,7 +382,7 @@ if ($_SESSION['userId'] == 1) {
                         // Comprobación de la URL del CV
                         if (empleado.cv) {
                             hojaDeVida.append(
-                                `<a class="form-control" style="border: 1px solid #fdfdfd;" href="<?= BASE_URL . '/uploads/OfertasLaborales/cv/' ?>${empleado.cv}" target="_blank">
+                                `<a class="form-control" style="border: 1px solid #fdfdfd;" href="${empleado.cv}" target="_blank">
                         <i class="fa fa-file-pdf"></i> Descargar Curriculum
                     </a>`
                             );

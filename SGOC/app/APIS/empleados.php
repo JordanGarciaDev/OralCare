@@ -155,7 +155,7 @@ if ($action == 'tipo_identificacion') {
 
 // Obtener tipos de documentos
 if ($action == 'tipos_documentos') {
-    $query = "SELECT id, nombre FROM tipos_documentos";
+    $query = "SELECT id, nombre FROM tipo_docs";
     $result = $conn->query($query);
     $data = array();
 

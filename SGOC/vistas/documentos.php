@@ -33,7 +33,8 @@ include(LAYOUT . '/header.php');
                                     <thead>
                                     <tr>
                                         <th>ID</th>
-                                        <th>Nombre del empleado</th>
+                                        <th>Nombre del candidato</th>
+										<th>Tipo de documento</th>
                                         <th>Documento</th>
                                         <th>Fecha</th>
                                         <th>Acciones</th>
@@ -42,7 +43,8 @@ include(LAYOUT . '/header.php');
                                     <tfoot>
                                     <tr>
                                         <th>ID</th>
-                                        <th>Nombre del empleado</th>
+                                        <th>Nombre del candidato</th>
+										<th>Tipo de documento</th>
                                         <th>Documento</th>
                                         <th>Fecha</th>
                                         <th>Acciones</th>
@@ -68,9 +70,9 @@ include(LAYOUT . '/header.php');
                                     <!--                    AQUI SE AGREGAN TODOS LOS INPUTS, SELECTS, TABLAS, ETC QUE QUEREMOS MOSTRAR AL USUARIO FINAL-->
 
                                     <div class="mb-3">
-                                        <label for="emp_id" class="form-label">Empleado</label>
+                                        <label for="emp_id" class="form-label">Candidato</label>
                                         <select class="form-select" id="emp_id" name="emp_id" required="">
-                                            <option value="">Seleccione un empleado</option>
+                                            <option value="">Seleccione un candidato</option>
                                         </select>
                                     </div>
                                     <div class="mb-3">
@@ -107,11 +109,11 @@ include(LAYOUT . '/header.php');
                         empleadoSelect.empty(); // Limpiar opciones previas
 
                         // Agregar la opción por defecto
-                        empleadoSelect.append('<option value="">Seleccione un empleado</option>');
+                        empleadoSelect.append('<option value="">Seleccione un candidato</option>');
 
                         // Llenar el select con los datos de empleados de la API
-                        $.each(data.data, function(index, empleado) {
-                            empleadoSelect.append('<option value="' + empleado.id + '">' + empleado.nombre_completo + '</option>');
+                        $.each(data.data, function(index, candidato) {
+                            empleadoSelect.append('<option value="' + candidato.id + '">' + candidato.nombre_completo + '</option>');
                         });
                     },
                     error: function() {

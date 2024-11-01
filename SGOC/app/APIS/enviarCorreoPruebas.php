@@ -25,32 +25,112 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($candidato) {
         $to = $candidato['email_personal'];
         $subject = "Clinicas Oral Care ha programado tus pruebas para el cargo ".$candidato['nomCargo']."";
-        $mesaje = '
-            <div style="font-family:Arial,Helvetica,sans-serif;font-size:12px;">
-                <table width="100%" border="0" cellspacing="0" style="background:#ffffff;border:1px solid #c9c9c9">
+        $mesaje = '<table width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background-color:transparent;">
+    <tbody>
+        <tr>
+            <td>
+                <table align="center" width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation">
                     <tbody>
                         <tr>
-                            <td align="right">
-                                <img src="https://sgoc.clinicasoralcare.co/OralCare/SGOC/assets/img/avatars/logo.jpg" alt="Logo" style="max-width: 100px;">
-                            </td>
-                        </tr>
-                        <tr>
-                            <td align="left" valign="top">
-                                <div style="padding: 10px;">
-                                    <p>Cordial saludo, ' . $candidato['nombre_completo'] . '.</p>
-                                    <p>Dando continuidad a su postulación para el cargo ' . $candidato['nomCargo'] . ' de la empresa Clinicas Oral Care, solicitamos que por favor conteste la(s) siguiente(s) prueba(s)</p>
-                                    <p><b>Te informamos que tienes programadas unas pruebas para la entrevista en la fecha: ' . $candidato['fechapro'] . ' a las ' . $candidato['horapro'] . '.</b></p>
-                                    <p>Por favor ingresa al siguiente link: <a href="https://sgoc.clinicasoralcare.co/pruebas/" target="_blank">https://sgoc.clinicasoralcare.co/pruebas/</a></p>
-                                    <p>El usuario y la contraseña es su número de documento de identidad.</p>
-                                    <p>Al hacer click en el link obtendrá más información. Le recomendamos responder la(s) pruebas cuando cuente con suficiente tiempo y un ambiente libre de distracciones.</p>
-                                    <p>Saludos,</p>
-                                    <p>El equipo de Recursos Humanos</p>
-                                </div>
+                            <td>
+                                <table class="row-content stack" align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="border-radius:0;color:#000;width:650px;margin:0 auto;" width="650">
+                                    <tbody>
+                                        <tr>
+                                            <td class="column" width="100%" style="font-weight:400;text-align:left;padding-bottom:5px;padding-top:5px;vertical-align:top;border-top:0;border-right:0;border-bottom:0;border-left:0;">
+                                                <table width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>
+                                                                <div style="font-family:Arial,Helvetica Neue,Helvetica,sans-serif;text-align:center;" align="center">
+                                                                    <table class="image_block" role="presentation" border="0" width="100%" cellspacing="0" cellpadding="0">
+                                                                        <tbody>
+                                                                            <tr>
+                                                                                <td style="width:100%;padding-right:0;padding-left:0;">
+                                                                                    <div style="line-height:10px" align="center">
+                                                                                        <div style="max-width:116px;">
+                                                                                            <a href="https://clinicasoralcare.co/" target="_blank">
+                                                                                                <img style="display:block;height:auto;border:0;width:100%;" src="https://sgoc.clinicasoralcare.co/OralCare/SGOC/assets/img/avatars/logo.jpg" width="116" height="auto">
+                                                                                            </a>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </td>
+                                                                            </tr>
+                                                                        </tbody>
+                                                                    </table>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
                             </td>
                         </tr>
                     </tbody>
                 </table>
-            </div>';
+                <table align="center" width="100%" border="0" cellpadding="0" cellspacing="0" role="presentation">
+                    <tbody>
+                        <tr>
+                            <td>
+                                <table class="row-content stack" align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="border-radius:0;color:#343446;width:650px;margin:0 auto;" width="650">
+                                    <tbody>
+                                        <tr>
+                                            <td class="column" width="100%" style="font-weight:400;text-align:left;padding-bottom:5px;padding-top:5px;vertical-align:top;border-top:0;border-right:0;border-bottom:0;border-left:0;">
+                                                <table width="100%" border="0" cellpadding="10" cellspacing="0" role="presentation" style="word-break:break-word;">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>
+                                                                <div style="font-family:sans-serif;">
+                                                                    <div style="font-size:12px;font-family:Arial,Helvetica Neue,Helvetica,sans-serif;color:#5a5d8d;line-height:1.5;">
+                                                                        <p style="margin:0;font-size:15px;">
+                                                                            <span style="font-size:15px">¡Hola, '.$candidato['nombre_completo'].'.! 👋</span>
+                                                                        </p>
+                                                                        <p style="margin:0;font-size:15px;">&nbsp;</p>
+                                                                        <p style="margin:0;font-size:15px;">
+                                                                            <span style="font-size:15px">Nos complace informarte que has sido <strong>seleccionado para presentar las entrevistas y pruebas técnicas</strong> para la vacante en <strong>Clínicas Oral Care</strong>.</span>
+                                                                        </p>
+                                                                        <p style="margin:0;font-size:15px;">&nbsp;</p>
+                                                                        <p style="margin:0;font-size:15px;">
+                                                                            <span style="font-size:15px">Detalles de la entrevista:</span><br>
+                                                                            <strong>Fecha de la entrevista:</strong> ' . $candidato['fechapro'] . ' a las ' . $candidato['horapro'] . '.<br>
+                                                                            <strong>Duración estimada:</strong> 45 Minutos<br>
+                                                                            <strong>Modalidad:</strong> <a href="https://sgoc.clinicasoralcare.co/pruebas/" target="_blank">Virtual desde este link</a>.
+                                                                            <strong>Credenciales:</strong> Ingresa tu número de identificación en el usuario y contraseña.<br>
+
+                                                                        </p>
+                                                                        <p style="margin:0;font-size:15px;">&nbsp;</p>
+                                                                        <p style="margin:0;font-size:15px;">
+                                                                            Te recomendamos prepararte con los temas técnicos relevantes y revisar nuestras áreas de especialización en el sitio web de Clínicas Oral Care para obtener una comprensión más profunda de nuestros valores y misión.
+                                                                        </p>
+                                                                        <p style="margin:0;font-size:15px;">&nbsp;</p>
+                                                                        <p style="margin:0;font-size:15px;">
+                                                                            Si tienes alguna pregunta o necesitas asistencia, no dudes en comunicarte con nuestro equipo de Recursos Humanos.
+                                                                        </p>
+                                                                        <p style="margin:0;font-size:15px;"><br>
+                                                                            Atentamente,<br>
+                                                                            <strong>Equipo de Clínicas Oral Care</strong>
+                                                                        </p>
+                                                                        <p style="margin:0;font-size:15px;">&nbsp;</p>
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </td>
+        </tr>
+    </tbody>
+</table>';
         
         // Configuración de PHPMailer
         $mail = new PHPMailer(true);

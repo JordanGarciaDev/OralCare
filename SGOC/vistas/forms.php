@@ -15,7 +15,8 @@
         <tbody>
             <?php 
             $i = 1;
-                $forms = $db->conn->query("SELECT * FROM `form_list` order by date(date_created) desc");
+
+                $forms = $conn->query("SELECT * FROM `form_list` order by date(date_created) desc");
                 while($row = $forms->fetch_assoc()):
             ?>
                 <tr>
@@ -25,8 +26,8 @@
                     <td><?php echo $row['title'] ?></td>
                     <td><a href="form.phpode=<?php echo $row['form_code'] ?>">form.php?code=<?php echo $row['form_code'] ?></a></td>
                     <td class='text-center'>
-                        <a href="../generador-formularios/index.php?p=view_form&code=<?php echo $row['form_code'] ?>" class="btn btn-default border">Ver</a>
-                        <a href="../generador-formularios/index.php?p=view_responses&code=<?php echo $row['form_code'] ?>" class="btn btn-default border">Respuestas</a>
+                        <a href="./preguntas_entrevistas.php?p=view_form&code=<?php echo $row['form_code'] ?>" class="btn btn-default border">Ver</a>
+                        <a href="./preguntas_entrevistas.php?p=view_responses&code=<?php echo $row['form_code'] ?>" class="btn btn-default border">Respuestas</a>
                         <a href="javascript:void(0)" class="btn btn-default border rem_form" data-id='<?php echo $row['form_code'] ?>'><span class="fa fa-trash text-danger"></span></a>
                     </td>
                 </tr>

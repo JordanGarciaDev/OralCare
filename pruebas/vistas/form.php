@@ -1,6 +1,6 @@
 <?php
 ob_start();
-require_once('./app/config.php');
+require_once('../app/config.php');
 
 $code = isset($_GET['code']) ? $_GET['code'] : "";
 if(empty($code)){
@@ -30,7 +30,7 @@ ob_end_flush();
     <script>
         var form_code = "<?php echo $code ?>";
     </script>
-    <script src="../assets/js/form-build-display.js"></script>
+    <script src="../../SGOC/assets/js/form-build-display.js"></script>
 </head>
 
 <body class='bg-dark'>
@@ -39,7 +39,7 @@ ob_end_flush();
         include './forms/'.$code.'.html';
         ?>
         <div class="w-100 d-flex justify-content-center">
-            <button class="btn btn-primary" form="form-data" id="">Enviar</button>
+            <button class="btn btn-primary" form="form-data" id="enviar">Enviar Cuestionario</button>
         </div>
     </div>
 </body>

@@ -2,7 +2,6 @@
 include('../app/config.php');
 include(LAYOUT . '/header.php');
 $titulo = "Gestión de Candidatos"; // Título específico para esta vista
-
 ?>
 <div class="wrapper">
     <?php include(LAYOUT . '/sidebar.php');?>
@@ -31,7 +30,8 @@ $titulo = "Gestión de Candidatos"; // Título específico para esta vista
                                         <th>ID</th>
                                         <th>Nombre Completo</th>
                                         <th>Ciudad Residencia</th>
-                                        <th>Cargo</th>
+                                        <th>Cargo Aplicado</th>
+                                        <th>Estado</th>
                                         <th>Acciones</th>
                                     </tr>
                                     </thead>
@@ -40,7 +40,8 @@ $titulo = "Gestión de Candidatos"; // Título específico para esta vista
                                         <th>ID</th>
                                         <th>Nombre Completo</th>
                                         <th>Ciudad Residencia</th>
-                                        <th>Cargo</th>
+                                        <th>Cargo Aplicado</th>
+                                        <th>Estado</th>
                                         <th>Acciones</th>
                                     </tr>
                                     </tfoot>
@@ -65,12 +66,12 @@ $titulo = "Gestión de Candidatos"; // Título específico para esta vista
                                         <h6 class="card-subtitle text-muted">Escriba aquí los datos personales del candidato</h6>
                                     </div>
                                     <div class="card-body">
-                                        <form id="empleadoForm" enctype="multipart/form-data">
+                                        <form id="candidatoForm" enctype="multipart/form-data">
                                             <input type="hidden" id="empleadoId" name="empleadoId">
                                             <div class="row">
                                                 <div class="mb-3 col-md-4">
                                                     <label class="form-label" for="nombre_completo"><span style="color:red">*</span>Nombre Completo</label>
-                                                    <input readonly type="text" class="form-control" id="nombre_completo" name="nombre_completo" placeholder="Escriba el nombre completo del empleado" required>
+                                                    <input disabled type="text" class="form-control" id="nombre_completo" name="nombre_completo" placeholder="Escriba el nombre completo del empleado" required>
                                                 </div>
                                                 <div class="mb-3 col-md-4">
                                                     <label class="form-label" for="tipo_doc"><span style="color:red">*</span>Tipo de Documento</label>
@@ -80,7 +81,7 @@ $titulo = "Gestión de Candidatos"; // Título específico para esta vista
                                                 </div>
                                                 <div class="mb-3 col-md-4">
                                                     <label class="form-label" for="num_doc"><span style="color:red">*</span>Número de Documento</label>
-                                                    <input readonly type="number" class="form-control" id="num_doc" name="num_doc" placeholder="Escriba el número de documento" required>
+                                                    <input disabled type="number" class="form-control" id="num_doc" name="num_doc" placeholder="Escriba el número de documento" required>
                                                 </div>
                                                 <div class="mb-3 col-md-4">
                                                     <label class="form-label" for="lug_exp"><span style="color:red">*</span>Lugar de Expedición</label>
@@ -91,7 +92,7 @@ $titulo = "Gestión de Candidatos"; // Título específico para esta vista
                                                 </div>
                                                 <div class="mb-3 col-md-4">
                                                     <label class="form-label" for="fec_nacimiento"><span style="color:red">*</span>Fecha de Nacimiento</label>
-                                                    <input readonly type="date" class="form-control" id="fec_nacimiento" name="fec_nacimiento" required>
+                                                    <input disabled type="date" class="form-control" id="fec_nacimiento" name="fec_nacimiento" required>
                                                 </div>
                                                 <div class="mb-3 col-md-4">
                                                     <label class="form-label" for="nacionalidad"><span style="color:red">*</span>Nacionalidad</label>
@@ -118,12 +119,12 @@ $titulo = "Gestión de Candidatos"; // Título específico para esta vista
                                                 </div>
                                                 <div class="mb-3 col-md-4">
                                                     <label class="form-label" for="dir_residencia"><span style="color:red">*</span>Dirección de Residencia</label>
-                                                    <input readonly type="text" class="form-control" id="dir_residencia" name="dir_residencia" placeholder="Escriba la dirección" required>
+                                                    <input disabled type="text" class="form-control" id="dir_residencia" name="dir_residencia" placeholder="Escriba la dirección" required>
                                                 </div>
 
                                                 <div class="mb-3 col-md-4">
                                                     <label class="form-label" for="barrio_residencia"><span style="color:red">*</span>Barrio de Residencia</label>
-                                                    <input readonly type="text" class="form-control" id="barrio_residencia" name="barrio_residencia" placeholder="Escriba el barrio" required>
+                                                    <input disabled type="text" class="form-control" id="barrio_residencia" name="barrio_residencia" placeholder="Escriba el barrio" required>
                                                 </div>
                                                 <div class="mb-3 col-md-4">
                                                     <label class="form-label" for="ciudad_residencia"><span style="color:red">*</span>Ciudad de Residencia</label>
@@ -135,11 +136,11 @@ $titulo = "Gestión de Candidatos"; // Título específico para esta vista
 
                                                 <div class="mb-3 col-md-4">
                                                     <label class="form-label" for="tel_movil"><span style="color:red">*</span>Teléfono Móvil</label>
-                                                    <input readonly type="number" class="form-control" id="tel_movil" name="tel_movil" placeholder="Escriba el teléfono móvil" required>
+                                                    <input disabled type="number" class="form-control" id="tel_movil" name="tel_movil" placeholder="Escriba el teléfono móvil" required>
                                                 </div>
                                                 <div class="mb-3 col-md-4">
                                                     <label class="form-label" for="email_personal"><span style="color:red">*</span>Email Personal</label>
-                                                    <input readonly type="email" class="form-control" id="email_personal" name="email_personal" placeholder="Escriba el email personal" required>
+                                                    <input disabled type="email" class="form-control" id="email_personal" name="email_personal" placeholder="Escriba el email personal" required>
                                                 </div>
                                                 <div class="mb-3 col-md-4">
                                                     <label class="form-label" for="cargo_id"><span style="color:red">*</span>Cargo</label>
@@ -163,36 +164,32 @@ $titulo = "Gestión de Candidatos"; // Título específico para esta vista
                                                     </select>
                                                 </div>
                                                 <div class="mb-3 col-md-4">
-<<<<<<< Updated upstream
-                                                    <label class="form-label" for="estado"><span style="color:red">*</span>¿Continúa Proceso?</label>
-                                                    <select class="form-select" id="estado" name="estado" required>
-=======
+
                                                     <label class="form-label" for="estado"><span style="color:red">*</span>¿Continúa proceso?</label>
                                                     <select class="form-select" id="estado" name="estado" required onchange="mostrarFechaYHora()">
                                                         <option value="" selected="">Seleccione</option>
->>>>>>> Stashed changes
-                                                        <option value="activo">Si</option>
-                                                        <option value="retirado">No</option>
+                                                        <option value="en_proceso">Si</option>
+                                                        <option value="no_continua">No</option>
                                                     </select>
                                                 </div>
                                                 <div class="mb-3 col-md-4" id="fechaContainer" style="display: none;">
-                                                    <label class="form-label" for="fechaEntrevista"><span style="color:red">*</span>Fecha</label>
-                                                    <input type="date" class="form-control" id="fechaEntrevista" name="fechapro" required>
+                                                    <label class="form-label" for="fechaEntrevista"><span style="color:red">*</span>Fecha de entrevista</label>
+                                                    <input type="date" class="form-control" id="fechaEntrevista" name="fechapro" >
                                                 </div>
                                                 <div class="mb-3 col-md-4" id="horaContainer" style="display: none;">
-                                                    <label class="form-label" for="horaEntrevista"><span style="color:red">*</span>Hora</label>
-                                                    <input type="time" class="form-control" id="horaEntrevista" name="horapro" required>
+                                                    <label class="form-label" for="horaEntrevista"><span style="color:red">*</span>Hora de entrevista</label>
+                                                    <input type="time" class="form-control" id="horaEntrevista" name="horapro" >
                                                 </div>
 
                                                 <!-- Sección final con archivo -->
                                                 <div class="mb-3 col-md-4">
                                                     <div class="mb-3">
-                                                        <label class="form-label">Ver Hoja de Vida</label>
-                                                        <span></span>
+                                                        <label class="form-label" for="horaEntrevista">Ver Hoja de Vida</label>
+                                                        <a id="hoja_de_vida"></a>
                                                     </div>
                                                 </div>
-                                                 <div class="mb-3 col-md-12">
-                                                    <button type="submit" class="btn btn-primary">Guardar</button>
+                                                 <div class="mb-3 col-md-12 text-center">
+                                                    <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i>  Guardar información</button>
                                                 </div>
                                             </div>
                                         </form>
@@ -210,7 +207,15 @@ $titulo = "Gestión de Candidatos"; // Título específico para esta vista
         </main>
     </div>
 </div>
-
+<?php
+// Determina si el botón de eliminación debe estar presente
+$deleteButton = '';
+if ($_SESSION['userId'] == 1) {
+    $deleteButton = '<button class="btn btn-sm btn-danger delete" data-id="${data.id}" title="Eliminar Postulación">
+                        <i class="align-middle fas fa-fw fa-trash-alt"></i>
+                    </button>';
+}
+?>
     <script>
         $(document).ready(function () {
             function llenarSelectsEmp(tipoIdentificacionID = '', tipoDocID = '', lugarExpID = '', ciudadResidenciaID = '', estadoCivilID = '', cargoID = '') {
@@ -298,24 +303,6 @@ $titulo = "Gestión de Candidatos"; // Título específico para esta vista
                         }
                     }
                 });
-
-                // Llenar cargo
-                $.ajax({
-                    url: '<?= API ?>candidatos.php?action=cargos',
-                    type: 'GET',
-                    success: function(data) {
-                        var selectCargo = $('#cargo_id');
-                        selectCargo.empty();
-                        selectCargo.append('<option value="">Seleccione</option>');
-                        $.each(data, function(index, item) {
-                            selectCargo.append('<option value="' + item.id + '">' + item.nombre + '</option>');
-                        });
-                        // Establece el valor seleccionado
-                        if (cargoID) {
-                            selectCargo.val(cargoID);
-                        }
-                    }
-                });
             }
             llenarSelectsEmp();
 
@@ -326,12 +313,13 @@ $titulo = "Gestión de Candidatos"; // Título específico para esta vista
                     { "data": "nombre_completo" },
                     { "data": "ciudad_residencia_nombre" },
                     { "data": "cargo_nombre" },
+                    { "data": "estado" },
                     {
                         "data": null,
                         "render": function (data, type, row) {
                             return `
-                        <button class="btn btn-sm btn-warning edit" data-id="${data.id}" title="Ver Postulación"><i class="align-middle fas fa-fw fa-eye"></i></button>
-                        <button class="btn btn-sm btn-danger delete" data-id="${data.id}" title="Rechazar Postulación"><i class="align-middle fas fa-fw fa-trash-alt"></i></button>
+                        <button class="btn btn-sm btn-success edit" data-id="${data.id}" title="Ver Postulación"><i class="align-middle fas fa-fw fa-eye"></i></button>
+                       <?php echo $deleteButton; ?>
                     `;
                         }
                     }
@@ -342,13 +330,13 @@ $titulo = "Gestión de Candidatos"; // Título específico para esta vista
             });
 
             $('#addNuevo').on('click', function () {
-                $('#modalLabel').text('Nuevo Empleado');
-                $('#empleadoForm')[0].reset();
+                $('#modalLabel').text('Nuevo Candidato');
+                $('#candidatoForm')[0].reset();
                 $('#id').val('');
             });
 
             // Agregar o editar tipo de candidatos
-            $('#empleadoForm').submit(function(e) {
+            $('#candidatoForm').submit(function(e) {
                 e.preventDefault();
                 var formData = $(this).serialize();
 
@@ -357,6 +345,7 @@ $titulo = "Gestión de Candidatos"; // Título específico para esta vista
                     type: 'POST',
                     data: formData,
                     success: function(response) {
+                        alert("La Información ha sido actualizada correctamente!");
                         $('#modalEmpleado').modal('hide');
                         table.ajax.reload();
                     }
@@ -364,8 +353,10 @@ $titulo = "Gestión de Candidatos"; // Título específico para esta vista
             });
 
             $('#candidatosTable tbody').on('click', '.edit', function () {
-                $('#modalLabel').text('Editar Empleado');
+                $('#modalLabel').text('Editar Candidato');
                 var id = $(this).data('id');
+                var hojaDeVida = $('#hoja_de_vida');
+                hojaDeVida.empty();
 
                 $.ajax({
                     url: '<?= API ?>candidatos.php?action=edit&id=' + id,
@@ -383,13 +374,19 @@ $titulo = "Gestión de Candidatos"; // Título específico para esta vista
                         $('#tel_movil').val(empleado.tel_movil);
                         $('#email_personal').val(empleado.email_personal);
                         $('#tipo_sangre').val(empleado.tipo_sangre);
-<<<<<<< Updated upstream
-                        $('#estado').val(empleado.estado);
-                         // Llama a la función para llenar los selects con valores preseleccionados
-=======
 
-                        // Llama a la función para llenar los selects con valores preseleccionados
->>>>>>> Stashed changes
+
+                        // Comprobación de la URL del CV
+                        if (empleado.cv) {
+                            hojaDeVida.append(
+                                `<a class="form-control" style="border: 1px solid #fdfdfd;" href="<?= BASE_URL . '/uploads/OfertasLaborales/cv/' ?>${empleado.cv}" target="_blank">
+                        <i class="fa fa-file-pdf"></i> Descargar Curriculum
+                    </a>`
+                            );
+                        } else {
+                            hojaDeVida.append('<p>No se ha cargado un archivo de hoja de vida.</p>');
+                        }
+
                         llenarSelectsEmp(
                             empleado.tipo_doc,            // ID de tipo de identificación
                             empleado.tipo_doc,            // ID de tipo de documento
@@ -427,9 +424,10 @@ $titulo = "Gestión de Candidatos"; // Título específico para esta vista
                 }
             });
         });
+
         function mostrarFechaYHora() {
             const estado = $('#estado').val();
-            if (estado === 'activo') {
+            if (estado === 'en_proceso') {
                 $('#fechaContainer').show();
                 $('#horaContainer').show();
             } else {

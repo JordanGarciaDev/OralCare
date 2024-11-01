@@ -6,7 +6,7 @@ $action = isset($_GET['action']) ? $_GET['action'] : '';
 
 // Obtener todos los entrevistas
 if ($action == 'fetch') {
-    $query = "SELECT *, e.id AS idEntrevista FROM entrevistas e INNER JOIN empleados em ON e.empleado_id = em.id";
+    $query = "SELECT *, e.id AS idEntrevista FROM entrevistas e INNER JOIN candidatos em ON e.candidato_id = em.id";
     $result = $conn->query($query);
     $data = array();
 
@@ -26,14 +26,14 @@ if ($action == 'save') {
 
     if ($id == '') {
         // Crear nuevo
-        $query = "INSERT INTO entrevistas (empleado_id,pregunta_id,respuesta) VALUES (?,?,?)";
+        $query = "INSERT INTO entrevistas (candidato_id,pregunta_id,respuesta) VALUES (?,?,?)";
         $stmt = $conn->prepare($query);
         $stmt->bind_param('iis', $empleado_id,$pregunta,$respuesta);
         $stmt->execute();
         $stmt->close();
     } else {
         // Actualizar existente
-        $query = "UPDATE entrevistas SET empleado_id = ?, pregunta_id = ?, respuesta = ? WHERE id = ?";
+        $query = "UPDATE entrevistas SET candidato_id = ?, pregunta_id = ?, respuesta = ? WHERE id = ?";
         $stmt = $conn->prepare($query);
         $stmt->bind_param('iisi', $empleado_id, $pregunta, $respuesta, $id);
         $stmt->execute();
@@ -79,9 +79,9 @@ if ($action == 'questions') {
 
     echo json_encode(array('status' => 'success', 'data' => $data));
 }
-// Empleados
-if ($action == 'empleados') {
-    $query = "SELECT * FROM empleados";
+// candidatos
+if ($action == 'candidatos') {
+    $query = "SELECT * FROM candidatos";
     $result = $conn->query($query);
     $data = array();
 

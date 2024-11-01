@@ -7,7 +7,7 @@ $action = isset($_GET['action']) ? $_GET['action'] : '';
 
 // Obtener todos los ofertas_laborales
 if ($action == 'fetch') {
-    $query = "SELECT *, o.id AS idOferta, dc.nombre AS departamentoNom FROM ofertas_laborales o INNER JOIN dep_contratacion dc ON o.depto_id = dc.id INNER JOIN tipos_contratos tc ON o.tipo_contrato = tc.id";
+    $query = "SELECT *, o.id AS idOferta, dc.nombre AS departamentoNom, cg.nombre AS cargoNom FROM ofertas_laborales o INNER JOIN dep_contratacion dc ON o.depto_id = dc.id INNER JOIN cargos cg ON o.cargo_id = cg.id INNER JOIN tipos_contratos tc ON o.tipo_contrato = tc.id";
     $result = $conn->query($query);
     $data = array();
 

@@ -1,6 +1,6 @@
 /*
 SQLyog Ultimate
-MySQL - 10.11.9-MariaDB : Database - u600784253_sgoc
+MySQL - 10.4.32-MariaDB : Database - sgoc
 *********************************************************************
 */
 
@@ -22,7 +22,7 @@ CREATE TABLE `ajustes` (
   PRIMARY KEY (`id`),
   KEY `fk_ajustes_empleados1` (`empleado_id`),
   CONSTRAINT `fk_ajustes_empleados1` FOREIGN KEY (`empleado_id`) REFERENCES `empleados` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 /*Data for the table `ajustes` */
 
@@ -35,7 +35,7 @@ CREATE TABLE `ajustes_asignaciones` (
   KEY `fk_asignaciones_empleados_ajustes1` (`ajuste_id`),
   CONSTRAINT `fk_asignaciones_empleados_ajustes1` FOREIGN KEY (`ajuste_id`) REFERENCES `ajustes` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION,
   CONSTRAINT `fk_asignaciones_empleados_asignaciones1` FOREIGN KEY (`asignacion_id`) REFERENCES `asignaciones` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 /*Data for the table `ajustes_asignaciones` */
 
@@ -48,7 +48,7 @@ CREATE TABLE `ajustes_deducciones` (
   KEY `fk_deducciones_empleados_ajustes1` (`ajuste_id`),
   CONSTRAINT `fk_deducciones_empleados_ajustes1` FOREIGN KEY (`ajuste_id`) REFERENCES `ajustes` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION,
   CONSTRAINT `fk_deducciones_empleados_deducciones1` FOREIGN KEY (`deduccion_id`) REFERENCES `deducciones` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 /*Data for the table `ajustes_deducciones` */
 
@@ -56,9 +56,9 @@ CREATE TABLE `ajustes_deducciones` (
 
 CREATE TABLE `asignaciones` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `descripcion` varchar(60) CHARACTER SET utf8mb3 COLLATE utf8mb3_spanish_ci NOT NULL,
+  `descripcion` varchar(60) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 /*Data for the table `asignaciones` */
 
@@ -82,7 +82,7 @@ CREATE TABLE `ausencias` (
   PRIMARY KEY (`id`),
   KEY `fk_ausencias_empleados1` (`empleado_id`),
   CONSTRAINT `fk_ausencias_empleados1` FOREIGN KEY (`empleado_id`) REFERENCES `empleados` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 /*Data for the table `ausencias` */
 
@@ -104,22 +104,31 @@ CREATE TABLE `candidatos` (
   `tel_movil` bigint(20) NOT NULL,
   `email_personal` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   `email_empresarial` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
-  `cargo_id` int(10) NOT NULL,
+  `cargo_id` int(10) NOT NULL DEFAULT 1,
+  `oferta_laboral_id` int(11) DEFAULT 1,
   `salario` bigint(20) NOT NULL,
   `fingreso` date NOT NULL,
   `fretiro` date DEFAULT NULL,
   `tipo_sangre` varchar(5) NOT NULL,
   `cv` text NOT NULL,
-  `estado` enum('candidato','activo','retirado') NOT NULL,
+  `estado` enum('candidato','en_proceso','no_continua') NOT NULL,
   PRIMARY KEY (`id`,`num_doc`),
   KEY `tipo_doc` (`tipo_doc`),
   KEY `cargo` (`cargo_id`),
   KEY `ciudad_residencia` (`ciudad_residencia`),
   KEY `lug_exp` (`lug_exp`),
-  KEY `estado_civil` (`estado_civil`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf32 COLLATE=utf32_general_ci;
+  KEY `estado_civil` (`estado_civil`),
+  KEY `oferta_laboral_id` (`oferta_laboral_id`),
+  CONSTRAINT `candidatos_ibfk_1` FOREIGN KEY (`tipo_doc`) REFERENCES `tipo_identificacion` (`id`),
+  CONSTRAINT `candidatos_ibfk_2` FOREIGN KEY (`lug_exp`) REFERENCES `municipios` (`id_municipio`),
+  CONSTRAINT `candidatos_ibfk_3` FOREIGN KEY (`ciudad_residencia`) REFERENCES `municipios` (`id_municipio`),
+  CONSTRAINT `candidatos_ibfk_4` FOREIGN KEY (`cargo_id`) REFERENCES `cargos` (`id`),
+  CONSTRAINT `candidatos_ibfk_5` FOREIGN KEY (`oferta_laboral_id`) REFERENCES `ofertas_laborales` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf32 COLLATE=utf32_general_ci;
 
 /*Data for the table `candidatos` */
+
+insert  into `candidatos`(`id`,`nombre_completo`,`tipo_doc`,`num_doc`,`lug_exp`,`fec_nacimiento`,`nacionalidad`,`sexo`,`estado_civil`,`dir_residencia`,`barrio_residencia`,`ciudad_residencia`,`tel_movil`,`email_personal`,`email_empresarial`,`cargo_id`,`oferta_laboral_id`,`salario`,`fingreso`,`fretiro`,`tipo_sangre`,`cv`,`estado`) values (5,'dasdsadsa',15,'56748168',1,'2024-10-11','CO','M',5,'asdsada','adasda',1,4165165,'elyinker@gmail.com','asduashb@asdjbasd',1,1,0,'0000-00-00',NULL,'O+','dggfgd-555.pdf','en_proceso');
 
 /*Table structure for table `cargos` */
 
@@ -168,7 +177,7 @@ CREATE TABLE `cestatickets` (
   `sueldo_minimo` decimal(19,5) NOT NULL,
   `bloquear` int(11) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 /*Data for the table `cestatickets` */
 
@@ -182,7 +191,7 @@ CREATE TABLE `comerciales` (
   PRIMARY KEY (`id`),
   KEY `fk_comerciales_empleados1` (`empleado_id`),
   CONSTRAINT `fk_comerciales_empleados1` FOREIGN KEY (`empleado_id`) REFERENCES `empleados` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 /*Data for the table `comerciales` */
 
@@ -204,7 +213,7 @@ CREATE TABLE `contratos` (
   CONSTRAINT `contratos_ibfk_1` FOREIGN KEY (`empleado_id`) REFERENCES `empleados` (`id`),
   CONSTRAINT `contratos_ibfk_2` FOREIGN KEY (`cargo_id`) REFERENCES `cargos` (`id`),
   CONSTRAINT `contratos_ibfk_3` FOREIGN KEY (`modalidad`) REFERENCES `modalidades` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=117 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=117 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 /*Data for the table `contratos` */
 
@@ -212,9 +221,9 @@ CREATE TABLE `contratos` (
 
 CREATE TABLE `deducciones` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `descripcion` varchar(60) CHARACTER SET utf8mb3 COLLATE utf8mb3_spanish_ci NOT NULL,
+  `descripcion` varchar(60) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 /*Data for the table `deducciones` */
 
@@ -312,7 +321,7 @@ CREATE TABLE `detalle_cestatickets` (
   KEY `fk_detalle_cestatickets_empleados1` (`empleado_id`),
   CONSTRAINT `fk_detalle_cestatickets_cestatickets1` FOREIGN KEY (`cestaticket_id`) REFERENCES `cestatickets` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION,
   CONSTRAINT `fk_detalle_cestatickets_empleados1` FOREIGN KEY (`empleado_id`) REFERENCES `empleados` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_spanish_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 /*Data for the table `detalle_cestatickets` */
 
@@ -329,7 +338,7 @@ CREATE TABLE `detalle_eventualidades` (
   KEY `fk_detalle_eventualidades_eventualidades1` (`eventualidad_id`),
   CONSTRAINT `fk_detalle_eventualidades_empleados1` FOREIGN KEY (`empleado_id`) REFERENCES `empleados` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION,
   CONSTRAINT `fk_detalle_eventualidades_eventualidades1` FOREIGN KEY (`eventualidad_id`) REFERENCES `eventualidades` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_spanish_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 /*Data for the table `detalle_eventualidades` */
 
@@ -344,7 +353,7 @@ CREATE TABLE `detalle_recibos` (
   PRIMARY KEY (`id`),
   KEY `fk_detalle_recibos_recibos1` (`recibo_id`),
   CONSTRAINT `fk_detalle_recibos_recibos1` FOREIGN KEY (`recibo_id`) REFERENCES `recibos` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=43643 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=43643 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 /*Data for the table `detalle_recibos` */
 
@@ -400,25 +409,17 @@ CREATE TABLE `empleados` (
   CONSTRAINT `empleados_ibfk_4` FOREIGN KEY (`lug_exp`) REFERENCES `municipios` (`id_municipio`),
   CONSTRAINT `empleados_ibfk_5` FOREIGN KEY (`estado_civil`) REFERENCES `estados_civiles` (`id`),
   CONSTRAINT `empleados_ibfk_6` FOREIGN KEY (`cargo_id`) REFERENCES `cargos` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf32 COLLATE=utf32_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf32 COLLATE=utf32_general_ci;
 
 /*Data for the table `empleados` */
 
 insert  into `empleados`(`id`,`nombre_completo`,`tipo_doc`,`num_doc`,`lug_exp`,`fec_nacimiento`,`nacionalidad`,`sexo`,`estado_civil`,`dir_residencia`,`barrio_residencia`,`ciudad_residencia`,`tel_movil`,`email_personal`,`email_empresarial`,`cargo_id`,`salario`,`fingreso`,`fretiro`,`tipo_sangre`,`estado`) values (1,'Jaime Borja Altamar',8,'12345',88,'1996-08-03','CO','M',1,'CL 123','LAS DELICIAS',88,3045937472,'ing.jordangarcia@gmail.com',NULL,15,11111,'2024-10-21','2024-10-28','O+','candidato');
-insert  into `empleados`(`id`,`nombre_completo`,`tipo_doc`,`num_doc`,`lug_exp`,`fec_nacimiento`,`nacionalidad`,`sexo`,`estado_civil`,`dir_residencia`,`barrio_residencia`,`ciudad_residencia`,`tel_movil`,`email_personal`,`email_empresarial`,`cargo_id`,`salario`,`fingreso`,`fretiro`,`tipo_sangre`,`estado`) values (11,'ONCE',15,'554654',8,'2024-10-28','CO','M',1,'dfvdfgfdg','dgfdgfdg',15,5544554,'dfgfd@gmail.com','ssss@gmail.com',17,455454,'0000-00-00','2024-10-28','O+','');
-insert  into `empleados`(`id`,`nombre_completo`,`tipo_doc`,`num_doc`,`lug_exp`,`fec_nacimiento`,`nacionalidad`,`sexo`,`estado_civil`,`dir_residencia`,`barrio_residencia`,`ciudad_residencia`,`tel_movil`,`email_personal`,`email_empresarial`,`cargo_id`,`salario`,`fingreso`,`fretiro`,`tipo_sangre`,`estado`) values (12,'eeeee',15,'554654',8,'2024-10-28','CO','M',1,'dfvdfgfdg','dgfdgfdg',15,5544554,'dfgfd@gmail.com','ssss@gmail.com',17,455454,'2024-10-28','2024-10-28','O+','activo');
-insert  into `empleados`(`id`,`nombre_completo`,`tipo_doc`,`num_doc`,`lug_exp`,`fec_nacimiento`,`nacionalidad`,`sexo`,`estado_civil`,`dir_residencia`,`barrio_residencia`,`ciudad_residencia`,`tel_movil`,`email_personal`,`email_empresarial`,`cargo_id`,`salario`,`fingreso`,`fretiro`,`tipo_sangre`,`estado`) values (17,'oma',15,'554654',8,'2024-10-28','CO','M',1,'dfvdfgfdg','dgfdgfdg',15,5544554,'dfgfd@gmail.com','ssss@gmail.com',17,455454,'2024-10-28','2024-10-28','O+','activo');
-insert  into `empleados`(`id`,`nombre_completo`,`tipo_doc`,`num_doc`,`lug_exp`,`fec_nacimiento`,`nacionalidad`,`sexo`,`estado_civil`,`dir_residencia`,`barrio_residencia`,`ciudad_residencia`,`tel_movil`,`email_personal`,`email_empresarial`,`cargo_id`,`salario`,`fingreso`,`fretiro`,`tipo_sangre`,`estado`) values (18,'ema',15,'554654',8,'2024-10-28','CO','M',1,'dfvdfgfdg','dgfdgfdg',15,5544554,'dfgfd@gmail.com','ssss@gmail.com',17,455454,'2024-10-28','2024-10-28','O+','activo');
-insert  into `empleados`(`id`,`nombre_completo`,`tipo_doc`,`num_doc`,`lug_exp`,`fec_nacimiento`,`nacionalidad`,`sexo`,`estado_civil`,`dir_residencia`,`barrio_residencia`,`ciudad_residencia`,`tel_movil`,`email_personal`,`email_empresarial`,`cargo_id`,`salario`,`fingreso`,`fretiro`,`tipo_sangre`,`estado`) values (19,'doce',15,'554654',8,'2024-10-28','CO','M',1,'dfvdfgfdg','dgfdgfdg',15,5544554,'dfgfd@gmail.com','ssss@gmail.com',17,455454,'2024-10-28','2024-10-28','O+','activo');
-insert  into `empleados`(`id`,`nombre_completo`,`tipo_doc`,`num_doc`,`lug_exp`,`fec_nacimiento`,`nacionalidad`,`sexo`,`estado_civil`,`dir_residencia`,`barrio_residencia`,`ciudad_residencia`,`tel_movil`,`email_personal`,`email_empresarial`,`cargo_id`,`salario`,`fingreso`,`fretiro`,`tipo_sangre`,`estado`) values (20,'once',15,'554654',8,'2024-10-28','CO','M',1,'dfvdfgfdg','dgfdgfdg',15,5544554,'dfgfd@gmail.com','ssss@gmail.com',17,455454,'2024-10-28','2024-10-28','O+','activo');
-insert  into `empleados`(`id`,`nombre_completo`,`tipo_doc`,`num_doc`,`lug_exp`,`fec_nacimiento`,`nacionalidad`,`sexo`,`estado_civil`,`dir_residencia`,`barrio_residencia`,`ciudad_residencia`,`tel_movil`,`email_personal`,`email_empresarial`,`cargo_id`,`salario`,`fingreso`,`fretiro`,`tipo_sangre`,`estado`) values (21,'veinte',15,'554654',8,'2024-10-28','CO','M',1,'dfvdfgfdg','dgfdgfdg',15,5544554,'dfgfd@gmail.com','ssss@gmail.com',17,455454,'2024-10-28','2024-10-28','O+','activo');
-insert  into `empleados`(`id`,`nombre_completo`,`tipo_doc`,`num_doc`,`lug_exp`,`fec_nacimiento`,`nacionalidad`,`sexo`,`estado_civil`,`dir_residencia`,`barrio_residencia`,`ciudad_residencia`,`tel_movil`,`email_personal`,`email_empresarial`,`cargo_id`,`salario`,`fingreso`,`fretiro`,`tipo_sangre`,`estado`) values (22,'VEINTE 2',15,'554654',8,'2024-10-28','CO','M',1,'dfvdfgfdg','dgfdgfdg',15,5544554,'dfgfd@gmail.com','ssss@gmail.com',17,455454,'0000-00-00','2024-10-28','O+','');
 
 /*Table structure for table `entrevistas` */
 
 CREATE TABLE `entrevistas` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `empleado_id` int(11) NOT NULL,
+  `candidato_id` int(11) NOT NULL,
   `pregunta_id` int(11) NOT NULL,
   `respuesta` text NOT NULL,
   `fechareg` timestamp NOT NULL DEFAULT current_timestamp(),
@@ -428,9 +429,6 @@ CREATE TABLE `entrevistas` (
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 /*Data for the table `entrevistas` */
-
-insert  into `entrevistas`(`id`,`empleado_id`,`pregunta_id`,`respuesta`,`fechareg`) values (2,1,5,'negro','2024-10-28 09:49:09');
-insert  into `entrevistas`(`id`,`empleado_id`,`pregunta_id`,`respuesta`,`fechareg`) values (3,18,5,'blanco','2024-10-29 15:57:16');
 
 /*Table structure for table `estados_civiles` */
 
@@ -456,7 +454,7 @@ CREATE TABLE `eventualidades` (
   `nombre` varchar(60) NOT NULL,
   `tipo` varchar(45) NOT NULL COMMENT 'Asignacion o Deduccion',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 /*Data for the table `eventualidades` */
 
@@ -473,7 +471,7 @@ CREATE TABLE `experiencias` (
   PRIMARY KEY (`id`),
   KEY `fk_experiencias_empleados1` (`empleado_id`),
   CONSTRAINT `fk_experiencias_empleados1` FOREIGN KEY (`empleado_id`) REFERENCES `empleados` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 /*Data for the table `experiencias` */
 
@@ -491,7 +489,7 @@ CREATE TABLE `familiares` (
   PRIMARY KEY (`id`),
   KEY `fk_familiares_empleados1` (`empleado_id`),
   CONSTRAINT `fk_familiares_empleados1` FOREIGN KEY (`empleado_id`) REFERENCES `empleados` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 /*Data for the table `familiares` */
 
@@ -502,7 +500,7 @@ CREATE TABLE `feriados` (
   `fecha` date NOT NULL,
   `descripcion` varchar(45) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 /*Data for the table `feriados` */
 
@@ -512,7 +510,7 @@ CREATE TABLE `grupos` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nombre` varchar(10) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 /*Data for the table `grupos` */
 
@@ -531,7 +529,7 @@ CREATE TABLE `historiales` (
   PRIMARY KEY (`id`),
   KEY `fk_historiales_cargos1` (`cargo_id`),
   CONSTRAINT `fk_historiales_cargos1` FOREIGN KEY (`cargo_id`) REFERENCES `cargos` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=57 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=57 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 /*Data for the table `historiales` */
 
@@ -546,7 +544,7 @@ CREATE TABLE `horas_extras` (
   PRIMARY KEY (`id`),
   KEY `fk_horasextras_empleados1` (`empleado_id`),
   CONSTRAINT `fk_horasextras_empleados1` FOREIGN KEY (`empleado_id`) REFERENCES `empleados` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 /*Data for the table `horas_extras` */
 
@@ -560,7 +558,7 @@ CREATE TABLE `islr` (
   PRIMARY KEY (`id`),
   KEY `fk_islr_empleados1` (`empleado_id`),
   CONSTRAINT `fk_islr_empleados1` FOREIGN KEY (`empleado_id`) REFERENCES `empleados` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 /*Data for the table `islr` */
 
@@ -571,7 +569,7 @@ CREATE TABLE `localizaciones` (
   `departamento_id` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_localizaciones_departamentos1` (`departamento_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 /*Data for the table `localizaciones` */
 
@@ -1712,7 +1710,7 @@ CREATE TABLE `nominas` (
   `sueldo_minimo` decimal(19,5) NOT NULL,
   `bloquear` int(11) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 /*Data for the table `nominas` */
 
@@ -1720,6 +1718,7 @@ CREATE TABLE `nominas` (
 
 CREATE TABLE `ofertas_laborales` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
+  `cargo_id` int(10) DEFAULT NULL,
   `titulo_oferta` varchar(200) DEFAULT NULL,
   `beneficios_oferta` text DEFAULT NULL,
   `condiciones_oferta` text DEFAULT NULL,
@@ -1734,17 +1733,17 @@ CREATE TABLE `ofertas_laborales` (
   KEY `depto_id` (`depto_id`),
   KEY `tipo_contrato` (`tipo_contrato`),
   KEY `usu_reg` (`usu_reg`),
+  KEY `cargo_id` (`cargo_id`),
   CONSTRAINT `ofertas_laborales_ibfk_1` FOREIGN KEY (`depto_id`) REFERENCES `dep_contratacion` (`id`),
   CONSTRAINT `ofertas_laborales_ibfk_2` FOREIGN KEY (`tipo_contrato`) REFERENCES `tipos_contratos` (`id`),
-  CONSTRAINT `ofertas_laborales_ibfk_3` FOREIGN KEY (`usu_reg`) REFERENCES `usuarios` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+  CONSTRAINT `ofertas_laborales_ibfk_3` FOREIGN KEY (`usu_reg`) REFERENCES `usuarios` (`id`),
+  CONSTRAINT `ofertas_laborales_ibfk_4` FOREIGN KEY (`cargo_id`) REFERENCES `cargos` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 /*Data for the table `ofertas_laborales` */
 
-insert  into `ofertas_laborales`(`id`,`titulo_oferta`,`beneficios_oferta`,`condiciones_oferta`,`depto_id`,`tipo_contrato`,`salario`,`documento`,`estado`,`usu_reg`,`fechareg`) values (3,'Se solicita mesero con 20 años de experiencia','Tendrá un uniforme de trabajo limpio cada semana','Se requiere urgente un mesero con buena presentación personal, con especialización en cocina buffe y con el curso de manipulación de alimentos al día emitido desde ayer. \r\nDebe trabajar las 24 horas al dia de 4am - 4am',2,1,1200000,'',1,1,'2024-10-29 21:28:37');
-insert  into `ofertas_laborales`(`id`,`titulo_oferta`,`beneficios_oferta`,`condiciones_oferta`,`depto_id`,`tipo_contrato`,`salario`,`documento`,`estado`,`usu_reg`,`fechareg`) values (4,'Se solicita doctor con 20 años de experiencia','Un año de netflix gratis','Se requiere urgente',3,2,600000,'672199d5a287d.pdf',0,1,'2024-10-29 21:28:37');
-insert  into `ofertas_laborales`(`id`,`titulo_oferta`,`beneficios_oferta`,`condiciones_oferta`,`depto_id`,`tipo_contrato`,`salario`,`documento`,`estado`,`usu_reg`,`fechareg`) values (37,'adsfasdsa','asdsadas','asdsadsa',8,1,695126351,'6722360527dbe.JPG',1,3,'2024-10-30 13:35:01');
-insert  into `ofertas_laborales`(`id`,`titulo_oferta`,`beneficios_oferta`,`condiciones_oferta`,`depto_id`,`tipo_contrato`,`salario`,`documento`,`estado`,`usu_reg`,`fechareg`) values (38,'adsfasdsa','asdsadas','asdsadsa',8,1,695126351,NULL,0,3,'2024-10-30 13:42:45');
+insert  into `ofertas_laborales`(`id`,`cargo_id`,`titulo_oferta`,`beneficios_oferta`,`condiciones_oferta`,`depto_id`,`tipo_contrato`,`salario`,`documento`,`estado`,`usu_reg`,`fechareg`) values (3,NULL,'Se solicita mesero con 20 años de experiencia','Tendrá un uniforme de trabajo limpio cada semana','Se requiere urgente un mesero con buena presentación personal, con especialización en cocina buffe y con el curso de manipulación de alimentos al día emitido desde ayer. \r\nDebe trabajar las 24 horas al dia de 4am - 4am',2,1,1200000,'',1,1,'2024-10-29 21:28:37');
+insert  into `ofertas_laborales`(`id`,`cargo_id`,`titulo_oferta`,`beneficios_oferta`,`condiciones_oferta`,`depto_id`,`tipo_contrato`,`salario`,`documento`,`estado`,`usu_reg`,`fechareg`) values (4,NULL,'Se solicita doctor con 20 años de experiencia','Un año de netflix gratis','Se requiere urgente',3,2,600000,'672199d5a287d.pdf',0,1,'2024-10-29 21:28:37');
 
 /*Table structure for table `preguntas_entrevistas` */
 
@@ -1788,7 +1787,7 @@ CREATE TABLE `prestamos` (
   PRIMARY KEY (`id`),
   KEY `fk_prestamos_empleados1` (`empleado_id`),
   CONSTRAINT `fk_prestamos_empleados1` FOREIGN KEY (`empleado_id`) REFERENCES `empleados` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 /*Data for the table `prestamos` */
 
@@ -1796,23 +1795,21 @@ CREATE TABLE `prestamos` (
 
 CREATE TABLE `programacion_entrevistas` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `empleado_id` int(11) NOT NULL,
+  `candidato_id` int(11) NOT NULL,
   `cargo_id` int(10) NOT NULL,
   `fechapro` date NOT NULL,
   `horapro` time NOT NULL,
   `fechareg` timestamp NOT NULL DEFAULT current_timestamp(),
   PRIMARY KEY (`id`),
-  KEY `empleado_id` (`empleado_id`),
+  KEY `empleado_id` (`candidato_id`),
   KEY `cargo_id` (`cargo_id`),
-  CONSTRAINT `programacion_entrevistas_ibfk_1` FOREIGN KEY (`empleado_id`) REFERENCES `empleados` (`id`),
+  CONSTRAINT `programacion_entrevistas_ibfk_1` FOREIGN KEY (`candidato_id`) REFERENCES `candidatos` (`id`),
   CONSTRAINT `programacion_entrevistas_ibfk_2` FOREIGN KEY (`cargo_id`) REFERENCES `cargos` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 /*Data for the table `programacion_entrevistas` */
 
-insert  into `programacion_entrevistas`(`id`,`empleado_id`,`cargo_id`,`fechapro`,`horapro`,`fechareg`) values (4,1,3,'2024-10-28','18:45:00','2024-10-28 13:46:42');
-insert  into `programacion_entrevistas`(`id`,`empleado_id`,`cargo_id`,`fechapro`,`horapro`,`fechareg`) values (5,1,12,'2024-10-30','16:40:00','2024-10-28 16:40:47');
-insert  into `programacion_entrevistas`(`id`,`empleado_id`,`cargo_id`,`fechapro`,`horapro`,`fechareg`) values (6,1,8,'2024-10-30','09:52:00','2024-10-30 14:52:43');
+insert  into `programacion_entrevistas`(`id`,`candidato_id`,`cargo_id`,`fechapro`,`horapro`,`fechareg`) values (6,5,1,'2024-11-02','12:53:00','2024-10-31 19:51:05');
 
 /*Table structure for table `programas` */
 
@@ -1823,7 +1820,7 @@ CREATE TABLE `programas` (
   `tipo` varchar(45) NOT NULL COMMENT 'Actividad  /  Proyecto',
   `numero` int(11) NOT NULL COMMENT 'Numero de la Actividad o Proyecto',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_spanish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 /*Data for the table `programas` */
 
@@ -1862,7 +1859,7 @@ CREATE TABLE `recibos` (
   KEY `fk_recibos_empleados1` (`empleado_id`),
   CONSTRAINT `fk_recibos_empleados1` FOREIGN KEY (`empleado_id`) REFERENCES `empleados` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION,
   CONSTRAINT `fk_recibos_nominas1` FOREIGN KEY (`nomina_id`) REFERENCES `nominas` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=2991 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2991 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 /*Data for the table `recibos` */
 
@@ -1899,7 +1896,7 @@ CREATE TABLE `tipo_identificacion` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
   `nombre` varchar(100) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 /*Data for the table `tipo_identificacion` */
 
@@ -1959,7 +1956,7 @@ CREATE TABLE `titulos` (
   PRIMARY KEY (`id`),
   KEY `fk_titulos_empleados1` (`empleado_id`),
   CONSTRAINT `fk_titulos_empleados1` FOREIGN KEY (`empleado_id`) REFERENCES `empleados` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 /*Data for the table `titulos` */
 
@@ -1973,7 +1970,7 @@ CREATE TABLE `tribunales` (
   PRIMARY KEY (`id`),
   KEY `fk_tribunales_empleados1` (`empleado_id`),
   CONSTRAINT `fk_tribunales_empleados1` FOREIGN KEY (`empleado_id`) REFERENCES `empleados` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 /*Data for the table `tribunales` */
 
@@ -1991,7 +1988,7 @@ CREATE TABLE `usuarios` (
   PRIMARY KEY (`id`),
   KEY `usuarios_ibfk_2` (`cargo_id`),
   CONSTRAINT `usuarios_ibfk_2` FOREIGN KEY (`cargo_id`) REFERENCES `cargos` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 /*Data for the table `usuarios` */
 
@@ -1999,8 +1996,7 @@ insert  into `usuarios`(`id`,`nombres`,`apellidos`,`usuario`,`pass`,`cargo_id`,`
 insert  into `usuarios`(`id`,`nombres`,`apellidos`,`usuario`,`pass`,`cargo_id`,`foto`,`fecha`) values (2,'Daniel','Marquez','dmarquez','$2y$10$6GjLTQ5kq/JtaXgtw5I6n.PhQ/Nuo0FX7Gf24Wvu8IPVJVK1Dj7Qa',15,'6719aa93f2dc6.jpeg','2024-10-23 14:29:34');
 insert  into `usuarios`(`id`,`nombres`,`apellidos`,`usuario`,`pass`,`cargo_id`,`foto`,`fecha`) values (3,'Orlando','Marquez','omarquez','$2y$10$6GjLTQ5kq/JtaXgtw5I6n.PhQ/Nuo0FX7Gf24Wvu8IPVJVK1Dj7Qa',15,'671a51fa4e0e3.png','2024-10-23 14:29:34');
 insert  into `usuarios`(`id`,`nombres`,`apellidos`,`usuario`,`pass`,`cargo_id`,`foto`,`fecha`) values (4,'Diego','Salas','dsalas','$2y$10$6GjLTQ5kq/JtaXgtw5I6n.PhQ/Nuo0FX7Gf24Wvu8IPVJVK1Dj7Qa',15,'671a51fa4e0e3.png','2024-10-23 14:29:34');
-insert  into `usuarios`(`id`,`nombres`,`apellidos`,`usuario`,`pass`,`cargo_id`,`foto`,`fecha`) values (5,'Jaime','Borja','jborja','$2y$10$6GjLTQ5kq/JtaXgtw5I6n.PhQ/Nuo0FX7Gf24Wvu8IPVJVK1Dj7Qa',15,'672247812d339.jpg','2024-10-23 14:29:34');
-insert  into `usuarios`(`id`,`nombres`,`apellidos`,`usuario`,`pass`,`cargo_id`,`foto`,`fecha`) values (6,'Jimmy','Borja Altamar','Jimmy','$2y$10$9v2U3odadVNkxPlo6N79BeeqOZ9Ia1IOzpdGjkiT8mFiHkREzIgDe',12,'6722463870deb.png','2024-10-30 14:44:08');
+insert  into `usuarios`(`id`,`nombres`,`apellidos`,`usuario`,`pass`,`cargo_id`,`foto`,`fecha`) values (5,'Jaime','Borja','jborja','$2y$10$6GjLTQ5kq/JtaXgtw5I6n.PhQ/Nuo0FX7Gf24Wvu8IPVJVK1Dj7Qa',15,'671a51fa4e0e3.png','2024-10-23 14:29:34');
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;

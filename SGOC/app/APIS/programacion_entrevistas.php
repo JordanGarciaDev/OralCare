@@ -6,7 +6,7 @@ $action = isset($_GET['action']) ? $_GET['action'] : '';
 
 // Obtener todos los programacion_entrevistas
 if ($action == 'fetch') {
-    $query = "SELECT *, e.id AS idEntrevista FROM programacion_entrevistas e INNER JOIN empleados em ON e.empleado_id = em.id INNER JOIN cargos c ON e.cargo_id = c.id";
+    $query = "SELECT *, e.id AS idCandidato FROM programacion_entrevistas e INNER JOIN candidatos em ON e.candidato_id = em.id INNER JOIN cargos c ON e.cargo_id = c.id";
     $result = $conn->query($query);
     $data = array();
 
@@ -22,21 +22,21 @@ if ($action == 'save') {
     $id = isset($_POST['id']) ? $_POST['id'] : '';
     $fechapro = $_POST['fechapro'];
     $horapro = $_POST['horapro'];
-    $empleado_id = $_POST['emp_id'];
+    $candidato_id = $_POST['emp_id'];
     $cargo_id = $_POST['cargo_id'];
 
     if ($id == '') {
         // Crear nuevo
-        $query = "INSERT INTO programacion_entrevistas (empleado_id,cargo_id,fechapro,horapro) VALUES (?,?,?,?)";
+        $query = "INSERT INTO programacion_entrevistas (candidato_id,cargo_id,fechapro,horapro) VALUES (?,?,?,?)";
         $stmt = $conn->prepare($query);
-        $stmt->bind_param('iiss', $empleado_id,$cargo_id,$fechapro,$horapro);
+        $stmt->bind_param('iiss', $candidato_id,$cargo_id,$fechapro,$horapro);
         $stmt->execute();
         $stmt->close();
     } else {
         // Actualizar existente
-        $query = "UPDATE programacion_entrevistas SET empleado_id = ?, cargo_id = ?, fechapro = ?, horapro = ? WHERE id = ?";
+        $query = "UPDATE programacion_entrevistas SET candidato_id = ?, cargo_id = ?, fechapro = ?, horapro = ? WHERE id = ?";
         $stmt = $conn->prepare($query);
-        $stmt->bind_param('iissi', $empleado_id,$cargo_id, $fechapro, $horapro, $id);
+        $stmt->bind_param('iissi', $candidato_id,$cargo_id, $fechapro, $horapro, $id);
         $stmt->execute();
         $stmt->close();
     }
@@ -47,7 +47,7 @@ if ($action == 'save') {
 // Editar (obtener un TITULO AQUI por id)
 if ($action == 'edit') {
     $id = $_GET['id'];
-    $query = "SELECT * FROM programacion_entrevistas WHERE id = ?";
+    $query = "SELECT *, e.id AS idCandidato,c.id AS idCargo FROM programacion_entrevistas e INNER JOIN candidatos em ON e.candidato_id = em.id INNER JOIN cargos c ON e.cargo_id = c.id WHERE e.id = ?";
     $stmt = $conn->prepare($query);
     $stmt->bind_param('i', $id);
     $stmt->execute();
@@ -68,9 +68,9 @@ if ($action == 'delete') {
     echo json_encode(array('status' => 'success'));
 }
 
-// Empleados
-if ($action == 'empleados') {
-    $query = "SELECT * FROM empleados";
+// candidatos
+if ($action == 'candidatos') {
+    $query = "SELECT * FROM candidatos";
     $result = $conn->query($query);
     $data = array();
 
@@ -81,7 +81,7 @@ if ($action == 'empleados') {
     echo json_encode(array('status' => 'success', 'data' => $data));
 }
 
-// Empleados
+// cargos
 if ($action == 'cargos') {
     $query = "SELECT * FROM cargos";
     $result = $conn->query($query);

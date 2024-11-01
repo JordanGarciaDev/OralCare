@@ -145,8 +145,8 @@ $titulo = "Entrevistas"; // Título específico para esta vista
                     "data": null,
                     "render": function (data, type, row) {
                         return `
-                        <button class="btn btn-sm btn-warning edit" data-id="` + data.idEntrevista + `"><i class="align-middle me-2 fas fa-fw fa-edit"></i>Editar</button>
-                        <button class="btn btn-sm btn-danger delete" data-id="` + data.idEntrevista + `"><i class="align-middle me-2 fas fa-fw fa-trash-alt"></i>Eliminar</button>
+                        <button class="btn btn-sm btn-success edit" data-id="` + data.idEntrevista + `"><i class="align-middle fas fa-fw fa-edit"></i>Editar</button>
+                        <button class="btn btn-sm btn-danger delete" data-id="` + data.idEntrevista + `"><i class="align-middle fas fa-fw fa-trash-alt"></i></button>
                     `;
                     }
                 }

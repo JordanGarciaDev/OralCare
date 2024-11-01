@@ -172,8 +172,8 @@ console.log('URL del archivo: ', '<?= $_SERVER['DOCUMENT_ROOT'].'/OralCare/SGOC/
                                                 </a>
                                                 <input type="hidden" id="id" name="id" value="${oferta.idOferta}">
                                                 <div class="dropdown-menu dropdown-menu-end">
-                                                    <a class="dropdown-item edit" data-id="${oferta.idOferta}"><i class="align-middle me-2 fas fa-fw fa-edit"></i>Editar</a>
-                                                    <a class="dropdown-item delete" data-id="${oferta.idOferta}"><i class="align-middle me-2 fas fa-fw fa-trash-alt"></i>Eliminar</a>
+                                                    <a class="dropdown-item edit" data-id="${oferta.idOferta}"><i class="align-middle fas fa-fw fa-edit"></i>Editar</a>
+                                                    <a class="dropdown-item delete" data-id="${oferta.idOferta}"><i class="align-middle fas fa-fw fa-trash-alt"></i></a>
                                                 </div>
                                             </div>
                                         </div>

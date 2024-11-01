@@ -1314,6 +1314,8 @@ h3 {
     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet" />
     <!-- JS de Select2 -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
 </head>
 <body cz-shortcut-listen="true">
   <app-root _nghost-hnu-c0="" ng-version="8.0.3"><div _ngcontent-hnu-c0="" style="text-align:center"></div><app-top-bar _ngcontent-hnu-c0="" _nghost-hnu-c1=""><header _ngcontent-hnu-c1="" class="top-bar"><div _ngcontent-hnu-c1="" class="headerST"><div _ngcontent-hnu-c1="" class="logotipos"><img _ngcontent-hnu-c1="" class="logoSaludTotal" src="./trabaja-con-nosotros_files/Logos_Actualizacion_Datos2.png"></div></div></header></app-top-bar><alerta _ngcontent-hnu-c0=""><!--bindings={}--></alerta><router-outlet _ngcontent-hnu-c0=""></router-outlet><app-home _nghost-hnu-c4="" class="ng-star-inserted"><div _ngcontent-hnu-c4="" style="text-align:center"></div><alerta _ngcontent-hnu-c4=""><!--bindings={}--></alerta><p _ngcontent-hnu-c4=""><br _ngcontent-hnu-c4=""></p><div _ngcontent-hnu-c4="" class="">
@@ -1471,7 +1473,7 @@ h3 {
                           </select>
                       </div>
                   </div>
-                  <input type="hidden" class="form-control" id="oferta_laboral_id" name="oferta_laboral_id" value="<?=$_GET['oferta_laboral_id'];?>">
+                  <input type="hidden" class="form-control" id="oferta_laboral_id" name="oferta_laboral_id" value="<?=isset($_GET['oferta_laboral_id']);?>">
 
               </div>
 
@@ -1494,156 +1496,217 @@ h3 {
     </form>
     </body>
 
-   <script>
-  let currentStep = 1;
+<script>
+    let currentStep = 1;
 
-  $(document).ready(function() {
-    // Cargar datos en los selects al iniciar
-    loadSelects();
-  });
+    $(document).ready(function() {
+        loadSelects();
+    });
 
-  function loadSelects() {
-      // Llenar estado civil
-      $.ajax({
-          url: 'guardar_candidato.php?action=estados_civil',
-          type: 'GET',
-          dataType: 'json',
-          success: function(data) {
-              var selectEstadoCivil = $('#estado_civil');
-              selectEstadoCivil.empty().append('<option value="">Seleccione</option>');
-              $.each(data, function(index, item) {
-                  selectEstadoCivil.append('<option value="' + item.id + '">' + item.nombre + '</option>');
-              });
-          },
-          error: function(xhr, status, error) {
-              console.log(xhr.responseText); // Ver el error del servidor
-              alert("Error al cargar los estados civiles.");
-          }
-      });
+    function loadSelects() {
+        // Llenar estado civil
+        $.ajax({
+            url: 'guardar_candidato.php?action=estados_civil',
+            type: 'GET',
+            dataType: 'json',
+            success: function(data) {
+                var selectEstadoCivil = $('#estado_civil');
+                selectEstadoCivil.empty().append('<option value="">Seleccione</option>');
+                $.each(data, function(index, item) {
+                    selectEstadoCivil.append('<option value="' + item.id + '">' + item.nombre + '</option>');
+                });
+            },
+            error: function(xhr, status, error) {
+                console.log(xhr.responseText);
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: "Error al cargar los estados civiles.",
+                });
+            }
+        });
 
-      // Llenar tipo_identificacion
-      $.ajax({
-          url: 'guardar_candidato.php?action=tipo_identificacion',
-          type: 'GET',
-          dataType: 'json',
-          success: function(data) {
-              var selectTipoID = $('#ddlTipoIdentificacion');
-              selectTipoID.empty();
-              selectTipoID.append('<option value="">Seleccione</option>');
-              $.each(data, function(index, item) {
-                  selectTipoID.append('<option value="' + item.id + '">' + item.nombre + '</option>');
-              });
-              // Inicializa Select2 para tipo de identificación
-              selectTipoID.select2();
-          },
-          error: function() {
-              alert("Error al cargar los tipos de identificación.");
-          }
-      });
+        // Llenar tipo_identificacion
+        $.ajax({
+            url: 'guardar_candidato.php?action=tipo_identificacion',
+            type: 'GET',
+            dataType: 'json',
+            success: function(data) {
+                var selectTipoID = $('#ddlTipoIdentificacion');
+                selectTipoID.empty();
+                selectTipoID.append('<option value="">Seleccione</option>');
+                $.each(data, function(index, item) {
+                    selectTipoID.append('<option value="' + item.id + '">' + item.nombre + '</option>');
+                });
+                selectTipoID.select2();
+            },
+            error: function() {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: "Error al cargar los tipos de identificación.",
+                });
+            }
+        });
 
-      // Llenar lugar de expedición y municipios
-      $.ajax({
-          url: 'guardar_candidato.php?action=ciudades',
-          type: 'GET',
-          dataType: 'json',
-          success: function(data) {
-              var selectLugExp = $('#lug_exp');
-              var selectCiudad = $('#ciudad_residencia');
+        // Llenar lugar de expedición y municipios
+        $.ajax({
+            url: 'guardar_candidato.php?action=ciudades',
+            type: 'GET',
+            dataType: 'json',
+            success: function(data) {
+                var selectLugExp = $('#lug_exp');
+                var selectCiudad = $('#ciudad_residencia');
 
-              // Llena el select de Ciudades
-              selectCiudad.empty();
-              selectCiudad.append('<option value="">Seleccione</option>');
-              $.each(data, function(index, item) {
-                  selectCiudad.append('<option value="' + item.id_municipio + '">' + item.municipio + '</option>');
-              });
-              // Inicializa Select2 para ciudad de residencia
-              selectCiudad.select2();
+                selectCiudad.empty();
+                selectCiudad.append('<option value="">Seleccione</option>');
+                $.each(data, function(index, item) {
+                    selectCiudad.append('<option value="' + item.id_municipio + '">' + item.municipio + '</option>');
+                });
+                selectCiudad.select2();
 
-              // Llena el select de Lugar de expedición
-              selectLugExp.empty();
-              selectLugExp.append('<option value="">Seleccione</option>');
-              $.each(data, function(index, item) {
-                  selectLugExp.append('<option value="' + item.id_municipio + '">' + item.municipio + '</option>');
-              });
-              // Inicializa Select2 para lugar de expedición
-              selectLugExp.select2();
-          },
-          error: function() {
-              alert("Error al cargar las ciudades.");
-          }
-      });
-  }
-
-
-  function nextStep() {
-    if (currentStep === 1) {
-      let step1Valid = true;
-      document.querySelectorAll('#step1 [required]').forEach(function(input) {
-        if (!input.checkValidity()) {
-          step1Valid = false;
-          document.getElementById('validar1').textContent = "Por favor, completa todos los campos obligatorios en el primer paso.";
-        } else {
-          document.getElementById('validar1').textContent = "";
-        }
-      });
-
-      if (step1Valid) {
-        document.getElementById('step1').style.display = 'none';
-        document.getElementById('step2').style.display = 'block';
-        currentStep++;
-        document.getElementById('nextButton').textContent = "Siguiente";
-      }
-    } else if (currentStep === 2) {
-      let step2Valid = true;
-      document.querySelectorAll('#step2 [required]').forEach(function(input) {
-        if (!input.checkValidity()) {
-          step2Valid = false;
-        }
-      });
-
-      if (step2Valid) {
-        document.getElementById('step2').style.display = 'none';
-        document.getElementById('step3').style.display = 'block';
-        currentStep++;
-        document.getElementById('nextButton').textContent = "Terminar"; // Cambiar el texto a "Terminar"
-      }
-    } else if (currentStep === 3) {
-      let step3Valid = true;
-      document.querySelectorAll('#step3 [required]').forEach(function(input) {
-        if (!input.checkValidity()) {
-          step3Valid = false;
-        }
-      });
-
-      if (step3Valid) {
-        // Llama a la función submitForm para enviar el formulario
-        submitForm();
-      }
+                selectLugExp.empty();
+                selectLugExp.append('<option value="">Seleccione</option>');
+                $.each(data, function(index, item) {
+                    selectLugExp.append('<option value="' + item.id_municipio + '">' + item.municipio + '</option>');
+                });
+                selectLugExp.select2();
+            },
+            error: function() {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: "Error al cargar las ciudades.",
+                });
+            }
+        });
     }
-  }
 
-  function submitForm() {
-    const formData = new FormData(document.getElementById("candidatoForm"));
+    function nextStep() {
+        if (currentStep === 1) {
+            let step1Valid = true;
+            document.querySelectorAll('#step1 [required]').forEach(function(input) {
+                if (!input.checkValidity()) {
+                    step1Valid = false;
+                    input.style.borderColor = 'red';
+                } else {
+                    input.style.borderColor = '';
+                }
+            });
 
-      $.ajax({
-          url: "guardar_candidato.php", // Cambia a la ruta correcta de tu archivo PHP
-          type: "POST",
-          data: formData,
-          contentType: false,
-          processData: false,
-          dataType: 'json', // Espera un JSON automáticamente
-          success: function(data) {
-              console.log("Respuesta completa:", data);
-              if (data.success) {
-                  alert(data.message);
-              } else {
-                  alert("Hubo un error en el procesamiento: " + (data.message || 'Respuesta inesperada.'));
-              }
-          },
-          error: function(jqXHR, textStatus, errorThrown) {
-              console.error("Error en la solicitud:", textStatus, errorThrown);
-              alert("Error al procesar la solicitud.");
-          }
-      });
-  }
+            if (step1Valid) {
+                document.getElementById('step1').style.display = 'none';
+                document.getElementById('step2').style.display = 'block';
+                currentStep++;
+                document.getElementById('nextButton').textContent = "Siguiente";
+            } else {
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'Atención',
+                    text: "Por favor, completa todos los campos obligatorios en el primer paso.",
+                });
+            }
+        } else if (currentStep === 2) {
+            let step2Valid = true;
+            document.querySelectorAll('#step2 [required]').forEach(function(input) {
+                if (!input.checkValidity()) {
+                    step2Valid = false;
+                    input.style.borderColor = 'red'; // Resaltar el borde en rojo
+                } else {
+                    input.style.borderColor = ''; // Reiniciar el borde si es válido
+                }
+            });
+
+            if (step2Valid) {
+                document.getElementById('step2').style.display = 'none';
+                document.getElementById('step3').style.display = 'block';
+                currentStep++;
+                document.getElementById('nextButton').textContent = "Terminar"; // Cambiar el texto a "Terminar"
+            } else {
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'Atención',
+                    text: "Por favor, completa todos los campos obligatorios en el segundo paso.",
+                });
+            }
+        } else if (currentStep === 3) {
+            let step3Valid = true;
+            document.querySelectorAll('#step3 [required]').forEach(function(input) {
+                if (!input.checkValidity()) {
+                    step3Valid = false;
+                    input.style.borderColor = 'red'; // Resaltar el borde en rojo
+                } else {
+                    input.style.borderColor = ''; // Reiniciar el borde si es válido
+                }
+            });
+
+            // Validar el campo de archivo por separado
+            const fileInput = document.getElementById('hoja_vida');
+            if (!fileInput.files.length) { // Verifica si no hay archivo seleccionado
+                step3Valid = false;
+                // Crear o mostrar el mensaje de error
+                let errorMessage = document.getElementById('fileError');
+                if (!errorMessage) {
+                    errorMessage = document.createElement('span');
+                    errorMessage.id = 'fileError';
+                    errorMessage.style.color = '#ff0000d6';
+                    errorMessage.textContent = "Por favor, selecciona un archivo.";
+                    fileInput.parentNode.appendChild(errorMessage);
+                }
+            } else {
+                // Si hay archivo, eliminar el mensaje de error si existe
+                const errorMessage = document.getElementById('fileError');
+                if (errorMessage) {
+                    errorMessage.remove();
+                }
+            }
+
+            if (step3Valid) {
+                submitForm();
+            } else {
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'Atención',
+                    text: "Por favor, completa todos los campos obligatorios en el tercer paso.",
+                });
+            }
+        }
+    }
+
+    function submitForm() {
+        const formData = new FormData(document.getElementById("candidatoForm"));
+
+        $.ajax({
+            url: "guardar_candidato.php", // Cambia a la ruta correcta de tu archivo PHP
+            type: "POST",
+            data: formData,
+            contentType: false,
+            processData: false,
+            dataType: 'json',
+            success: function(data) {
+                console.log("Respuesta completa:", data);
+                if (data.success) {
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Éxito',
+                        text: data.message,
+                    });
+                } else {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        text: "Hubo un error en el procesamiento: " + (data.message || 'Respuesta inesperada.'),
+                    });
+                }
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+                console.error("Error en la solicitud:", textStatus, errorThrown);
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: "Error al procesar la solicitud.",
+                });
+            }
+        });
+    }
 </script>

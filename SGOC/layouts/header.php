@@ -18,6 +18,8 @@
     <link href="<?= ASSET_URL; ?>/css/app.css" rel="stylesheet">
     <link href="<?= ASSET_URL; ?>/css/light.css" rel="stylesheet">
     <link href="<?= ASSET_URL; ?>/css/css2.css?family=Inter:wght@300;400;600&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
     <script src="<?= ASSET_URL; ?>/js/jquery-3.6.0.min.js"></script>
     <script src="<?= ASSET_URL; ?>/js/app.js"></script>
     <script src="<?= ASSET_URL; ?>/js/datatables.js"></script>

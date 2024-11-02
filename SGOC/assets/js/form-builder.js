@@ -217,14 +217,23 @@ $(function() {
         var form_code = $("[name='form_code']").length > 0 ? $("[name='form_code']").val() : "";
         var title = $('#form-title').text();
         var description = $('#form-description').text();
+        var cargo_id = $('#cargo_id').val();
         form_el.find("[name='form_code']").remove();
         new_el.append(form_el);
         start_loader();
-
+        // Validar que se haya seleccionado un cargo válido
+        if (cargo_id === "") {
+            Swal.fire({
+                icon: 'warning',
+                title: 'Advertencia',
+                text: 'Por favor, selecciona un cargo antes de guardar.',
+            });
+            return;
+        }
         $.ajax({
             url: "../app/APIS/preguntas_entrevistas.php?a=save_form",
             method: 'POST',
-            data: { form_data: new_el.html(), description: description, title: title, form_code: form_code },
+            data: { form_data: new_el.html(), description: description, cargo_id: cargo_id, title: title, form_code: form_code },
             dataType: 'json',
             error: err => {
                 console.log(err);

@@ -10,6 +10,12 @@
 <hr class="border-dark">
 <div class="container" id="form-field">
     <form id="form-data">
+        <div class="mb-3">
+            <label for="emp_id" class="form-label">¿Para que cargo está dirigida esta entrevista?</label>
+            <select class="form-select" id="cargo_id" name="cargo_id" required="">
+                <option value="1">Seleccione un cargo</option>
+            </select>
+        </div>
         <div class="row">
             <div class="card col-md-12 border border-primary">
                 <div class="card-body">
@@ -68,6 +74,7 @@
 <br class="card mt-3 mb-3 col-md-12 question-item ui-state-default" data-item="0">
     <span class="item-move"><i class="fa fa-braille"></i></span>
     <div class="card-body">
+
         <div class="row align-items-center d-flex">
             <div class="col-sm-8">
                 <p class="question-text m-0" contenteditable="true">Escribe tu pregunta aquí</p>
@@ -102,6 +109,20 @@
 </div>
 
 <script>
+    $.ajax({
+        url: '<?= API ?>candidatos.php?action=cargos',
+        type: 'GET',
+        success: function(data) {
+            var selectCargo = $('#cargo_id');
+            selectCargo.empty();
+            selectCargo.append('<option value="" selected>Seleccione</option>');
+            $.each(data, function(index, item) {
+                selectCargo.append('<option value="' + item.id + '">' + item.nombre + '</option>');
+            });
+            selectCargo.select2();
+        }
+    });
+
     const formTitle = document.getElementById("form-title");
     const formDescription = document.getElementById("form-description");
     const formQuestion = document.getElementById("form-question");

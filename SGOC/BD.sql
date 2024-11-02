@@ -124,11 +124,12 @@ CREATE TABLE `candidatos` (
   CONSTRAINT `candidatos_ibfk_3` FOREIGN KEY (`ciudad_residencia`) REFERENCES `municipios` (`id_municipio`),
   CONSTRAINT `candidatos_ibfk_4` FOREIGN KEY (`cargo_id`) REFERENCES `cargos` (`id`),
   CONSTRAINT `candidatos_ibfk_5` FOREIGN KEY (`oferta_laboral_id`) REFERENCES `ofertas_laborales` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf32 COLLATE=utf32_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf32 COLLATE=utf32_general_ci;
 
 /*Data for the table `candidatos` */
 
-insert  into `candidatos`(`id`,`nombre_completo`,`tipo_doc`,`num_doc`,`lug_exp`,`fec_nacimiento`,`nacionalidad`,`sexo`,`estado_civil`,`dir_residencia`,`barrio_residencia`,`ciudad_residencia`,`tel_movil`,`email_personal`,`email_empresarial`,`cargo_id`,`oferta_laboral_id`,`salario`,`fingreso`,`fretiro`,`tipo_sangre`,`cv`,`estado`) values (5,'dasdsadsa',15,'56748168',1,'2024-10-11','CO','M',5,'asdsada','adasda',1,4165165,'elyinker@gmail.com','asduashb@asdjbasd',1,1,0,'0000-00-00',NULL,'O+','dggfgd-555.pdf','en_proceso');
+insert  into `candidatos`(`id`,`nombre_completo`,`tipo_doc`,`num_doc`,`lug_exp`,`fec_nacimiento`,`nacionalidad`,`sexo`,`estado_civil`,`dir_residencia`,`barrio_residencia`,`ciudad_residencia`,`tel_movil`,`email_personal`,`email_empresarial`,`cargo_id`,`oferta_laboral_id`,`salario`,`fingreso`,`fretiro`,`tipo_sangre`,`cv`,`estado`) values (5,'Yinker Garcia P',15,'56748168',1,'2024-10-11','CO','M',5,'asdsada','adasda',1,4165165,'elyinker@gmail.com','asduashb@asdjbasd',1,1,0,'0000-00-00',NULL,'O+','dggfgd-555.pdf','en_proceso');
+insert  into `candidatos`(`id`,`nombre_completo`,`tipo_doc`,`num_doc`,`lug_exp`,`fec_nacimiento`,`nacionalidad`,`sexo`,`estado_civil`,`dir_residencia`,`barrio_residencia`,`ciudad_residencia`,`tel_movil`,`email_personal`,`email_empresarial`,`cargo_id`,`oferta_laboral_id`,`salario`,`fingreso`,`fretiro`,`tipo_sangre`,`cv`,`estado`) values (8,'Jaime Borja Altamar Valencia',8,'457895',88,'2024-11-01','CO','M',4,'calle 123 falsa','alto prado',88,3045937477,'programacionline2@gmail.com',NULL,1,4,0,'0000-00-00',NULL,'O+','C:\\xampp\\htdocs\\OralCare/SGOC/uploads/OfertasLaborales/cv/Jaime_Borja_Altamar_Valencia-457895.pdf','no_continua');
 
 /*Table structure for table `cargos` */
 
@@ -369,7 +370,7 @@ CREATE TABLE `documentos` (
   KEY `empleado_id` (`empleado_id`),
   CONSTRAINT `documentos_ibfk_1` FOREIGN KEY (`tdoc_id`) REFERENCES `tipo_docs` (`id`),
   CONSTRAINT `documentos_ibfk_2` FOREIGN KEY (`empleado_id`) REFERENCES `empleados` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 /*Data for the table `documentos` */
 
@@ -426,9 +427,11 @@ CREATE TABLE `entrevistas` (
   PRIMARY KEY (`id`),
   KEY `pregunta_id` (`pregunta_id`),
   CONSTRAINT `entrevistas_ibfk_1` FOREIGN KEY (`pregunta_id`) REFERENCES `preguntas_entrevistas` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 /*Data for the table `entrevistas` */
+
+insert  into `entrevistas`(`id`,`candidato_id`,`pregunta_id`,`respuesta`,`fechareg`) values (4,8,5,'negro','2024-11-01 10:19:52');
 
 /*Table structure for table `estados_civiles` */
 
@@ -503,6 +506,48 @@ CREATE TABLE `feriados` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 /*Data for the table `feriados` */
+
+/*Table structure for table `formularios` */
+
+CREATE TABLE `formularios` (
+  `id` int(30) NOT NULL AUTO_INCREMENT,
+  `form_code` varchar(100) NOT NULL,
+  `title` varchar(250) NOT NULL,
+  `description` text NOT NULL,
+  `fname` text NOT NULL,
+  `cargo_id` int(11) NOT NULL,
+  `date_created` datetime NOT NULL DEFAULT current_timestamp(),
+  `date_updated` datetime DEFAULT NULL ON UPDATE current_timestamp(),
+  PRIMARY KEY (`id`),
+  KEY `cargo_id` (`cargo_id`),
+  CONSTRAINT `formularios_ibfk_1` FOREIGN KEY (`cargo_id`) REFERENCES `cargos` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+/*Data for the table `formularios` */
+
+/*Table structure for table `formularios_opciones` */
+
+CREATE TABLE `formularios_opciones` (
+  `id` int(30) NOT NULL AUTO_INCREMENT,
+  `form_code` varchar(100) NOT NULL,
+  `tiempo` int(11) NOT NULL,
+  `date_created` datetime NOT NULL DEFAULT current_timestamp(),
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+/*Data for the table `formularios_opciones` */
+
+/*Table structure for table `formularios_respuestas` */
+
+CREATE TABLE `formularios_respuestas` (
+  `id` int(30) NOT NULL AUTO_INCREMENT,
+  `rl_id` int(30) NOT NULL,
+  `meta_field` text NOT NULL,
+  `meta_value` text NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+/*Data for the table `formularios_respuestas` */
 
 /*Table structure for table `grupos` */
 
@@ -1742,8 +1787,8 @@ CREATE TABLE `ofertas_laborales` (
 
 /*Data for the table `ofertas_laborales` */
 
-insert  into `ofertas_laborales`(`id`,`cargo_id`,`titulo_oferta`,`beneficios_oferta`,`condiciones_oferta`,`depto_id`,`tipo_contrato`,`salario`,`documento`,`estado`,`usu_reg`,`fechareg`) values (3,NULL,'Se solicita mesero con 20 años de experiencia','Tendrá un uniforme de trabajo limpio cada semana','Se requiere urgente un mesero con buena presentación personal, con especialización en cocina buffe y con el curso de manipulación de alimentos al día emitido desde ayer. \r\nDebe trabajar las 24 horas al dia de 4am - 4am',2,1,1200000,'',1,1,'2024-10-29 21:28:37');
-insert  into `ofertas_laborales`(`id`,`cargo_id`,`titulo_oferta`,`beneficios_oferta`,`condiciones_oferta`,`depto_id`,`tipo_contrato`,`salario`,`documento`,`estado`,`usu_reg`,`fechareg`) values (4,NULL,'Se solicita doctor con 20 años de experiencia','Un año de netflix gratis','Se requiere urgente',3,2,600000,'672199d5a287d.pdf',0,1,'2024-10-29 21:28:37');
+insert  into `ofertas_laborales`(`id`,`cargo_id`,`titulo_oferta`,`beneficios_oferta`,`condiciones_oferta`,`depto_id`,`tipo_contrato`,`salario`,`documento`,`estado`,`usu_reg`,`fechareg`) values (3,1,'Se solicita mesero con 20 años de experiencia','Tendrá un uniforme de trabajo limpio cada semana','Se requiere urgente un mesero con buena presentación personal, con especialización en cocina buffe y con el curso de manipulación de alimentos al día emitido desde ayer. \r\nDebe trabajar las 24 horas al dia de 4am - 4am',2,1,1200000,'',1,1,'2024-10-29 21:28:37');
+insert  into `ofertas_laborales`(`id`,`cargo_id`,`titulo_oferta`,`beneficios_oferta`,`condiciones_oferta`,`depto_id`,`tipo_contrato`,`salario`,`documento`,`estado`,`usu_reg`,`fechareg`) values (4,1,'Se solicita doctor con 20 años de experiencia','Un año de netflix gratis','Se requiere urgente',3,2,600000,'672199d5a287d.pdf',0,1,'2024-10-29 21:28:37');
 
 /*Table structure for table `preguntas_entrevistas` */
 
@@ -1805,11 +1850,9 @@ CREATE TABLE `programacion_entrevistas` (
   KEY `cargo_id` (`cargo_id`),
   CONSTRAINT `programacion_entrevistas_ibfk_1` FOREIGN KEY (`candidato_id`) REFERENCES `candidatos` (`id`),
   CONSTRAINT `programacion_entrevistas_ibfk_2` FOREIGN KEY (`cargo_id`) REFERENCES `cargos` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 /*Data for the table `programacion_entrevistas` */
-
-insert  into `programacion_entrevistas`(`id`,`candidato_id`,`cargo_id`,`fechapro`,`horapro`,`fechareg`) values (6,5,1,'2024-11-02','12:53:00','2024-10-31 19:51:05');
 
 /*Table structure for table `programas` */
 

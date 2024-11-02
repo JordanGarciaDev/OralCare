@@ -39,6 +39,7 @@ Class Forms extends DBConnection{
         $data .= ", title = '$title' ";
         $data.= ", description = '$description' ";
         $data.= ", fname = '$fname' ";
+        $data.= ", cargo_id = '$cargo_id' ";
 
         if(empty($form_code))
             $save_form = $this->conn->query("INSERT INTO `formularios` set $data ");

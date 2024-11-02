@@ -23,10 +23,22 @@
     <script src="<?= ASSET_URL; ?>/js/jquery-3.6.0.min.js"></script>
     <script src="<?= ASSET_URL; ?>/js/app.js"></script>
     <script src="<?= ASSET_URL; ?>/js/datatables.js"></script>
+
+    <link rel="stylesheet" href="<?= ASSET_URL; ?>/fonts/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="<?= ASSET_URL; ?>/css/custom.css">
+    <script src="<?= ASSET_URL; ?>/js/popper.min.js"></script>
+    <script src="<?= ASSET_URL; ?>/js/jquery-ui.js"></script>
+    <script src="<?= ASSET_URL; ?>/js/bootstrap.min.js"></script>
+    <script src="<?= ASSET_URL; ?>/js/script.js"></script>
+    <script src="<?= ASSET_URL; ?>/js/form-builder.js"></script>
+
     <style>
         body {
             opacity: 0;
         }
+         .placeholder-style {
+             color: #aaa;
+         }
     </style>
 </head>
 <body>

@@ -1,94 +1,142 @@
 <?php
-
 include('../../app/config.php');
 
-class PreguntasEntrevistaAPI {
-    private $conn;
+Class Forms extends DBConnection{
 
-    public function __construct($conn) {
-        $this->conn = $conn;
+    public function __construct(){
+        parent::__construct();
     }
 
-    public function fetch() {
-        $query = "SELECT *, p.id AS idPreg, tp.nombre as tipo 
-                  FROM preguntas_entrevistas p 
-                  INNER JOIN tipos_preguntas tp ON p.tpregunta = tp.id";
-        $result = $this->conn->query($query);
-        $data = array();
+    public function __destruct(){
+        parent::__destruct();
+    }
 
-        while ($row = $result->fetch_assoc()) {
-            $data[] = $row;
+    public function save_form(){
+        extract($_POST);
+        $resp = array();
+        $loop = true;
+        $code = $form_code;
+        if(empty($form_code)){
+            while($loop == true){
+                $code=mt_rand(0,9999999999);
+                $code = sprintf("%'.09d",$code);
+                $chk = $this->conn->query("SELECT * FROM `formularios` where form_code = '$code' ")->num_rows;
+                if($chk <= 0)
+                    break;
+            }
+        }
+        $fname = $code.".html";
+        $create_form = file_put_contents("../../vistas/forms/".$fname,$form_data);
+
+
+        if(!$create_form){
+            $resp['status'] = 'failed';
+            $resp['error'] = 'Se produjo un error al guardar el formulario';
+            return json_encode($resp);
+            exit;
+        }
+        $data = " form_code = '$code' ";
+        $data .= ", title = '$title' ";
+        $data.= ", description = '$description' ";
+        $data.= ", fname = '$fname' ";
+
+        if(empty($form_code))
+            $save_form = $this->conn->query("INSERT INTO `formularios` set $data ");
+        else
+            $save_form = $this->conn->query("UPDATE `formularios` set $data where form_code = '$form_code' ");
+        if($save_form){
+            $resp['status'] = 'success';
+        }else{
+            $resp['status'] = 'failed';
+            $resp['error'] = $this->conn->error;
+        }
+        return json_encode($resp);
+
+    }
+
+    public function save_response(){
+        extract($_POST);
+        $tiempo = isset($_POST['time_spent']) ? $_POST['time_spent'] : 0; // Asegúrate de que 'time_spent' está definido
+
+        // Inserta el form_code y el tiempo en la tabla formularios_opciones
+        $data = "form_code = '$form_code', tiempo = $tiempo"; // Asegúrate de usar una coma para separar las columnas
+        $rl_insert = $this->conn->query("INSERT INTO formularios_opciones SET $data");
+
+        if($rl_insert){
+            $rl_id = $this->conn->insert_id;
+        }else{
+            $resp['status'] = 'failed';
+            $resp['error'] = $this->conn->error;
+            return json_encode($resp);
+            exit;
+        }
+        $data = "";
+        if(isset($_POST['q'])){
+            foreach($_POST['q'] as $k => $v){
+                if(!empty($data)) $data .= ",";
+                if(!is_array($_POST['q'][$k])){
+                    $data .= " ('$rl_id','$k','$v') ";
+                }else{
+                    $ans = implode(", ",$_POST['q'][$k]);
+                    $data .= " ('$rl_id','$k','$ans') ";
+                }
+            }
+        }
+        if(isset($_FILES['q']['tmp_name'])){
+            foreach($_FILES['q']['tmp_name'] as $k => $v){
+                if(!empty($data)) $data .= ",";
+                if(!empty($_FILES['q']['tmp_name'][$k])){
+                    $fname = time()."_".$_FILES['q']['name'][$k];
+                    $move = move_uploaded_file($_FILES['q']['tmp_name'][$k],"../../uploads/".$fname);
+                    if($move){
+                        $data .= " ('$rl_id','$k','$fname') ";
+                    }
+                }
+            }
         }
 
-        echo json_encode(array('data' => $data));
-    }
-
-    public function save() {
-        $id = isset($_POST['id']) ? $_POST['id'] : '';
-        $pregunta = $_POST['pregunta'];
-        $tpregunta = $_POST['tpregunta'];
-
-        if (empty($id)) {
-            $query = "INSERT INTO preguntas_entrevistas (pregunta, tpregunta) VALUES (?, ?)";
-            $stmt = $this->conn->prepare($query);
-            $stmt->bind_param('si', $pregunta, $tpregunta);
-        } else {
-            $query = "UPDATE preguntas_entrevistas SET pregunta = ?, tpregunta = ? WHERE id = ?";
-            $stmt = $this->conn->prepare($query);
-            $stmt->bind_param('sii', $pregunta, $tpregunta, $id);
+        $save_resp = $this->conn->query("INSERT INTO `formularios_respuestas` (rl_id,meta_field,meta_value) VALUES $data");
+        if($save_resp){
+            $resp['status'] = 'success';
+        }else{
+            $resp['status'] = 'failed';
+            $resp['error'] = $this->conn->error;
         }
-
-        $stmt->execute();
-        $stmt->close();
-
-        echo json_encode(array('status' => 'success'));
+        return json_encode($resp);
     }
 
-    public function edit() {
-        $id = $_GET['id'];
-        $query = "SELECT *, p.id AS idPreg, tp.nombre as tipo 
-                  FROM preguntas_entrevistas p 
-                  INNER JOIN tipos_preguntas tp ON p.tpregunta = tp.id 
-                  WHERE p.id = ?";
-        $stmt = $this->conn->prepare($query);
-        $stmt->bind_param('i', $id);
-        $stmt->execute();
-        $result = $stmt->get_result();
-        $row = $result->fetch_assoc();
-
-        echo json_encode($row);
-    }
-
-    public function delete() {
-        $id = $_GET['id'];
-        $query = "DELETE FROM preguntas_entrevistas WHERE id = ?";
-        $stmt = $this->conn->prepare($query);
-        $stmt->bind_param('i', $id);
-        $stmt->execute();
-
-        echo json_encode(array('status' => 'success'));
+    public function delete_form(){
+        extract($_POST);
+        $rl_id = $this->conn->query("SELECT * FROM `formularios` where form_code = '$form_code'");
+        $rl_id = $rl_id->num_rows > 0 ? $rl_id->fetch_array()['id'] : '';
+        $del = $this->conn->query("DELETE FROM `formularios` where form_code = '$form_code'");
+        $del1 = $this->conn->query("DELETE FROM `formularios_respuestas` where form_code = '$form_code'");
+        if($rl_id > 0)
+            $del2 = $this->conn->query("DELETE FROM `formularios_opciones` where rl_id = '$rl_id'");
+        if(isset($this->conn->err)){
+            $resp['status'] = 'failed';
+            $resp['err'] = $this->conn->err;
+        }else{
+            unlink('../../vistas/forms/'.$form_code.'.html');
+            $resp['status'] = 'success';
+        }
+        return json_encode($resp);
     }
 }
-
-// Inicializar la API y manejar las acciones
-$api = new PreguntasEntrevistaAPI($conn);
-$action = isset($_GET['action']) ? $_GET['action'] : '';
+$forms = new forms();
+$action = !isset($_GET['a']) ? 'none' : strtolower($_GET['a']);
 
 switch ($action) {
-    case 'fetch':
-        $api->fetch();
+    case 'save_form':
+        echo $forms->save_form();
         break;
-    case 'save':
-        $api->save();
+    case 'save_response':
+        echo $forms->save_response();
         break;
-    case 'edit':
-        $api->edit();
-        break;
-    case 'delete':
-        $api->delete();
+    case 'delete_form':
+        echo $forms->delete_form();
         break;
     default:
-        echo json_encode(array('status' => 'error', 'message' => 'Acción no válida.'));
+        // echo $sysset->index();
         break;
 }
-?>

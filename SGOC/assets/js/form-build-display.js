@@ -33,34 +33,65 @@ $(function() {
     $('#save_response').click(function() {
         $('#form-field form').submit()
     })
+
+    let startTime; // Variable para almacenar el tiempo de inicio
+
+// Función para registrar el tiempo de entrada
+    window.onload = function() {
+        startTime = new Date(); // Almacena la fecha y hora actuales
+    };
+
+// Evento para calcular y mostrar el tiempo en consola antes de enviar el formulario
     $('#form-field form').submit(function(e) {
-        e.preventDefault()
-        start_loader();
+        e.preventDefault(); // Prevenir el envío del formulario
+
+        // Calcular el tiempo transcurrido en minutos
+        let endTime = new Date();
+        let timeSpent = (endTime - startTime) / 1000 / 60; // Tiempo en minutos
+        console.log(`Tiempo en la página: ${timeSpent.toFixed(2)} minutos`); // Mostrar tiempo en consola
+
+        // Agregar el tiempo a los datos del formulario
+        const formData = new FormData($(this)[0]);
+        formData.append('time_spent', timeSpent); // Agregar el tiempo al FormData
+
+        start_loader(); // Iniciar el loader
         $.ajax({
-            url: "app/APIS/preguntas_entrevistas.php?a=save_response",
+            url: "../app/APIS/preguntas_entrevistas.php?a=save_response",
             method: 'POST',
-            data: new FormData($(this)[0]),
+            data: formData,
             cache: false,
             contentType: false,
             processData: false,
-            method: 'POST',
-            type: 'POST',
             dataType: 'json',
             error: err => {
-                console.log(err)
-                alert("ha ocurrido un error")
+                console.log(err);
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Ha ocurrido un error. Por favor, intenta nuevamente.',
+                });
+                end_loader();
             },
             success: function(resp) {
                 if (typeof resp == 'object' && resp.status == 'success') {
-                    alert("Formulario entregado satisfactoriamente")
-                    location.reload()
+                    $('#enviar').hide(); // Ocultar el botón de enviar
+                    $('textarea[name^="q["]').prop('disabled', true); // Deshabilitar todos los textarea que comienzan con q[
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Éxito',
+                        html: 'Tus respuestas han sido guardadas exitosamente,<br>¡Te deseamos los mejores éxitos!',
+                    });
                 } else {
-                    console.log(resp)
-                    alert("ha ocurrido un error")
+                    console.log(resp);
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        text: 'Ha ocurrido un error. Por favor, intenta nuevamente.',
+                    });
                 }
-                end_loader()
+                end_loader(); // Finalizar el loader
             }
-        })
-    })
+        });
+    });
 
 })

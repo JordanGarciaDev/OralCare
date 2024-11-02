@@ -4,7 +4,7 @@ extract($_GET);
 <script src="../assets/js/form-builder.js"></script>
 <div class="row">
     <div class="col-lg-12">
-        <div class="card bg-primary text-white">
+        <div class="card text-white">
             <div class="card-body">
                 <h3><b>Respuestas</b></h3>
             </div>
@@ -15,7 +15,7 @@ extract($_GET);
 
 <?php 
 include "./forms/".$code.".html";
-$responses = $db->conn->query("SELECT * FROM `responses` where rl_id = $id");
+$responses = $conn->query("SELECT * FROM `formularios_respuestas` where rl_id = $id");
 $data = array();
 while($row = $responses->fetch_assoc()){
     $data[$row['meta_field']]['value'] = $row['meta_value'];

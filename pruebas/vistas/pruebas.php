@@ -25,8 +25,8 @@ ob_end_flush();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simple Form Builder</title>
-    <?php include('./header.php') ?>
+    <title>PreContratación Clinicas Oral Care</title>
+    <?php include(LAYOUT.'/header.php'); ?>
     <script>
         var form_code = "<?php echo $code ?>";
     </script>

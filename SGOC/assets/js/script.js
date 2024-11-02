@@ -1,6 +1,6 @@
 var loader_script = '<div id="pre-loader">' +
     '<div class="spinner-border text-primary" role="status">' +
-    '<span class="sr-only">Loading...</span>' +
+    '<span class="sr-only">Cargando...</span>' +
     '</div>' +
     '</div>';
 window.start_loader = function() {
@@ -14,7 +14,7 @@ window.end_loader = function() {
         loader.remove()
     }
 }
-var _loader = '<div class="tbl_loader"><div class="spinner-grow" style="width: 3rem; height: 3rem;" role="status"><span class="sr-only">Loading...</span></div><small>Please Wait..</small></div>'
+var _loader = '<div class="tbl_loader"><div class="spinner-grow" style="width: 3rem; height: 3rem;" role="status"><span class="sr-only">Cargando...</span></div><small>Please Wait..</small></div>'
 
 $(function() {
     $('.dataTables_wrapper').each(function() {

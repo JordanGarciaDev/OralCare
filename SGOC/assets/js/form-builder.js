@@ -1,8 +1,3 @@
-/* 
-This Simple Form Builder was Developed by 
-Carlo Montero
-Posted/Published in: www.sourcecodester.com
-*/
 $(function() {
 
     $('#add_q-item').click(function(e) {
@@ -12,20 +7,21 @@ $(function() {
             f_arr.push(parseInt($(this).attr('data-item')))
         })
         var i = f_arr.length
-            // console.log(i)
+        // console.log(i)
         el.find('.question-item').attr('data-item', i)
         el.find('textarea').attr('name', 'q[' + i + ']')
         $('#question-field').append(el.html())
         $('body,html').animate({ scrollTop: $(this).offset().top }, 'fast')
         _initilize()
     })
+
     $('#question-field').sortable({
-            handle: '.item-move',
-            classes: {
-                "ui-sortable": "highlight"
-            }
-        })
-        // $("#question-field").disableSelection();
+        handle: '.item-move',
+        classes: {
+            "ui-sortable": "highlight"
+        }
+    })
+    // $("#question-field").disableSelection();
 
     function _initilize() {
         $('[contenteditable="true"]').each(function() {
@@ -68,13 +64,13 @@ $(function() {
             if (choice == "p") {
                 paragraph($(this), _field)
             } else if (choice == "checkbox") {
-                $(this).closest('.question-item').find('.choice-field').html('<button type="button" class="add_chk btn btn-sm btn-default border"><i class="fa fa-plus"></i> Agrega una opción</button>')
+                $(this).closest('.question-item').find('.choice-field').html('<button type="button" class="add_chk btn btn-sm btn-primary border" style="margin-left: 42%;"><i class="fa fa-plus"></i> Agregar otra opción</button>')
                 add_checkbox()
                 for (var i = 0; i < 3; i++) {
                     checkbox_field($(this), _field, "Ingresa una opción")
                 }
             } else if (choice == "radio") {
-                $(this).closest('.question-item').find('.choice-field').html('<button type="button" class="add_radio btn btn-sm btn-default border"><i class="fa fa-plus"></i> Agregar Opción</button>')
+                $(this).closest('.question-item').find('.choice-field').html('<button type="button" class="add_radio btn btn-sm btn-primary border" style="margin-left: 42%;"><i class="fa fa-plus"></i> Agregar otra opción</button>')
                 add_radio()
                 for (var i = 0; i < 3; i++) {
                     radio_field($(this), _field, "Ingresa una opción")
@@ -162,8 +158,6 @@ $(function() {
         _this.closest('.question-item').find('.choice-field .add_radio').before(el)
     }
 
-
-
     function create_checkbox_field(_field, _text) {
 
         var el = $('<div>')
@@ -179,6 +173,7 @@ $(function() {
         })
         var label = $('<label>')
         label.attr({
+            "id": "form-check-label",
             "class": "form-check-label",
             "contenteditable": true,
             "title": "Ingresa una opción"
@@ -204,6 +199,7 @@ $(function() {
         })
         var label = $('<label>')
         label.attr({
+            "id": "form-radio-label",
             "class": "form-check-label",
             "contenteditable": true,
             "title": "Ingresa una opción aquí"
@@ -216,35 +212,51 @@ $(function() {
     _initilize()
 
     function save_form() {
-        var new_el = $('<div>')
-        var form_el = $('#form-field').clone()
+        var new_el = $('<div>');
+        var form_el = $('#form-field').clone();
         var form_code = $("[name='form_code']").length > 0 ? $("[name='form_code']").val() : "";
-        var title = $('#form-title').text()
-        var description = $('#form-description').text()
-        form_el.find("[name='form_code']").remove()
-        new_el.append(form_el)
-        start_loader()
+        var title = $('#form-title').text();
+        var description = $('#form-description').text();
+        form_el.find("[name='form_code']").remove();
+        new_el.append(form_el);
+        start_loader();
+
         $.ajax({
-            url: "app/APIS/preguntas_entrevistas.php?a=save_form",
+            url: "../app/APIS/preguntas_entrevistas.php?a=save_form",
             method: 'POST',
             data: { form_data: new_el.html(), description: description, title: title, form_code: form_code },
             dataType: 'json',
             error: err => {
-                console.log(err)
-                alert("ha ocurrido un error")
+                console.log(err);
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Ha ocurrido un error. Por favor, intenta nuevamente.',
+                });
+                end_loader();
             },
             success: function(resp) {
                 if (typeof resp == 'object' && resp.status == 'success') {
-                    alert("Formulario guardado exitósamente")
-                    location.href = "./"
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Éxito',
+                        text: 'Formulario guardado exitosamente.',
+                    }).then(() => {
+                        location.href = "./preguntas_entrevistas.php"; // Redirige después de que el usuario cierra el modal
+                    });
                 } else {
-                    console.log(resp)
-                    alert("ha ocurrido un error")
+                    console.log(resp);
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        text: 'Ha ocurrido un error. Por favor, intenta nuevamente.',
+                    });
                 }
-                end_loader()
+                end_loader();
             }
-        })
+        });
     }
+
     $('#save_form').click(function() {
         save_form()
     })

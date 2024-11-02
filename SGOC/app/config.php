@@ -12,7 +12,7 @@ define('UPLOAD', BASE_URL . '/uploads'); //Para agregar las imagenes usar esto <
 
 $host = 'localhost';
 $user = 'root';
-$password = ''; 
+$password = '';
 $database = 'sgoc';
 
 $conn = new mysqli($host, $user, $password, $database);
@@ -22,3 +22,28 @@ if ($conn->connect_error) {
 }
 
 $conn->set_charset("utf8");
+
+
+class DBConnection {
+    public $conn;
+
+    public function __construct() {
+        // Usar variables globales directamente en el constructor
+        global $host, $user, $password, $database;
+
+        $this->conn = new mysqli($host, $user, $password, $database);
+
+        if ($this->conn->connect_error) {
+            die('La conexión ha fallado: ' . $this->conn->connect_error);
+        }
+    }
+
+    public function __destruct() {
+        $this->conn->close();
+    }
+}
+
+// Crear una instancia de DBConnection
+$dbConnection = new DBConnection();
+
+?>

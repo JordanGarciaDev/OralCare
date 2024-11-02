@@ -4,7 +4,7 @@ extract($_GET);
 <script src="../assets/js/form-builder.js"></script>
 <div class="row">
     <div class="col-lg-12">
-        <div class="card bg-primary text-white">
+        <div class="card text-white">
             <div class="card-body">
                 <h3><b><?php echo isset($_GET['code']) ? "Editar" : "Crear Nuevo" ?> Formulario</b></h3>
             </div>
@@ -22,7 +22,7 @@ extract($_GET);
     <div class="card-body">
         <div class="row align-items-center d-flex">
             <div class="col-sm-8">
-                <p class="question-text m-0" contenteditable="true" title="Write you question here">Escribe tu pregunta aquí</p>
+                <p class="question-text m-0" contenteditable="true">Escribe tu pregunta aquí</p>
             </div>
             <div class="col-sm-4">
                 <select title="question choice type" name="choice" class='form-control choice-option'>
@@ -45,7 +45,7 @@ extract($_GET);
             <div class="form-check">
                 <input class="form-check-input req-item" type="checkbox" value="" >
                 <label class="form-check-label req-chk" for="">
-                    * Requerido
+                    <span style="color: red;">*</span>Requerido
                 </label>
             </div>
             <button class="btn btn-default border rem-q-item" type="button"><i class="fa fa-trash"></i></button>
